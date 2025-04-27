@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.section`
-    background-color: #24335C;
+export const MainSection = styled.section`
+    background-color: #222222;
     color: white;
 
     div h2 span {

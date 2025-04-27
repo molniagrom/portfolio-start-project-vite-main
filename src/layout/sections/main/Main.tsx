@@ -2,20 +2,34 @@
 import myPhoto from "../../../image/myPhoto.jpg"
 import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
 import {Photo} from "./Photo.tsx";
-import {MainContainer} from "./MainContainer.tsx";
+import {MainSection} from "./MainSection.tsx";
 import styled from "styled-components";
 import {Icon} from "../../../components/icon/Icon.tsx";
+// import {card} from "./Projects/card/card.tsx";
+// import {Button} from "../../../components/Button/Button.tsx";
+import Projects from "./Projects/Projects.tsx";
+import {AStyled, InputLinkStyled} from "../../../components/AStyled/AStyled.tsx";
+import {MyStack} from "./myStack/MyStack.tsx";
+import {Contact} from "./contact/Contact.tsx";
+import {IconsContact} from "./contact/iconsContact/IconsContact.tsx";
 
 export const Main = () => {
     return (
-        <MainContainer>
-            <FlexWrapper gap={"5vw"} padding={"3vw"} direction="row" alignItems={"center"} justify="space-around">
-                <Photo src={myPhoto} alt=""/>
+        <MainSection>
+            <FlexWrapper gap={"5vw"} direction="row" alignItems={"center"} justify="space-around">
+                <Photo
+                    src={myPhoto}
+                    width="400px"
+                    height="400px"
+                    borderRadius="50%"
+                    border="2.08vw solid white"
+                />
                 <FlexWrapper direction="column">
                     <MainTitle>Frontend-developer WED</MainTitle>
-                    <Mane>I'm <span>Alina</span> Groza</Mane>
+                    <Nane>I'm <span>Alina</span> Groza</Nane>
                     <FlexWrapper gap="32px">
-                        <Button
+
+                        <AStyled
                             fontSize={"15px"}
                             fontWeight={"600"}
                             padding={"15px"}
@@ -25,57 +39,41 @@ export const Main = () => {
                             backgroundColor={"#2157F2"}>
 
                             See Projects
-                            <Icon iconId={"ArrowWhiteToButton"} width={"28px"} height={"28px"}/>
+                            <Icon iconId={"ArrowWhiteToButton"} width={"28px"} height={"28px"} viewBox={"-3 -3 36 36"}/>
 
-                        </Button>
-                        <Button
+                        </AStyled>
+
+                        <InputLinkStyled
                             fontSize={"15px"}
-                            fontWeight={"600"}
+                            fontWeight={600}
                             backgroundColor={"transparent"}
                             color={"#6c92ff"}
+                            value={"Download Resume"}
+                            border={"none"}
+                            outline={"none"}
+                            appearance={"none"}
                         >
-                            Download Resume
-                        </Button>
+                        </InputLinkStyled>
                     </FlexWrapper>
                 </FlexWrapper>
             </FlexWrapper>
-        </MainContainer>
+            <Projects/>
+            <MyStack/>
+            <Contact/>
+            <IconsContact/>
+        </MainSection>
     );
 };
 
 export default Main;
 
-type ButtonPropsType = {
-    backgroundColor?: string,
-    color?: string,
-    fontFamily?: string
-    borderRadius?: string
-    gap?: string
-    padding?: string
-    fontWeight?: string
-    fontSize?: string
-}
-
-const Button = styled.button<ButtonPropsType>`
-    background-color: ${props => props.backgroundColor || "white"};
-    color: ${props => props.color || "white"};
-    font-family: ${props => props.fontFamily}, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: ${props => props.borderRadius || "none"};
-    gap: ${props => props.gap || "0"};
-    padding: ${props => props.padding || "0"};
-    font-weight: ${props => props.fontWeight || "normal"};
-    font-size: ${props => props.fontSize || "16px"};
-`
-
 const MainTitle = styled.h1`
 
 `
-const Mane = styled.h2`
+const
+    Nane = styled.h2`
 
-`
+    `
 
 
 
