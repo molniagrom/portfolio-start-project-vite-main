@@ -7,11 +7,8 @@ import styled from "styled-components";
 import {Icon} from "../../../components/icon/Icon.tsx";
 // import {card} from "./Projects/card/card.tsx";
 // import {Button} from "../../../components/Button/Button.tsx";
-import Projects from "./Projects/Projects.tsx";
 import {AStyled, InputLinkStyled} from "../../../components/AStyled/AStyled.tsx";
-import {MyStack} from "./myStack/MyStack.tsx";
-import {Contact} from "./contact/Contact.tsx";
-import {IconsContact} from "./contact/iconsContact/IconsContact.tsx";
+
 
 export const Main = () => {
     return (
@@ -26,7 +23,7 @@ export const Main = () => {
                 />
                 <FlexWrapper direction="column">
                     <MainTitle>Frontend-developer WED</MainTitle>
-                    <Nane>I'm <span>Alina</span> Groza</Nane>
+                    <Name color={"#fff"}>I'm <span>Alina</span> Groza</Name>
                     <FlexWrapper gap="32px">
 
                         <AStyled
@@ -57,10 +54,6 @@ export const Main = () => {
                     </FlexWrapper>
                 </FlexWrapper>
             </FlexWrapper>
-            <Projects/>
-            <MyStack/>
-            <Contact/>
-            <IconsContact/>
         </MainSection>
     );
 };
@@ -70,11 +63,14 @@ export default Main;
 const MainTitle = styled.h1`
 
 `
-const
-    Nane = styled.h2`
 
-    `
+type NamePropsType = {
+    color?: string;
+}
 
+export const Name = styled.h2<NamePropsType>`
+    color: ${props => props.color || undefined};
+`
 
 
 
