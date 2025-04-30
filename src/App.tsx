@@ -24,7 +24,6 @@ function App() {
             <MyStack/>
             <Testimony/>
             <Contact/>
-            {/*<IconsContact/>*/}
             <Quote/>
             <Footer/>
         </div>

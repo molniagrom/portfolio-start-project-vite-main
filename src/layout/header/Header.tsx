@@ -16,4 +16,6 @@ const StyleHeader = styled.header`
     background-color: cadetblue;
     display: flex;
     justify-content: space-between;
+    position: relative;
+
 `

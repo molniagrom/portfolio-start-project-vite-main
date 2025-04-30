@@ -54,7 +54,7 @@ export const Main = () => {
                     </FlexWrapper>
                 </FlexWrapper>
             </FlexWrapper>
-            <FlexWrapper zIndex={"5"} position={"fixed"} justify={'flex-start'}>
+            <FlexWrapper>
                 <BlueWhite>
                     <Icon width={"31px"} height={"31px"} iconId={"instagramWhite"} />
                     <Icon width={"31px"} height={"31px"} iconId={"whatsappWhite"} />
@@ -83,10 +83,13 @@ const BlueWhite = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: start;
+    position: fixed;
+    top: 800px;
     gap: 17px;
     border-radius: 0 25px 25px 0;
     background-color: #24335C;
     padding: 15px 36px;
+    z-index: 5;
 `
 
 

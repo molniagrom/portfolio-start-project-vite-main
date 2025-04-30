@@ -1,19 +1,20 @@
 import myPhoto from "../../../../image/myPhoto.jpg"
 import styled from "styled-components";
-import {Button} from "../../../../components/Button/Button.tsx";
 import {FlexWrapper} from "../../../../components/wrappers/FlexWrapper.tsx";
 import {Photo} from "../../main/Photo.tsx";
+import {AStyled} from "../../../../components/AStyled/AStyled.tsx";
 
 
 export const Card = () => {
     return (
         <StyledCard borderRadius={"26px"} backgroundColor={"#353535"} width={"394px"}>
             <Photo borderRadius={"20px 20px 0 0"} height={"60.91%"} width={"100%"} src={myPhoto} objectFit={"cover"} />
-            <FlexWrapper alignItems={"center"} direction={"column"} >
+
+            <FlexWrapper flexGrow={"1"} alignItems={"center"} justify={"space-between"} direction={"column"} >
                  <NameCard>Story motion for sale English cources</NameCard>
                 <FlexWrapper direction={"row"}  gap={"20px"}>
-                    <Button color={"#000"}>Edit for you</Button>
-                    <Button>see preview</Button>
+                    <AStyled backgroundColor={"#2157F2"} color={"#fff"}>Edit code</AStyled>
+                    <AStyled color={"#2157F2"}>View</AStyled>
                 </FlexWrapper>
             </FlexWrapper>
         </StyledCard>
@@ -21,7 +22,7 @@ export const Card = () => {
 };
 
 const NameCard = styled.h3`
-    width: 75.5%;
+    flex-grow: 1;
 `
 
 type StyledCardPropsType = {
@@ -32,7 +33,9 @@ type StyledCardPropsType = {
     borderRadius?: string
 }
 
-const StyledCard = styled.div<StyledCardPropsType>`
+const StyledCard = styled.article<StyledCardPropsType>`
+    display: flex;
+    flex-direction: column;
     padding: ${props => props.padding || undefined};
     width: ${props => props.width || undefined};
     background-color: ${props => props.backgroundColor || undefined};
