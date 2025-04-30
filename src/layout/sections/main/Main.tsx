@@ -54,6 +54,13 @@ export const Main = () => {
                     </FlexWrapper>
                 </FlexWrapper>
             </FlexWrapper>
+            <FlexWrapper zIndex={"5"} position={"fixed"} justify={'flex-start'}>
+                <BlueWhite>
+                    <Icon width={"31px"} height={"31px"} iconId={"instagramWhite"} />
+                    <Icon width={"31px"} height={"31px"} iconId={"whatsappWhite"} />
+                    <Icon width={"29px"} height={"29px"} iconId={"telegramWhite "} />
+                </BlueWhite>
+            </FlexWrapper>
         </MainSection>
     );
 };
@@ -72,7 +79,15 @@ export const Name = styled.h2<NamePropsType>`
     color: ${props => props.color || undefined};
 `
 
-
+const BlueWhite = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 17px;
+    border-radius: 0 25px 25px 0;
+    background-color: #24335C;
+    padding: 15px 36px;
+`
 
 
 
