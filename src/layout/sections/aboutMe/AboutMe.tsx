@@ -1,18 +1,18 @@
 // import React from 'react';
 
 import styled from "styled-components";
-import map from "../../../image/map.png";
-import me from "../../../image/me.png";
+// import map from "../../../../public/map.png";
+// import me from "../../../../public/me.png";
 import {Icon} from "../../../components/icon/Icon.tsx";
-import {Photo} from "../main/Photo.tsx";
+// import {Photo} from "../main/Photo.tsx";
 import {Name} from "../main/Main.tsx";
 // import ElipseSmallGradient from "../../../../image/icons-sprite.svg";
 
 export const AboutMe = () => {
     return (
         <AboutMeStyled>
-            <Photo height={"100%"} position={"absolute"} top={"0"} left={"0"} src={map} />
-            <Photo position={"absolute"} bottom={"0"} right={"0"} src={me} />
+            {/*<Photo height={"100%"} position={"absolute"} top={"0"} left={"0"} src={map} />*/}
+            {/*<Photo position={"absolute"} bottom={"0"} right={"0"} src={me} />*/}
             <InfoAboutMe>
                 <Icons>
                     <Icon width={"26px"} height={"26px"} iconId={"whatsappWhite"}/>
@@ -35,9 +35,13 @@ export const AboutMe = () => {
 const AboutMeStyled = styled.section`
     min-height: 946px;
     background-color: #A6BCFA;
+    background-image: url("../../../../public/me.png"), url("../../../../public/map.png");
+    background-repeat: no-repeat, no-repeat;
+    background-position: right bottom, left top;
+    background-size: auto, contain;
     position: relative;
+`;
 
-`
 const InfoAboutMe = styled.div`
     display: flex;
     flex-direction: column;
@@ -63,6 +67,7 @@ const UlStyled = styled.ul`
 `
 const LiStyled = styled.li`
     //marker: url('$_{IconName}'); "_" Чтобы не ругался 
+
     &::before {
         content: "";
         display: inline-block;

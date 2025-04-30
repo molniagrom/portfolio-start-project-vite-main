@@ -7,7 +7,7 @@ import {
     InfoLogoContent,
     StyledForm,
     ContactTitle
-} from "./contact.styled.tsx";
+} from "./Contact.Styled.tsx";
 import {Part} from "./part/Part.tsx";
 import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
 import {Button} from "../../../components/Button/Button.tsx";
