@@ -24,8 +24,7 @@ export const FormContent = styled.div`
 `
 
 export const StyledForm = styled.form`
-    min-height: 50vh;
-    max-width: 430px;
+   
 `
 
 type FieldPropsType = {
