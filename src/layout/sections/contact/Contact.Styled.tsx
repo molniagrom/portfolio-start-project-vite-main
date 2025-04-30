@@ -1,4 +1,5 @@
 import styled, {css} from "styled-components";
+import {theme} from "../../../styles/Theme.ts";
 
 export const ContactUs = styled.section`
     display: flex;
@@ -13,13 +14,13 @@ export const ContactTitle = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: ${theme.colors.primaryFont};
 `
 export const FormContent = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    color: #fff;
+    color: ${theme.colors.primaryFont};
     min-height: 290px;
 `
 

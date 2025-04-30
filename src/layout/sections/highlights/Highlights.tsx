@@ -3,6 +3,7 @@
 // Highlights.tsx
 import styled from 'styled-components';
 import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
+import {theme} from "../../../styles/Theme.ts";
 
 export const Highlights = () => {
     return (
@@ -29,7 +30,7 @@ export const Highlights = () => {
 const HighlightsStyled = styled.section`
     padding: 40px 20px;
     background-color: #24335C;
-    color: #fff;
+    color: ${theme.colors.primaryFont};
 `;
 
 const StatBlock = styled.div`

@@ -84,7 +84,7 @@ const BlueWhite = styled.div`
     flex-direction: column;
     justify-content: start;
     position: fixed;
-    top: 800px;
+    top: 700px;
     gap: 17px;
     border-radius: 0 25px 25px 0;
     background-color: #24335C;

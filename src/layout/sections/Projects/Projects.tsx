@@ -3,6 +3,7 @@
 import styled from "styled-components";
 import {Card} from "./card/Card.tsx";
 import {Icon} from "../../../components/icon/Icon.tsx";
+import {theme} from "../../../styles/Theme.ts";
 
 export const Projects = () => {
     return (
@@ -54,7 +55,7 @@ const StyledProjects = styled.section`
     align-items: center;
     background-color: #222222;
     h3 {
-        color: #fff;
+        color: ${theme.colors.primaryFont};
     }
 `
 
@@ -67,9 +68,14 @@ const UlStyled = styled.ul`
     list-style: none;
     padding: 0;
     margin: 0;
+    
+    li button {
+        color: #fff;
+    }
 `
 
-const Tab = styled.div``
+const Tab = styled.div`
+`
 
 const GreedWrapper = styled.div`
     display: grid;
