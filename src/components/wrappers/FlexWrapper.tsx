@@ -17,4 +17,5 @@ export const FlexWrapper = styled.div<FlexWrapperPropsType>`
     flex-wrap: ${props => props.wrap || undefined};
     gap: ${props => props.gap || undefined};
     flex-grow: ${props => props.flexGrow || undefined};
+    //height: 100%;
 `

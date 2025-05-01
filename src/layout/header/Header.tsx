@@ -4,6 +4,7 @@ import {Menu} from "../../components/menu/Menu.tsx";
 import styled from "styled-components";
 import {Container} from "../../components/Container.ts";
 import {FlexWrapper} from "../../components/wrappers/FlexWrapper.tsx";
+import {theme} from "../../styles/Theme.ts";
 
 export const Header = () => {
     return (
@@ -19,5 +20,12 @@ export const Header = () => {
 };
 
 const StyleHeader = styled.header`
-    background-color: cadetblue;
+    background-color: ${theme.colors.allBg};
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    border: 2px solid red;
+    margin-bottom: 77px;
 `

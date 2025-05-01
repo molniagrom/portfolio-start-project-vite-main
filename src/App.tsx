@@ -9,13 +9,14 @@ import {MyStack} from "./layout/sections/myStack/MyStack.tsx";
 import {Testimony} from "./layout/sections/testimony/Testimony.tsx";
 import {Contact} from "./layout/sections/contact/Contact.tsx";
 import {Quote} from "./layout/sections/quote/Quote.tsx";
+import styled from "styled-components";
 // import {IconsContact} from "./layout/sections/contact/iconsContact/IconsContact.tsx";
 
 
 // import styled from "styled-components";
 function App() {
     return (
-        <div className="App">
+        <AppStyled className="App">
             <Header/>
             <Main/>
             <Projects/>
@@ -26,9 +27,13 @@ function App() {
             <Contact/>
             <Quote/>
             <Footer/>
-        </div>
+        </AppStyled>
     )
 }
 
 export default App
 
+const AppStyled = styled.div`
+    position: relative;
+
+`

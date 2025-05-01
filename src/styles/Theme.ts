@@ -9,6 +9,7 @@ export const theme = {
         secondaryFont: "#A6BCFA", // button "View" for Projects
         tertiaryFont: "#6C92FF", // for "Download Resume"
         fourthFont: "#353535", // button "Edite code" in Projects
+        linear: "#474747",
 
         border: "#4C546C", // border for Projects " tap"
     }
