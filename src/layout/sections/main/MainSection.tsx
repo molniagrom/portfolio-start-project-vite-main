@@ -14,19 +14,17 @@ export const MainSection = styled.section`
         color: ${theme.colors.accent};
     }
 //todo: Пробовала сделать крестик псевдо элементам но не получилось не знаю почему не отображается 
-    // &::before {
-    //     content: "";
-    //     display: inline-block;
-    //     width: 88px;
-    //     height: 88px;
-    //     position: absolute;
-    //     top: 0; /* или -88px — если действительно нужно выше */
-    //     left: 500px;
-    //     background-image: url(${plusIcon});
-    //     background-repeat: no-repeat;
-    //     background-size: contain;
-    //     background-position: center;
-    //     z-index: 3;
-    // }
 
-`
+//     &::before {
+//         content: "";
+//         display: inline-block;
+//         position: absolute;
+//         top: 0;
+//         left: 500px;
+//         width: 150px; /* Увеличиваем размер для теста */
+//         height: 150px; /* Увеличиваем размер для теста */
+//         background: url(${plusIcon});
+//         //border: 4px solid blue; // Увеличиваем толщину границы
+//         z-index: 13;
+//     }
+// `

@@ -9,20 +9,22 @@ type AStyledPropsType = {
     padding?: string;
     fontWeight?: string;
     fontSize?: string;
+    lineHeight?: string;
 };
 
 export const AStyled = styled.a<AStyledPropsType>`
-    background-color: ${props => props.backgroundColor || "white"};
-    color: ${props => props.color || "white"};
-    font-family: ${props => props.fontFamily || "sans-serif"};
+    background-color: ${props => props.backgroundColor || undefined};
+    color: ${props => props.color || undefined};
+    font-family: ${props => props.fontFamily || undefined};
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: ${props => props.borderRadius || "0"};
-    gap: ${props => props.gap || "0"};
-    padding: ${props => props.padding || "0"};
-    font-weight: ${props => props.fontWeight || "normal"};
-    font-size: ${props => props.fontSize || "16px"};
+    border-radius: ${props => props.borderRadius || undefined};
+    gap: ${props => props.gap || undefined};
+    padding: ${props => props.padding || undefined};
+    font-weight: ${props => props.fontWeight || undefined};
+    font-size: ${props => props.fontSize || undefined};
+    line-height: ${props => props.lineHeight || undefined};
     cursor: pointer;
     transition: all 0.5s ease;
 

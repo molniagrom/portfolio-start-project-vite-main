@@ -12,5 +12,6 @@ export const theme = {
         linear: "#474747",
 
         border: "#4C546C", // border for Projects " tap"
-    }
+    },
+    tap: ["Story", "Post", "Banner", "Trailer", "Desighn", "More"]
 }
