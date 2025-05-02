@@ -17,8 +17,9 @@ export const Projects = () => {
     };
 
     return (
+        <Container>
+
         <StyledProjects>
-            <Container>
 <FlexWrapper direction={"column"} justify={"center"} alignItems={"center"}>
     <TitleProject>Projects</TitleProject>
     <Icon position={"relative"} left={"8px"} iconId={"ElipseSmallGradient"} />
@@ -53,9 +54,11 @@ export const Projects = () => {
     </ScrollWrapper>
 </FlexWrapper>
 
-             </Container>
 
         </StyledProjects>
+
+        </Container>
+
     );
 };
 
@@ -71,7 +74,7 @@ const StyledProjects = styled.section`
         content: "";
         position: absolute;
         top: 3%;
-        left: 15%;
+        left: 2%;
         width: 413px;
         height: 505px;
         background: url(${dots}) no-repeat;

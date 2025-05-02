@@ -6,29 +6,35 @@ import styled from "styled-components";
 import {Icon} from "../../../components/icon/Icon.tsx";
 // import {Photo} from "../main/Photo.tsx";
 import {Name} from "../main/Main.tsx";
+import {Container} from "../../../components/Container.ts";
 // import ElipseSmallGradient from "../../../../image/icons-sprite.svg";
 
 export const AboutMe = () => {
     return (
-        <AboutMeStyled>
+        <Container>
+          <AboutMeStyled>
             {/*<Photo height={"100%"} position={"absolute"} top={"0"} left={"0"} src={map} />*/}
             {/*<Photo position={"absolute"} bottom={"0"} right={"0"} src={me} />*/}
-            <InfoAboutMe>
-                <Icons>
-                    <Icon width={"26px"} height={"26px"} iconId={"whatsappWhite"}/>
-                    <Icon width={"26px"} height={"26px"} iconId={"instagramWhite"}/>
-                    <Icon width={"26px"} height={"26px"} iconId={"upArrow"}/>
-                </Icons>
-                <Name color={"#393939"}>I'm <span>Alina</span> Groza</Name>
-                <UlStyled>
-                    <LiStyled>I was born in Tiraspol</LiStyled>
-                    <LiStyled>I’m 17 years old</LiStyled>
-                    <LiStyled>I have started my interest in this field from 2023</LiStyled>
-                    <LiStyled>I’m Frontend-developer WED</LiStyled>
-                    <LiStyled>My phone number in Moldova ... </LiStyled>
-                </UlStyled>
-            </InfoAboutMe>
-        </AboutMeStyled>
+
+                <InfoAboutMe>
+                    <Icons>
+                        <Icon width={"26px"} height={"26px"} iconId={"whatsappWhite"}/>
+                        <Icon width={"26px"} height={"26px"} iconId={"instagramWhite"}/>
+                        <Icon width={"26px"} height={"26px"} iconId={"upArrow"}/>
+                    </Icons>
+                    <Name color={"#393939"}>I'm <span>Alina</span> Groza</Name>
+                    <UlStyled>
+                        <LiStyled>I was born in Tiraspol</LiStyled>
+                        <LiStyled>I’m 17 years old</LiStyled>
+                        <LiStyled>I have started my interest in this field from 2023</LiStyled>
+                        <LiStyled>I’m Frontend-developer WED</LiStyled>
+                        <LiStyled>My phone number in Moldova ... </LiStyled>
+                    </UlStyled>
+                </InfoAboutMe>
+
+          </AboutMeStyled>
+        </Container>
+
     );
 };
 
