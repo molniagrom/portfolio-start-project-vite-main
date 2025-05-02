@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+type ContainerPropsType = {
+    padding?: string;
+}
+
+export const Container = styled.div<ContainerPropsType>`
     max-width: 1400px;
     width: 100%;
     min-height: 100%;
-    //padding: 0 15px;
+    padding: ${props => props.padding || undefined};
     margin: 0 auto;
-    border: 2px solid forestgreen;
+    //border: 2px solid forestgreen;
 `

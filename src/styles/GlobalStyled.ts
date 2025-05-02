@@ -20,6 +20,7 @@ export const GlobalStyled = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         background-color: ${theme.colors.allBg};
+        color: ${theme.colors.primaryFont};
     }
 
     a {

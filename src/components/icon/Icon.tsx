@@ -14,6 +14,7 @@ type IconPropsType = {
     top?: string
     left?: string
     zIndex?: string
+    right?: string
 }
 export const Icon = (props: IconPropsType) => {
     return (
@@ -37,6 +38,7 @@ type SvgProps = {
     left?: string
     cursor?: string
     zIndex?: string
+    right?: string
 }
 
 const Svg = styled.svg<SvgProps>`
@@ -46,6 +48,8 @@ const Svg = styled.svg<SvgProps>`
     left: ${props => props.left || undefined};
     z-index: ${props => props.zIndex || undefined};
     transition: transform 0.5s ease;
+    right: ${props => props.right || undefined   };
+    overflow: visible;
 `
 
 // type SvgPropsType = {

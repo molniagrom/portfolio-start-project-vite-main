@@ -20,6 +20,13 @@ export const Menu = () => {
 };
 
 const StyledMenu = styled(FlexWrapper)`
+    // background-color: ;
+    // box-shadow: 0 0 40px 20px rgba(34, 34, 34, 0.5);
+
+    //backdrop-filter: blur(10px);
+    //background-color: rgba(34, 34, 34, 0.2);
+   
+    // background: radial-gradient(circle, ${theme.colors.allBg} 0%, transparent 100%);
     ul {
         display: flex;
         flex-direction: row;

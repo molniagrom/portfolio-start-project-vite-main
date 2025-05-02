@@ -15,7 +15,9 @@ import {theme} from "../../../styles/Theme.ts";
 export const Main = () => {
     return (
         <MainSection>
-            <Icon zIndex={"-1"} top={"0"} left={"0"} position={"absolute"} iconId={"BlueBgKv"} width="380" height="936" viewBox="0 0 380 936"/>
+            <Icon top={"-19%"} left={"25%"} width="108" height="107" viewBox="0 0 108 107" zIndex={"2"} position={"absolute"} iconId={"plus"}/>
+            <Icon top={"70%"} right={"18%"} width="152" height="152" viewBox="0 0 152 152" zIndex={"-1"} position={"absolute"} iconId={"ElipseMiddle"}/>
+
             <Container>
                 <FlexWrapper justify="space-between" alignItems={"center"}>
                     <WrapperBlur>
@@ -29,7 +31,7 @@ export const Main = () => {
                             />
                             <FlexWrapper direction="column">
                                 <MainTitle>Frontend-developer WED</MainTitle>
-                                <Name color={theme.colors.primaryFont}>I'm <span>Alina</span> Groza</Name>
+                                <Name>I'm <span>Alina Groza</span>. Bringing order to chaos — your frontend in reliable hands. Aesthetics, logic, and user care — in every pixel.</Name>
                                 <FlexWrapper gap="32px">
 
                                     <AStyled
@@ -42,7 +44,7 @@ export const Main = () => {
                                         backgroundColor={"#2157F2"}>
 
                                         See Projects
-                                        <Icon hover iconId={"ArrowWhiteToButton"} width={"28px"} height={"28px"}
+                                        <Icon iconId={"ArrowWhiteToButton"} width={"28px"} height={"28px"}
                                               viewBox={"-3 -3 36 36"}/>
 
                                     </AStyled>
@@ -83,6 +85,8 @@ const WrapperBlur = styled.div`
     background-color: rgba(33, 87, 242, 0.2);
     border-radius: 200px 0;
     border: 2px solid ${theme.colors.linear};
+    padding: 48px 90px 36px 106px;
+
 `
 
 const MainTitle = styled.h1`
@@ -90,7 +94,6 @@ const MainTitle = styled.h1`
     font-weight: 700;
     font-size: 60px;
     line-height: 136%;
-    color: ${theme.colors.primaryFont};
     margin-bottom: 20px;
 `
 
@@ -99,7 +102,6 @@ type NamePropsType = {
 }
 
 export const Name = styled.h2<NamePropsType>`
-    color: ${props => props.color || undefined};
     font-weight: 400;
     font-size: 20px;
     line-height: 150%;
