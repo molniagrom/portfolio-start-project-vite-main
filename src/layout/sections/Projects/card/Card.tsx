@@ -7,7 +7,7 @@ import {theme} from "../../../../styles/Theme.ts";
 
 export const Card = () => {
     return (
-        <StyledCard borderRadius={"26px"} backgroundColor={"#353535"}>
+        <StyledCard borderRadius={"26px"} backgroundColor={theme.colors.fourthFont}>
             <Photo
                 borderRadius={"20px 20px 0 0"}
                 height={"60.91%"}
@@ -25,8 +25,8 @@ export const Card = () => {
             >
                 <NameCard>Story motion for sale English courses</NameCard>
                 <FlexWrapper direction={"row"} gap={"20px"}>
-                    <AStyled borderRadius={"12px"} padding={"4px 19px 4px 19px"} fontWeight={"700"} lineHeight={"148%"} color={theme.colors.fourthFont} fontSize={"14px"} backgroundColor={theme.colors.primaryFont} >Edit code</AStyled>
-                    <AStyled color={theme.colors.secondaryFont}>View</AStyled>
+                    <AStyled buttonHover borderRadius={"12px"} padding={"4px 19px 4px 19px"} fontWeight={"700"} lineHeight={"148%"} color={theme.colors.fourthFont} fontSize={"14px"} backgroundColor={theme.colors.primaryFont} >Edit code</AStyled>
+                    <AStyled LinkHover color={theme.colors.secondaryFont}>View</AStyled>
                 </FlexWrapper>
             </FlexWrapper>
         </StyledCard>
@@ -60,4 +60,9 @@ const StyledCard = styled.article<StyledCardPropsType>`
     border-radius: ${props => props.borderRadius || "0"};
     height: ${props => props.height || "auto"};
     box-sizing: border-box;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: ${theme.colors.primaryBg}
+    }
 `;

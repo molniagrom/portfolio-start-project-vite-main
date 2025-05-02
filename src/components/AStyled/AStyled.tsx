@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
+import {theme} from "../../styles/Theme.ts";
 
 type AStyledPropsType = {
     backgroundColor?: string;
@@ -10,6 +11,8 @@ type AStyledPropsType = {
     fontWeight?: string;
     fontSize?: string;
     lineHeight?: string;
+    buttonHover?: boolean;
+    LinkHover?: boolean;
 };
 
 export const AStyled = styled.a<AStyledPropsType>`
@@ -28,6 +31,7 @@ export const AStyled = styled.a<AStyledPropsType>`
     cursor: pointer;
     transition: all 0.5s ease;
 
+
     svg {
         transform: translateY(1px);
     }
@@ -35,6 +39,16 @@ export const AStyled = styled.a<AStyledPropsType>`
     &:hover {
         transform: scale(1.03);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        
+        ${props => props.buttonHover && css`
+            transition: background-color 0.2s ease, color 0.2s ease;
+            background-color: ${theme.colors.accent};
+            color: ${theme.colors.primaryFont};
+        `}
+        ${props => props.LinkHover && css`
+            transition: color 0.2s ease;
+            color: ${theme.colors.primaryFont};
+        `}
         
         svg {
             transform: translateX(5px);

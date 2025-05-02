@@ -7,6 +7,7 @@ import { AStyled } from "../../../components/AStyled/AStyled.tsx";
 import { theme } from "../../../styles/Theme.ts";
 import {Container} from "../../../components/Container.ts";
 import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
+import dots from "../../../image/Dots.svg"
 
 export const Projects = () => {
     const [clickedIndex, setClickedIndex] = useState<number | null>(null);
@@ -59,11 +60,23 @@ export const Projects = () => {
 };
 
 const StyledProjects = styled.section`
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #222222;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 3%;
+        left: 15%;
+        width: 413px;
+        height: 505px;
+        background: url(${dots}) no-repeat;
+        background-size: contain;
+        z-index: -1;
+    }
 `;
 
 const TitleProject = styled.h3`

@@ -19,7 +19,7 @@ function App() {
     return (
         <AppStyled className="App">
             <Header/>
-            <Icon zIndex={"-1"} top={"0"} left={"0"} position={"absolute"} iconId={"BlueBgKv"} width="380" height="936" viewBox="0 0 380 936"/>
+            <Icon zIndex={"-1"} top={"-70px"} left={"0"} position={"absolute"} iconId={"BlueBgKv"} width="380" height="936" viewBox="0 0 380 936"/>
             <Main/>
             <Projects/>
             <AboutMe/>
