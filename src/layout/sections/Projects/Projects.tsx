@@ -65,6 +65,7 @@ const StyledProjects = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 154px;
 
     &::before {
         content: "";
