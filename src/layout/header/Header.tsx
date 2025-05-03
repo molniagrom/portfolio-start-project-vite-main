@@ -9,7 +9,7 @@ import {theme} from "../../styles/Theme.ts";
 export const Header = () => {
     return (
         <StyleHeader>
-            <Container padding={"15px 15px 0px 15px"} >
+            <Container padding={"15px"} >
                 <FlexWrapper justify="space-between" alignItems={"center"}>
                     <Logo/>
                     <Menu/>
@@ -21,11 +21,12 @@ export const Header = () => {
 
 const StyleHeader = styled.header`
     backdrop-filter: blur(10px);
-    background: radial-gradient(circle, ${theme.colors.allBg} 0%, transparent 100%);
+    background: ${theme.colors.allBgOpacity};
     position: sticky;
     top: 0;
     left: 0;
     right: 0;
     z-index: 10;
     margin-bottom: 77px;
+    //border: blueviolet 2px solid;
 `

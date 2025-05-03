@@ -5,8 +5,9 @@ import styled from "styled-components";
 // import me from "../../../../public/me.png";
 import {Icon} from "../../../components/icon/Icon.tsx";
 // import {Photo} from "../main/Photo.tsx";
-import {Name} from "../main/Main.tsx";
+// import {Name} from "../main/Main.tsx";
 import {Container} from "../../../components/Container.ts";
+import {theme} from "../../../styles/Theme.ts";
 // import ElipseSmallGradient from "../../../../image/icons-sprite.svg";
 
 export const AboutMe = () => {
@@ -22,7 +23,7 @@ export const AboutMe = () => {
                         <Icon width={"26px"} height={"26px"} iconId={"instagramWhite"}/>
                         <Icon width={"26px"} height={"26px"} iconId={"upArrow"}/>
                     </Icons>
-                    <Name color={"#393939"}>I'm <span>Alina</span> Groza</Name>
+                    <NameAboutMe>I'm <span>Alina</span> Groza</NameAboutMe>
                     <UlStyled>
                         <LiStyled>I was born in Tiraspol</LiStyled>
                         <LiStyled>I’m 17 years old</LiStyled>
@@ -66,6 +67,16 @@ const Icons = styled.div`
     display: flex;
     flex-direction: row;
     gap: 16px;
+`
+const NameAboutMe = styled.h2`
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 136%;
+    color: ${theme.colors.tertiaryBg};
+
+    span {
+        color: ${theme.colors.accent};
+    }
 `
 
 const UlStyled = styled.ul`

@@ -1,6 +1,7 @@
 export const theme = {
     colors: {
         allBg: '#222222',
+        allBgOpacity: 'rgba(34,34,34,0.5)',
         primaryBg: '#24335C',
         secondaryBg: '#2C2B2B',
         tertiaryBg: '#393838',

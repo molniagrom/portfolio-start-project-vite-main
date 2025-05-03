@@ -1,8 +1,8 @@
 import myPhoto from "../../../../image/myPhoto.jpg";
 import styled from "styled-components";
-import { FlexWrapper } from "../../../../components/wrappers/FlexWrapper.tsx";
-import { Photo } from "../../main/Photo.tsx";
-import { AStyled } from "../../../../components/AStyled/AStyled.tsx";
+import {FlexWrapper} from "../../../../components/wrappers/FlexWrapper.tsx";
+import {Photo} from "../../main/Photo.tsx";
+import {AStyled} from "../../../../components/AStyled/AStyled.tsx";
 import {theme} from "../../../../styles/Theme.ts";
 
 export const Card = () => {
@@ -25,7 +25,9 @@ export const Card = () => {
             >
                 <NameCard>Story motion for sale English courses</NameCard>
                 <FlexWrapper direction={"row"} gap={"20px"}>
-                    <AStyled buttonHover borderRadius={"12px"} padding={"4px 19px 4px 19px"} fontWeight={"700"} lineHeight={"148%"} color={theme.colors.fourthFont} fontSize={"14px"} backgroundColor={theme.colors.primaryFont} >Edit code</AStyled>
+                    <AStyled buttonHover borderRadius={"12px"} padding={"4px 19px 4px 19px"} fontWeight={"700"}
+                             lineHeight={"148%"} color={theme.colors.fourthFont} fontSize={"14px"}
+                             backgroundColor={theme.colors.primaryFont}>Edit code</AStyled>
                     <AStyled LinkHover color={theme.colors.secondaryFont}>View</AStyled>
                 </FlexWrapper>
             </FlexWrapper>
@@ -36,8 +38,8 @@ export const Card = () => {
 const NameCard = styled.h3`
     flex-grow: 1;
     text-align: center;
-    // color: ${theme.colors.primaryFont};
-    font-family:  "Kalameh", sans-serif;
+        // color: ${theme.colors.primaryFont};
+    font-family: "Kalameh", sans-serif;
     font-weight: 700;
     font-size: 20px;
 `;
