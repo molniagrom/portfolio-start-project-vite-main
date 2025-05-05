@@ -1,9 +1,9 @@
 // import React from 'react';
 
 import styled from "styled-components";
-import {Icon} from "../../../components/icon/Icon.tsx";
 import {Container} from "../../../components/Container.ts";
 import {theme} from "../../../styles/Theme.ts";
+import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
 
 
 export const AboutMe = () => {
@@ -13,13 +13,15 @@ export const AboutMe = () => {
                 <WrapperBcg>
                     <StyledImage id="map" src="../../../../public/map.png" alt="map" />
                     <StyledImage id="me" src="../../../../public/me.png" alt="me" />
-                    {/*<img id={"map"} src="../../../../public/map.png" alt="map"/>*/}
-                    {/*<img id={"me"} src="../../../../public/me.png" alt="me"/>*/}
                     <InfoAboutMe>
                         <Icons>
-                            <Icon width={"26px"} height={"26px"} iconId={"whatsappWhite"}/>
-                            <Icon width={"26px"} height={"26px"} iconId={"instagramWhite"}/>
-                            <Icon width={"26px"} height={"26px"} iconId={"upArrow"}/>
+                            <HoverableIcon iconId="whatsappWhite" viewBox="0 0 33 33" width="26px" height="26px" />
+                            <HoverableIcon iconId="instagramWhite" viewBox="0 0 33 33" width="26px" height="26px" />
+                            <HoverableIcon iconId="upArrow" viewBox="0 0 33 33" width="26px" height="26px" />
+
+                            {/*<Icon width={"26px"} height={"26px"} iconId={"whatsappWhite"}/>*/}
+                            {/*<Icon width={"26px"} height={"26px"} iconId={"instagramWhite"}/>*/}
+                            {/*<Icon width={"26px"} height={"26px"} iconId={"upArrow"}/>*/}
                         </Icons>
                         <NameAboutMe>I'm <span>Alina</span> Groza</NameAboutMe>
                         <UlStyled>

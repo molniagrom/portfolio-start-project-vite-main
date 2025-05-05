@@ -1,6 +1,6 @@
 import React from 'react';
 import iconsSprite from "../../image/icons-sprite.svg";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 // import spriteMyStack from "../../image/sprite-my-stack.svg";
 // import styled, {css} from "styled-components";
 
@@ -17,7 +17,7 @@ type IconPropsType = {
     zIndex?: string
     right?: string
     bottom?: string
-
+    hover?: boolean
 }
 export const Icon = (props: IconPropsType) => {
     return (
@@ -43,6 +43,7 @@ type SvgProps = {
     zIndex?: string
     right?: string
     bottom?: string
+    hover?: boolean
 }
 
 const Svg = styled.svg<SvgProps>`
@@ -51,9 +52,13 @@ const Svg = styled.svg<SvgProps>`
     top: ${props => props.top || undefined};
     left: ${props => props.left || undefined};
     z-index: ${props => props.zIndex || undefined};
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
     right: ${props => props.right || undefined};
     overflow: visible;
     bottom: ${props => props.bottom || undefined};
+    
+    ${props => props.hover && css`
+       transform: scale(1.1);
+    `}
 `
 

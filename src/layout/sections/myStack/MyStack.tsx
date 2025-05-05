@@ -8,8 +8,8 @@ import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
 export const MyStack = () => {
     return (
         <MyStackStyled>
-            <Container>
-                <FlexWrapper direction="column" justify="center" alignItems="center">
+            <Container padding={"100px 0px 100px 0px"}>
+                <FlexWrapper gap={"140px"} direction="column" justify="center" alignItems="center">
                     <ContentText>
                         <h2>My Tech Stack</h2>
                         <p> Technologies I’ve been working with recently</p>

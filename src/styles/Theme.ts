@@ -6,6 +6,7 @@ export const theme = {
         secondaryBg: '#2C2B2B',
         tertiaryBg: '#393838',
         accent: '#2157F2',
+        HappyClient: '#5982ff',
         primaryFont: "#fff",
         secondaryFont: "#A6BCFA", // button "View" for Projects
         tertiaryFont: "#6C92FF", // for "Download Resume"

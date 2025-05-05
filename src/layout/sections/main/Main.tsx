@@ -1,4 +1,3 @@
-// import React from 'react';
 import myPhoto from "../../../image/myPhoto.jpg"
 import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
 import {Photo} from "./Photo.tsx";
@@ -10,6 +9,7 @@ import {Icon} from "../../../components/icon/Icon.tsx";
 import {AStyled, InputLinkStyled} from "../../../components/AStyled/AStyled.tsx";
 import {Container} from "../../../components/Container.ts";
 import {theme} from "../../../styles/Theme.ts";
+import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
 
 
 export const Main = () => {
@@ -70,15 +70,9 @@ export const Main = () => {
                         </WrapperBlur>
                     </FlexWrapper>
                     <BlueWhite>
-                        <a href="#">
-                            <Icon viewBox={" 0 0 31 31"} width={"36px"} height={"36px"} iconId={"instagramWhite"}/>
-                        </a>
-                        <a href="#">
-                            <Icon viewBox={" 0 0 31 31"} width={"36px"} height={"36px"} iconId={"whatsappWhite"}/>
-                        </a>
-                        <a href="#">
-                            <Icon viewBox={" 0 0 31 31"} width={"31px"} height={"31px"} iconId={"telegramWhite "}/>
-                        </a>
+                        <HoverableIcon iconId="instagramWhite" viewBox="0 0 31 31" width="36px" height="36px" />
+                        <HoverableIcon iconId="whatsappWhite" viewBox="0 0 31 31" width="36px" height="36px" />
+                        <HoverableIcon iconId="telegramWhite" viewBox="0 0 31 31" width="31px" height="31px" />
                     </BlueWhite>
 
                 </MainSectionWrapper>

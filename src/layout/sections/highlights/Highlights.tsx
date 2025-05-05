@@ -4,24 +4,27 @@
 import styled from 'styled-components';
 import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
 import {theme} from "../../../styles/Theme.ts";
+import {Container} from "../../../components/Container.ts";
 
 export const Highlights = () => {
     return (
         <HighlightsStyled>
-            <FlexWrapper justify={"space-around"} alignItems={"center"}>
-                <StatBlock>
-                    <Number>81</Number>
-                    <Label>HAPPY CUSTOMERS</Label>
-                </StatBlock>
-                <StatBlock>
-                    <Number>97+</Number>
-                    <Label>COMPLETED PROJECTS</Label>
-                </StatBlock>
-                <StatBlock>
-                    <Number>50</Number>
-                    <Label>AWARDS WON</Label>
-                </StatBlock>
-            </FlexWrapper>
+            <Container>
+                <FlexWrapper justify={"space-around"} alignItems={"center"}>
+                    <StatBlock>
+                        <Number>81</Number>
+                        <Label>HAPPY CUSTOMERS</Label>
+                    </StatBlock>
+                    <StatBlock>
+                        <Number>97+</Number>
+                        <Label>COMPLETED PROJECTS</Label>
+                    </StatBlock>
+                    <StatBlock>
+                        <Number>50</Number>
+                        <Label>AWARDS WON</Label>
+                    </StatBlock>
+                </FlexWrapper>
+            </Container>
         </HighlightsStyled>
     );
 };
