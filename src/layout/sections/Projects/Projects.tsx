@@ -17,8 +17,8 @@ export const Projects = () => {
     };
 
     return (
-        <Container>
-            <StyledProjects>
+        <StyledProjects>
+            <Container>
                 <FlexWrapper direction={"column"} justify={"center"} alignItems={"center"}>
                     <TitleProject>Projects</TitleProject>
                     <Icon position={"relative"} left={"8px"} iconId={"ElipseSmallGradient"}/>
@@ -53,31 +53,20 @@ export const Projects = () => {
                         </GreedWrapper>
                     </ScrollWrapper>
                 </FlexWrapper>
-            </StyledProjects>
-        </Container>
+            </Container>
+        </StyledProjects>
+
 
     );
 };
 
 const StyledProjects = styled.section`
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 154px;
 
-    &::before {
-        content: "";
-        position: absolute;
-        top: 3%;
-        left: 2%;
-        width: 413px;
-        height: 505px;
-        background: url(${dots}) no-repeat;
-        background-size: contain;
-        z-index: -1;
-    }
 `;
 
 const TitleProject = styled.h3`
@@ -92,7 +81,7 @@ const List = styled.ul`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 41px;
+    gap: 5px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -111,16 +100,30 @@ const Tab = styled.div`
 `;
 
 const ScrollWrapper = styled.div`
-    overflow-x: auto;
+    //overflow-x: auto;
     width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
+    position: relative;
+    overflow: visible;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: -150px;
+        left: 25px;
+        width: 413px;
+        height: 505px;
+        background: url(${dots}) no-repeat;
+        background-size: contain;
+        z-index: -1;
+    }
 `;
 
 const GreedWrapper = styled.div`
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: minmax(250px, auto);
     gap: 38px 45px;
-    min-width: 1100px;
 `;
+

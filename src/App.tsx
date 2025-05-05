@@ -9,19 +9,17 @@ import {MyStack} from "./layout/sections/myStack/MyStack.tsx";
 import {Testimony} from "./layout/sections/testimony/Testimony.tsx";
 import {Contact} from "./layout/sections/contact/Contact.tsx";
 import {Quote} from "./layout/sections/quote/Quote.tsx";
-import styled from "styled-components";
 // import {Icon} from "./components/icon/Icon.tsx";
 // import {IconsContact} from "./layout/sections/contact/iconsContact/IconsContact.tsx";
 
 
 // import styled from "styled-components";
 function App() {
-    // todo: Сделать градиентом
+    // todo: Сделать градиентом для всей секции Main, Градиент у которого не будет плавного перехода. (1:18)
 
     return (
-        <AppStyled className="App">
+        <div className="App">
             <Header/>
-            {/*<Icon zIndex={"-1"} top={"-70px"} left={"0"} position={"absolute"} iconId={"BlueBgKv"} width="380" height="936" viewBox="0 0 380 936"/>*/}
             <Main/>
             <Projects/>
             <AboutMe/>
@@ -31,12 +29,9 @@ function App() {
             <Contact/>
             <Quote/>
             <Footer/>
-        </AppStyled>
+        </div>
     )
 }
 
 export default App
 
-const AppStyled = styled.div`
-    position: relative;
-`

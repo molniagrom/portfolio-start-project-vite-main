@@ -15,66 +15,73 @@ import {theme} from "../../../styles/Theme.ts";
 export const Main = () => {
     return (
         <MainSection>
-            <Container>
+            <Container padding={"0px 25px 0px 25px"}>
+                <MainSectionWrapper>
+                    <FlexWrapper position={"relative"} justify="space-between" alignItems={"center"}>
+                        <Icon top={"-100px"} left={"25%"} width="108" height="107" viewBox="0 0 108 107" zIndex={"-1"}
+                              position={"absolute"} iconId={"plus"}/>
+                        <Icon bottom={"0"} right={"25px"} width="152" height="152" viewBox="0 0 152 152" zIndex={"-1"}
+                              position={"absolute"} iconId={"ElipseMiddle"}/>
+                        <WrapperBlur>
+                            <FlexWrapper gap={"5vw"} direction="row" alignItems={"center"} justify="space-around">
+                                <Photo
+                                    src={myPhoto}
+                                    width="34.62%"
+                                    height="34.62%"
+                                    borderRadius="50%"
+                                    border="22px solid white"
+                                />
+                                <FlexWrapper direction="column">
+                                    <MainTitle>Frontend-developer WEB</MainTitle>
+                                    <Name>I'm <span>Alina Groza</span>. Bringing order to chaos — your frontend in
+                                        reliable
+                                        hands. Aesthetics, logic, and user care — in every pixel.</Name>
+                                    <FlexWrapper gap="32px">
 
-            <Icon top={"-19%"} left={"25%"} width="108" height="107" viewBox="0 0 108 107" zIndex={"2"} position={"absolute"} iconId={"plus"}/>
-            <Icon top={"70%"} right={"18%"} width="152" height="152" viewBox="0 0 152 152" zIndex={"-1"} position={"absolute"} iconId={"ElipseMiddle"}/>
+                                        <AStyled
+                                            fontSize={"15px"}
+                                            fontWeight={"600"}
+                                            padding={"15px"}
+                                            gap={"14px"}
+                                            borderRadius={"20px"}
+                                            fontFamily={"Roboto"}
+                                            backgroundColor={"#2157F2"}>
 
+                                            See Projects
+                                            <Icon iconId={"ArrowWhiteToButton"} width={"28px"} height={"28px"}
+                                                  viewBox={"-3 -3 36 36"}/>
 
-                <FlexWrapper justify="space-between" alignItems={"center"}>
-                    <WrapperBlur>
-                        <FlexWrapper gap={"5vw"} direction="row" alignItems={"center"} justify="space-around">
-                            <Photo
-                                src={myPhoto}
-                                width="34.62%"
-                                height="34.62%"
-                                borderRadius="50%"
-                                border="22px solid white"
-                            />
-                            <FlexWrapper direction="column">
-                                <MainTitle>Frontend-developer WED</MainTitle>
-                                <Name>I'm <span>Alina Groza</span>. Bringing order to chaos — your frontend in reliable hands. Aesthetics, logic, and user care — in every pixel.</Name>
-                                <FlexWrapper gap="32px">
+                                        </AStyled>
 
-                                    <AStyled
-                                        fontSize={"15px"}
-                                        fontWeight={"600"}
-                                        padding={"15px"}
-                                        gap={"14px"}
-                                        borderRadius={"20px"}
-                                        fontFamily={"Roboto"}
-                                        backgroundColor={"#2157F2"}>
-
-                                        See Projects
-                                        <Icon iconId={"ArrowWhiteToButton"} width={"28px"} height={"28px"}
-                                              viewBox={"-3 -3 36 36"}/>
-
-                                    </AStyled>
-
-                                    <InputLinkStyled
-                                        fontSize={"15px"}
-                                        fontWeight={600}
-                                        backgroundColor={"transparent"}
-                                        color={"#6c92ff"}
-                                        value={"Download Resume"}
-                                        border={"none"}
-                                        outline={"none"}
-                                        appearance={"none"}
-                                    >
-                                    </InputLinkStyled>
+                                        <InputLinkStyled
+                                            fontSize={"15px"}
+                                            fontWeight={600}
+                                            backgroundColor={"transparent"}
+                                            color={"#6c92ff"}
+                                            value={"Download Resume"}
+                                            border={"none"}
+                                            outline={"none"}
+                                            appearance={"none"}
+                                        >
+                                        </InputLinkStyled>
+                                    </FlexWrapper>
                                 </FlexWrapper>
                             </FlexWrapper>
-                        </FlexWrapper>
-                    </WrapperBlur>
-                </FlexWrapper>
-
-                <FlexWrapper>
+                        </WrapperBlur>
+                    </FlexWrapper>
                     <BlueWhite>
-                        <Icon width={"31px"} height={"31px"} iconId={"instagramWhite"}/>
-                        <Icon width={"31px"} height={"31px"} iconId={"whatsappWhite"}/>
-                        <Icon width={"29px"} height={"29px"} iconId={"telegramWhite "}/>
+                        <a href="#">
+                            <Icon viewBox={" 0 0 31 31"} width={"36px"} height={"36px"} iconId={"instagramWhite"}/>
+                        </a>
+                        <a href="#">
+                            <Icon viewBox={" 0 0 31 31"} width={"36px"} height={"36px"} iconId={"whatsappWhite"}/>
+                        </a>
+                        <a href="#">
+                            <Icon viewBox={" 0 0 31 31"} width={"31px"} height={"31px"} iconId={"telegramWhite "}/>
+                        </a>
                     </BlueWhite>
-                </FlexWrapper>
+
+                </MainSectionWrapper>
             </Container>
         </MainSection>
     );
@@ -82,13 +89,18 @@ export const Main = () => {
 
 export default Main;
 
+
 const WrapperBlur = styled.div`
     backdrop-filter: blur(10px);
     background-color: rgba(33, 87, 242, 0.2);
     border-radius: 200px 0;
     border: 2px solid ${theme.colors.linear};
     padding: 48px 90px 36px 106px;
-
+`
+const MainSectionWrapper = styled.div`
+    position: relative;
+    max-width: 1160px;
+    margin: 0 auto;
 `
 
 export const MainTitle = styled.h1`
@@ -115,11 +127,12 @@ const BlueWhite = styled.div`
     flex-direction: column;
     justify-content: start;
     position: fixed;
-    top: 600px;
+    bottom: 100px;
+    left: 0;
     gap: 17px;
     border-radius: 0 25px 25px 0;
     background-color: #24335C;
-    padding: 15px 36px;
+    padding: 36px 15px;
     z-index: 5;
 `
 

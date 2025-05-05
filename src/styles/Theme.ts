@@ -11,6 +11,7 @@ export const theme = {
         tertiaryFont: "#6C92FF", // for "Download Resume"
         fourthFont: "#353535", // button "Edite code" in Projects
         linear: "#474747",
+        colorForAboutMe: "#393939",
 
         border: "#4C546C", // border for Projects " tap"
     },

@@ -1,10 +1,11 @@
-// import React from 'react';
+import React from 'react';
 import iconsSprite from "../../image/icons-sprite.svg";
 import styled from "styled-components";
 // import spriteMyStack from "../../image/sprite-my-stack.svg";
 // import styled, {css} from "styled-components";
 
 type IconPropsType = {
+    children?: React.ReactNode;
     iconId: string
     width?: string
     height?: string
@@ -15,6 +16,8 @@ type IconPropsType = {
     left?: string
     zIndex?: string
     right?: string
+    bottom?: string
+
 }
 export const Icon = (props: IconPropsType) => {
     return (
@@ -39,6 +42,7 @@ type SvgProps = {
     cursor?: string
     zIndex?: string
     right?: string
+    bottom?: string
 }
 
 const Svg = styled.svg<SvgProps>`
@@ -48,24 +52,8 @@ const Svg = styled.svg<SvgProps>`
     left: ${props => props.left || undefined};
     z-index: ${props => props.zIndex || undefined};
     transition: transform 0.5s ease;
-    right: ${props => props.right || undefined   };
+    right: ${props => props.right || undefined};
     overflow: visible;
+    bottom: ${props => props.bottom || undefined};
 `
-
-// type SvgPropsType = {
-//     width?: string
-//     height?: string
-//     needToTransform?: boolean
-// }
-//
-// const Svg = styled.svg<SvgPropsType>`
-//
-//     width: ${(props) => (props.width || "36")};
-//     height: ${(props) => (props.height || "36")};
-//
-//     ${props => props.needToTransform && css`
-//         transform: translateY(10%);
-//     `
-// }
-// `
 

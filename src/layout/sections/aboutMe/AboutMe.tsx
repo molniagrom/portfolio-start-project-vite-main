@@ -1,63 +1,77 @@
 // import React from 'react';
 
 import styled from "styled-components";
-// import map from "../../../../public/map.png";
-// import me from "../../../../public/me.png";
 import {Icon} from "../../../components/icon/Icon.tsx";
-// import {Photo} from "../main/Photo.tsx";
-// import {Name} from "../main/Main.tsx";
 import {Container} from "../../../components/Container.ts";
 import {theme} from "../../../styles/Theme.ts";
-// import ElipseSmallGradient from "../../../../image/icons-sprite.svg";
+
 
 export const AboutMe = () => {
     return (
-        <Container>
-          <AboutMeStyled>
-            {/*<Photo height={"100%"} position={"absolute"} top={"0"} left={"0"} src={map} />*/}
-            {/*<Photo position={"absolute"} bottom={"0"} right={"0"} src={me} />*/}
+        <AboutMeStyled>
+            <Container>
+                <WrapperBcg>
+                    <StyledImage id="map" src="../../../../public/map.png" alt="map" />
+                    <StyledImage id="me" src="../../../../public/me.png" alt="me" />
+                    {/*<img id={"map"} src="../../../../public/map.png" alt="map"/>*/}
+                    {/*<img id={"me"} src="../../../../public/me.png" alt="me"/>*/}
+                    <InfoAboutMe>
+                        <Icons>
+                            <Icon width={"26px"} height={"26px"} iconId={"whatsappWhite"}/>
+                            <Icon width={"26px"} height={"26px"} iconId={"instagramWhite"}/>
+                            <Icon width={"26px"} height={"26px"} iconId={"upArrow"}/>
+                        </Icons>
+                        <NameAboutMe>I'm <span>Alina</span> Groza</NameAboutMe>
+                        <UlStyled>
+                            <LiStyled>I was born in Tiraspol</LiStyled>
+                            <LiStyled>I’m 17 years old</LiStyled>
+                            <LiStyled>I have started my interest in this field from 2023</LiStyled>
+                            <LiStyled>I’m Frontend-developer WED</LiStyled>
+                            <LiStyled>My phone number in Moldova ... </LiStyled>
+                        </UlStyled>
+                    </InfoAboutMe>
+                </WrapperBcg>
 
-                <InfoAboutMe>
-                    <Icons>
-                        <Icon width={"26px"} height={"26px"} iconId={"whatsappWhite"}/>
-                        <Icon width={"26px"} height={"26px"} iconId={"instagramWhite"}/>
-                        <Icon width={"26px"} height={"26px"} iconId={"upArrow"}/>
-                    </Icons>
-                    <NameAboutMe>I'm <span>Alina</span> Groza</NameAboutMe>
-                    <UlStyled>
-                        <LiStyled>I was born in Tiraspol</LiStyled>
-                        <LiStyled>I’m 17 years old</LiStyled>
-                        <LiStyled>I have started my interest in this field from 2023</LiStyled>
-                        <LiStyled>I’m Frontend-developer WED</LiStyled>
-                        <LiStyled>My phone number in Moldova ... </LiStyled>
-                    </UlStyled>
-                </InfoAboutMe>
 
-          </AboutMeStyled>
-        </Container>
+            </Container>
+
+        </AboutMeStyled>
 
     );
 };
 
+const StyledImage = styled.img`
+    max-width: 100%;
+    height: auto;
+    //max-height: 750px;
+    //flex-shrink: 1;
+    //object-fit: contain;
+    
+    @media (max-width: 768px) {
+        max-height: 400px;
+    }
+
+    @media (max-width: 480px) {
+        max-height: 250px;
+    }
+`
+
 const AboutMeStyled = styled.section`
     min-height: 946px;
     background-color: #A6BCFA;
-    background-image: url("../../../../public/me.png"), url("../../../../public/map.png");
-    background-repeat: no-repeat, no-repeat;
-    background-position: right bottom, left top;
-    background-size: auto, contain;
-    position: relative;
+    //position: relative;
 `;
 
 const InfoAboutMe = styled.div`
     display: flex;
     flex-direction: column;
-    position: relative;
-    top: 5vw;
-    left: 50%;
-    max-width: 536px;
-
+    position: absolute;
     z-index: 1;
+    top: 5vw;
+    right: 0;
+    max-width: 536px;
+    padding: 30px 20px 65px 50px;
+
     color: #393939;
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
@@ -66,13 +80,38 @@ const InfoAboutMe = styled.div`
 const Icons = styled.div`
     display: flex;
     flex-direction: row;
+    align-self: flex-end;
     gap: 16px;
+    padding-bottom: 18px;
 `
+const WrapperBcg = styled.div`
+    //background-image: url("../../../../public/me.png"), url("../../../../public/map.png");
+    //background-repeat: no-repeat, no-repeat;
+    //background-position: right bottom, left top;
+    //background-size: auto, contain;
+    //height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 46px 42px 0px 42px;
+    
+    #me {
+        align-self: flex-end;
+    }
+    
+    #map{
+        
+    }
+`
+
 const NameAboutMe = styled.h2`
     font-weight: 700;
     font-size: 60px;
     line-height: 136%;
     color: ${theme.colors.tertiaryBg};
+    padding-bottom: 22px;
 
     span {
         color: ${theme.colors.accent};
@@ -81,10 +120,15 @@ const NameAboutMe = styled.h2`
 
 const UlStyled = styled.ul`
     list-style: none;
+    
+    li + li {
+        padding-top: 6px;
+    }
 `
 const LiStyled = styled.li`
     //marker: url('$_{IconName}'); "_" Чтобы не ругался 
 
+    padding-left: 13px;
     &::before {
         content: "";
         display: inline-block;
@@ -92,7 +136,7 @@ const LiStyled = styled.li`
         height: 18px;
         background: linear-gradient(90deg, rgba(166, 188, 250, 1) 50%, rgba(33, 87, 242, 1) 100%);
         border-radius: 50%;
-        transform: rotate(90deg);
+        transform: rotate(90deg) translateY(13px);
     }
 `
 

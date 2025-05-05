@@ -26,13 +26,13 @@ export const Button = styled.button<ButtonPropsType>`
     padding: ${props => props.padding || undefined};
     font-weight: ${props => props.fontWeight || undefined};
     font-size: ${props => props.fontSize || undefined};
-    border: ${props => props.border || undefined};
+    outline: ${props => props.border || undefined};
 
     transition: background-color 0.3s ease, border 0.3s ease;
 
     ${props => props.clicked && css`
         background-color: ${theme.colors.primaryBg};
-        border: none;
+        outline: none;
     `}
     
     // &:hover {

@@ -57,7 +57,7 @@ const StyledCard = styled.article<StyledCardPropsType>`
     flex-direction: column;
     padding: ${props => props.padding || "0"};
     width: 100%;
-    min-width: 250px;
+    //min-width: 250px;
     background-color: ${props => props.backgroundColor || "transparent"};
     border-radius: ${props => props.borderRadius || "0"};
     height: ${props => props.height || "auto"};

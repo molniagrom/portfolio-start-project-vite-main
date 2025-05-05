@@ -15,7 +15,7 @@ export const Quote = () => {
     );
 };
 
-const QuoteStyled = styled.div`
+const QuoteStyled = styled.section`
     display: flex;
     flex-direction: column;
     background-color: #222222;
