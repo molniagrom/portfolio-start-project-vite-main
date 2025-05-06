@@ -31,4 +31,6 @@ const StyledTestimony = styled.section`
     justify-content: center;
     align-items: center;
     min-height: 593px;
+    padding: 0 20px 0 20px;
+
 `

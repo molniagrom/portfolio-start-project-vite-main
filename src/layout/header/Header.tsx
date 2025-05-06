@@ -27,6 +27,5 @@ const StyleHeader = styled.header`
     left: 0;
     right: 0;
     z-index: 10;
-    margin-bottom: 77px;
     //border: blueviolet 2px solid;
 `

@@ -38,7 +38,6 @@ export const Card = () => {
 const NameCard = styled.h3`
     flex-grow: 1;
     text-align: center;
-        // color: ${theme.colors.primaryFont};
     font-family: "Kalameh", sans-serif;
     font-weight: 700;
     font-size: 20px;

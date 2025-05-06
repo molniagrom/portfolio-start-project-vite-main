@@ -8,7 +8,7 @@ import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
 export const MyStack = () => {
     return (
         <MyStackStyled>
-            <Container padding={"100px 0px 100px 0px"}>
+            <Container>
                 <FlexWrapper gap={"140px"} direction="column" justify="center" alignItems="center">
                     <ContentText>
                         <h2>My Tech Stack</h2>
@@ -41,6 +41,7 @@ const MyStackStyled = styled.section`
     background-color: #222222;
     color: white;
     gap: 140px;
+    padding: 100px 0 100px 0;
 `
 
 const ContentText = styled.div`

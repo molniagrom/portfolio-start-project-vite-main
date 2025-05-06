@@ -15,7 +15,6 @@ import {Quote} from "./layout/sections/quote/Quote.tsx";
 
 // import styled from "styled-components";
 function App() {
-    // todo: Сделать градиентом для всей секции Main, Градиент у которого не будет плавного перехода. (1:18)
 
     return (
         <div className="App">
@@ -26,8 +25,8 @@ function App() {
             <Highlights/>
             <MyStack/>
             <Testimony/>
-            <Contact/>
             <Quote/>
+            <Contact/>
             <Footer/>
         </div>
     )

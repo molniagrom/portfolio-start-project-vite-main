@@ -126,6 +126,7 @@ const BlueWhite = styled.div`
     gap: 17px;
     border-radius: 0 25px 25px 0;
     background-color: #24335C;
+    outline: 2px solid ${theme.colors.linear};
     padding: 36px 15px;
     z-index: 5;
 `

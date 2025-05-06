@@ -3,11 +3,13 @@
 import styled from "styled-components";
 import {RatingStar} from 'react-ts-rating-star'
 import {theme} from "../../styles/Theme.ts";
+import {Icon} from "../icon/Icon.tsx";
 
 
 export const Slider = () => {
     return (
         <SliderStyled>
+            <Icon top={"10%"} left={"10%"} width={"110px"} height={"86px"} position={"absolute"} iconId={"quote"}/>
             <Slide>
                 <ImageCard
                     src="https://www.mckinsey.com/it/~/media/mckinsey/our%20people/alessandro%20agosta/alessandro-agosta_fc_mask_profile_1536x1152.jpg?cq=50&mw=480&car=1:1&cpy=Center"
@@ -24,8 +26,8 @@ export const Slider = () => {
 
 const SliderStyled = styled.div`
     background-color: ${theme.colors.tertiaryBg};
-    //max-width: 726px;
-    width: max(800px, 300px);
+    width: 60%;
+    position: relative;
 
     display: flex;
     flex-direction: column;
@@ -43,6 +45,7 @@ const Slide = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 
     h3 {
         margin: 0;

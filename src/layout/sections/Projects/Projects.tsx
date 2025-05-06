@@ -65,8 +65,7 @@ const StyledProjects = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 154px;
-
+    padding-bottom: 154px;
 `;
 
 const TitleProject = styled.h3`
