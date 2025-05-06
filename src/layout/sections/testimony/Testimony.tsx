@@ -10,7 +10,7 @@ import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
 export const Testimony = () => {
     return (
         <StyledTestimony>
-            <Container>
+            <Container padding={"20px 0 20px 0"}>
                 <Slider/>
                 <FlexWrapper direction="row" justify="center" alignItems="center">
                     <Pagination>

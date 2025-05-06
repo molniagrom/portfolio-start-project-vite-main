@@ -73,6 +73,7 @@ const InfoAboutMe = styled.div`
     right: 0;
     max-width: 536px;
     padding: 30px 20px 65px 50px;
+margin-right: 20px;
 
     color: #393939;
     background-color: rgba(255, 255, 255, 0.2);

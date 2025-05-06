@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 
 type ButtonPropsType = {
@@ -11,13 +11,12 @@ type ButtonPropsType = {
     fontWeight?: string
     fontSize?: string
     border?: string
-    clicked?: boolean
+    lineHeight?: string
 }
 
 export const Button = styled.button<ButtonPropsType>`
     background-color: ${props => props.backgroundColor || undefined};
     color: ${props => props.color || undefined};
-    //font-family: ${props => props.fontFamily}, undefined;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,16 +26,13 @@ export const Button = styled.button<ButtonPropsType>`
     font-weight: ${props => props.fontWeight || undefined};
     font-size: ${props => props.fontSize || undefined};
     outline: ${props => props.border || undefined};
-
-    transition: background-color 0.3s ease, border 0.3s ease;
-
-    ${props => props.clicked && css`
-        background-color: ${theme.colors.primaryBg};
-        outline: none;
-    `}
+    align-self: flex-start;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    line-height: ${props => props.lineHeight || undefined};
     
-    // &:hover {
-    //     background-color: ${theme.colors.primaryBg};
-    //     border: none;
-    // }
+    &:hover {
+        background-color: ${theme.colors.accent};
+        border: none;
+    }
 `

@@ -28,10 +28,23 @@ const Info = styled.div`
     h4, p {
         margin: 0;
     }
+    
+    h4 {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 136%;
+    }
+    
+    p {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 136%;
+        color: #8b8b8b;
+    }
 `
 
 const PartContent = styled.div`
     display: flex;
     flex-direction: row;
-    gap: 26px;
+    gap: 23px;
 `

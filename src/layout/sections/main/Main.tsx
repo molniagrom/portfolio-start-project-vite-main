@@ -39,10 +39,13 @@ export const Main = () => {
                                     <FlexWrapper gap="32px">
 
                                         <AStyled
+                                            href={"https://www.youtube.com/watch?v=Zhq_ThHG2gA&t=8032s"}
+                                            target="_blank"
                                             fontSize={"15px"}
                                             fontWeight={"600"}
                                             padding={"15px"}
                                             gap={"14px"}
+                                            color={theme.colors.primaryFont}
                                             borderRadius={"20px"}
                                             fontFamily={"Roboto"}
                                             backgroundColor={"#2157F2"}>
@@ -74,7 +77,6 @@ export const Main = () => {
                         <HoverableIcon iconId="whatsappWhite" viewBox="0 0 31 31" width="36px" height="36px" />
                         <HoverableIcon iconId="telegramWhite" viewBox="0 0 31 31" width="31px" height="31px" />
                     </BlueWhite>
-
                 </MainSectionWrapper>
             </Container>
         </MainSection>

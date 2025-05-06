@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {theme} from "../../../styles/Theme.ts";
 
 export const Pagination = styled.div`
     padding-top: 40px;
@@ -9,6 +10,8 @@ export const Pagination = styled.div`
         height: 10px;
         margin: 5px;
         border-radius: 50%;
-        background-color: deeppink;
+        background-color: ${theme.colors.tertiaryFont};
+        
+        
     }
 `
