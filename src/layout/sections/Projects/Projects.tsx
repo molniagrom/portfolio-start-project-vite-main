@@ -18,7 +18,7 @@ export const Projects = () => {
 
     return (
         <StyledProjects>
-            <Container>
+            <Container maxWidth={"1240px"} padding={"0 20px"}>
                 <FlexWrapper direction={"column"} justify={"center"} alignItems={"center"}>
                     <TitleProject>Projects</TitleProject>
                     <Icon position={"relative"} left={"8px"} iconId={"ElipseSmallGradient"}/>
@@ -80,7 +80,8 @@ const List = styled.ul`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 5px;
+    flex-wrap: wrap;
+    gap: 18px 8px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -101,7 +102,6 @@ const Tab = styled.div`
 const ScrollWrapper = styled.div`
     //overflow-x: auto;
     width: 100%;
-    padding: 0 20px;
     box-sizing: border-box;
     position: relative;
     overflow: visible;
@@ -122,7 +122,7 @@ const ScrollWrapper = styled.div`
 const GreedWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-auto-rows: minmax(250px, auto);
-    gap: 38px 45px;
+    grid-auto-rows: auto;
+    gap: 45px 38px;
 `;
 

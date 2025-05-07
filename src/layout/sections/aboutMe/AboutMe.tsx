@@ -70,7 +70,7 @@ const InfoAboutMe = styled.div`
     flex-direction: column;
     position: absolute;
     z-index: 1;
-    top: clamp(10px, 5vw, 50px);
+    top: 20px;
     right: 20%;
     max-width: 536px;
     padding: 30px 20px 65px 50px;
@@ -91,7 +91,7 @@ const Icons = styled.div`
 const WrapperBcg = styled.div`
     position: relative;
     padding: 46px 42px 0 42px;
-    min-height: 110vh;
+    min-height: 115vh;
 `
 
 const NameAboutMe = styled.h2`

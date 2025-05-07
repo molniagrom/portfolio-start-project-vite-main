@@ -50,8 +50,8 @@ const QuoteStyled = styled.section`
         &::before {
             content: '';
             position: absolute;
-            top: -10px;
-            left: -20px;
+            top: -20px;
+            left: 0;
             width: 50px;
             height: 50px;
             background: url('./quote.svg') no-repeat center;
@@ -62,14 +62,14 @@ const QuoteStyled = styled.section`
         &::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -20px;
             right: -20px;
             width: 50px;
             height: 50px;
             background: url('./quote.svg') no-repeat center;
             background-size: contain;
-            transform: rotateY(180deg);
             opacity: 0.7;
+            transform: rotate(180deg);
         }
     }
 

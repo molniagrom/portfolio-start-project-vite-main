@@ -18,13 +18,13 @@ export const Card = () => {
 
             <FlexWrapper
                 flexGrow={"1"}
-                alignItems={"center"}
+                alignItems={"stretch"}
                 justify={"space-between"}
                 direction={"column"}
                 padding={"17px 33px 23px 33px"}
             >
                 <NameCard>Story motion for sale English courses</NameCard>
-                <FlexWrapper direction={"row"} gap={"20px"}>
+                <FlexWrapper gap={"20px"} justify={"space-between"}>
                     <AStyled buttonHover borderRadius={"12px"} padding={"4px 19px 4px 19px"} fontWeight={"700"}
                              lineHeight={"148%"} color={theme.colors.fourthFont} fontSize={"14px"}
                              backgroundColor={theme.colors.primaryFont}>Edit code</AStyled>
@@ -37,7 +37,7 @@ export const Card = () => {
 
 const NameCard = styled.h3`
     flex-grow: 1;
-    text-align: center;
+    text-align: left;
     font-family: "Kalameh", sans-serif;
     font-weight: 700;
     font-size: 20px;
@@ -54,13 +54,10 @@ type StyledCardPropsType = {
 const StyledCard = styled.article<StyledCardPropsType>`
     display: flex;
     flex-direction: column;
-    padding: ${props => props.padding || "0"};
-    width: 100%;
-    //min-width: 250px;
-    background-color: ${props => props.backgroundColor || "transparent"};
-    border-radius: ${props => props.borderRadius || "0"};
-    height: ${props => props.height || "auto"};
-    box-sizing: border-box;
+    padding: ${props => props.padding || undefined};
+    background-color: ${props => props.backgroundColor || undefined};
+    border-radius: ${props => props.borderRadius || undefined};
+    height: ${props => props.height || undefined};
     transition: all 0.3s ease;
 
     &:hover {
