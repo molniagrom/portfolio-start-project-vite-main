@@ -16,5 +16,5 @@ export const theme = {
 
         border: "#4C546C", // border for Projects " tap"
     },
-    tap: ["Story", "Post", "Banner", "Trailer", "Desighn", "More"]
+    tap: ["Story", "Post", "Banner", "Trailer", "Desighn", "More", "More", "More"]
 }

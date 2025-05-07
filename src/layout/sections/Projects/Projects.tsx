@@ -27,7 +27,7 @@ export const Projects = () => {
                             {theme.tap.map((item, index) => (
                                 <ListItem key={item}>
                                     <Button
-                                        clicked={clickedIndex === index}
+                                        isClicked={clickedIndex === index}
                                         onClick={() => onClick(index)}
                                         border={`${theme.colors.border} 3px solid`}
                                         borderRadius={"67px"}

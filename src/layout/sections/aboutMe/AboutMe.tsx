@@ -1,6 +1,6 @@
 // import React from 'react';
 
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {Container} from "../../../components/Container.ts";
 import {theme} from "../../../styles/Theme.ts";
 import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
@@ -11,17 +11,13 @@ export const AboutMe = () => {
         <AboutMeStyled>
             <Container>
                 <WrapperBcg>
-                    <StyledImage id="map" src="../../../../public/map.png" alt="map" />
-                    <StyledImage id="me" src="../../../../public/me.png" alt="me" />
+                    <StyledImage variant="map" src="../../../../public/map.png" alt="map"/>
+                    <StyledImage variant="me" src="../../../../public/me.png" alt="me"/>
                     <InfoAboutMe>
                         <Icons>
-                            <HoverableIcon iconId="whatsappWhite" viewBox="0 0 33 33" width="26px" height="26px" />
-                            <HoverableIcon iconId="instagramWhite" viewBox="0 0 33 33" width="26px" height="26px" />
-                            <HoverableIcon iconId="upArrow" viewBox="0 0 33 33" width="26px" height="26px" />
-
-                            {/*<Icon width={"26px"} height={"26px"} iconId={"whatsappWhite"}/>*/}
-                            {/*<Icon width={"26px"} height={"26px"} iconId={"instagramWhite"}/>*/}
-                            {/*<Icon width={"26px"} height={"26px"} iconId={"upArrow"}/>*/}
+                            <HoverableIcon iconId="whatsappWhite" viewBox="0 0 33 33" width="26px" height="26px"/>
+                            <HoverableIcon iconId="instagramWhite" viewBox="0 0 33 33" width="26px" height="26px"/>
+                            <HoverableIcon iconId="upArrow" viewBox="0 0 33 33" width="26px" height="26px"/>
                         </Icons>
                         <NameAboutMe>I'm <span>Alina</span> Groza</NameAboutMe>
                         <UlStyled>
@@ -33,8 +29,6 @@ export const AboutMe = () => {
                         </UlStyled>
                     </InfoAboutMe>
                 </WrapperBcg>
-
-
             </Container>
 
         </AboutMeStyled>
@@ -42,26 +36,33 @@ export const AboutMe = () => {
     );
 };
 
-const StyledImage = styled.img`
+const StyledImage = styled.img<{ variant: "map" | "me" }>`
+    position: absolute;
     max-width: 100%;
     height: auto;
-    //max-height: 750px;
-    //flex-shrink: 1;
-    //object-fit: contain;
-    
-    @media (max-width: 768px) {
-        max-height: 400px;
-    }
 
-    @media (max-width: 480px) {
-        max-height: 250px;
-    }
+    ${({variant}) =>
+            variant === "me" && css`
+                bottom: 0;
+                left: 0;
+                
+            `}
+
+    ${({variant}) =>
+            variant === "map" && css`
+                bottom: 0;
+                right: 0;
+                height: 100%;
+                object-fit: contain;
+            `}
 `
 
 const AboutMeStyled = styled.section`
     min-height: 946px;
-    background-color: #A6BCFA;
-    //position: relative;
+    background-color: ${theme.colors.secondaryFont};
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 `;
 
 const InfoAboutMe = styled.div`
@@ -69,11 +70,11 @@ const InfoAboutMe = styled.div`
     flex-direction: column;
     position: absolute;
     z-index: 1;
-    top: 5vw;
-    right: 0;
+    top: clamp(10px, 5vw, 50px);
+    right: 20%;
     max-width: 536px;
     padding: 30px 20px 65px 50px;
-margin-right: 20px;
+    margin-right: 20px;
 
     color: #393939;
     background-color: rgba(255, 255, 255, 0.2);
@@ -88,25 +89,9 @@ const Icons = styled.div`
     padding-bottom: 18px;
 `
 const WrapperBcg = styled.div`
-    //background-image: url("../../../../public/me.png"), url("../../../../public/map.png");
-    //background-repeat: no-repeat, no-repeat;
-    //background-position: right bottom, left top;
-    //background-size: auto, contain;
-    //height: 100%;
     position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 46px 42px 0px 42px;
-    
-    #me {
-        align-self: flex-end;
-    }
-    
-    #map{
-        
-    }
+    padding: 46px 42px 0 42px;
+    min-height: 110vh;
 `
 
 const NameAboutMe = styled.h2`
@@ -123,7 +108,7 @@ const NameAboutMe = styled.h2`
 
 const UlStyled = styled.ul`
     list-style: none;
-    
+
     li + li {
         padding-top: 6px;
     }
@@ -132,6 +117,7 @@ const LiStyled = styled.li`
     //marker: url('$_{IconName}'); "_" Чтобы не ругался 
 
     padding-left: 13px;
+
     &::before {
         content: "";
         display: inline-block;

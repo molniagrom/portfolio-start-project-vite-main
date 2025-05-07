@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import {Container} from "../../../components/Container.ts";
 import quote from "../../../../public/quote.svg"
-//todo: в icons-sprite svg нужно отрисовать скорее всего в псевдо-элементах
+import {theme} from "../../../styles/Theme.ts";
 
 export const Quote = () => {
     console.log(quote)
@@ -11,7 +11,7 @@ export const Quote = () => {
         <QuoteStyled>
             <Container>
                 <QuoteWrapper>
-                    <PStyled id={"text"}>'For whatever a person is sowing, this he will also reap'</PStyled>
+                    <PStyled id={"text"}>For whatever a person is sowing, this he will also reap</PStyled>
                     <PStyled id={"verse"}>(Galatians 6:7)</PStyled>
                 </QuoteWrapper>
             </Container>
@@ -27,18 +27,12 @@ const QuoteWrapper = styled.div`
     justify-content: center;
     align-items: center;
     gap: max(20px, 7px);
-
-    background-color: rgba(44, 43, 43, 0.6); 
-    border: 2px solid #4C546C; 
-    border-radius: 24px;
-    box-shadow: 8px 8px 16px 1px rgba(34, 60, 80, 0.2);
-    backdrop-filter: blur(4px);
     padding: 20px 0;
-
-
 `
 
 const QuoteStyled = styled.section`
+    background-color: ${theme.colors.secondaryFont};
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,7 +66,7 @@ const QuoteStyled = styled.section`
             right: -20px;
             width: 50px;
             height: 50px;
-            background: url(${quote}) no-repeat center;
+            background: url('./quote.svg') no-repeat center;
             background-size: contain;
             transform: rotateY(180deg);
             opacity: 0.7;
@@ -90,7 +84,7 @@ const QuoteStyled = styled.section`
 
 
 const PStyled = styled.p`
-    color: #A6BCFA;
+    color: #242b34;
     line-height: 1.6;
     font-family: "Kalameh", sans-serif;
     font-weight: 700;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 
 type ButtonPropsType = {
@@ -12,6 +12,7 @@ type ButtonPropsType = {
     fontSize?: string
     border?: string
     lineHeight?: string
+    isClicked?: boolean
 }
 
 export const Button = styled.button<ButtonPropsType>`
@@ -30,6 +31,10 @@ export const Button = styled.button<ButtonPropsType>`
     transition: all 0.2s ease;
     cursor: pointer;
     line-height: ${props => props.lineHeight || undefined};
+    
+    ${props => props.isClicked && css`
+    
+    `}
     
     &:hover {
         background-color: ${theme.colors.accent};
