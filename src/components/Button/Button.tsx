@@ -33,11 +33,12 @@ export const Button = styled.button<ButtonPropsType>`
     line-height: ${props => props.lineHeight || undefined};
     
     ${props => props.isClicked && css`
-    
+        background-color: ${theme.colors.primaryBg};
+        outline: none;
     `}
     
-    &:hover {
-        background-color: ${theme.colors.accent};
-        border: none;
-    }
+    // &:hover {
+    //     background-color: ${theme.colors.accent};
+    //     border: none;
+    // }
 `
