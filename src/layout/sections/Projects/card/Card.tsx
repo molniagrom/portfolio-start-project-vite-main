@@ -60,7 +60,17 @@ const StyledCard = styled.article<StyledCardPropsType>`
     height: ${props => props.height || undefined};
     transition: all 0.3s ease;
 
+    ${Photo} {
+        filter: grayscale(10%) brightness(0.8);
+        transition: filter 0.3s ease;
+    }
+
     &:hover {
-        background-color: ${theme.colors.primaryBg}
+        background-color: ${theme.colors.primaryBg};
+
+        ${Photo} {
+            filter: none;
+        }
     }
 `;
+

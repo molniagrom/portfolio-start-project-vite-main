@@ -20,9 +20,9 @@ export const Header = () => {
 };
 
 const StyleHeader = styled.header`
-    backdrop-filter: blur(10px);
-    background: ${theme.colors.allBgOpacity};
-    position: sticky;
+    // backdrop-filter: blur(10px);
+    // background: ${theme.colors.allBgOpacity};
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;

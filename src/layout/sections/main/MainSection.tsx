@@ -5,7 +5,7 @@ import {theme} from "../../../styles/Theme.ts";
 export const MainSection = styled.section`
     display: flex;
     position: relative;
-    padding: 80px 0;
+    padding: 190px 0;
 
     background: linear-gradient(
             to right,

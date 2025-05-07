@@ -12,6 +12,8 @@ import dots from "../../../image/Dots.svg"
 export const Projects = () => {
     const [clickedIndex, setClickedIndex] = useState<number | null>(null);
 
+    const tap = ["Story", "Post", "Banner", "Trailer", "Desighn", "More"]
+
     const onClick = (index: number) => {
         setClickedIndex(index);
     };
@@ -24,7 +26,7 @@ export const Projects = () => {
                     <Icon position={"relative"} left={"8px"} iconId={"ElipseSmallGradient"}/>
                     <Tab>
                         <List className="category-tabs">
-                            {theme.tap.map((item, index) => (
+                            {tap.map((item, index) => (
                                 <ListItem key={item}>
                                     <Button
                                         isClicked={clickedIndex === index}
