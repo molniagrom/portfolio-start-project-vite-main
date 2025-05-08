@@ -16,4 +16,29 @@ export const theme = {
 
         border: "#4C546C", // border for Projects " tap"
     },
+
+    media: {
+        tablet: "(max-width: 768px)",
+        mobile: "(max-width: 430px)",
+        hideHeader: " screen and (max-width: 500px)",
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

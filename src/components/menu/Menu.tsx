@@ -1,36 +1,35 @@
 // import React from 'react';
 
 import styled from "styled-components";
-import {Icon} from "../icon/Icon.tsx";
-import {FlexWrapper} from "../wrappers/FlexWrapper.tsx";
 import {theme} from "../../styles/Theme.ts";
 
 export const Menu = () => {
     return (
-        <StyledMenu gap={"64px"} alignItems={"center"} justify={"center"}>
+        <StyledMenu>
             <List>
                 <ListItem><Link href={"/"}>Home</Link></ListItem>
                 <ListItem><Link href={"/"}>Projects</Link></ListItem>
                 <ListItem><Link href={"/"}>About</Link></ListItem>
                 <ListItem><Link href={"/"}>Content</Link></ListItem>
             </List>
-            <Icon iconId={"moon"}/>
         </StyledMenu>
     );
 };
 
-const StyledMenu = styled(FlexWrapper)`
-    // background-color: ;
-    // box-shadow: 0 0 40px 20px rgba(34, 34, 34, 0.5);
-
-    //backdrop-filter: blur(10px);
-    //background-color: rgba(34, 34, 34, 0.2);
+const StyledMenu = styled.nav`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
    
-    // background: radial-gradient(circle, ${theme.colors.allBg} 0%, transparent 100%);
     ul {
         display: flex;
         flex-direction: row;
         gap: 30px;
+    }
+    
+    @media ${theme.media.hideHeader} {
+        display: none;
     }
 `
 

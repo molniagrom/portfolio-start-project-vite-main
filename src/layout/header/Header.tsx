@@ -5,14 +5,20 @@ import styled from "styled-components";
 import {Container} from "../../components/Container.ts";
 import {FlexWrapper} from "../../components/wrappers/FlexWrapper.tsx";
 import {theme} from "../../styles/Theme.ts";
+import {Icon} from "../../components/icon/Icon.tsx";
+import {MobileMenu} from "../../components/menu/MobileMenu.tsx";
 
 export const Header = () => {
     return (
         <StyleHeader>
-            <Container padding={"15px"} >
+            <Container padding={"15px"}>
                 <FlexWrapper justify="space-between" alignItems={"center"}>
                     <Logo/>
-                    <Menu/>
+                    <FlexWrapper gap={"clamp(10px, 10vw, 64px)"} justify="space-between" alignItems={"center"}>
+                        <Menu/>
+                        <MobileMenu/>
+                        <Icon iconId={"moon"}/>
+                    </FlexWrapper>
                 </FlexWrapper>
             </Container>
         </StyleHeader>
@@ -20,8 +26,8 @@ export const Header = () => {
 };
 
 const StyleHeader = styled.header`
-    // backdrop-filter: blur(10px);
-    // background: ${theme.colors.allBgOpacity};
+    // backdrop-filter: blur(10px); 
+        // background: ${theme.colors.allBgOpacity};
     position: fixed;
     top: 0;
     left: 0;
