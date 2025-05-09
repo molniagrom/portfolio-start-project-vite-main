@@ -34,4 +34,5 @@ const StyleHeader = styled.header`
     right: 0;
     z-index: 10;
     //border: blueviolet 2px solid;
+    
 `

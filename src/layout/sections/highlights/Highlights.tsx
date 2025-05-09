@@ -1,6 +1,5 @@
 // import React from 'react';
 
-// Highlights.tsx
 import styled from 'styled-components';
 import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
 import {theme} from "../../../styles/Theme.ts";

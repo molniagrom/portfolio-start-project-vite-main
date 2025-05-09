@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {theme} from "../../../styles/Theme.ts";
 
 type PhotoPropsType = {
     width?: string;
@@ -24,4 +25,28 @@ export const Photo = styled.img<PhotoPropsType>`
     left: ${props => props.left || undefined};
     right: ${props => props.right || undefined};
     bottom: ${props => props.bottom || undefined};
+
+    @media screen and ${theme.media.tabletBig} {
+        border: 16px solid white;
+    }
+
+    @media screen and (max-width: 1020px) {
+        width: 44%;
+        height: 44%;
+    }
+
+    @media screen and ${theme.media.tabletBig} {
+        width: 334px;
+        height: 334px;
+    }
+    
+    @media screen and ${theme.media.tabletSmall} {
+        width: 56.61%;
+        height: 56.61%;
+    }
+    
+
+    @media screen and ${theme.media.mobile} {
+        border: 10px solid white;
+    }
 `;

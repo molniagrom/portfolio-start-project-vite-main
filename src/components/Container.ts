@@ -11,5 +11,5 @@ export const Container = styled.div<ContainerPropsType>`
     min-height: 100%;
     padding: ${props => props.padding || undefined};
     margin: 0 auto;
-    //border: 2px solid yellow;
+    border: 2px solid yellow;
 `

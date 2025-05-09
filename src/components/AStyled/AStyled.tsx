@@ -30,6 +30,8 @@ export const AStyled = styled.a<AStyledPropsType>`
     line-height: ${props => props.lineHeight || undefined};
     cursor: pointer;
     transition: all 0.5s ease;
+    word-break: keep-all;
+    white-space: nowrap;
 
 
     svg {

@@ -1,14 +1,15 @@
 import styled from "styled-components";
+import {theme} from "../../styles/Theme.ts";
 
 type FlexWrapperPropsType = {
     direction?: string;
     justify?: string;
     alignItems?: string;
-    wrap?: string;
     gap?: string;
     flexGrow?: string;
     padding?: string;
     position?: string;
+    adaptive?: boolean;
 }
 
 export const FlexWrapper = styled.div<FlexWrapperPropsType>`
@@ -16,10 +17,13 @@ export const FlexWrapper = styled.div<FlexWrapperPropsType>`
     flex-direction: ${props => props.direction || undefined};
     justify-content: ${props => props.justify || undefined};
     align-items: ${props => props.alignItems || undefined};
-    flex-wrap: ${props => props.wrap || undefined};
     gap: ${props => props.gap || undefined};
     flex-grow: ${props => props.flexGrow || undefined};
-    //height: 100%;
     padding: ${props => props.padding || undefined};
     position: ${props => props.position || undefined};
-`
+
+
+    @media screen and ${theme.media.tabletBig} {
+        flex-wrap: ${props => props.adaptive ? "wrap" : "no-wrap"};
+    }
+`;

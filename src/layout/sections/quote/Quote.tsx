@@ -19,8 +19,6 @@ export const Quote = () => {
     );
 };
 
-//width: max(800px, 300px);
-
 const QuoteWrapper = styled.div`
     display: flex;
     flex-direction: column;

@@ -18,8 +18,10 @@ export const theme = {
     },
 
     media: {
-        tablet: "(max-width: 768px)",
+        tabletBig: "(max-width: 900px)",
+        tabletSmall: "(max-width: 900px)",
         mobile: "(max-width: 430px)",
+        main: "(max-width: 870px)",
         hideHeader: " screen and (max-width: 500px)",
     }
 

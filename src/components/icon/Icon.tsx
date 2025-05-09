@@ -1,8 +1,8 @@
 import React from 'react';
 import iconsSprite from "../../image/icons-sprite.svg";
 import styled, {css} from "styled-components";
-// import spriteMyStack from "../../image/sprite-my-stack.svg";
-// import styled, {css} from "styled-components";
+import {theme} from "../../styles/Theme.ts";
+
 
 type IconPropsType = {
     children?: React.ReactNode;
@@ -18,6 +18,8 @@ type IconPropsType = {
     right?: string
     bottom?: string
     hover?: boolean
+    adaptivePlus?: boolean
+    adaptiveElipse?: boolean
 }
 export const Icon = (props: IconPropsType) => {
     return (
@@ -44,6 +46,8 @@ type SvgProps = {
     right?: string
     bottom?: string
     hover?: boolean
+    adaptivePlus?: boolean
+    adaptiveElipse?: boolean
 }
 
 const Svg = styled.svg<SvgProps>`
@@ -56,9 +60,21 @@ const Svg = styled.svg<SvgProps>`
     right: ${props => props.right || undefined};
     overflow: visible;
     bottom: ${props => props.bottom || undefined};
-    
+
     ${props => props.hover && css`
-       transform: scale(1.1);
+        transform: scale(1.1);
+    `} 
+    @media screen and ${theme.media.tabletBig} {
+    ${props => props.adaptivePlus && css`
+        top: -55px;
+        right: 100px;
+    `}  
+    
+    ${props => props.adaptiveElipse && css`
+        bottom: 0;
+        right: -20px;
     `}
+    
+}
 `
 
