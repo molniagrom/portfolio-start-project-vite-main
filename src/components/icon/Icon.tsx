@@ -67,12 +67,12 @@ const Svg = styled.svg<SvgProps>`
     @media screen and ${theme.media.tabletBig} {
     ${props => props.adaptivePlus && css`
         top: -55px;
-        right: 100px;
+        left: 500px;
     `}  
     
     ${props => props.adaptiveElipse && css`
         bottom: 0;
-        right: -20px;
+        right: -55px;
     `}
     
 }

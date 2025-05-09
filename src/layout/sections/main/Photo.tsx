@@ -41,8 +41,8 @@ export const Photo = styled.img<PhotoPropsType>`
     }
     
     @media screen and ${theme.media.tabletSmall} {
-        width: 56.61%;
-        height: 56.61%;
+        width: 90%;
+        height: 90%;
     }
     
 

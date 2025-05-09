@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 
 type FlexWrapperPropsType = {
@@ -10,6 +10,7 @@ type FlexWrapperPropsType = {
     padding?: string;
     position?: string;
     adaptive?: boolean;
+    adaptMain?: boolean;
 }
 
 export const FlexWrapper = styled.div<FlexWrapperPropsType>`
@@ -25,5 +26,8 @@ export const FlexWrapper = styled.div<FlexWrapperPropsType>`
 
     @media screen and ${theme.media.tabletBig} {
         flex-wrap: ${props => props.adaptive ? "wrap" : "no-wrap"};
+        ${props => props.adaptMain && css`
+            gap: 20px;
+        `}
     }
 `;

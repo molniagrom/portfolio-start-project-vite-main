@@ -15,7 +15,7 @@ import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
 export const Main = () => {
     return (
         <MainSection>
-            <Container padding={"0px 25px 0px 25px"}>
+            <Container adaptMain padding={"0px 25px 0px 25px"}>
                 <MainSectionWrapper>
                     <FlexWrapper
                         direction="row"
@@ -23,12 +23,16 @@ export const Main = () => {
                         justify="space-between"
                         alignItems="center"
                     >
-                        <Icon adaptivePlus={true} top={"-100px"} left={"25%"} width="108" height="107" viewBox="0 0 108 107" zIndex={"-1"}
+                        <Icon adaptivePlus={true} top={"-100px"} left={"25%"} width="108" height="107"
+                              viewBox="0 0 108 107" zIndex={"-11111111"}
                               position={"absolute"} iconId={"plus"}/>
-                        <Icon adaptiveElipse={true} bottom={"0"} right={"25px"} width="152" height="152" viewBox="0 0 152 152" zIndex={"-1"}
+                        <Icon adaptiveElipse={true} bottom={"0"} right={"25px"} width="152" height="152"
+                              viewBox="0 0 152 152" zIndex={"-11111111"}
                               position={"absolute"} iconId={"ElipseMiddle"}/>
                         <WrapperBlur>
-                            <FlexWrapper adaptive={true} gap={"5vw"} direction="row" alignItems={"center"} justify="space-around">
+                            <FlexWrapper adaptMain
+                                         adaptive={true} gap={"5vw"} direction="row" alignItems={"center"}
+                                         justify="space-around">
                                 <Photo
                                     src={myPhoto}
                                     width="334px"
@@ -97,21 +101,18 @@ const WrapperBlur = styled.div`
     border-radius: 200px 0;
     border: 2px solid ${theme.colors.linear};
     padding: 48px 90px 36px 106px;
+    //position: relative;
 
     @media screen and ${theme.media.tabletBig} {
         padding: 30px 118px 100px 118px;
     }
+
 `
 const MainSectionWrapper = styled.div`
     position: relative;
     max-width: 1160px;
     margin: 0 auto;
 
-        // @media screen and ${theme.media.tabletBig} {
-    //     &:first-child {
-    //         flex-wrap: wrap;
-    //     }
-    // }
 `
 
 export const MainTitle = styled.h1`
@@ -119,7 +120,7 @@ export const MainTitle = styled.h1`
     font-weight: 700;
     font-size: clamp(28px, 6vw, 60px);
     line-height: clamp(1.2, 4vw, 1.36);
-    margin-bottom: clamp(10px, 3vw, 20px);
+    padding-bottom: clamp(10px, 3vw, 20px);
 `
 
 type NamePropsType = {
@@ -130,8 +131,12 @@ export const Name = styled.h2<NamePropsType>`
     font-weight: 400;
     font-size: clamp(10px, 4vw, 20px);
     line-height: clamp(1.3, 3.5vw, 1.5);
-    margin-bottom: clamp(20px, 5vw, 47px);
-    //width: 90%;
+    padding-bottom: clamp(20px, 5vw, 42px);
+    @media screen and ${theme.media.tabletBig} {
+        padding-bottom: clamp(15px, 5vw, 50px);
+
+    }
+
 `
 
 const BlueWhite = styled.div`
