@@ -5,6 +5,7 @@ type ContainerPropsType = {
     padding?: string;
     maxWidth?: string;
     adaptMain?: boolean;
+    adaptProj?: boolean;
 }
 
 export const Container = styled.div<ContainerPropsType>`
@@ -13,11 +14,14 @@ export const Container = styled.div<ContainerPropsType>`
     min-height: 100%;
     padding: ${props => props.padding || undefined};
     margin: 0 auto;
-    border: 2px solid yellow;
+    //border: 2px solid yellow;
 
     @media screen and ${theme.media.tabletBig} {
         ${props => props.adaptMain && css`
             padding: 0 100px;
+        `} 
+        ${props => props.adaptProj && css`
+            padding: 0 110px;
         `}
 
     }

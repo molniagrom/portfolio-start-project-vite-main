@@ -44,8 +44,12 @@ const StyledImage = styled.img<{ variant: "map" | "me" }>`
     ${({variant}) =>
             variant === "me" && css`
                 bottom: 0;
-                left: 0;
-                
+                left: 40px;
+
+                @media screen and ${theme.media.tabletBig} {
+                    height: 51.44%;
+                }
+
             `}
 
     ${({variant}) =>
@@ -54,6 +58,10 @@ const StyledImage = styled.img<{ variant: "map" | "me" }>`
                 right: 0;
                 height: 100%;
                 object-fit: contain;
+                @media screen and ${theme.media.tabletBig} {
+                    height: 80%;
+                }
+
             `}
 `
 
@@ -80,6 +88,10 @@ const InfoAboutMe = styled.div`
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     border-radius: 100px 0 100px 0;
+    
+    @media screen and ${theme.media.tabletBig}{
+        top: 70px;
+    }
 `
 const Icons = styled.div`
     display: flex;

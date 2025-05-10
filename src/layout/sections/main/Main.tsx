@@ -30,10 +30,12 @@ export const Main = () => {
                               viewBox="0 0 152 152" zIndex={"-11111111"}
                               position={"absolute"} iconId={"ElipseMiddle"}/>
                         <WrapperBlur>
+
                             <FlexWrapper adaptMain
                                          adaptive={true} gap={"5vw"} direction="row" alignItems={"center"}
                                          justify="space-around">
                                 <Photo
+                                    adaptMain
                                     src={myPhoto}
                                     width="334px"
                                     height="334px"
@@ -45,9 +47,10 @@ export const Main = () => {
                                     <Name>I'm <span>Alina Groza</span>. Bringing order to chaos — your frontend in
                                         reliable
                                         hands. Aesthetics, logic, and user care — in every pixel.</Name>
-                                    <FlexWrapper gap="32px">
+                                    <FlexWrapper alignItems={"center"} gap="32px">
 
                                         <AStyled
+                                            adaptiveMain
                                             href={"https://www.youtube.com/watch?v=Zhq_ThHG2gA&t=8032s"}
                                             target="_blank"
                                             fontSize={"15px"}
@@ -57,15 +60,18 @@ export const Main = () => {
                                             color={theme.colors.primaryFont}
                                             borderRadius={"20px"}
                                             fontFamily={"Roboto"}
-                                            backgroundColor={"#2157F2"}>
+                                            backgroundColor={"#2157F2"}
+
+                                        >
 
                                             See Projects
-                                            <Icon iconId={"ArrowWhiteToButton"} width={"28px"} height={"28px"}
+                                            <Icon adaptiveMain iconId={"ArrowWhiteToButton"} width={"28px"} height={"28px"}
                                                   viewBox={"-3 -3 36 36"}/>
 
                                         </AStyled>
 
                                         <InputLinkStyled
+                                            adaptiveMain
                                             fontSize={"15px"}
                                             fontWeight={600}
                                             backgroundColor={"transparent"}
@@ -104,7 +110,12 @@ const WrapperBlur = styled.div`
     //position: relative;
 
     @media screen and ${theme.media.tabletBig} {
-        padding: 30px 118px 100px 118px;
+        padding: 30px 50px 100px 78px;
+    }
+
+    @media screen and ${theme.media.mobileBig} {
+        padding: 16px 65px 100px 78px;
+
     }
 
 `
@@ -121,6 +132,12 @@ export const MainTitle = styled.h1`
     font-size: clamp(28px, 6vw, 60px);
     line-height: clamp(1.2, 4vw, 1.36);
     padding-bottom: clamp(10px, 3vw, 20px);
+
+    @media screen and ${theme.media.mobileBig} {
+        font-weight: 700;
+        font-size: 33px;
+        line-height: 115%;
+    }
 `
 
 type NamePropsType = {
@@ -136,6 +153,12 @@ export const Name = styled.h2<NamePropsType>`
         padding-bottom: clamp(15px, 5vw, 50px);
 
     }
+    @media screen and ${theme.media.mobileBig} {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 150%;
+    }
+
 
 `
 

@@ -30,4 +30,10 @@ export const FlexWrapper = styled.div<FlexWrapperPropsType>`
             gap: 20px;
         `}
     }
+
+    @media screen and ${theme.media.mobileBig} {
+        ${props => props.adaptive && css`
+            gap: 17px;
+        `}
+    }
 `;

@@ -20,7 +20,7 @@ export const Projects = () => {
 
     return (
         <StyledProjects>
-            <Container maxWidth={"1240px"} padding={"0 20px"}>
+            <Container adaptProj maxWidth={"1240px"} padding={"0 20px"}>
                 <FlexWrapper direction={"column"} justify={"center"} alignItems={"center"}>
                     <TitleProject>Projects</TitleProject>
                     <Icon position={"relative"} left={"8px"} iconId={"ElipseSmallGradient"}/>
@@ -68,6 +68,10 @@ const StyledProjects = styled.section`
     justify-content: center;
     align-items: center;
     padding-bottom: 154px;
+    
+    @media screen and ${theme.media.tabletBig}{
+        padding-bottom: 82px;
+    }
 `;
 
 const TitleProject = styled.h3`
@@ -80,25 +84,38 @@ const TitleProject = styled.h3`
 const List = styled.ul`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 18px 8px;
+    row-gap: 30px;
+    column-gap: clamp(40px, 5vw, 8px);
     list-style: none;
-    padding: 0;
+    padding-top: 34px;
     margin: 0;
     width: 100%;
 
+    @media screen and ${theme.media.tabletBig} {
+        padding-top: 64px;
+    }
+
     li button {
+        min-width: 160px;
+        min-height: 42px;
         color: #fff;
     }
 `;
 
-const ListItem = styled.li``;
+const ListItem = styled.li`
+   
+`;
 
 const Tab = styled.div`
     width: 95%;
-    margin-bottom: 55px;
+    padding-bottom: 55px;
+    
+    @media screen and ${theme.media.tabletBig} {
+        padding-bottom: 62px;
+    }
 `;
 
 const ScrollWrapper = styled.div`
@@ -109,6 +126,9 @@ const ScrollWrapper = styled.div`
     overflow: visible;
 
     &::before {
+        @media screen and ${theme.media.tabletBig} {
+            display: none;
+        }
         content: "";
         position: absolute;
         top: -150px;

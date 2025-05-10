@@ -13,6 +13,7 @@ type AStyledPropsType = {
     lineHeight?: string;
     buttonHover?: boolean;
     LinkHover?: boolean;
+    adaptiveMain?: boolean;
 };
 
 export const AStyled = styled.a<AStyledPropsType>`
@@ -41,7 +42,7 @@ export const AStyled = styled.a<AStyledPropsType>`
     &:hover {
         transform: scale(1.03);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        
+
         ${props => props.buttonHover && css`
             transition: background-color 0.2s ease, color 0.2s ease;
             background-color: ${theme.colors.accent};
@@ -51,12 +52,20 @@ export const AStyled = styled.a<AStyledPropsType>`
             transition: color 0.2s ease;
             color: ${theme.colors.primaryFont};
         `}
-        
         svg {
             transform: translateX(5px);
         }
     }
-    
+
+    @media screen and ${theme.media.mobileBig} {
+        ${props => props.adaptiveMain && css`
+            font-weight: 600;
+            font-size: 8px;
+            line-height: 150%;
+            padding: 8px 20px;
+        `}
+    }
+
 `;
 
 type InputLinkStyledPropsType = {
@@ -69,6 +78,7 @@ type InputLinkStyledPropsType = {
     border?: string;
     outline?: string;
     appearance?: string;
+    adaptiveMain?: boolean;
 };
 
 export const InputLinkStyled = styled.input<InputLinkStyledPropsType>`
@@ -82,11 +92,24 @@ export const InputLinkStyled = styled.input<InputLinkStyledPropsType>`
     background-color: ${props => props.backgroundColor || "transparent"};
     font-family: ${props => props.fontFamily || "inherit"};
     border-radius: ${props => props.borderRadius || "0"};
-    padding: 0.4em 0.8em;
     transition: all 0.3s ease;
 
     &:hover {
         transform: scale(1.03);
     }
-    
+
+    @media screen and ${theme.media.tabletBig} {
+        max-width: 134px;
+        max-height: 24px;
+    }
+
+    @media screen and ${theme.media.mobileBig} {
+        ${props => props.adaptiveMain && css`
+            font-weight: 600;
+            font-size: 8px;
+            line-height: 150%;
+            padding: 8px 20px;
+        `}
+    }
+
 `;

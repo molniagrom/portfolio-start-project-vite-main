@@ -35,6 +35,11 @@ export const GlobalStyled = createGlobalStyle`
         background-color: unset;
         border: none;
     }
+
+    input {
+        background-color: unset;
+        border: none;
+    }
 `
 
 

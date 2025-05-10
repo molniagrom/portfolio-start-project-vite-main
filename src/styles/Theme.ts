@@ -21,6 +21,7 @@ export const theme = {
         tabletBig: "(max-width: 900px)",
         tabletSmall: "(max-width: 900px)",
         mobile: "(max-width: 430px)",
+        mobileBig: "(max-width: 660px)",
         main: "(max-width: 870px)",
         hideHeader: " screen and (max-width: 500px)",
     }

@@ -9,7 +9,7 @@ export const MainSection = styled.section`
 
 
     @media screen and ${theme.media.tabletBig} {
-        padding: 168px 0;
+        padding: 168px 0 83px 0;
     }
 
     background: linear-gradient(

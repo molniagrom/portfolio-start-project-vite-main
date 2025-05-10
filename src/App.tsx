@@ -2,7 +2,7 @@ import './App.css'
 import {Header} from "./layout/header/Header.tsx";
 import Main from "./layout/sections/main/Main.tsx";
 // import {Footer} from "./layout/footer/Footer.tsx";
-// import {Projects} from "./layout/sections/Projects/Projects.tsx";
+import {Projects} from "./layout/sections/Projects/Projects.tsx";
 // import {AboutMe} from "./layout/sections/aboutMe/AboutMe.tsx";
 // import {Highlights} from "./layout/sections/highlights/Highlights.tsx";
 // import {MyStack} from "./layout/sections/myStack/MyStack.tsx";
@@ -20,7 +20,7 @@ function App() {
         <div className="App">
             <Header/>
             <Main/>
-            {/*<Projects/>*/}
+            <Projects/>
             {/*<AboutMe/>*/}
             {/*<Highlights/>*/}
             {/*<MyStack/>*/}

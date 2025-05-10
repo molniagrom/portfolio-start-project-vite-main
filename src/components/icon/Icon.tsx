@@ -20,6 +20,7 @@ type IconPropsType = {
     hover?: boolean
     adaptivePlus?: boolean
     adaptiveElipse?: boolean
+    adaptiveMain?: boolean
 }
 export const Icon = (props: IconPropsType) => {
     return (
@@ -39,6 +40,7 @@ export const Icon = (props: IconPropsType) => {
 
 type SvgProps = {
     position?: string
+    adaptiveMain?: boolean
     top?: string
     left?: string
     cursor?: string
@@ -67,13 +69,20 @@ const Svg = styled.svg<SvgProps>`
     @media screen and ${theme.media.tabletBig} {
     ${props => props.adaptivePlus && css`
         top: -55px;
-        left: 500px;
+        right: 500px;
     `}  
     
     ${props => props.adaptiveElipse && css`
         bottom: 0;
         right: -55px;
     `}
+
+    @media screen and ${theme.media.mobileBig} {
+    ${props => props.adaptiveMain && css`
+        width: 15px;
+        height: 15px;
+    `}
+}
     
 }
 `

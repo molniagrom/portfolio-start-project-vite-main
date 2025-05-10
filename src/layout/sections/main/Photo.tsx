@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {theme} from "../../../styles/Theme.ts";
 
 type PhotoPropsType = {
@@ -12,6 +12,8 @@ type PhotoPropsType = {
     left?: string;
     right?: string;
     bottom?: string;
+    adaptMain?: boolean;
+
 }
 
 export const Photo = styled.img<PhotoPropsType>`
@@ -26,27 +28,30 @@ export const Photo = styled.img<PhotoPropsType>`
     right: ${props => props.right || undefined};
     bottom: ${props => props.bottom || undefined};
 
-    @media screen and ${theme.media.tabletBig} {
-        border: 16px solid white;
-    }
+    ${props => props.adaptMain && css`
+        @media screen and ${theme.media.tabletBig} {
+            border: 16px solid white;
+        }
 
-    @media screen and (max-width: 1020px) {
-        width: 44%;
-        height: 44%;
-    }
+        @media screen and (max-width: 1020px) {
+            width: 44%;
+            height: 44%;
+        }
 
-    @media screen and ${theme.media.tabletBig} {
-        width: 334px;
-        height: 334px;
-    }
+        @media screen and ${theme.media.tabletBig} {
+            width: 334px;
+            height: 334px;
+        }
+
+        @media screen and ${theme.media.mobileBig} {
+            max-width: 187px;
+            max-height: 187px;
+        }
+
+        @media screen and ${theme.media.mobile} {
+            border: 10px solid white;
+        }
+
+    `}
     
-    @media screen and ${theme.media.tabletSmall} {
-        width: 90%;
-        height: 90%;
-    }
-    
-
-    @media screen and ${theme.media.mobile} {
-        border: 10px solid white;
-    }
 `;
