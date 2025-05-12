@@ -14,6 +14,7 @@ type AStyledPropsType = {
     buttonHover?: boolean;
     LinkHover?: boolean;
     adaptiveMain?: boolean;
+    adaptiveProject?: boolean;
 };
 
 export const AStyled = styled.a<AStyledPropsType>`
@@ -34,11 +35,17 @@ export const AStyled = styled.a<AStyledPropsType>`
     word-break: keep-all;
     white-space: nowrap;
 
-
     svg {
         transform: translateY(1px);
     }
 
+    ${props => props.adaptiveProject && css`
+        @media screen and ${theme.media.tabletSmall} {
+            font-weight: 400;
+            font-size: 12px;
+        }
+    `}
+    
     &:hover {
         transform: scale(1.03);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);

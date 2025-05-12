@@ -13,6 +13,7 @@ type ButtonPropsType = {
     border?: string
     lineHeight?: string
     isClicked?: boolean
+    adaptiveProject?: boolean
 }
 
 export const Button = styled.button<ButtonPropsType>`
@@ -37,8 +38,10 @@ export const Button = styled.button<ButtonPropsType>`
         outline: none;
     `}
     
-    // &:hover {
-    //     background-color: ${theme.colors.accent};
-    //     border: none;
-    // }
+    ${props => props.adaptiveProject && css`
+        @media screen and ${theme.media.tabletSmall} {
+            padding: 4px 34px;
+        }
+    `}
+    
 `

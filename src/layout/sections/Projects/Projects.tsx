@@ -24,22 +24,25 @@ export const Projects = () => {
                 <FlexWrapper direction={"column"} justify={"center"} alignItems={"center"}>
                     <TitleProject>Projects</TitleProject>
                     <Icon position={"relative"} left={"8px"} iconId={"ElipseSmallGradient"}/>
-                    <List className="category-tabs">
-                        {tap.map((item, index) => (
-                            <ListItem key={item}>
-                                <Button
-                                    isClicked={clickedIndex === index}
-                                    onClick={() => onClick(index)}
-                                    border={`${theme.colors.border} 3px solid`}
-                                    borderRadius={"67px"}
-                                    padding={"7px 40px"}
-                                >
-                                    <AStyled lineHeight={"136%"} fontWeight={"400"}
-                                             fontSize={"20px"}>{item}</AStyled>
-                                </Button>
-                            </ListItem>
-                        ))}
-                    </List>
+                    <FlexWrapper justify={"center"} alignItems={"center"}>
+                        <List className="category-tabs">
+                            {tap.map((item, index) => (
+                                <ListItem key={item}>
+                                    <Button
+                                        adaptiveProject
+                                        isClicked={clickedIndex === index}
+                                        onClick={() => onClick(index)}
+                                        border={`${theme.colors.border} 3px solid`}
+                                        borderRadius={"67px"}
+                                        padding={"7px 40px"}
+                                    >
+                                        <AStyled adaptiveProject lineHeight={"136%"} fontWeight={"400"}
+                                                 fontSize={"20px"}>{item}</AStyled>
+                                    </Button>
+                                </ListItem>
+                            ))}
+                        </List>
+                    </FlexWrapper>
                     <ScrollWrapper>
                         <GreedWrapper>
                             <Card/>
@@ -80,17 +83,15 @@ const TitleProject = styled.h3`
 `;
 
 const List = styled.ul`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(160px, auto));
+    grid-auto-rows: minmax(42px, auto);
     row-gap: 30px;
     column-gap: clamp(40px, 5vw, 8px);
     list-style: none;
     padding-top: 34px;
-    margin: 0;
-    width: 100%;
+    //margin: 0 auto;
+    //width: 100%;
 
     padding-bottom: 55px;
 
@@ -101,10 +102,31 @@ const List = styled.ul`
     @media screen and ${theme.media.tablet} {
         padding-top: 64px;
     }
+    @media screen and ${theme.media.laptop} {
+        grid-template-columns: repeat(6, 1fr);
+        grid-auto-rows: minmax(42px, auto);
+        column-gap: 2%;
+    }
+    @media screen and (max-width: 940px) {
+        grid-template-columns: repeat(3, 160px);
+        grid-auto-rows: minmax(42px, auto);
+        column-gap: 40px;
+    }
+    @media screen and ${theme.media.tabletSmall} {
+        grid-template-columns: repeat(3, 96px);
+        grid-auto-rows: minmax(42px, auto);
+        column-gap: 40px;
+    }
 
     li button {
         min-width: 160px;
-        min-height: 42px;
+        @media screen and (max-width: 940px) {
+            min-width: 160px;
+        }
+
+        @media screen and ${theme.media.tabletSmall} {
+            max-width: 96px;
+        }
         color: #fff;
     }
 `;

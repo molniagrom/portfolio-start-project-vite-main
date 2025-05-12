@@ -23,6 +23,8 @@ export const theme = {
         mobileBig: "(max-width: 660px)",
         main: "(max-width: 870px)",
         hideHeader: "(max-width: 500px)",
+        tabletSmall: "(max-width: 600px)",
+        laptop: "(max-width: 1190px)",
     }
 
 
