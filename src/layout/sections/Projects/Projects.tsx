@@ -24,7 +24,7 @@ export const Projects = () => {
                 <FlexWrapper direction={"column"} justify={"center"} alignItems={"center"}>
                     <TitleProject>Projects</TitleProject>
                     <Icon position={"relative"} left={"8px"} iconId={"ElipseSmallGradient"}/>
-                    <Tab>
+                    {/*<Tab>*/}
                         <List className="category-tabs">
                             {tap.map((item, index) => (
                                 <ListItem key={item}>
@@ -41,7 +41,7 @@ export const Projects = () => {
                                 </ListItem>
                             ))}
                         </List>
-                    </Tab>
+                    {/*</Tab>*/}
                     <ScrollWrapper>
                         <GreedWrapper>
                             <Card/>
@@ -94,6 +94,12 @@ const List = styled.ul`
     margin: 0;
     width: 100%;
 
+    padding-bottom: 55px;
+
+    @media screen and ${theme.media.tablet} {
+        padding-bottom: 62px;
+    }
+
     @media screen and ${theme.media.tablet} {
         padding-top: 64px;
     }
@@ -109,14 +115,6 @@ const ListItem = styled.li`
    
 `;
 
-const Tab = styled.div`
-    width: 95%;
-    padding-bottom: 55px;
-    
-    @media screen and ${theme.media.tablet} {
-        padding-bottom: 62px;
-    }
-`;
 
 const ScrollWrapper = styled.div`
     //overflow-x: auto;
