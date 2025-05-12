@@ -24,24 +24,22 @@ export const Projects = () => {
                 <FlexWrapper direction={"column"} justify={"center"} alignItems={"center"}>
                     <TitleProject>Projects</TitleProject>
                     <Icon position={"relative"} left={"8px"} iconId={"ElipseSmallGradient"}/>
-                    {/*<Tab>*/}
-                        <List className="category-tabs">
-                            {tap.map((item, index) => (
-                                <ListItem key={item}>
-                                    <Button
-                                        isClicked={clickedIndex === index}
-                                        onClick={() => onClick(index)}
-                                        border={`${theme.colors.border} 3px solid`}
-                                        borderRadius={"67px"}
-                                        padding={"7px 40px"}
-                                    >
-                                        <AStyled lineHeight={"136%"} fontWeight={"400"}
-                                                 fontSize={"20px"}>{item}</AStyled>
-                                    </Button>
-                                </ListItem>
-                            ))}
-                        </List>
-                    {/*</Tab>*/}
+                    <List className="category-tabs">
+                        {tap.map((item, index) => (
+                            <ListItem key={item}>
+                                <Button
+                                    isClicked={clickedIndex === index}
+                                    onClick={() => onClick(index)}
+                                    border={`${theme.colors.border} 3px solid`}
+                                    borderRadius={"67px"}
+                                    padding={"7px 40px"}
+                                >
+                                    <AStyled lineHeight={"136%"} fontWeight={"400"}
+                                             fontSize={"20px"}>{item}</AStyled>
+                                </Button>
+                            </ListItem>
+                        ))}
+                    </List>
                     <ScrollWrapper>
                         <GreedWrapper>
                             <Card/>
@@ -68,8 +66,8 @@ const StyledProjects = styled.section`
     justify-content: center;
     align-items: center;
     padding-bottom: 154px;
-    
-    @media screen and ${theme.media.tablet}{
+
+    @media screen and ${theme.media.tablet} {
         padding-bottom: 82px;
     }
 `;
@@ -112,7 +110,7 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-   
+
 `;
 
 
