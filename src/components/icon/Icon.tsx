@@ -66,10 +66,10 @@ const Svg = styled.svg<SvgProps>`
     ${props => props.hover && css`
         transform: scale(1.1);
     `} 
-    @media screen and ${theme.media.tabletBig} {
+    @media screen and ${theme.media.tablet} {
     ${props => props.adaptivePlus && css`
         top: -55px;
-        right: 500px;
+        right: 0px;
     `}  
     
     ${props => props.adaptiveElipse && css`

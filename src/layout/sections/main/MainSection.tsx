@@ -7,8 +7,15 @@ export const MainSection = styled.section`
     position: relative;
     padding: 190px 0;
 
+    @media screen and ${theme.media.mobileBig} {
+        padding: 0 96px;
+    }
 
-    @media screen and ${theme.media.tabletBig} {
+    @media screen and ${theme.media.hideHeader} {
+        padding: 120px 0 83px 0;
+    }
+
+    @media screen and ${theme.media.tablet} {
         padding: 168px 0 83px 0;
     }
 
@@ -18,17 +25,17 @@ export const MainSection = styled.section`
             transparent 26.39%
     );
 
-    @media screen and ${theme.media.tabletBig} {
+    @media screen and ${theme.media.tablet} {
         background: linear-gradient(
                 to right,
                 #24335C clamp(26vw, 50vw, 50vw),
                 transparent clamp(26vw, 50vw, 50vw)
         );
     }
-    
+
     div h2 span {
         color: ${theme.colors.accent};
     }
 
-  
+
 `

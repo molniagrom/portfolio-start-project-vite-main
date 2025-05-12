@@ -23,7 +23,7 @@ export const Main = () => {
                         justify="space-between"
                         alignItems="center"
                     >
-                        <Icon adaptivePlus={true} top={"-100px"} left={"25%"} width="108" height="107"
+                        <Icon adaptivePlus={true} top={"-100px"} right={"60%"} width="108" height="107"
                               viewBox="0 0 108 107" zIndex={"-11111111"}
                               position={"absolute"} iconId={"plus"}/>
                         <Icon adaptiveElipse={true} bottom={"0"} right={"25px"} width="152" height="152"
@@ -65,7 +65,8 @@ export const Main = () => {
                                         >
 
                                             See Projects
-                                            <Icon adaptiveMain iconId={"ArrowWhiteToButton"} width={"28px"} height={"28px"}
+                                            <Icon adaptiveMain iconId={"ArrowWhiteToButton"} width={"28px"}
+                                                  height={"28px"}
                                                   viewBox={"-3 -3 36 36"}/>
 
                                         </AStyled>
@@ -109,13 +110,13 @@ const WrapperBlur = styled.div`
     padding: 48px 90px 36px 106px;
     //position: relative;
 
-    @media screen and ${theme.media.tabletBig} {
+    @media screen and ${theme.media.tablet} {
         padding: 30px 50px 100px 78px;
     }
 
     @media screen and ${theme.media.mobileBig} {
-        padding: 16px 65px 100px 78px;
-
+        padding: 20px 28px 47px 42px;
+        border-radius: 112px 0;
     }
 
 `
@@ -133,7 +134,7 @@ export const MainTitle = styled.h1`
     line-height: clamp(1.2, 4vw, 1.36);
     padding-bottom: clamp(10px, 3vw, 20px);
 
-    @media screen and ${theme.media.mobileBig} {
+    @media screen and ${theme.media.hideHeader} {
         font-weight: 700;
         font-size: 33px;
         line-height: 115%;
@@ -149,7 +150,7 @@ export const Name = styled.h2<NamePropsType>`
     font-size: clamp(10px, 4vw, 20px);
     line-height: clamp(1.3, 3.5vw, 1.5);
     padding-bottom: clamp(20px, 5vw, 42px);
-    @media screen and ${theme.media.tabletBig} {
+    @media screen and ${theme.media.tablet} {
         padding-bottom: clamp(15px, 5vw, 50px);
 
     }
@@ -158,7 +159,6 @@ export const Name = styled.h2<NamePropsType>`
         font-size: 15px;
         line-height: 150%;
     }
-
 
 `
 
@@ -175,8 +175,9 @@ const BlueWhite = styled.div`
     outline: 2px solid ${theme.colors.linear};
     padding: 36px 15px;
     z-index: 5;
+
+    @media screen and ${theme.media.mobileBig} {
+        display: none;
+    }
+
 `
-
-
-
-

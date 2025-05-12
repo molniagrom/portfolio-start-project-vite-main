@@ -57,7 +57,7 @@ export const AStyled = styled.a<AStyledPropsType>`
         }
     }
 
-    @media screen and ${theme.media.mobileBig} {
+    @media screen and ${theme.media.hideHeader} {
         ${props => props.adaptiveMain && css`
             font-weight: 600;
             font-size: 8px;
@@ -98,12 +98,12 @@ export const InputLinkStyled = styled.input<InputLinkStyledPropsType>`
         transform: scale(1.03);
     }
 
-    @media screen and ${theme.media.tabletBig} {
+    @media screen and ${theme.media.tablet} {
         max-width: 134px;
         max-height: 24px;
     }
 
-    @media screen and ${theme.media.mobileBig} {
+    @media screen and ${theme.media.hideHeader} {
         ${props => props.adaptiveMain && css`
             font-weight: 600;
             font-size: 8px;

@@ -69,7 +69,7 @@ const StyledProjects = styled.section`
     align-items: center;
     padding-bottom: 154px;
     
-    @media screen and ${theme.media.tabletBig}{
+    @media screen and ${theme.media.tablet}{
         padding-bottom: 82px;
     }
 `;
@@ -94,7 +94,7 @@ const List = styled.ul`
     margin: 0;
     width: 100%;
 
-    @media screen and ${theme.media.tabletBig} {
+    @media screen and ${theme.media.tablet} {
         padding-top: 64px;
     }
 
@@ -113,7 +113,7 @@ const Tab = styled.div`
     width: 95%;
     padding-bottom: 55px;
     
-    @media screen and ${theme.media.tabletBig} {
+    @media screen and ${theme.media.tablet} {
         padding-bottom: 62px;
     }
 `;
@@ -126,7 +126,7 @@ const ScrollWrapper = styled.div`
     overflow: visible;
 
     &::before {
-        @media screen and ${theme.media.tabletBig} {
+        @media screen and ${theme.media.tablet} {
             display: none;
         }
         content: "";

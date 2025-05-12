@@ -16,13 +16,18 @@ export const Container = styled.div<ContainerPropsType>`
     margin: 0 auto;
     //border: 2px solid yellow;
 
-    @media screen and ${theme.media.tabletBig} {
+    @media screen and ${theme.media.tablet} {
         ${props => props.adaptMain && css`
             padding: 0 100px;
         `} 
         ${props => props.adaptProj && css`
             padding: 0 110px;
         `}
+    }
 
+    @media screen and ${theme.media.mobileBig} {
+        ${props => props.adaptMain && css`
+            padding: 0 47px;
+        `}
     }
 `

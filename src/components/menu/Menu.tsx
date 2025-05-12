@@ -28,7 +28,7 @@ const StyledMenu = styled.nav`
         gap: 30px;
     }
     
-    @media ${theme.media.hideHeader} {
+    @media screen and ${theme.media.hideHeader} {
         display: none;
     }
 `

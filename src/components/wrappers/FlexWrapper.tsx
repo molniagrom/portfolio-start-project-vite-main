@@ -24,7 +24,7 @@ export const FlexWrapper = styled.div<FlexWrapperPropsType>`
     position: ${props => props.position || undefined};
 
 
-    @media screen and ${theme.media.tabletBig} {
+    @media screen and ${theme.media.tablet} {
         flex-wrap: ${props => props.adaptive ? "wrap" : "no-wrap"};
         ${props => props.adaptMain && css`
             gap: 20px;

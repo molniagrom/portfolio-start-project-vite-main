@@ -29,7 +29,7 @@ export const Photo = styled.img<PhotoPropsType>`
     bottom: ${props => props.bottom || undefined};
 
     ${props => props.adaptMain && css`
-        @media screen and ${theme.media.tabletBig} {
+        @media screen and ${theme.media.tablet} {
             border: 16px solid white;
         }
 
@@ -38,19 +38,25 @@ export const Photo = styled.img<PhotoPropsType>`
             height: 44%;
         }
 
-        @media screen and ${theme.media.tabletBig} {
+        @media screen and ${theme.media.tablet} {
             width: 334px;
             height: 334px;
         }
 
         @media screen and ${theme.media.mobileBig} {
-            max-width: 187px;
-            max-height: 187px;
+            min-width: 187px;
+            min-height: 187px;
+            border: 14px solid white;
         }
 
         @media screen and ${theme.media.mobile} {
             border: 10px solid white;
         }
+
+        // @media screen and ${theme.media.hideHeader} {
+        //     width: 50%;
+        //     height: 50%;
+        // }
 
     `}
     

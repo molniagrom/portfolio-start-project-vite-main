@@ -30,9 +30,8 @@ const [isOpen, setIsOpen] = useState(false);
 const StyledMobileMenu = styled.nav`
     display: none;
 
-    @media ${theme.media.hideHeader} {
+    @media screen and ${theme.media.hideHeader} {
         display: flex;
-        //flex-direction: row;
         align-items: center;
         justify-content: center;
     }

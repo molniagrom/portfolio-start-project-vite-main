@@ -18,12 +18,11 @@ export const theme = {
     },
 
     media: {
-        tabletBig: "(max-width: 900px)",
-        tabletSmall: "(max-width: 900px)",
-        mobile: "(max-width: 430px)",
+        tablet: "(max-width: 900px)",
+        mobile: "(max-width: 480px)",
         mobileBig: "(max-width: 660px)",
         main: "(max-width: 870px)",
-        hideHeader: " screen and (max-width: 500px)",
+        hideHeader: "(max-width: 500px)",
     }
 
 

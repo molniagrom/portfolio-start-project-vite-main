@@ -46,7 +46,7 @@ const StyledImage = styled.img<{ variant: "map" | "me" }>`
                 bottom: 0;
                 left: 40px;
 
-                @media screen and ${theme.media.tabletBig} {
+                @media screen and ${theme.media.tablet} {
                     height: 51.44%;
                 }
 
@@ -58,7 +58,7 @@ const StyledImage = styled.img<{ variant: "map" | "me" }>`
                 right: 0;
                 height: 100%;
                 object-fit: contain;
-                @media screen and ${theme.media.tabletBig} {
+                @media screen and ${theme.media.tablet} {
                     height: 80%;
                 }
 
@@ -85,12 +85,22 @@ const InfoAboutMe = styled.div`
     margin-right: 20px;
 
     color: #393939;
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+    //background-color: rgba(255, 255, 255, 0.2);
+    //backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
+    background: linear-gradient(132deg, rgba(255, 255, 255, 0.5) 0%, rgba(0, 71, 255, 0.05) 100%);
     border-radius: 100px 0 100px 0;
-    
-    @media screen and ${theme.media.tabletBig}{
-        top: 70px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+
+    @media screen and ${theme.media.tablet} {
+        position: relative;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    @media screen and ${theme.media.mobile} {
+        padding: 40px 10px 34px 45px;
     }
 `
 const Icons = styled.div`
@@ -99,11 +109,23 @@ const Icons = styled.div`
     align-self: flex-end;
     gap: 16px;
     padding-bottom: 18px;
+
+    @media screen and ${theme.media.mobile} {
+      display: none;
+    }
 `
 const WrapperBcg = styled.div`
     position: relative;
     padding: 46px 42px 0 42px;
     min-height: 115vh;
+
+    @media screen and ${theme.media.tablet} {
+        padding: 70px 100px 0 100px;
+    }
+    @media screen and ${theme.media.mobileBig} {
+        padding: 46px 42px 0 42px;
+    }
+
 `
 
 const NameAboutMe = styled.h2`
@@ -116,6 +138,11 @@ const NameAboutMe = styled.h2`
     span {
         color: ${theme.colors.accent};
     }
+
+    @media screen and ${theme.media.mobile} {
+        font-weight: 700;
+        font-size: 32px;
+    }
 `
 
 const UlStyled = styled.ul`
@@ -124,11 +151,21 @@ const UlStyled = styled.ul`
     li + li {
         padding-top: 6px;
     }
+
+    @media screen and ${theme.media.mobile} {
+        li + li {
+            padding-top: 2px;
+        }
+    }
 `
 const LiStyled = styled.li`
     //marker: url('$_{IconName}'); "_" Чтобы не ругался 
 
     padding-left: 13px;
+    @media screen and ${theme.media.mobile} {
+        font-weight: 400;
+        font-size: 10px;
+    }
 
     &::before {
         content: "";
@@ -138,6 +175,11 @@ const LiStyled = styled.li`
         background: linear-gradient(90deg, rgba(166, 188, 250, 1) 50%, rgba(33, 87, 242, 1) 100%);
         border-radius: 50%;
         transform: rotate(90deg) translateY(13px);
+
+        @media screen and ${theme.media.mobile} {
+            width: 9px;
+            height: 9px;
+        }
     }
 `
 
