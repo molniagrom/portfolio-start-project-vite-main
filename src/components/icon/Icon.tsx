@@ -77,7 +77,7 @@ const Svg = styled.svg<SvgProps>`
         right: -55px;
     `}
 
-    @media screen and ${theme.media.mobileBig} {
+    @media screen and ${theme.media.mobile} {
     ${props => props.adaptiveMain && css`
         width: 15px;
         height: 15px;

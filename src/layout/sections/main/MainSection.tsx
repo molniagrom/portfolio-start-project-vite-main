@@ -6,17 +6,18 @@ export const MainSection = styled.section`
     display: flex;
     position: relative;
     padding: 190px 0;
+    overflow-x: clip;
 
-    @media screen and ${theme.media.mobileBig} {
+    @media screen and ${theme.media.mobile} {
         padding: 0 96px;
     }
 
-    @media screen and ${theme.media.hideHeader} {
+    @media screen and ${theme.media.mobile} {
         padding: 120px 0 83px 0;
     }
 
     @media screen and ${theme.media.tablet} {
-        padding: 168px 0 83px 0;
+        padding: 157px 0 83px 0;
     }
 
     background: linear-gradient(

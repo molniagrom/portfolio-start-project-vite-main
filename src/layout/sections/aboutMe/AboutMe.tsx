@@ -66,7 +66,7 @@ const StyledImage = styled.img<{ variant: "map" | "me" }>`
 `
 
 const AboutMeStyled = styled.section`
-    min-height: 946px;
+    //min-height: 946px;
     background-color: ${theme.colors.secondaryFont};
     display: flex;
     justify-content: center;
@@ -122,7 +122,7 @@ const WrapperBcg = styled.div`
     @media screen and ${theme.media.tablet} {
         padding: 70px 100px 0 100px;
     }
-    @media screen and ${theme.media.mobileBig} {
+    @media screen and ${theme.media.mobile} {
         padding: 46px 42px 0 42px;
     }
 

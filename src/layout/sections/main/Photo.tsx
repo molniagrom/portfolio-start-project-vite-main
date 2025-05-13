@@ -43,7 +43,7 @@ export const Photo = styled.img<PhotoPropsType>`
             height: 334px;
         }
 
-        @media screen and ${theme.media.mobileBig} {
+        @media screen and ${theme.media.mobile} {
             min-width: 187px;
             min-height: 187px;
             border: 14px solid white;
@@ -53,7 +53,7 @@ export const Photo = styled.img<PhotoPropsType>`
             border: 10px solid white;
         }
 
-        @media screen and ${theme.media.hideHeader} {
+        @media screen and ${theme.media.mobile} {
             width: 60%;
             height: 60%;
         }

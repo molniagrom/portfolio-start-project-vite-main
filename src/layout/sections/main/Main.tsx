@@ -114,7 +114,7 @@ const WrapperBlur = styled.div`
         padding: 30px 50px 100px 78px;
     }
 
-    @media screen and ${theme.media.mobileBig} {
+    @media screen and ${theme.media.mobile} {
         padding: 20px 28px 47px 42px;
         border-radius: 112px 0;
     }
@@ -134,7 +134,7 @@ export const MainTitle = styled.h1`
     line-height: clamp(1.2, 4vw, 1.36);
     padding-bottom: clamp(10px, 3vw, 20px);
 
-    @media screen and ${theme.media.hideHeader} {
+    @media screen and ${theme.media.mobile} {
         font-weight: 700;
         font-size: 33px;
         line-height: 115%;
@@ -154,7 +154,7 @@ export const Name = styled.h2<NamePropsType>`
         padding-bottom: clamp(15px, 5vw, 50px);
 
     }
-    @media screen and ${theme.media.mobileBig} {
+    @media screen and ${theme.media.mobile} {
         font-weight: 400;
         font-size: 15px;
         line-height: 150%;
@@ -167,7 +167,7 @@ const BlueWhite = styled.div`
     flex-direction: column;
     justify-content: start;
     position: fixed;
-    bottom: 100px;
+    bottom: 50px;
     left: 0;
     gap: 17px;
     border-radius: 0 25px 25px 0;
@@ -176,7 +176,7 @@ const BlueWhite = styled.div`
     padding: 36px 15px;
     z-index: 5;
 
-    @media screen and ${theme.media.mobileBig} {
+    @media screen and ${theme.media.mobile} {
         display: none;
     }
 

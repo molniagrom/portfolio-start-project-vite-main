@@ -18,16 +18,21 @@ export const Container = styled.div<ContainerPropsType>`
 
     @media screen and ${theme.media.tablet} {
         ${props => props.adaptMain && css`
-            padding: 0 100px;
+            padding: 0 10vw;
         `} 
         ${props => props.adaptProj && css`
             padding: 0 110px;
         `}
     }
 
-    @media screen and ${theme.media.mobileBig} {
+    @media screen and ${theme.media.mobile} {
         ${props => props.adaptMain && css`
-            padding: 0 47px;
+            padding: 0 25px;
+        `}
+    }
+    @media screen and ${theme.media.mobile} {
+        ${props => props.adaptProj && css`
+            padding: 0 35px;
         `}
     }
 `

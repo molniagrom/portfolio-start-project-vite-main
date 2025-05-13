@@ -1,13 +1,13 @@
 import {useState} from 'react';
 import styled from "styled-components";
 import {Card} from "./card/Card.tsx";
-import {Icon} from "../../../components/icon/Icon.tsx";
+// import {Icon} from "../../../components/icon/Icon.tsx";
 import {Button} from "../../../components/Button/Button.tsx";
 import {AStyled} from "../../../components/AStyled/AStyled.tsx";
 import {theme} from "../../../styles/Theme.ts";
 import {Container} from "../../../components/Container.ts";
-import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
 import dots from "../../../image/Dots.svg"
+// import elipse from "../../../../public/smallElipseGradient.svg"
 
 export const Projects = () => {
     const [clickedIndex, setClickedIndex] = useState<number | null>(null);
@@ -21,41 +21,36 @@ export const Projects = () => {
     return (
         <StyledProjects>
             <Container adaptProj maxWidth={"1240px"} padding={"0 20px"}>
-                <FlexWrapper direction={"column"} justify={"center"} alignItems={"center"}>
-                    <TitleProject>Projects</TitleProject>
-                    <Icon position={"relative"} left={"8px"} iconId={"ElipseSmallGradient"}/>
-                    <FlexWrapper justify={"center"} alignItems={"center"}>
-                        <List className="category-tabs">
-                            {tap.map((item, index) => (
-                                <ListItem key={item}>
-                                    <Button
-                                        adaptiveProject
-                                        isClicked={clickedIndex === index}
-                                        onClick={() => onClick(index)}
-                                        border={`${theme.colors.border} 3px solid`}
-                                        borderRadius={"67px"}
-                                        padding={"7px 40px"}
-                                    >
-                                        <AStyled adaptiveProject lineHeight={"136%"} fontWeight={"400"}
-                                                 fontSize={"20px"}>{item}</AStyled>
-                                    </Button>
-                                </ListItem>
-                            ))}
-                        </List>
-                    </FlexWrapper>
-                    <ScrollWrapper>
-                        <GreedWrapper>
-                            <Card/>
-                            <Card/>
-                            <Card/>
-                            <Card/>
-                            <Card/>
-                            <Card/>
-                            <Card/>
-                            <Card/>
-                        </GreedWrapper>
-                    </ScrollWrapper>
-                </FlexWrapper>
+                <TitleProject>Projects</TitleProject>
+                <List className="category-tabs">
+                    {tap.map((item, index) => (
+                        <ListItem key={item}>
+                            <Button
+                                adaptiveProject
+                                isClicked={clickedIndex === index}
+                                onClick={() => onClick(index)}
+                                border={`${theme.colors.border} 3px solid`}
+                                borderRadius={"67px"}
+                                padding={"7px 40px"}
+                            >
+                                <AStyled adaptiveProject lineHeight={"136%"} fontWeight={"400"}
+                                         fontSize={"20px"}>{item}</AStyled>
+                            </Button>
+                        </ListItem>
+                    ))}
+                </List>
+                <ScrollWrapper>
+                    <GreedWrapper>
+                        <Card/>
+                        <Card/>
+                        <Card/>
+                        <Card/>
+                        <Card/>
+                        <Card/>
+                        <Card/>
+                        <Card/>
+                    </GreedWrapper>
+                </ScrollWrapper>
             </Container>
         </StyledProjects>
 
@@ -75,11 +70,26 @@ const StyledProjects = styled.section`
     }
 `;
 
-const TitleProject = styled.h3`
+const TitleProject = styled.h2`
     font-weight: 600;
     font-size: 32px;
     line-height: 136%;
     padding-bottom: 5px;
+    text-align: center;
+    position: relative;
+
+    &::after {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url("../../../../public/smallElipseGradient.svg") no-repeat center / contain;
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+
+    }
 `;
 
 const List = styled.ul`
@@ -90,17 +100,13 @@ const List = styled.ul`
     column-gap: clamp(40px, 5vw, 8px);
     list-style: none;
     padding-top: 34px;
-    //margin: 0 auto;
-    //width: 100%;
+    justify-content: center;
+    width: 100%;
 
     padding-bottom: 55px;
-
+    
     @media screen and ${theme.media.tablet} {
-        padding-bottom: 62px;
-    }
-
-    @media screen and ${theme.media.tablet} {
-        padding-top: 64px;
+        padding: 64px 0 62px 0;
     }
     @media screen and ${theme.media.laptop} {
         grid-template-columns: repeat(6, 1fr);
@@ -112,21 +118,15 @@ const List = styled.ul`
         grid-auto-rows: minmax(42px, auto);
         column-gap: 40px;
     }
-    @media screen and ${theme.media.tabletSmall} {
+    @media screen and ${theme.media.mobile} {
         grid-template-columns: repeat(3, 96px);
-        grid-auto-rows: minmax(42px, auto);
-        column-gap: 40px;
+        grid-auto-rows: minmax(20px, auto);
+        column-gap: 20px;
+        padding: 45px 0 40px 0;
     }
 
     li button {
-        min-width: 160px;
-        @media screen and (max-width: 940px) {
-            min-width: 160px;
-        }
-
-        @media screen and ${theme.media.tabletSmall} {
-            max-width: 96px;
-        }
+        width: 100%;
         color: #fff;
     }
 `;

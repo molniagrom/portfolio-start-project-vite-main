@@ -19,14 +19,11 @@ export const theme = {
 
     media: {
         tablet: "(max-width: 900px)",
-        mobile: "(max-width: 576px)",
-        // mobileSmall: "(max-width: 388px)",
-        // mobileVerySmall: "(max-width: 270px)",
-        // mobileBig: "(max-width: 660px)",
-        // main: "(max-width: 870px)",
-        // hideHeader: "(max-width: 500px)",
-        // tabletSmall: "(max-width: 600px)",
-        // laptop: "(max-width: 1190px)",
+        mobile: "(max-width: 585px)",
+
+
+        main: "(max-width: 870px)",
+        laptop: "(max-width: 1190px)",
 
     }
 

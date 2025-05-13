@@ -28,7 +28,7 @@ const StyledMenu = styled.nav`
         gap: 30px;
     }
     
-    @media screen and ${theme.media.hideHeader} {
+    @media screen and ${theme.media.mobile} {
         display: none;
     }
 `

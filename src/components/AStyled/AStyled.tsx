@@ -40,7 +40,7 @@ export const AStyled = styled.a<AStyledPropsType>`
     }
 
     ${props => props.adaptiveProject && css`
-        @media screen and ${theme.media.tabletSmall} {
+        @media screen and ${theme.media.mobile} {
             font-weight: 400;
             font-size: 12px;
         }
@@ -64,7 +64,7 @@ export const AStyled = styled.a<AStyledPropsType>`
         }
     }
 
-    @media screen and ${theme.media.hideHeader} {
+    @media screen and ${theme.media.mobile} {
         ${props => props.adaptiveMain && css`
             font-weight: 600;
             font-size: 8px;
@@ -110,7 +110,7 @@ export const InputLinkStyled = styled.input<InputLinkStyledPropsType>`
         max-height: 24px;
     }
 
-    @media screen and ${theme.media.hideHeader} {
+    @media screen and ${theme.media.mobile} {
         ${props => props.adaptiveMain && css`
             font-weight: 600;
             font-size: 8px;
@@ -123,12 +123,6 @@ export const InputLinkStyled = styled.input<InputLinkStyledPropsType>`
     @media screen and ${theme.media.mobile} {
         ${props => props.adaptiveMain && css`
             padding: 0;
-        `}
-    }
-
-    @media screen and ${theme.media.mobileSmall} {
-        ${props => props.adaptiveMain && css`
-            padding-left: 6%;        
         `}
     }
 

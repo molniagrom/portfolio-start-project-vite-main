@@ -39,7 +39,7 @@ export const Button = styled.button<ButtonPropsType>`
     `}
     
     ${props => props.adaptiveProject && css`
-        @media screen and ${theme.media.tabletSmall} {
+        @media screen and ${theme.media.mobile} {
             padding: 4px 34px;
         }
     `}
