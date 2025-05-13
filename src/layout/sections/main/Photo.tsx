@@ -53,10 +53,10 @@ export const Photo = styled.img<PhotoPropsType>`
             border: 10px solid white;
         }
 
-        // @media screen and ${theme.media.hideHeader} {
-        //     width: 50%;
-        //     height: 50%;
-        // }
+        @media screen and ${theme.media.hideHeader} {
+            width: 60%;
+            height: 60%;
+        }
 
     `}
     

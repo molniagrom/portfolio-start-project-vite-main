@@ -11,6 +11,8 @@ type FlexWrapperPropsType = {
     position?: string;
     adaptive?: boolean;
     adaptMain?: boolean;
+    adaptiveHighlights?: boolean;
+    adaptiveMyStack?: boolean;
 }
 
 export const FlexWrapper = styled.div<FlexWrapperPropsType>`
@@ -23,7 +25,21 @@ export const FlexWrapper = styled.div<FlexWrapperPropsType>`
     padding: ${props => props.padding || undefined};
     position: ${props => props.position || undefined};
 
-    @media screen and ${theme.media.tablet} {
+     ${props => props.adaptiveHighlights && css`
+         @media screen and ${theme.media.mobileVerySmall} {
+             flex-direction: column;
+         }
+     `}
+     
+     ${props => props.adaptiveMyStack && css`
+         @media screen and ${theme.media.tablet} {
+             gap: 60px;
+         }
+     `}
+   
+
+
+        @media screen and ${theme.media.tablet} {
         flex-wrap: ${props => props.adaptive ? "wrap" : "no-wrap"};
         ${props => props.adaptMain && css`
             gap: 20px;
@@ -35,4 +51,12 @@ export const FlexWrapper = styled.div<FlexWrapperPropsType>`
             gap: 17px;
         `}
     }
+
+
+    @media screen and ${theme.media.mobileSmall} {
+        ${props => props.adaptive && css`
+            justify-content: center;
+        `}
+    }
+
 `;

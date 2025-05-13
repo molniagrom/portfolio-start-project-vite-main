@@ -127,8 +127,8 @@ const LinkMobile = styled.a`
     display: inline-block;
     color: ${theme.colors.primaryFont};
     font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 25px;
     text-align: center;
     transition: color 0.2s ease, transform 0.2s ease;
 

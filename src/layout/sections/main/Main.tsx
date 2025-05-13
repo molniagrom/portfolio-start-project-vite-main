@@ -47,7 +47,7 @@ export const Main = () => {
                                     <Name>I'm <span>Alina Groza</span>. Bringing order to chaos — your frontend in
                                         reliable
                                         hands. Aesthetics, logic, and user care — in every pixel.</Name>
-                                    <FlexWrapper alignItems={"center"} gap="32px">
+                                    <FlexWrapper adaptive alignItems={"center"} gap="32px">
 
                                         <AStyled
                                             adaptiveMain

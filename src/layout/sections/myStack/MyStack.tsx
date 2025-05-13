@@ -4,12 +4,13 @@ import styled from "styled-components";
 import {Icon} from "../../../components/icon/Icon.tsx";
 import {Container} from "../../../components/Container.ts";
 import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
+import {theme} from "../../../styles/Theme.ts";
 
 export const MyStack = () => {
     return (
         <MyStackStyled>
-            <Container>
-                <FlexWrapper gap={"140px"} direction="column" justify="center" alignItems="center">
+            <Container padding={"0px 20px"}>
+                <FlexWrapper adaptiveMyStack gap={"140px"} direction="column" justify="center" alignItems="center">
                     <ContentText>
                         <h2>My Tech Stack</h2>
                         <p> Technologies I’ve been working with recently</p>
@@ -51,11 +52,20 @@ const ContentText = styled.div`
     align-items: center;
     gap: 50px;
 
+    @media screen and ${theme.media.tablet}{
+        gap: 30px;
+    }
+
     h2 {
         font-weight: 700;
         font-size: 48px;
         line-height: 54%;
         text-align: center;
+        
+        @media screen and ${theme.media.tablet}{
+            font-weight: 600;
+            font-size: 33px; 
+        }
     }
 
     p {
@@ -63,6 +73,11 @@ const ContentText = styled.div`
         font-size: 32px;
         line-height: 81%;
         text-align: center;
+
+        @media screen and ${theme.media.tablet}{
+            font-weight: 300;
+            font-size: 23px;
+        }
     }
 `
 
@@ -73,5 +88,9 @@ const ContentSvg = styled.div`
     align-items: center;
     gap: 106px;
     flex-wrap: wrap;
+
+    @media screen and ${theme.media.tablet}{
+        gap: 50px;
+    }
 `
 

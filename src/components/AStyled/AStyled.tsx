@@ -119,4 +119,17 @@ export const InputLinkStyled = styled.input<InputLinkStyledPropsType>`
         `}
     }
 
+
+    @media screen and ${theme.media.mobile} {
+        ${props => props.adaptiveMain && css`
+            padding: 0;
+        `}
+    }
+
+    @media screen and ${theme.media.mobileSmall} {
+        ${props => props.adaptiveMain && css`
+            padding-left: 6%;        
+        `}
+    }
+
 `;
