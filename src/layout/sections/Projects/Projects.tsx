@@ -20,7 +20,7 @@ export const Projects = () => {
 
     return (
         <StyledProjects>
-            <Container adaptProj maxWidth={"1240px"} padding={"0 20px"}>
+            <Container maxWidth={"1240px"} padding={"0 20px"}>
                 <TitleProject>Projects</TitleProject>
                 <List className="category-tabs">
                     {tap.map((item, index) => (
@@ -94,28 +94,22 @@ const TitleProject = styled.h2`
 
 const List = styled.ul`
     display: grid;
-    grid-template-columns: repeat(6, minmax(160px, auto));
+    grid-template-columns: repeat(6, 1fr);
     grid-auto-rows: minmax(42px, auto);
     row-gap: 30px;
-    column-gap: clamp(40px, 5vw, 8px);
+    column-gap: 2vw;
     list-style: none;
     padding-top: 34px;
     justify-content: center;
     width: 100%;
-
     padding-bottom: 55px;
     
     @media screen and ${theme.media.tablet} {
         padding: 64px 0 62px 0;
     }
-    @media screen and ${theme.media.laptop} {
-        grid-template-columns: repeat(6, 1fr);
-        grid-auto-rows: minmax(42px, auto);
-        column-gap: 2%;
-    }
+   
     @media screen and (max-width: 940px) {
         grid-template-columns: repeat(3, 160px);
-        grid-auto-rows: minmax(42px, auto);
         column-gap: 40px;
     }
     @media screen and ${theme.media.mobile} {
@@ -137,12 +131,15 @@ const ListItem = styled.li`
 
 
 const ScrollWrapper = styled.div`
-    //overflow-x: auto;
     width: 100%;
     box-sizing: border-box;
     position: relative;
     overflow: visible;
-
+    @media screen and ${theme.media.tablet} {
+        max-width: 550px;
+        margin: 0 auto;
+    }
+    
     &::before {
         @media screen and ${theme.media.tablet} {
             display: none;

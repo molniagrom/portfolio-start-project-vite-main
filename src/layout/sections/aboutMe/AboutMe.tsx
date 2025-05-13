@@ -9,7 +9,7 @@ import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
 export const AboutMe = () => {
     return (
         <AboutMeStyled>
-            <Container>
+            <Container aboutMeAdaptive padding={"46px 42px 0 42px"}>
                 <WrapperBcg>
                     <StyledImage variant="map" src="../../../../public/map.png" alt="map"/>
                     <StyledImage variant="me" src="../../../../public/me.png" alt="me"/>
@@ -45,21 +45,31 @@ const StyledImage = styled.img<{ variant: "map" | "me" }>`
             variant === "me" && css`
                 bottom: 0;
                 left: 40px;
+                height: 800px;
 
                 @media screen and ${theme.media.tablet} {
-                    height: 51.44%;
+                    height: 50%;
+                    object-fit: cover;
                 }
-
+        
             `}
 
     ${({variant}) =>
             variant === "map" && css`
                 bottom: 0;
-                right: 0;
+                right: 50px;
                 height: 100%;
                 object-fit: contain;
                 @media screen and ${theme.media.tablet} {
-                    height: 80%;
+                    top: -130px;
+                    right: -30px;
+                }
+
+                @media screen and ${theme.media.mobile} {
+                    bottom: 0;
+                    right: -30px;
+                    top: 0;
+                    //object-fit: cover;
                 }
 
             `}
@@ -78,15 +88,13 @@ const InfoAboutMe = styled.div`
     flex-direction: column;
     position: absolute;
     z-index: 1;
-    top: 20px;
-    right: 20%;
+    top: 40px;
+    right: 0;
     max-width: 536px;
     padding: 30px 20px 65px 50px;
     margin-right: 20px;
 
     color: #393939;
-    //background-color: rgba(255, 255, 255, 0.2);
-    //backdrop-filter: blur(10px);
     backdrop-filter: blur(20px);
     background: linear-gradient(132deg, rgba(255, 255, 255, 0.5) 0%, rgba(0, 71, 255, 0.05) 100%);
     border-radius: 100px 0 100px 0;
@@ -94,13 +102,14 @@ const InfoAboutMe = styled.div`
 
     @media screen and ${theme.media.tablet} {
         position: relative;
-        top: 0;
+        top: -50px;
         left: 50%;
         transform: translateX(-50%);
     }
 
     @media screen and ${theme.media.mobile} {
-        padding: 40px 10px 34px 45px;
+        max-width: 303px;
+        padding: 40px 10px 34px 35px;
     }
 `
 const Icons = styled.div`
@@ -116,14 +125,14 @@ const Icons = styled.div`
 `
 const WrapperBcg = styled.div`
     position: relative;
-    padding: 46px 42px 0 42px;
     min-height: 115vh;
 
     @media screen and ${theme.media.tablet} {
-        padding: 70px 100px 0 100px;
+        padding: 70px 40px 0 40px;
     }
     @media screen and ${theme.media.mobile} {
-        padding: 46px 42px 0 42px;
+        padding: 46px 0 0 0;
+        min-height: 65vh;
     }
 
 `
@@ -142,6 +151,7 @@ const NameAboutMe = styled.h2`
     @media screen and ${theme.media.mobile} {
         font-weight: 700;
         font-size: 32px;
+        padding-bottom: 12px;
     }
 `
 
