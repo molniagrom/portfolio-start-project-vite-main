@@ -9,7 +9,7 @@ export const Highlights = () => {
     return (
         <HighlightsStyled>
             <Container>
-                <FlexWrapper adaptiveHighlights gap={"20px"} justify={"space-around"} alignItems={"center"}>
+                <FlexWrapper adaptiveHighlights gap={"25px"} justify={"space-around"} alignItems={"center"}>
                     <StatBlock>
                         <Number>81</Number>
                         <Label>HAPPY CUSTOMERS</Label>
@@ -45,7 +45,7 @@ const Number = styled.div`
     
     @media screen and ${theme.media.mobile} {
         font-weight: 700;
-        font-size: 12px;
+        font-size: 21px;
     }
 `;
 
@@ -56,6 +56,6 @@ const Label = styled.div`
     
     @media screen and ${theme.media.mobile} {
         font-weight: 700;
-        font-size: 11px;
+        font-size: 20px;
     }
 `;

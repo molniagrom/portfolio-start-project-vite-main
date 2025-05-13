@@ -43,6 +43,10 @@ const MyStackStyled = styled.section`
     color: white;
     gap: 140px;
     padding: 100px 0 100px 0;
+
+    @media screen and ${theme.media.mobile} {
+        padding: 60px 0 60px 0;
+    }
 `
 
 const ContentText = styled.div`
@@ -59,7 +63,7 @@ const ContentText = styled.div`
     h2 {
         font-weight: 700;
         font-size: 48px;
-        line-height: 54%;
+        line-height: 1.2;
         text-align: center;
         
         @media screen and ${theme.media.tablet}{
@@ -71,7 +75,7 @@ const ContentText = styled.div`
     p {
         font-weight: 400;
         font-size: 32px;
-        line-height: 81%;
+        line-height: 1.2;
         text-align: center;
 
         @media screen and ${theme.media.tablet}{

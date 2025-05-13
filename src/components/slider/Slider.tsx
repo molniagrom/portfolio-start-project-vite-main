@@ -3,13 +3,13 @@
 import styled from "styled-components";
 import {RatingStar} from 'react-ts-rating-star'
 import {theme} from "../../styles/Theme.ts";
-import {Icon} from "../icon/Icon.tsx";
+// import {quote} from "../../../public/quote.svg";
 
 
 export const Slider = () => {
     return (
         <SliderStyled>
-            <Icon top={"10%"} left={"10%"} width={"110px"} height={"86px"} position={"absolute"} iconId={"quote"}/>
+            {/*<Icon top={"10%"} left={"10%"} width={"110px"} height={"86px"} position={"absolute"} iconId={"quote"}/>*/}
             <Slide>
                 <ImageCard
                     src="https://www.mckinsey.com/it/~/media/mckinsey/our%20people/alessandro%20agosta/alessandro-agosta_fc_mask_profile_1536x1152.jpg?cq=50&mw=480&car=1:1&cpy=Center"
@@ -46,7 +46,24 @@ const Slide = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    position: relative;
+
+    &::before {
+        content: '';
+        display: inline-block;
+        width: 110px;
+        height: 86px;
+        background: url("../../../public/quote.svg") no-repeat center / cover;
+        position: absolute;
+        transform: scale(0.7);
+        top: 40px;
+        left: 40px;
+
+        @media screen and ${theme.media.tablet} {
+            top: -8px;
+            left: -10px;
+        }
+    }
 
     h3 {
         margin: 0;

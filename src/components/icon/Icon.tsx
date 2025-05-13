@@ -63,27 +63,27 @@ const Svg = styled.svg<SvgProps>`
     overflow: visible;
     bottom: ${props => props.bottom || undefined};
 
-    ${props => props.hover && css`
-        transform: scale(1.1);
-    `} 
     @media screen and ${theme.media.tablet} {
-    ${props => props.adaptivePlus && css`
-        top: -55px;
-        right: 0px;
-    `}  
-    
-    ${props => props.adaptiveElipse && css`
-        bottom: 0;
-        right: -55px;
-    `}
+        ${props => props.adaptivePlus && css`
+            top: -55px;
+            right: 0;
+        `}
+
+        ${props => props.adaptiveElipse && css`
+            bottom: 0;
+            right: -55px;
+        `}
+    }
 
     @media screen and ${theme.media.mobile} {
-    ${props => props.adaptiveMain && css`
-        width: 15px;
-        height: 15px;
+        ${props => props.adaptiveMain && css`
+            width: 15px;
+            height: 15px;
+        `}
+    }
+
+    ${props => props.hover && css`
+        transform: scale(1.1);
     `}
-}
-    
-}
 `
 
