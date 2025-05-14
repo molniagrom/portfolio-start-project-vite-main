@@ -115,8 +115,8 @@ const List = styled.ul`
     @media screen and ${theme.media.mobile} {
         grid-template-columns: repeat(3, 96px);
         grid-auto-rows: minmax(20px, auto);
-        column-gap: 20px;
-        padding: 45px 0 40px 0;
+        gap: 24px 18px;
+        padding: 42px 0 38px 0;
     }
 
     li button {
@@ -134,9 +134,12 @@ const ScrollWrapper = styled.div`
     width: 100%;
     box-sizing: border-box;
     position: relative;
-    overflow: visible;
+
+    @media screen and ${theme.media.mobile} {
+        max-width: 353px;
+    }
+
     @media screen and ${theme.media.tablet} {
-        max-width: 550px;
         margin: 0 auto;
     }
     
@@ -161,5 +164,10 @@ const GreedWrapper = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-auto-rows: auto;
     gap: 45px 38px;
+
+    @media screen and ${theme.media.mobile} {
+        gap: 30px 20px;
+        grid-template-columns: repeat(2, minmax(160px, 1fr));
+    }
 `;
 

@@ -41,8 +41,9 @@ export const AStyled = styled.a<AStyledPropsType>`
 
     ${props => props.adaptiveProject && css`
         @media screen and ${theme.media.mobile} {
-            font-weight: 400;
-            font-size: 12px;
+            font-weight: 700;
+            font-size: 8px;
+            line-height: 148%;
         }
     `}
     

@@ -14,6 +14,7 @@ type FlexWrapperPropsType = {
     adaptiveHighlights?: boolean;
     adaptiveMyStack?: boolean;
     width?: string;
+    adaptiveProj?: boolean;
 }
 
 export const FlexWrapper = styled.div<FlexWrapperPropsType>`
@@ -27,30 +28,16 @@ export const FlexWrapper = styled.div<FlexWrapperPropsType>`
     position: ${props => props.position || undefined};
     width: ${props => props.width || undefined};
 
-     ${props => props.adaptiveHighlights && css`
-         @media screen and ${theme.media.mobile} {
-             flex-direction: column;
-         }
-     `}
-     
-     ${props => props.adaptiveMyStack && css`
-         @media screen and ${theme.media.tablet} {
-             gap: 60px;
-         }
-     `}
-   
 
+    @media screen and ${theme.media.tablet} {
+        flex-wrap: ${props => props.adaptive ? "wrap" : "nowrap"};
 
-        @media screen and ${theme.media.tablet} {
-        flex-wrap: ${props => props.adaptive ? "wrap" : "no-wrap"};
         ${props => props.adaptMain && css`
             gap: 20px;
         `}
-    }
 
-    @media screen and ${theme.media.mobile} {
-        ${props => props.adaptive && css`
-            gap: 17px;
+        ${props => props.adaptiveMyStack && css`
+            gap: 60px;
         `}
     }
 
@@ -58,6 +45,18 @@ export const FlexWrapper = styled.div<FlexWrapperPropsType>`
     @media screen and ${theme.media.mobile} {
         ${props => props.adaptive && css`
             justify-content: center;
+        `}
+
+        ${props => props.adaptiveProj && css`
+            padding: 10px 20px 13px 20px;
+        `}
+
+        ${props => props.adaptive && css`
+            gap: 17px;
+        `}
+
+        ${props => props.adaptiveHighlights && css`
+            flex-direction: column;
         `}
     }
 

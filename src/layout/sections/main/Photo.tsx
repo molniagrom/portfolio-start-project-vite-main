@@ -13,7 +13,7 @@ type PhotoPropsType = {
     right?: string;
     bottom?: string;
     adaptMain?: boolean;
-
+    adaptiveProj?: boolean;
 }
 
 export const Photo = styled.img<PhotoPropsType>`
@@ -28,11 +28,15 @@ export const Photo = styled.img<PhotoPropsType>`
     right: ${props => props.right || undefined};
     bottom: ${props => props.bottom || undefined};
 
-    ${props => props.adaptMain && css`
-        @media screen and ${theme.media.tablet} {
-            border: 16px solid white;
+    ${props => props.adaptiveProj && css`
+        @media screen and ${theme.media.mobile} {
+            height: 145px;
         }
-
+    `}
+    
+    
+    ${props => props.adaptMain && css`
+       
         @media screen and (max-width: 1020px) {
             width: 44%;
             height: 44%;
@@ -41,21 +45,15 @@ export const Photo = styled.img<PhotoPropsType>`
         @media screen and ${theme.media.tablet} {
             width: 334px;
             height: 334px;
+            border: 16px solid white;
         }
-
-        @media screen and ${theme.media.mobile} {
-            min-width: 187px;
-            min-height: 187px;
-            border: 14px solid white;
-        }
-
-        @media screen and ${theme.media.mobile} {
-            border: 10px solid white;
-        }
-
+        
         @media screen and ${theme.media.mobile} {
             width: 60%;
             height: 60%;
+            min-width: 187px;
+            min-height: 187px;
+            border: 10px solid white;
         }
 
     `}

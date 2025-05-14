@@ -9,26 +9,30 @@ export const Card = () => {
     return (
         <StyledCard borderRadius={"26px"} backgroundColor={theme.colors.fourthFont}>
             <Photo
+                adaptiveProj
                 borderRadius={"20px 20px 0 0"}
-                height={"60.91%"}
+                height={"240px"}
                 width={"100%"}
                 src={myPhoto}
                 objectFit={"cover"}
             />
 
             <FlexWrapper
+                adaptive
+                adaptiveProj
                 flexGrow={"1"}
                 alignItems={"stretch"}
                 justify={"space-between"}
+                gap={"25px"}
                 direction={"column"}
                 padding={"17px 33px 23px 33px"}
             >
                 <NameCard>Story motion for sale English courses</NameCard>
                 <FlexWrapper gap={"20px"} justify={"space-between"}>
-                    <AStyled buttonHover borderRadius={"12px"} padding={"4px 19px 4px 19px"} fontWeight={"700"}
+                    <AStyled adaptiveProject buttonHover borderRadius={"12px"} padding={"4px 19px 4px 19px"} fontWeight={"700"}
                              lineHeight={"148%"} color={theme.colors.fourthFont} fontSize={"14px"}
                              backgroundColor={theme.colors.primaryFont}>Edit code</AStyled>
-                    <AStyled LinkHover color={theme.colors.secondaryFont}>View</AStyled>
+                    <AStyled adaptiveProject LinkHover color={theme.colors.secondaryFont}>View</AStyled>
                 </FlexWrapper>
             </FlexWrapper>
         </StyledCard>
@@ -41,6 +45,10 @@ const NameCard = styled.h3`
     font-family: "Kalameh", sans-serif;
     font-weight: 700;
     font-size: 20px;
+
+    @media screen and ${theme.media.mobile} {
+        font-size: 12px;
+    }
 `;
 
 type StyledCardPropsType = {
