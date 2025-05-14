@@ -34,6 +34,7 @@ export const Contact = () => {
                                 </GroupFields>
                                 <Field placeholder={'Message'} as={"textarea"}/>
                                 <Button
+                                    adaptiveContact
                                     type={"submit"}
                                     backgroundColor={"#2350D6"}
                                     color={"#fff"}

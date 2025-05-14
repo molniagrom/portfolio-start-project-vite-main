@@ -40,6 +40,10 @@ const Info = styled.div`
             text-align: left;
             margin-bottom: 2px;
         }
+        @media screen and ${theme.media.mobile} {
+            font-size: 18px;
+            margin-bottom: 1px;
+        }
     }
     
     p {
@@ -52,6 +56,9 @@ const Info = styled.div`
             font-size: 22px;
             text-align: left;
         }
+        @media screen and ${theme.media.mobile} {
+            font-size: 14px;
+        }
     }
 `
 
@@ -62,5 +69,8 @@ const PartContent = styled.div`
 
     @media screen and ${theme.media.tablet} {
         gap: 45px;
+    }
+    @media screen and ${theme.media.mobile} {
+        gap: 26px;
     }
 `

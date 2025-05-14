@@ -86,6 +86,11 @@ const Svg = styled.svg<SvgProps>`
             width: 15px;
             height: 15px;
         `}
+
+        ${props => props.adaptivePart && css`
+            width: 44px;
+            height: 44px;
+        `}
     }
 
     ${props => props.hover && css`

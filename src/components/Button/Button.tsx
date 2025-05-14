@@ -14,6 +14,7 @@ type ButtonPropsType = {
     lineHeight?: string
     isClicked?: boolean
     adaptiveProject?: boolean
+    adaptiveContact?: boolean
 }
 
 export const Button = styled.button<ButtonPropsType>`
@@ -32,16 +33,25 @@ export const Button = styled.button<ButtonPropsType>`
     transition: all 0.2s ease;
     cursor: pointer;
     line-height: ${props => props.lineHeight || undefined};
-    
+
     ${props => props.isClicked && css`
         background-color: ${theme.colors.primaryBg};
         outline: none;
-    `}
+    `} 
     
-    ${props => props.adaptiveProject && css`
-        @media screen and ${theme.media.mobile} {
-            padding: 4px 34px;
-        }
-    `}
+    @media screen and ${theme.media.mobile} {
+
+      ${props => props.adaptiveProject && css`
+        padding: 4px 34px;
+      `}
+      
+      ${props => props.adaptiveContact && css`
+          font-size: 9px;
+          padding: 6px 24px;
+      `}
     
+    
+    }
+
+
 `
