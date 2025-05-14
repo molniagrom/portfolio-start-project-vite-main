@@ -11,8 +11,12 @@ export const Quote = () => {
         <QuoteStyled>
             <Container>
                 <QuoteWrapper>
-                    <QuoteText>For whatever a person is sowing, this he will also reap</QuoteText>
-                    <QuoteVerse>(Galatians 6:7)</QuoteVerse>
+                    <BlockquoteStyled cite="https://en.wikipedia.org/wiki/Paul_the_Apostle">
+                        For whatever a person is sowing, this he will also reap
+                    </BlockquoteStyled>
+                    <QuoteSourceStyled>
+                        <cite>Apostle Paul</cite>
+                    </QuoteSourceStyled>
                 </QuoteWrapper>
             </Container>
         </QuoteStyled>
@@ -29,7 +33,8 @@ const QuoteWrapper = styled.div`
 
 const QuoteStyled = styled.section`
     background-color: ${theme.colors.secondaryFont};
-    
+    font-style: italic;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,20 +45,19 @@ const QuoteStyled = styled.section`
     text-align: center;
     
 `
-const PStyled = styled.p`
-    color: #242b34;
-    line-height: 1.6;
-    font-family: "Kalameh", sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-    max-width: 700px;
-    margin: 0 auto;
-`
 
-const QuoteText = styled(PStyled)`
+const BlockquoteStyled = styled.blockquote`
+    font-style: italic;
     position: relative;
     padding-left: 60px;
     padding-right: 40px;
+    margin: 0 auto;
+    max-width: 700px;
+    line-height: 1.6;
+    font-family: "Kalameh", serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #242b34;
 
     &::before {
         content: '';
@@ -78,15 +82,27 @@ const QuoteText = styled(PStyled)`
         background-size: contain;
         opacity: 0.7;
         transform: rotate(180deg);
+
+        @media screen and ${theme.media.mobile} {
+            bottom: 0;
+        }
     }
 `;
 
-const QuoteVerse = styled(PStyled)`
-    font-style: italic;
-    transform: translateX(70%);
-    margin-top: 10px;
+const QuoteSourceStyled = styled.div`
+    transform: translate(130px, -15px);
+    
     font-size: 18px;
     color: #6C92FF;
+    margin: 0 auto;
+
+    @media screen and ${theme.media.mobile} {
+        transform: translate(80px, -10px);
+    }
+    
+    cite {
+        font-style: italic;
+    }
 `;
 
 
