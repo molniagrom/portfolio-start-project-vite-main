@@ -11,8 +11,8 @@ export const Quote = () => {
         <QuoteStyled>
             <Container>
                 <QuoteWrapper>
-                    <PStyled id={"text"}>For whatever a person is sowing, this he will also reap</PStyled>
-                    <PStyled id={"verse"}>(Galatians 6:7)</PStyled>
+                    <QuoteText>For whatever a person is sowing, this he will also reap</QuoteText>
+                    <QuoteVerse>(Galatians 6:7)</QuoteVerse>
                 </QuoteWrapper>
             </Container>
         </QuoteStyled>
@@ -22,15 +22,14 @@ export const Quote = () => {
 const QuoteWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    text-align: left;
     gap: max(20px, 7px);
     padding: 20px 0;
 `
 
 const QuoteStyled = styled.section`
     background-color: ${theme.colors.secondaryFont};
-
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,48 +38,8 @@ const QuoteStyled = styled.section`
     position: relative;
     overflow: hidden;
     text-align: center;
-
-    #text {
-        position: relative;
-        padding-left: 60px;
-        padding-right: 40px;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: 0;
-            width: 50px;
-            height: 50px;
-            background: url('./quote.svg') no-repeat center;
-            background-size: contain;
-            opacity: 0.7;
-        }
-
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            width: 50px;
-            height: 50px;
-            background: url('./quote.svg') no-repeat center;
-            background-size: contain;
-            opacity: 0.7;
-            transform: rotate(180deg);
-        }
-    }
-
-    #verse {
-        font-style: italic;
-        transform: translateX(70%);
-        margin-top: 10px;
-        font-size: 18px;
-        color: #6C92FF; // третий цвет шрифта
-    }
+    
 `
-
-
 const PStyled = styled.p`
     color: #242b34;
     line-height: 1.6;
@@ -90,4 +49,45 @@ const PStyled = styled.p`
     max-width: 700px;
     margin: 0 auto;
 `
+
+const QuoteText = styled(PStyled)`
+    position: relative;
+    padding-left: 60px;
+    padding-right: 40px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: 0;
+        width: 50px;
+        height: 50px;
+        background: url('../../../../public/quote.svg') no-repeat center;
+        background-size: contain;
+        opacity: 0.7;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        width: 50px;
+        height: 50px;
+        background: url('../../../../public/quote.svg') no-repeat center;
+        background-size: contain;
+        opacity: 0.7;
+        transform: rotate(180deg);
+    }
+`;
+
+const QuoteVerse = styled(PStyled)`
+    font-style: italic;
+    transform: translateX(70%);
+    margin-top: 10px;
+    font-size: 18px;
+    color: #6C92FF;
+`;
+
+
 

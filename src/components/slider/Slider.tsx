@@ -41,6 +41,7 @@ const SliderStyled = styled.div`
 
 
     @media screen and ${theme.media.mobile} {
+        width: 90%;
     }
 }
 `
