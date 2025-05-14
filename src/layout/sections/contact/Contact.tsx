@@ -18,13 +18,13 @@ export const Contact = () => {
 
     return (
         <ContactUs>
-            <Container>
+            <Container padding={"0"}>
                 <ContactTitle>
                     <h2>Contact Us</h2>
                     <Icon width={"18px"} height={"18px"} viewBox={"0 0 18 18"} iconId={"ElipseSmallGradient"}/>
                 </ContactTitle>
                 <ContactBlock>
-                    <FlexWrapper gap={"clamp(50px, 10vw, 130px)"}>
+                    <FlexWrapper adaptiveContact gap={"clamp(50px, 10vw, 130px)"}>
                         <FormContent>
                             <h2>Get in touch</h2>
                             <StyledForm>

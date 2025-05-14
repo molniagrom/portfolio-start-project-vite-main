@@ -21,6 +21,7 @@ type IconPropsType = {
     adaptivePlus?: boolean
     adaptiveElipse?: boolean
     adaptiveMain?: boolean
+    adaptivePart?: boolean
 }
 export const Icon = (props: IconPropsType) => {
     return (
@@ -50,6 +51,7 @@ type SvgProps = {
     hover?: boolean
     adaptivePlus?: boolean
     adaptiveElipse?: boolean
+    adaptivePart?: boolean
 }
 
 const Svg = styled.svg<SvgProps>`
@@ -72,6 +74,10 @@ const Svg = styled.svg<SvgProps>`
         ${props => props.adaptiveElipse && css`
             bottom: 0;
             right: -55px;
+        `}
+        ${props => props.adaptivePart && css`
+            width: 72px;
+            height: 72px;
         `}
     }
 

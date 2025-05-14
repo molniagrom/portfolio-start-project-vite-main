@@ -8,6 +8,10 @@ export const ContactUs = styled.section`
     justify-content: center;
     padding: 65px 25px 197px 25px;   
     min-height: 100vh;
+
+    @media screen and ${theme.media.tablet} {
+        padding: 37px 80px 52px 80px;
+    }
 `;
 
 export const ContactTitle = styled.div`
@@ -34,7 +38,6 @@ export const FormContent = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     color: ${theme.colors.primaryFont};
-    //padding: 32px;
     flex: 1;
 
     h2 {
@@ -69,8 +72,8 @@ export const Field = styled.input<FieldPropsType>`
     padding: 9px 30px;
     border-radius: 9px;
     width: 100%;
-    //min-height: 36px;
-
+    max-width: 211px;
+    
     font-weight: 400;
     font-size: 13px;
     line-height: 136%;
@@ -83,7 +86,7 @@ export const Field = styled.input<FieldPropsType>`
     ${props =>
             props.as === "textarea" &&
             css`
-                min-width: 430px;
+                max-width: 430px;
                 min-height: 152px;
                 resize: none;
             `}
@@ -94,8 +97,14 @@ export const InfoLogoContent = styled.div`
     flex-direction: column;
     justify-content: center;
     flex: 1;
-    //padding: 32px;
     gap: 35px;
+
+    @media screen and ${theme.media.tablet} {
+        margin: 0 auto;
+        gap: 60px;
+        //box-shadow: 8px 8px 16px 1px rgba(34, 60, 80, 0.2);
+       
+    }
 `;
 
 export const Colored = styled.div`
@@ -128,4 +137,9 @@ export const ContactBlock = styled.div`
     width: 100%;
     box-shadow: 0 0 16px 8px rgba(19, 19, 19, 0.18);
     margin: 0 auto;
+
+    @media screen and ${theme.media.tablet} {
+        padding: 53px 113px 65px 82px;
+
+    }
 `;

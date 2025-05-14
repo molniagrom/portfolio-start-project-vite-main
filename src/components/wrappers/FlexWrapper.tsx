@@ -15,6 +15,7 @@ type FlexWrapperPropsType = {
     adaptiveMyStack?: boolean;
     width?: string;
     adaptiveProj?: boolean;
+    adaptiveContact?: boolean;
 }
 
 export const FlexWrapper = styled.div<FlexWrapperPropsType>`
@@ -38,6 +39,9 @@ export const FlexWrapper = styled.div<FlexWrapperPropsType>`
 
         ${props => props.adaptiveMyStack && css`
             gap: 60px;
+        `}
+        ${props => props.adaptiveContact && css`
+            flex-direction: column;
         `}
     }
 
