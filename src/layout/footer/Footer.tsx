@@ -1,13 +1,13 @@
 // import React from 'react';
-
 import styled from "styled-components";
 import {Container} from "../../components/Container.ts";
 import {FlexWrapper} from "../../components/wrappers/FlexWrapper.tsx";
-// import wale from "../../image/MaskGroup.svg"
+import {theme} from "../../styles/Theme.ts";
+
 export const Footer = () => {
     return (
         <StyledFooter>
-            <Container padding={"130px 0px 73px 0px"}>
+            <Container adaptFooter padding={"130px 0px 73px 0px"}>
                 <FlexWrapper direction="column" justify={"center"} alignItems={"center"}>
                     <Title>Coded by Alina Groza nezhad</Title>
                     <SubTittle>All Rights Reserved © 2025 - {new Date().getFullYear()}</SubTittle>
@@ -23,12 +23,16 @@ const StyledFooter = styled.footer`
     justify-content: center;
     align-items: center;
     font-family: "Inter", sans-serif;
-    background-image: url("./MaskGroup.svg");
+    background-image: url("../../../public/MaskGroup.svg");
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 243px;
 
-    h4 {
+    @media screen and ${theme.media.tablet} {
+        min-height: 152px;
+    }
+
+        h4 {
         margin: 0;
     }
 `

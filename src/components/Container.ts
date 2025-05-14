@@ -7,6 +7,7 @@ type ContainerPropsType = {
     adaptMain?: boolean;
     adaptProj?: boolean;
     aboutMeAdaptive?: boolean;
+    adaptFooter?: boolean;
 }
 
 export const Container = styled.div<ContainerPropsType>`
@@ -21,22 +22,28 @@ export const Container = styled.div<ContainerPropsType>`
         ${props => props.adaptMain && css`
             padding: 0 10vw;
         `}
-    }
 
-    @media screen and ${theme.media.mobile} {
-        ${props => props.adaptMain && css`
-            padding: 0 25px;
-        `}
-    }
-    @media screen and ${theme.media.mobile} {
-        ${props => props.aboutMeAdaptive && css`
-            padding: 26px 22px 0 22px;
+        ${props => props.adaptFooter && css`
+            padding: 55px 0 43px 0;
         `}
     }
     
     @media screen and ${theme.media.mobile} {
+
+        ${props => props.adaptMain && css`
+            padding: 0 25px;
+        `}
+        
+        ${props => props.aboutMeAdaptive && css`
+            padding: 26px 22px 0 22px;
+        `} 
+        
         ${props => props.adaptProj && css`
             padding: 0 35px;
         `}
+        ${props => props.adaptFooter && css`
+            padding: 55px 0 36px 0;
+        `}
+        
     }
 `
