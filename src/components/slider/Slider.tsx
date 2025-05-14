@@ -38,6 +38,11 @@ const SliderStyled = styled.div`
     border-radius: 150px 0;
     border: 2px solid #4C546C;
     box-shadow: 8px 8px 16px 1px rgba(34, 60, 80, 0.2);
+
+
+    @media screen and ${theme.media.mobile} {
+    }
+}
 `
 
 const Slide = styled.div`
