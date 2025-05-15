@@ -71,6 +71,8 @@ const StyledCard = styled.article<StyledCardPropsType>`
     border-radius: ${props => props.borderRadius || undefined};
     height: ${props => props.height || undefined};
     transition: all 0.3s ease;
+    max-width: 270px;
+
 
     ${Photo} {
         filter: grayscale(10%) brightness(0.8);

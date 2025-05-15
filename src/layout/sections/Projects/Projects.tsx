@@ -8,68 +8,104 @@ import {Container} from "../../../components/Container.ts";
 import dots from "../../../image/Dots.svg"
 
 export const Projects = () => {
-    const [clickedIndex, setClickedIndex] = useState<number | null>(null);
-
-    const tap = ["Story", "Post", "Banner", "Trailer", "Desighn", "More"]
-
-    const onClick = (index: number) => {
-        setClickedIndex(index);
-    };
-
     const projects = [
         {
             id: 1,
             title: "Portfolio Website",
             image: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d",
+            type: "Banner"
         },
         {
             id: 2,
             title: "E-commerce Store",
             image: "https://images.unsplash.com/photo-1542838132-92c53300491e",
+            type: "Post"
         },
         {
             id: 3,
             title: "Task Manager App",
             image: "https://images.unsplash.com/photo-1747102325393-2f811b02752e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            type: "Desighn"
         },
         {
             id: 4,
             title: "Weather Dashboard",
             image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+            type: "More"
         },
         {
             id: 5,
             title: "Recipe Finder",
             image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061",
+            type: "Story"
         },
         {
             id: 6,
             title: "Travel Blog",
             image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+            type: "Story"
         },
         {
             id: 7,
             title: "Finance Tracker",
             image: "https://images.unsplash.com/photo-1745946596837-0393d87a1706?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            type: "Desighn"
         },
         {
             id: 8,
             title: "Movie Explorer",
             image: "https://images.unsplash.com/photo-1517602302552-471fe67acf66",
+            type: "Trailer"
         }
     ];
 
+    const [clickedIndex, setClickedIndex] = useState<number | null>(null);
+    const [currentFilterStatus, setCurrentFilterStatus] = useState<string | null>(null);
+    let filteredWorks = projects
+
+    if (currentFilterStatus === "Banner") {
+        filteredWorks = projects.filter(p => p.type === "Banner");
+    }
+    if (currentFilterStatus === "Story") {
+        filteredWorks = projects.filter(p => p.type === "Story");
+    }
+    if (currentFilterStatus === "Post") {
+        filteredWorks = projects.filter(p => p.type === "Post");
+    }
+    if (currentFilterStatus === "Trailer") {
+        filteredWorks = projects.filter(p => p.type === "Trailer");
+    }
+    if (currentFilterStatus === "Desighn") {
+        filteredWorks = projects.filter(p => p.type === "Desighn");
+    }
+    if (currentFilterStatus === "More") {
+        filteredWorks = projects.filter(p => p.type === "More");
+    }
+
+    function changeFilterStatus(value: string) {
+        setCurrentFilterStatus(value);
+    }
+
+    const tabsItems = ["Story", "Post", "Banner", "Trailer", "Desighn", "More"]
+
+    const onClick = (index: number) => {
+        setClickedIndex(index);
+    };
+
     return (
         <StyledProjects>
-            <Container maxWidth={"1240px"} padding={"0 20px"}>
+            <Container maxWidth={"1240px"} padding={"0 15px"}>
                 <TitleProject>Projects</TitleProject>
                 <List className="category-tabs">
-                    {tap.map((item, index) => (
-                        <ListItem key={item}>
+                    {tabsItems.map((item, index) => (
+                        <ListItem key={index}>
                             <Button
                                 adaptiveProject
                                 isClicked={clickedIndex === index}
-                                onClick={() => onClick(index)}
+                                onClick={() => {
+                                    onClick(index)
+                                    changeFilterStatus(item)
+                                }}
                                 border={`${theme.colors.border} 3px solid`}
                                 borderRadius={"67px"}
                                 padding={"7px 40px"}
@@ -82,7 +118,7 @@ export const Projects = () => {
                 </List>
                 <ScrollWrapper>
                     <GreedWrapper>
-                        {projects.map(item => <Card key={item.id}
+                        {filteredWorks.map(item => <Card key={item.id}
                                                      title={item.title}
                                                      image={item.image}
                         />
@@ -200,6 +236,7 @@ const GreedWrapper = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-auto-rows: auto;
     gap: 45px 38px;
+    place-items: center;
 
     @media screen and ${theme.media.mobile} {
         gap: 30px 20px;
