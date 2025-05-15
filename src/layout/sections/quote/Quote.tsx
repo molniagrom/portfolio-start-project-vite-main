@@ -2,11 +2,10 @@
 
 import styled from "styled-components";
 import {Container} from "../../../components/Container.ts";
-import quote from "../../../../public/quote.svg"
 import {theme} from "../../../styles/Theme.ts";
+import {quote} from "../../../image/svgDataFormat.ts";
 
 export const Quote = () => {
-    console.log(quote)
     return (
         <QuoteStyled>
             <Container>
@@ -66,7 +65,9 @@ const BlockquoteStyled = styled.blockquote`
         left: 0;
         width: 50px;
         height: 50px;
-        background: url('/quote.svg') no-repeat center;
+        background-image: url("data:image/svg+xml;utf8,${quote}");
+        background-position: center;
+        background-repeat: no-repeat;
         background-size: contain;
         opacity: 0.7;
     }
@@ -78,7 +79,9 @@ const BlockquoteStyled = styled.blockquote`
         right: -20px;
         width: 50px;
         height: 50px;
-        background: url('/quote.svg') no-repeat center;
+        background-image: url("data:image/svg+xml;utf8,${quote}");
+        background-position: center;
+        background-repeat: no-repeat;
         background-size: contain;
         opacity: 0.7;
         transform: rotate(180deg);

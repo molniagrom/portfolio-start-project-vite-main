@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {Container} from "../../components/Container.ts";
 import {FlexWrapper} from "../../components/wrappers/FlexWrapper.tsx";
 import {theme} from "../../styles/Theme.ts";
+import {wave} from "../../image/svgDataFormat.ts";
 
 export const Footer = () => {
     return (
@@ -23,7 +24,7 @@ const StyledFooter = styled.footer`
     justify-content: center;
     align-items: center;
     font-family: "Inter", sans-serif;
-    background-image: url("../../../public/MaskGroup.svg");
+    background-image: url("data:image/svg+xml;utf8,${wave}");
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 243px;

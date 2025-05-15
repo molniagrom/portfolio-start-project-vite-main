@@ -11,13 +11,14 @@ type PhotoPropsType = {
     top?: string;
     left?: string;
     right?: string;
+    maxWidth?: string;
     bottom?: string;
     adaptMain?: boolean;
     adaptiveProj?: boolean;
 }
 
 export const Photo = styled.img<PhotoPropsType>`
-    width: ${props => props.width || undefined};
+    //width: ${props => props.width || undefined};
     height: ${props => props.height || undefined};
     border-radius: ${props => props.borderRadius || undefined};
     object-fit: ${props => props.objectFit || undefined};
@@ -27,6 +28,7 @@ export const Photo = styled.img<PhotoPropsType>`
     left: ${props => props.left || undefined};
     right: ${props => props.right || undefined};
     bottom: ${props => props.bottom || undefined};
+    max-width: ${props => props.maxWidth || undefined};
 
     ${props => props.adaptiveProj && css`
         @media screen and ${theme.media.mobile} {

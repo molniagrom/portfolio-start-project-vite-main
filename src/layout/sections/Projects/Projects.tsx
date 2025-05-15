@@ -6,6 +6,7 @@ import { AStyled } from "../../../components/AStyled/AStyled";
 import { theme } from "../../../styles/Theme";
 import { Container } from "../../../components/Container";
 import dots from "../../../image/Dots.svg";
+import {circle} from "../../../image/svgDataFormat.ts";
 
 interface Project {
     id: number;
@@ -32,14 +33,14 @@ export const Projects = (): JSX.Element => {
         },
         {
             id: 3,
-            title: "Task Manager App",
+            title: "Aunt May's coffee shop",
             image:
-                "https://images.unsplash.com/photo-1747102325393-2f811b02752e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "https://images.unsplash.com/photo-1584428885051-d80a38d86b39?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Desighn",
         },
         {
             id: 4,
-            title: "Weather Dashboard",
+            title: "'Backer-Family-Contractions'",
             image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
             type: "More",
         },
@@ -57,7 +58,7 @@ export const Projects = (): JSX.Element => {
         },
         {
             id: 7,
-            title: "Finance Tracker",
+            title: "Once and for all",
             image:
                 "https://images.unsplash.com/photo-1745946596837-0393d87a1706?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Desighn",
@@ -65,7 +66,7 @@ export const Projects = (): JSX.Element => {
         {
             id: 8,
             title: "Movie Explorer",
-            image: "https://images.unsplash.com/photo-1517602302552-471fe67acf66",
+            image: "https://images.unsplash.com/photo-1726064855988-1e4deb0a3392?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Trailer",
         },
     ];
@@ -154,7 +155,10 @@ const TitleProject = styled.h2`
         display: inline-block;
         width: 20px;
         height: 20px;
-        background: url("/smallElipseGradient.svg") no-repeat center / contain;
+        background-image: url("data:image/svg+xml;utf8,${circle}");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
         position: absolute;
         bottom: -20px;
         left: 50%;

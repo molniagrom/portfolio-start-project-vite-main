@@ -1,4 +1,6 @@
 // import React from 'react';
+import map from "/public/map.png";
+import me from "../../../../public/me.png";
 
 import styled, {css} from "styled-components";
 import {Container} from "../../../components/Container.ts";
@@ -11,8 +13,8 @@ export const AboutMe = () => {
         <AboutMeStyled>
             <Container aboutMeAdaptive padding={"46px 42px 0 42px"}>
                 <WrapperBcg>
-                    <StyledImage variant="map" src="../../../../public/map.png" alt="map"/>
-                    <StyledImage variant="me" src="../../../../public/me.png" alt="me"/>
+                    <StyledImage variant="map" src={map} alt="map"/>
+                    <StyledImage variant="me" src={me} alt="me"/>
                     <InfoAboutMe>
                         <Icons>
                             <HoverableIcon iconId="whatsappWhite" viewBox="0 0 33 33" width="26px" height="26px"/>
