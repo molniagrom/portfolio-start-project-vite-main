@@ -1,96 +1,91 @@
-import {useState} from 'react';
+import { useState } from "react";
 import styled from "styled-components";
-import {Card} from "./card/Card.tsx";
-import {Button} from "../../../components/Button/Button.tsx";
-import {AStyled} from "../../../components/AStyled/AStyled.tsx";
-import {theme} from "../../../styles/Theme.ts";
-import {Container} from "../../../components/Container.ts";
-import dots from "../../../image/Dots.svg"
+import { Card } from "./card/Card";
+import { Button } from "../../../components/Button/Button";
+import { AStyled } from "../../../components/AStyled/AStyled";
+import { theme } from "../../../styles/Theme";
+import { Container } from "../../../components/Container";
+import dots from "../../../image/Dots.svg";
 
-export const Projects = () => {
-    const projects = [
+interface Project {
+    id: number;
+    title: string;
+    image: string;
+    type: ProjectType;
+}
+
+type ProjectType = "Story" | "Post" | "Banner" | "Trailer" | "Desighn" | "More";
+
+export const Projects = (): JSX.Element => {
+    const projects: Project[] = [
         {
             id: 1,
             title: "Portfolio Website",
             image: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d",
-            type: "Banner"
+            type: "Banner",
         },
         {
             id: 2,
             title: "E-commerce Store",
             image: "https://images.unsplash.com/photo-1542838132-92c53300491e",
-            type: "Post"
+            type: "Post",
         },
         {
             id: 3,
             title: "Task Manager App",
-            image: "https://images.unsplash.com/photo-1747102325393-2f811b02752e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            type: "Desighn"
+            image:
+                "https://images.unsplash.com/photo-1747102325393-2f811b02752e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            type: "Desighn",
         },
         {
             id: 4,
             title: "Weather Dashboard",
             image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
-            type: "More"
+            type: "More",
         },
         {
             id: 5,
             title: "Recipe Finder",
             image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061",
-            type: "Story"
+            type: "Story",
         },
         {
             id: 6,
             title: "Travel Blog",
             image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-            type: "Story"
+            type: "Story",
         },
         {
             id: 7,
             title: "Finance Tracker",
-            image: "https://images.unsplash.com/photo-1745946596837-0393d87a1706?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            type: "Desighn"
+            image:
+                "https://images.unsplash.com/photo-1745946596837-0393d87a1706?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            type: "Desighn",
         },
         {
             id: 8,
             title: "Movie Explorer",
             image: "https://images.unsplash.com/photo-1517602302552-471fe67acf66",
-            type: "Trailer"
-        }
+            type: "Trailer",
+        },
     ];
 
     const [clickedIndex, setClickedIndex] = useState<number | null>(null);
-    const [currentFilterStatus, setCurrentFilterStatus] = useState<string | null>(null);
-    let filteredWorks = projects
+    const [currentFilterStatus, setCurrentFilterStatus] = useState<ProjectType | null>(null);
 
-    if (currentFilterStatus === "Banner") {
-        filteredWorks = projects.filter(p => p.type === "Banner");
-    }
-    if (currentFilterStatus === "Story") {
-        filteredWorks = projects.filter(p => p.type === "Story");
-    }
-    if (currentFilterStatus === "Post") {
-        filteredWorks = projects.filter(p => p.type === "Post");
-    }
-    if (currentFilterStatus === "Trailer") {
-        filteredWorks = projects.filter(p => p.type === "Trailer");
-    }
-    if (currentFilterStatus === "Desighn") {
-        filteredWorks = projects.filter(p => p.type === "Desighn");
-    }
-    if (currentFilterStatus === "More") {
-        filteredWorks = projects.filter(p => p.type === "More");
-    }
+    const tabsItems: ProjectType[] = ["Story", "Post", "Banner", "Trailer", "Desighn", "More"];
 
-    function changeFilterStatus(value: string) {
+    const changeFilterStatus = (value: ProjectType): void => {
         setCurrentFilterStatus(value);
-    }
+    };
 
-    const tabsItems = ["Story", "Post", "Banner", "Trailer", "Desighn", "More"]
-
-    const onClick = (index: number) => {
+    const onClick = (index: number): void => {
         setClickedIndex(index);
     };
+
+    const filteredWorks: Project[] = currentFilterStatus
+        ? projects.filter((p) => p.type === currentFilterStatus)
+        : projects;
 
     return (
         <StyledProjects>
@@ -102,27 +97,31 @@ export const Projects = () => {
                             <Button
                                 adaptiveProject
                                 isClicked={clickedIndex === index}
-                                onClick={() => {
-                                    onClick(index)
-                                    changeFilterStatus(item)
+                                onClick={(): void => {
+                                    onClick(index);
+                                    changeFilterStatus(item);
                                 }}
                                 border={`${theme.colors.border} 3px solid`}
                                 borderRadius={"67px"}
                                 padding={"7px 40px"}
                             >
-                                <AStyled adaptiveProject lineHeight={"136%"} fontWeight={"400"}
-                                         fontSize={"20px"}>{item}</AStyled>
+                                <AStyled
+                                    adaptiveProject
+                                    lineHeight={"136%"}
+                                    fontWeight={"400"}
+                                    fontSize={"20px"}
+                                >
+                                    {item}
+                                </AStyled>
                             </Button>
                         </ListItem>
                     ))}
                 </List>
                 <ScrollWrapper>
                     <GreedWrapper>
-                        {filteredWorks.map(item => <Card key={item.id}
-                                                     title={item.title}
-                                                     image={item.image}
-                        />
-                    )}
+                        {filteredWorks.map((item: Project) => (
+                            <Card key={item.id} title={item.title} image={item.image} />
+                        ))}
                     </GreedWrapper>
                 </ScrollWrapper>
             </Container>
@@ -160,7 +159,6 @@ const TitleProject = styled.h2`
         bottom: -20px;
         left: 50%;
         transform: translateX(-50%);
-
     }
 `;
 
@@ -197,10 +195,7 @@ const List = styled.ul`
     }
 `;
 
-const ListItem = styled.li`
-
-`;
-
+const ListItem = styled.li``;
 
 const ScrollWrapper = styled.div`
     width: 100%;
@@ -243,4 +238,3 @@ const GreedWrapper = styled.div`
         grid-template-columns: repeat(2, minmax(160px, 1fr));
     }
 `;
-

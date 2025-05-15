@@ -1,42 +1,64 @@
 import styled from "styled-components";
-import {FlexWrapper} from "../../../../components/wrappers/FlexWrapper.tsx";
-import {Photo} from "../../main/Photo.tsx";
-import {AStyled} from "../../../../components/AStyled/AStyled.tsx";
-import {theme} from "../../../../styles/Theme.ts";
+import { FlexWrapper } from "../../../../components/wrappers/FlexWrapper.tsx";
+import { Photo } from "../../main/Photo.tsx";
+import { AStyled } from "../../../../components/AStyled/AStyled.tsx";
+import { theme } from "../../../../styles/Theme.ts";
+import React from "react";
 
 type CardProps = {
-    title: string
-    image: string
-}
+    title: string;
+    image: string;
+};
 
-export const Card = (props: CardProps) => {
+export const Card: React.FC<CardProps> = ({ title, image }) => {
     return (
-        <StyledCard borderRadius={"26px"} backgroundColor={theme.colors.fourthFont}>
+        <StyledCard
+            borderRadius="26px"
+            backgroundColor={theme.colors.fourthFont}
+        >
             <Photo
                 adaptiveProj
-                borderRadius={"20px 20px 0 0"}
-                height={"240px"}
-                width={"100%"}
-                src={props.image}
-                objectFit={"cover"}
+                borderRadius="20px 20px 0 0"
+                height="240px"
+                width="100%"
+                src={image}
+                objectFit="cover"
             />
 
             <FlexWrapper
                 adaptive
                 adaptiveProj
-                flexGrow={"1"}
-                alignItems={"stretch"}
-                justify={"space-between"}
-                gap={"25px"}
-                direction={"column"}
-                padding={"17px 33px 23px 33px"}
+                flexGrow="1"
+                alignItems="stretch"
+                justify="space-between"
+                gap="25px"
+                direction="column"
+                padding="17px 33px 23px 33px"
             >
-                <NameCard>{props.title}</NameCard>
-                <FlexWrapper gap={"20px"} justify={"space-between"}>
-                    <AStyled adaptiveProject buttonHover borderRadius={"12px"} padding={"4px 19px 4px 19px"} fontWeight={"700"}
-                             lineHeight={"148%"} color={theme.colors.fourthFont} fontSize={"14px"}
-                             backgroundColor={theme.colors.primaryFont}>Edit code</AStyled>
-                    <AStyled adaptiveProject LinkHover color={theme.colors.secondaryFont}>View</AStyled>
+                <NameCard>{title}</NameCard>
+
+                <FlexWrapper gap="20px" justify="space-between">
+                    <AStyled
+                        adaptiveProject
+                        buttonHover
+                        borderRadius="12px"
+                        padding="4px 19px 4px 19px"
+                        fontWeight="700"
+                        lineHeight="148%"
+                        color={theme.colors.fourthFont}
+                        fontSize="14px"
+                        backgroundColor={theme.colors.primaryFont}
+                    >
+                        Edit code
+                    </AStyled>
+
+                    <AStyled
+                        adaptiveProject
+                        LinkHover
+                        color={theme.colors.secondaryFont}
+                    >
+                        View
+                    </AStyled>
                 </FlexWrapper>
             </FlexWrapper>
         </StyledCard>
@@ -66,13 +88,13 @@ type StyledCardPropsType = {
 const StyledCard = styled.article<StyledCardPropsType>`
     display: flex;
     flex-direction: column;
-    padding: ${props => props.padding || undefined};
-    background-color: ${props => props.backgroundColor || undefined};
-    border-radius: ${props => props.borderRadius || undefined};
-    height: ${props => props.height || undefined};
+    padding: ${props => props.padding ?? undefined};
+    background-color: ${props => props.backgroundColor ?? undefined};
+    border-radius: ${props => props.borderRadius ?? undefined};
+    height: ${props => props.height ?? undefined};
+    width: ${props => props.width ?? undefined};
     transition: all 0.3s ease;
     max-width: 270px;
-
 
     ${Photo} {
         filter: grayscale(10%) brightness(0.8);
@@ -87,4 +109,3 @@ const StyledCard = styled.article<StyledCardPropsType>`
         }
     }
 `;
-
