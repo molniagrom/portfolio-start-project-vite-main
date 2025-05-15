@@ -4,7 +4,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import styled from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 import {quote} from "../../image/svgDataFormat.ts";
-import RatingStars from "./pagination/Rating.tsx";
+// import RatingStars from "./pagination/Rating.tsx";
 
 type SlideComponentPropsType = {
     src: string,
@@ -50,7 +50,7 @@ const SlideComponent = (props: SlideComponentPropsType) => {
             <SliderTitle>{props.name}</SliderTitle>
             <SliderSubTitle>Happy Client</SliderSubTitle>
             <Testimonial>“{props.testimonial}”</Testimonial>
-            <RatingStars value={props.ratingStar}/>
+            {/*<RatingStars value={props.ratingStar}/>*/}
         </Slide>
     )
 }
