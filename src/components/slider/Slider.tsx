@@ -4,6 +4,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import styled from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 import {quote} from "../../image/svgDataFormat.ts";
+import RatingStars from "./pagination/Rating.tsx";
 
 type SlideComponentPropsType = {
     src: string,
@@ -28,7 +29,7 @@ options for your individual needs.`,
         name: "Jessica Liu",
         testimonial: `I was nervous at first, but the staff made me feel so comfortable. 
 They explained everything clearly and treated me with such kindness.`,
-        ratingStar: 5,
+        ratingStar: 4,
     },
     {
         src: "https://randomuser.me/api/portraits/men/32.jpg",
@@ -40,7 +41,6 @@ I highly recommend their services to anyone who wants professional care.`,
     },
 ];
 
-
 const SlideComponent = (props: SlideComponentPropsType) => {
     return (
         <Slide>
@@ -50,13 +50,7 @@ const SlideComponent = (props: SlideComponentPropsType) => {
             <SliderTitle>{props.name}</SliderTitle>
             <SliderSubTitle>Happy Client</SliderSubTitle>
             <Testimonial>“{props.testimonial}”</Testimonial>
-            {/*<Rating*/}
-            {/*    name="read-only"*/}
-            {/*    value={props.ratingStar}*/}
-            {/*    readOnly*/}
-            {/*    precision={1}*/}
-            {/*/>*/}
-
+            <RatingStars value={props.ratingStar}/>
         </Slide>
     )
 }
