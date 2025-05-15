@@ -66,7 +66,7 @@ const BlockquoteStyled = styled.blockquote`
         left: 0;
         width: 50px;
         height: 50px;
-        background: url('./quote.svg') no-repeat center;
+        background: url('/quote.svg') no-repeat center;
         background-size: contain;
         opacity: 0.7;
     }
@@ -78,7 +78,7 @@ const BlockquoteStyled = styled.blockquote`
         right: -20px;
         width: 50px;
         height: 50px;
-        background: url('./quote.svg') no-repeat center;
+        background: url('/quote.svg') no-repeat center;
         background-size: contain;
         opacity: 0.7;
         transform: rotate(180deg);

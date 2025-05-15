@@ -1,11 +1,15 @@
-import myPhoto from "../../../../image/myPhoto.jpg";
 import styled from "styled-components";
 import {FlexWrapper} from "../../../../components/wrappers/FlexWrapper.tsx";
 import {Photo} from "../../main/Photo.tsx";
 import {AStyled} from "../../../../components/AStyled/AStyled.tsx";
 import {theme} from "../../../../styles/Theme.ts";
 
-export const Card = () => {
+type CardProps = {
+    title: string
+    image: string
+}
+
+export const Card = (props: CardProps) => {
     return (
         <StyledCard borderRadius={"26px"} backgroundColor={theme.colors.fourthFont}>
             <Photo
@@ -13,7 +17,7 @@ export const Card = () => {
                 borderRadius={"20px 20px 0 0"}
                 height={"240px"}
                 width={"100%"}
-                src={myPhoto}
+                src={props.image}
                 objectFit={"cover"}
             />
 
@@ -27,7 +31,7 @@ export const Card = () => {
                 direction={"column"}
                 padding={"17px 33px 23px 33px"}
             >
-                <NameCard>Story motion for sale English courses</NameCard>
+                <NameCard>{props.title}</NameCard>
                 <FlexWrapper gap={"20px"} justify={"space-between"}>
                     <AStyled adaptiveProject buttonHover borderRadius={"12px"} padding={"4px 19px 4px 19px"} fontWeight={"700"}
                              lineHeight={"148%"} color={theme.colors.fourthFont} fontSize={"14px"}

@@ -15,7 +15,7 @@ const [isOpen, setIsOpen] = useState(false);
             <BurgerButton isOpen={isOpen} onClick={onClick}>
                 <span></span>
             </BurgerButton>
-            <MobileMenuPopup isOpen={isOpen}>
+            <MobileMenuPopup isOpen={isOpen} onClick={() => {setIsOpen(false)}}>
                 <ul>
                     <ListItemMobile><LinkMobile href={"/"}>Home</LinkMobile></ListItemMobile>
                     <ListItemMobile><LinkMobile href={"/"}>Projects</LinkMobile></ListItemMobile>

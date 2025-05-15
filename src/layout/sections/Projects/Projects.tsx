@@ -1,13 +1,11 @@
 import {useState} from 'react';
 import styled from "styled-components";
 import {Card} from "./card/Card.tsx";
-// import {Icon} from "../../../components/icon/Icon.tsx";
 import {Button} from "../../../components/Button/Button.tsx";
 import {AStyled} from "../../../components/AStyled/AStyled.tsx";
 import {theme} from "../../../styles/Theme.ts";
 import {Container} from "../../../components/Container.ts";
 import dots from "../../../image/Dots.svg"
-// import elipse from "../../../../public/smallElipseGradient.svg"
 
 export const Projects = () => {
     const [clickedIndex, setClickedIndex] = useState<number | null>(null);
@@ -17,6 +15,49 @@ export const Projects = () => {
     const onClick = (index: number) => {
         setClickedIndex(index);
     };
+
+    const projects = [
+        {
+            id: 1,
+            title: "Portfolio Website",
+            image: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d",
+        },
+        {
+            id: 2,
+            title: "E-commerce Store",
+            image: "https://images.unsplash.com/photo-1542838132-92c53300491e",
+        },
+        {
+            id: 3,
+            title: "Task Manager App",
+            image: "https://images.unsplash.com/photo-1747102325393-2f811b02752e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        },
+        {
+            id: 4,
+            title: "Weather Dashboard",
+            image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+        },
+        {
+            id: 5,
+            title: "Recipe Finder",
+            image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061",
+        },
+        {
+            id: 6,
+            title: "Travel Blog",
+            image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+        },
+        {
+            id: 7,
+            title: "Finance Tracker",
+            image: "https://images.unsplash.com/photo-1745946596837-0393d87a1706?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        },
+        {
+            id: 8,
+            title: "Movie Explorer",
+            image: "https://images.unsplash.com/photo-1517602302552-471fe67acf66",
+        }
+    ];
 
     return (
         <StyledProjects>
@@ -41,20 +82,15 @@ export const Projects = () => {
                 </List>
                 <ScrollWrapper>
                     <GreedWrapper>
-                        <Card/>
-                        <Card/>
-                        <Card/>
-                        <Card/>
-                        <Card/>
-                        <Card/>
-                        <Card/>
-                        <Card/>
+                        {projects.map(item => <Card key={item.id}
+                                                     title={item.title}
+                                                     image={item.image}
+                        />
+                    )}
                     </GreedWrapper>
                 </ScrollWrapper>
             </Container>
         </StyledProjects>
-
-
     );
 };
 
@@ -83,7 +119,7 @@ const TitleProject = styled.h2`
         display: inline-block;
         width: 20px;
         height: 20px;
-        background: url("../../../../public/smallElipseGradient.svg") no-repeat center / contain;
+        background: url("/smallElipseGradient.svg") no-repeat center / contain;
         position: absolute;
         bottom: -20px;
         left: 50%;
@@ -103,11 +139,11 @@ const List = styled.ul`
     justify-content: center;
     width: 100%;
     padding-bottom: 55px;
-    
+
     @media screen and ${theme.media.tablet} {
         padding: 64px 0 62px 0;
     }
-   
+
     @media screen and (max-width: 940px) {
         grid-template-columns: repeat(3, 160px);
         column-gap: 40px;
@@ -142,7 +178,7 @@ const ScrollWrapper = styled.div`
     @media screen and ${theme.media.tablet} {
         margin: 0 auto;
     }
-    
+
     &::before {
         @media screen and ${theme.media.tablet} {
             display: none;
