@@ -21,7 +21,6 @@ export const Card: React.FC<CardProps> = ({ title, image }) => {
                 borderRadius="20px 20px 0 0"
                 height="240px"
                 maxWidth={"270px"}
-                // width="100%"
                 src={image}
                 objectFit="cover"
             />

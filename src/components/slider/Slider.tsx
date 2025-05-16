@@ -4,7 +4,8 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import styled from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 import {quote} from "../../image/svgDataFormat.ts";
-// import RatingStars from "./pagination/Rating.tsx";
+import {Rating} from "./pagination/Rating.tsx";
+import './../../styles/slider.css';
 
 type SlideComponentPropsType = {
     src: string,
@@ -50,7 +51,7 @@ const SlideComponent = (props: SlideComponentPropsType) => {
             <SliderTitle>{props.name}</SliderTitle>
             <SliderSubTitle>Happy Client</SliderSubTitle>
             <Testimonial>“{props.testimonial}”</Testimonial>
-            {/*<RatingStars value={props.ratingStar}/>*/}
+            <Rating total={5} active={props.ratingStar} />
         </Slide>
     )
 }
@@ -71,29 +72,6 @@ export const Slider = () => (
     </SliderStyled>
 );
 
-
-// import styled from "styled-components";
-// import {RatingStar} from 'react-ts-rating-star'
-// import {theme} from "../../styles/Theme.ts";
-// import {quote} from "../../image/svgDataFormat.ts";
-//
-// export const Slider = () => {
-//     return (
-//         <SliderStyled>
-//             <Slide>
-//                 <ImageCard
-//                     src="https://www.mckinsey.com/it/~/media/mckinsey/our%20people/alessandro%20agosta/alessandro-agosta_fc_mask_profile_1536x1152.jpg?cq=50&mw=480&car=1:1&cpy=Center"
-//                     alt="person"/>
-//                 <SliderTitle>Adams Ademola</SliderTitle>
-//                 <SliderSubTitle>Happy Client</SliderSubTitle>
-//                 <Testimonial>“Everyone working in the office is very knowledgeable about all types of dental work and
-//                     options for your individual needs.”</Testimonial>
-//                 <RatingStar numberOfStars={5}/>
-//             </Slide>
-//         </SliderStyled>
-//     );
-// };
-//
 const SliderStyled = styled.div`
     background-color: ${theme.colors.allBg};
     width: 60%;
@@ -113,12 +91,11 @@ const SliderStyled = styled.div`
     @media screen and ${theme.media.mobile} {
         width: 90%;
     }
-}
+   //}
 `
-
 const Slide = styled.div`
     text-align: center;
-    padding: 52px 57px 52px 57px;
+    padding: 52px 57px 40px 57px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -152,7 +129,6 @@ const Slide = styled.div`
         margin: 0;
     }
 `
-
 const ImageCard = styled.img`
     max-width: 104px;
     border-radius: 50px;

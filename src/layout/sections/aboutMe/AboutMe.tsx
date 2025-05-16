@@ -47,7 +47,7 @@ const StyledImage = styled.img<{ variant: "map" | "me" }>`
             variant === "me" && css`
                 bottom: 0;
                 left: 40px;
-                height: 800px;
+                height: 750px;
 
                 @media screen and ${theme.media.tablet} {
                     height: 50%;
@@ -63,7 +63,7 @@ const StyledImage = styled.img<{ variant: "map" | "me" }>`
                 height: 100%;
                 object-fit: contain;
                 @media screen and ${theme.media.tablet} {
-                    top: -130px;
+                    top: -50px;
                     right: -30px;
                 }
 
@@ -71,7 +71,6 @@ const StyledImage = styled.img<{ variant: "map" | "me" }>`
                     bottom: 0;
                     right: -30px;
                     top: 0;
-                    //object-fit: cover;
                 }
 
             `}
