@@ -232,10 +232,11 @@ const ScrollWrapper = styled.div`
 
 const GreedWrapper = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 270px));
     grid-auto-rows: auto;
+    justify-content: center;
+    
     gap: 45px 38px;
-    place-items: center;
 
     @media screen and ${theme.media.mobile} {
         gap: 30px 20px;

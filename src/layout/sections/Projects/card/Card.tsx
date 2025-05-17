@@ -20,7 +20,7 @@ export const Card: React.FC<CardProps> = ({ title, image }) => {
                 adaptiveProj
                 borderRadius="20px 20px 0 0"
                 height="240px"
-                maxWidth={"270px"}
+                width="100%"
                 src={image}
                 objectFit="cover"
             />
@@ -94,7 +94,7 @@ const StyledCard = styled.article<StyledCardPropsType>`
     height: ${props => props.height ?? undefined};
     width: ${props => props.width ?? undefined};
     transition: all 0.3s ease;
-    max-width: 270px;
+    //max-width: 270px;
 
     ${Photo} {
         filter: grayscale(10%) brightness(0.8);

@@ -29,7 +29,41 @@
     width: 20px;
     background-color: #2157F2;
 }
-
 .alice-carousel__prev-btn, .alice-carousel__next-btn {
-    display: none;
+    /*display: none;*/
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #5982ff;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.alice-carousel__prev-btn {
+    position: absolute;
+    top: 50%;
+    left: -60px;
+}
+
+.alice-carousel__next-btn {
+    position: absolute;
+    top: 50%;
+    right: -60px;
+}
+
+.alice-carousel__prev-btn-item, .alice-carousel__next-btn-item {
+    font-size: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
