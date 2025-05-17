@@ -7,7 +7,7 @@ import {theme} from "../../../styles/Theme.ts";
 
 export const Testimony = () => {
     return (
-        <StyledTestimony>
+        <StyledTestimony id="testimony">
             <Container padding={"20px 0 20px 0"}>
                 <Slider/>
             </Container>

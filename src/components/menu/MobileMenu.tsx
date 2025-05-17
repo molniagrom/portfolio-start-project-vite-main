@@ -2,8 +2,10 @@ import {useState} from 'react';
 
 import styled, {css} from "styled-components";
 import {theme} from "../../styles/Theme.ts";
+import {MenuPropsType} from "./Menu.tsx";
 
-export const MobileMenu = () => {
+export const MobileMenu = (props: MenuPropsType) => {
+
 const [isOpen, setIsOpen] = useState(false);
 
     const onClick = () => {
@@ -17,10 +19,9 @@ const [isOpen, setIsOpen] = useState(false);
             </BurgerButton>
             <MobileMenuPopup isOpen={isOpen} onClick={() => {setIsOpen(false)}}>
                 <ul>
-                    <ListItemMobile><LinkMobile href={"/"}>Home</LinkMobile></ListItemMobile>
-                    <ListItemMobile><LinkMobile href={"/"}>Projects</LinkMobile></ListItemMobile>
-                    <ListItemMobile><LinkMobile href={"/"}>About</LinkMobile></ListItemMobile>
-                    <ListItemMobile><LinkMobile href={"/"}>Content</LinkMobile></ListItemMobile>
+                    {props.items.map((item, i) => (
+                        <ListItemMobile key={i}><LinkMobile href={`#${item.href}`}>{item.title}</LinkMobile></ListItemMobile>
+                    ))}
                 </ul>
             </MobileMenuPopup>
         </StyledMobileMenu>

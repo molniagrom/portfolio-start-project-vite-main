@@ -9,14 +9,37 @@ import {Icon} from "../../components/icon/Icon.tsx";
 import {MobileMenu} from "../../components/menu/MobileMenu.tsx";
 
 export const Header = () => {
+    const items = [
+        {
+            title: "Home",
+            href: "home"
+        },
+        {
+            title: "Projects",
+            href: "projects"
+        },
+        {
+            title: "About",
+            href: "about"
+        },
+        {
+            title: "Testimony",
+            href: "testimony"
+        },
+        {
+            title: "Contact",
+            href: "contact"
+        },
+    ];
+
     return (
         <StyleHeader>
             <Container padding={"15px"}>
                 <FlexWrapper justify="space-between" alignItems={"center"}>
                     <Logo/>
                     <FlexWrapper gap={"clamp(10px, 10vw, 64px)"} justify="space-between" alignItems={"center"}>
-                        <Menu/>
-                        <MobileMenu/>
+                        <Menu items={items}/>
+                        <MobileMenu items={items}/>
                         <Icon iconId={"moon"}/>
                     </FlexWrapper>
                 </FlexWrapper>

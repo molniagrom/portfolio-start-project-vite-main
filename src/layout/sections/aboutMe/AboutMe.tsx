@@ -10,7 +10,7 @@ import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
 
 export const AboutMe = () => {
     return (
-        <AboutMeStyled>
+        <AboutMeStyled id="about">
             <Container aboutMeAdaptive padding={"46px 42px 0 42px"}>
                 <WrapperBcg>
                     <StyledImage variant="map" src={map} alt="map"/>

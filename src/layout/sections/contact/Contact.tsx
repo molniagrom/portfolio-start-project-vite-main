@@ -17,7 +17,7 @@ import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
 export const Contact = () => {
 
     return (
-        <ContactUs>
+        <ContactUs id="contact">
             <Container padding={"0"}>
                 <ContactTitle>
                     <h2>Contact Us</h2>

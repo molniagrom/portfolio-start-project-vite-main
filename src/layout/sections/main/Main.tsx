@@ -14,7 +14,7 @@ import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
 
 export const Main = () => {
     return (
-        <MainSection>
+        <MainSection id="home">
             <Container adaptMain padding={"0px 25px 0px 25px"}>
                 <MainSectionWrapper>
                     <FlexWrapper

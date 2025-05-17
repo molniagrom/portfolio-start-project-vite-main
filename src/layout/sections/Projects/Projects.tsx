@@ -89,7 +89,7 @@ export const Projects = (): JSX.Element => {
         : projects;
 
     return (
-        <StyledProjects>
+        <StyledProjects id="projects">
             <Container maxWidth={"1240px"} padding={"0 15px"}>
                 <TitleProject>Projects</TitleProject>
                 <List className="category-tabs">

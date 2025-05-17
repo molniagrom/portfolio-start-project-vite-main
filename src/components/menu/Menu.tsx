@@ -3,14 +3,22 @@
 import styled from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 
-export const Menu = () => {
+// const items = ["Home", "Projects", "About", "Contact"];
+
+export type MenuPropsType = {
+    items: {
+        title: string,
+        href: string,
+    }[];
+}
+
+export const Menu = (props: MenuPropsType) => {
     return (
         <StyledMenu>
             <List>
-                <ListItem><Link href={"/"}>Home</Link></ListItem>
-                <ListItem><Link href={"/"}>Projects</Link></ListItem>
-                <ListItem><Link href={"/"}>About</Link></ListItem>
-                <ListItem><Link href={"/"}>Content</Link></ListItem>
+                {props.items.map((item, i) => (
+                    <ListItem key={i}><Link href={`#${item.href}`}>{item.title}</Link></ListItem>
+                ))}
             </List>
         </StyledMenu>
     );
@@ -21,13 +29,13 @@ const StyledMenu = styled.nav`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-   
+
     ul {
         display: flex;
         flex-direction: row;
         gap: 30px;
     }
-    
+
     @media screen and ${theme.media.mobile} {
         display: none;
     }
