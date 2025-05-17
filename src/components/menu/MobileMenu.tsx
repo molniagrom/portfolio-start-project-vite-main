@@ -3,6 +3,7 @@ import {useState} from 'react';
 import styled, {css} from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 import {MenuPropsType} from "./Menu.tsx";
+import {Link} from "react-scroll";
 
 export const MobileMenu = (props: MenuPropsType) => {
 
@@ -20,7 +21,7 @@ const [isOpen, setIsOpen] = useState(false);
             <MobileMenuPopup isOpen={isOpen} onClick={() => {setIsOpen(false)}}>
                 <ul>
                     {props.items.map((item, i) => (
-                        <ListItemMobile key={i}><LinkMobile href={`#${item.href}`}>{item.title}</LinkMobile></ListItemMobile>
+                        <ListItemMobile key={i}><LinkMobile activeClass="active" spy={true} to={item.href}>{item.title}</LinkMobile></ListItemMobile>
                     ))}
                 </ul>
             </MobileMenuPopup>
@@ -124,7 +125,7 @@ const BurgerButton = styled.button<PropsType>`
 const ListItemMobile = styled.li`
 
 `
-const LinkMobile = styled.a`
+const LinkMobile = styled(Link)`
     display: inline-block;
     color: ${theme.colors.primaryFont};
     font-family: "Roboto", sans-serif;
@@ -133,9 +134,9 @@ const LinkMobile = styled.a`
     text-align: center;
     transition: color 0.2s ease, transform 0.2s ease;
 
-    &:hover {
+    &:hover, &.active {
         color: ${theme.colors.secondaryFont};
-        transform: scale(1.03); /* немного увеличивает размер */
+        transform: scale(1.03); 
     }
 `;
 

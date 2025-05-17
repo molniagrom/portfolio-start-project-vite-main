@@ -2,8 +2,7 @@
 
 import styled from "styled-components";
 import {theme} from "../../styles/Theme.ts";
-
-// const items = ["Home", "Projects", "About", "Contact"];
+import {Link} from "react-scroll";
 
 export type MenuPropsType = {
     items: {
@@ -17,7 +16,7 @@ export const Menu = (props: MenuPropsType) => {
         <StyledMenu>
             <List>
                 {props.items.map((item, i) => (
-                    <ListItem key={i}><Link href={`#${item.href}`}>{item.title}</Link></ListItem>
+                    <ListItem key={i}><MyLink activeClass="active" spy={true} smooth={true} to={item.href}>{item.title}</MyLink></ListItem>
                 ))}
             </List>
         </StyledMenu>
@@ -47,7 +46,7 @@ const List = styled.ul`
 const ListItem = styled.li`
 
 `
-const Link = styled.a`
+export const MyLink = styled(Link)`
     display: inline-block;
     color: ${theme.colors.primaryFont};
     font-family: "Roboto", sans-serif;
@@ -55,9 +54,10 @@ const Link = styled.a`
     font-size: 16px;
     text-align: center;
     transition: color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
 
-    &:hover {
+    &:hover, &.active {
         color: ${theme.colors.secondaryFont};
-        transform: scale(1.03); /* немного увеличивает размер */
+        transform: scale(1.03); 
     }
 `;

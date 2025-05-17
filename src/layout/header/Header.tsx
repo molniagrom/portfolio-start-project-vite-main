@@ -36,7 +36,7 @@ export const Header = () => {
         <StyleHeader>
             <Container padding={"15px"}>
                 <FlexWrapper justify="space-between" alignItems={"center"}>
-                    <Logo/>
+                    <Logo />
                     <FlexWrapper gap={"clamp(10px, 10vw, 64px)"} justify="space-between" alignItems={"center"}>
                         <Menu items={items}/>
                         <MobileMenu items={items}/>

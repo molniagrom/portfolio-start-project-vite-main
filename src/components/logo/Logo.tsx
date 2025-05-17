@@ -1,13 +1,12 @@
 // import React from 'react';
-
-// import {Icon} from "../icon/Icon.tsx";
 import IconLogo from "../iconLogo/IconLogo.tsx";
 import styled from "styled-components";
 import {theme} from "../../styles/Theme.ts";
+import {animateScroll as scroll} from "react-scroll";
 
 export const Logo = () => {
     return (
-        <a href="/">
+        <a onClick={() => {scroll.scrollToTop()}}>
             <Wrapper>
                 <IconLogo />
             </Wrapper>
