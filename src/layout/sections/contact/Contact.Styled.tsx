@@ -79,6 +79,11 @@ export const GroupFields = styled.div`
     display: flex;
     flex-direction: row;
     gap: 7px;
+    
+    @media screen and ${theme.media.mobile} {
+        flex-direction: column;
+        gap: 20px;
+    }
 `;
 
 type FieldPropsType = {
@@ -106,7 +111,7 @@ export const Field = styled.input<FieldPropsType>`
 
 
     @media screen and ${theme.media.mobile} {
-        font-size: 7px;
+        font-size: 13px;
     }
     
     ${props =>

@@ -69,7 +69,7 @@ const StyledImage = styled.img<{ variant: "map" | "me" }>`
 
                 @media screen and ${theme.media.mobile} {
                     bottom: 0;
-                    right: -30px;
+                    right: -20px;
                     top: 0;
                 }
 
