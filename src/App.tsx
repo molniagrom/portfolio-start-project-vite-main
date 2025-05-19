@@ -9,6 +9,7 @@ import {MyStack} from "./layout/sections/myStack/MyStack.tsx";
 import {Testimony} from "./layout/sections/testimony/Testimony.tsx";
 import {Quote} from "./layout/sections/quote/Quote.tsx";
 import {Contact} from "./layout/sections/contact/Contact.tsx";
+import {GoTopBtn} from "./components/goTopBtn/GoTopBtn.tsx";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
             <Quote/>
             <Contact/>
             <Footer/>
+            <GoTopBtn/>
         </div>
     )
 }

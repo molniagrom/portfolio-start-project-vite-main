@@ -49,13 +49,12 @@ export const Header = () => {
 };
 
 const StyleHeader = styled.header`
-    // backdrop-filter: blur(10px); 
-        // background: ${theme.colors.allBgOpacity};
+    backdrop-filter: blur(10px);
+    background: ${theme.colors.allBgOpacity};
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 10;
     //border: blueviolet 2px solid;
-    
 `
