@@ -120,7 +120,7 @@ export const Field = styled.input<FieldPropsType>`
                 @media screen and (min-width: 900px) {
                     min-width: 430px;
                 }
-                max-width: 430px;
+                max-width: 540px;
                 min-height: 152px;
                 resize: none;
             `}

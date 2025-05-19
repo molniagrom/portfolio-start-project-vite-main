@@ -13,8 +13,32 @@ import {Button} from "../../../components/Button/Button.tsx";
 import {Icon} from "../../../components/icon/Icon.tsx";
 import {Container} from "../../../components/Container.ts";
 import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
+import emailjs from '@emailjs/browser';
+import {ElementRef, FormEvent, useRef} from "react";
+
 
 export const Contact = () => {
+    const form = useRef<ElementRef<"form">>(null);
+
+    const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (!form.current) return;
+
+        emailjs
+            .sendForm('service_k3y1l3q', 'template_pp8p1s5', form.current, {
+                publicKey: '0Eb6bUtkWnoBKFJZ4',
+            })
+            .then(
+                () => {
+                    console.log('SUCCESS!');
+                },
+                (error) => {
+                    console.log('FAILED...', error.text);
+                },
+            );
+        (e.target as HTMLFormElement).reset();
+    };
 
     return (
         <ContactUs id="contact">
@@ -27,26 +51,29 @@ export const Contact = () => {
                     <FlexWrapper adaptiveContact gap={"clamp(50px, 10vw, 130px)"}>
                         <FormContent>
                             <h2>Get in touch</h2>
-                            <StyledForm>
-                                <GroupFields>
-                                    <Field placeholder={"E-mail"} type={"email"}/>
-                                    <Field placeholder={'Phone'} type={"phone"}/>
-                                </GroupFields>
-                                <Field placeholder={'Message'} as={"textarea"}/>
-                                <Button
-                                    adaptiveContact
-                                    type={"submit"}
-                                    backgroundColor={"#2350D6"}
-                                    color={"#fff"}
-                                    fontSize={"15px"}
-                                    fontWeight={"500"}
-                                    padding={"10px 40px 10px 40px"}
-                                    gap={"14px"}
-                                    borderRadius={"9px"}
-                                    fontFamily={"Roboto"}
-                                    lineHeight={"136%"}
-                                >Send</Button>
-                            </StyledForm>
+                            <>
+                                <StyledForm ref={form} onSubmit={sendEmail}>
+                                    <GroupFields>
+                                        <Field required name={"email"} placeholder={"E-mail"} type={"email"}/>
+                                        <Field required name={"number"} placeholder={'Phone'} type={"phone"}/>
+                                        <Field required name={"name"} placeholder={'Name'} type={"name"}/>
+                                    </GroupFields>
+                                    <Field required name={"message"} placeholder={'Message'} as={"textarea"}/>
+                                    <Button
+                                        adaptiveContact
+                                        type={"submit"}
+                                        backgroundColor={"#2350D6"}
+                                        color={"#fff"}
+                                        fontSize={"15px"}
+                                        fontWeight={"500"}
+                                        padding={"10px 40px 10px 40px"}
+                                        gap={"14px"}
+                                        borderRadius={"9px"}
+                                        fontFamily={"Roboto"}
+                                        lineHeight={"136%"}
+                                    >Send</Button>
+                                </StyledForm>
+                            </>
                         </FormContent>
                         <InfoLogoContent>
                             <Part
