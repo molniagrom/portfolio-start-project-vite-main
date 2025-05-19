@@ -1,12 +1,13 @@
-import { useState } from "react";
+import {useState} from "react";
 import styled from "styled-components";
-import { Card } from "./card/Card";
-import { Button } from "../../../components/Button/Button";
-import { AStyled } from "../../../components/AStyled/AStyled";
-import { theme } from "../../../styles/Theme";
-import { Container } from "../../../components/Container";
+import {Card} from "./card/Card";
+import {Button} from "../../../components/Button/Button";
+import {AStyled} from "../../../components/AStyled/AStyled";
+import {theme} from "../../../styles/Theme";
+import {Container} from "../../../components/Container";
 import dots from "../../../image/Dots.svg";
 import {circle} from "../../../image/svgDataFormat.ts";
+import {AnimatePresence, motion} from "framer-motion";
 
 interface Project {
     id: number;
@@ -33,14 +34,14 @@ export const Projects = (): JSX.Element => {
         },
         {
             id: 3,
-            title: "Aunt May's coffee shop",
+            title: "May's coffee shop",
             image:
                 "https://images.unsplash.com/photo-1584428885051-d80a38d86b39?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Desighn",
         },
         {
             id: 4,
-            title: "'Backer-Family-Contractions'",
+            title: "'Family-Contractions'",
             image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
             type: "More",
         },
@@ -120,9 +121,22 @@ export const Projects = (): JSX.Element => {
                 </List>
                 <ScrollWrapper>
                     <GreedWrapper>
-                        {filteredWorks.map((item: Project) => (
-                            <Card key={item.id} title={item.title} image={item.image} />
-                        ))}
+                        <AnimatePresence>
+                            {filteredWorks.map((item: Project) => (
+                                <motion.div
+                                    layout={true}
+                                    initial={{opacity: 0}}
+                                    animate={{opacity: 1}}
+                                    exit={{opacity: 0}}
+                                    key={item.id}
+                                >
+                                    <Card
+                                        key={item.id}
+                                        title={item.title}
+                                        image={item.image}/>
+                                </motion.div>
+                            ))}
+                        </AnimatePresence>
                     </GreedWrapper>
                 </ScrollWrapper>
             </Container>
@@ -235,7 +249,7 @@ const GreedWrapper = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(250px, 270px));
     grid-auto-rows: auto;
     justify-content: center;
-    
+
     gap: 45px 38px;
 
     @media screen and ${theme.media.mobile} {
