@@ -6,17 +6,17 @@ import {animateScroll as scroll} from "react-scroll";
 
 export const Logo = () => {
     return (
-        <a onClick={() => {scroll.scrollToTop()}}>
-            <Wrapper>
+        <LogoLink onClick={() => {scroll.scrollToTop()}}>
                 <IconLogo />
-            </Wrapper>
-        </a>
+        </LogoLink>
     );
 };
 
-const Wrapper = styled.p`
-    width: 100%;
-    height: 100%;
+const LogoLink = styled.a`
+    //width: 100%;
+    //height: 100%;
     background-color: ${theme.colors.secondaryFont};
     border-radius: 50%;
+    display: inline-block;
+    align-self: flex-start;
 `

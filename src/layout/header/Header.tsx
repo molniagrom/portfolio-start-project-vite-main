@@ -5,7 +5,6 @@ import styled from "styled-components";
 import {Container} from "../../components/Container.ts";
 import {FlexWrapper} from "../../components/wrappers/FlexWrapper.tsx";
 import {theme} from "../../styles/Theme.ts";
-import {Icon} from "../../components/icon/Icon.tsx";
 import {MobileMenu} from "../../components/menu/MobileMenu.tsx";
 
 export const Header = () => {
@@ -40,7 +39,6 @@ export const Header = () => {
                     <FlexWrapper gap={"clamp(10px, 10vw, 64px)"} justify="space-between" alignItems={"center"}>
                         <Menu items={items}/>
                         <MobileMenu items={items}/>
-                        <Icon iconId={"moon"}/>
                     </FlexWrapper>
                 </FlexWrapper>
             </Container>

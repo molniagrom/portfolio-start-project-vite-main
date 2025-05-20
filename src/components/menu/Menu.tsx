@@ -3,6 +3,7 @@
 import styled from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 import {Link} from "react-scroll";
+import {Icon} from "../icon/Icon.tsx";
 
 export type MenuPropsType = {
     items: {
@@ -13,13 +14,18 @@ export type MenuPropsType = {
 
 export const Menu = (props: MenuPropsType) => {
     return (
-        <StyledMenu>
-            <List>
-                {props.items.map((item, i) => (
-                    <ListItem key={i}><MyLink activeClass="active" spy={true} smooth={true} to={item.href}>{item.title}</MyLink></ListItem>
-                ))}
-            </List>
-        </StyledMenu>
+        <>
+            <StyledMenu>
+                <List>
+                    {props.items.map((item, i) => (
+                        <ListItem key={i}><MyLink activeClass="active" spy={true} smooth={true}
+                                                  to={item.href}>{item.title}</MyLink></ListItem>
+                    ))}
+                </List>
+                <Icon iconId={"moon"}/>
+            </StyledMenu>
+
+        </>
     );
 };
 
@@ -28,6 +34,7 @@ const StyledMenu = styled.nav`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 30px;
 
     ul {
         display: flex;
@@ -58,6 +65,6 @@ export const MyLink = styled(Link)`
 
     &:hover, &.active {
         color: ${theme.colors.secondaryFont};
-        transform: scale(1.03); 
+        transform: scale(1.03);
     }
 `;

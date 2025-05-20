@@ -14,14 +14,14 @@ const [isOpen, setIsOpen] = useState(false);
     }
 
     return (
-        <StyledMobileMenu>
+        <StyledMobileMenu isOpen={isOpen}>
             <BurgerButton isOpen={isOpen} onClick={onClick}>
                 <span></span>
             </BurgerButton>
             <MobileMenuPopup isOpen={isOpen} onClick={() => {setIsOpen(false)}}>
                 <ul>
                     {props.items.map((item, i) => (
-                        <ListItemMobile key={i}><LinkMobile activeClass="active" spy={true} to={item.href}>{item.title}</LinkMobile></ListItemMobile>
+                        <ListItemMobile key={i}><LinkMobile onClick={() => {setIsOpen(false)}} activeClass="active" spy={true} to={item.href}>{item.title}</LinkMobile></ListItemMobile>
                     ))}
                 </ul>
             </MobileMenuPopup>
@@ -29,13 +29,17 @@ const [isOpen, setIsOpen] = useState(false);
     );
 };
 
-const StyledMobileMenu = styled.nav`
+const StyledMobileMenu = styled.nav<PropsType>`
     display: none;
 
     @media screen and ${theme.media.mobile} {
         display: flex;
         align-items: center;
         justify-content: center;
+
+        ${props => props.isOpen && css<PropsType>`
+            height: 100vh;
+        `}
     }
 `
 
@@ -54,13 +58,15 @@ const MobileMenuPopup = styled.div<PropsType>`
     background-color: ${theme.colors.allBgOpacity};
     backdrop-filter: blur(10px);
     transition: all 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 
-    display: none;
-
+    transform: translateY(-100%);
+    
     ${props => props.isOpen && css<PropsType>`
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        transform: translateY(0);
     `}
     ul {
         display: flex;
