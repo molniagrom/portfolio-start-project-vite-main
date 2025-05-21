@@ -45,10 +45,6 @@ const StyledMenu = styled.nav`
         flex-direction: row;
         gap: 30px;
     }
-
-    @media screen and ${theme.media.mobile} {
-        display: none;
-    }
 `
 
 const List = styled.ul`

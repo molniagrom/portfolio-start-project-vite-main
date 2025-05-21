@@ -34,17 +34,14 @@ const [isOpen, setIsOpen] = useState(false);
 };
 
 const StyledMobileMenu = styled.nav<PropsType>`
-    display: none;
 
-    @media screen and ${theme.media.mobile} {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        ${props => props.isOpen && css<PropsType>`
-            height: 100vh;
-        `}
-    }
+    ${props => props.isOpen && css<PropsType>`
+        height: 100vh;
+    `}
 `
 
 type PropsType = {
