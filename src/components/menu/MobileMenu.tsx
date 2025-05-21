@@ -2,7 +2,7 @@ import {useState} from 'react';
 
 import styled, {css} from "styled-components";
 import {theme} from "../../styles/Theme.ts";
-import {MenuPropsType} from "./Menu.tsx";
+import {MenuPropsType} from "./DesktopMenu.tsx";
 import {Link} from "react-scroll";
 
 export const MobileMenu = (props: MenuPropsType) => {
@@ -21,7 +21,11 @@ const [isOpen, setIsOpen] = useState(false);
             <MobileMenuPopup isOpen={isOpen} onClick={() => {setIsOpen(false)}}>
                 <ul>
                     {props.items.map((item, i) => (
-                        <ListItemMobile key={i}><LinkMobile onClick={() => {setIsOpen(false)}} activeClass="active" spy={true} to={item.href}>{item.title}</LinkMobile></ListItemMobile>
+                        <ListItemMobile key={i}>
+                            <LinkMobile onClick={() => {setIsOpen(false)}}
+                                        activeClass="active" spy={true}
+                                        to={item.href}>{item.title}</LinkMobile>
+                        </ListItemMobile>
                     ))}
                 </ul>
             </MobileMenuPopup>

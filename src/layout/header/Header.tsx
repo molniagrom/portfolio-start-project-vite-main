@@ -1,13 +1,13 @@
 // import React from 'react';
 import {Logo} from "../../components/logo/Logo.tsx";
-import {Menu} from "../../components/menu/Menu.tsx";
-import styled from "styled-components";
+import {DesktopMenu} from "../../components/menu/DesktopMenu.tsx";
 import {Container} from "../../components/Container.ts";
 import {FlexWrapper} from "../../components/wrappers/FlexWrapper.tsx";
-import {theme} from "../../styles/Theme.ts";
 import {MobileMenu} from "../../components/menu/MobileMenu.tsx";
+import React from "react";
+import {S} from "./Header_Styles.ts"
 
-export const Header = () => {
+export const Header: React.FC = () => {
     const items = [
         {
             title: "Home",
@@ -32,27 +32,16 @@ export const Header = () => {
     ];
 
     return (
-        <StyleHeader>
+        <S.Header>
             <Container padding={"15px"}>
                 <FlexWrapper justify="space-between" alignItems={"center"}>
-                    <Logo />
+                    <Logo/>
                     <FlexWrapper gap={"clamp(10px, 10vw, 64px)"} justify="space-between" alignItems={"center"}>
-                        <Menu items={items}/>
+                        <DesktopMenu items={items}/>
                         <MobileMenu items={items}/>
                     </FlexWrapper>
                 </FlexWrapper>
             </Container>
-        </StyleHeader>
+        </S.Header>
     );
 };
-
-const StyleHeader = styled.header`
-    backdrop-filter: blur(10px);
-    background: ${theme.colors.allBgOpacity};
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    //border: blueviolet 2px solid;
-`

@@ -12,14 +12,18 @@ export type MenuPropsType = {
     }[];
 }
 
-export const Menu = (props: MenuPropsType) => {
+export const DesktopMenu = (props: MenuPropsType) => {
     return (
         <>
             <StyledMenu>
                 <List>
                     {props.items.map((item, i) => (
-                        <ListItem key={i}><MyLink activeClass="active" spy={true} smooth={true}
-                                                  to={item.href}>{item.title}</MyLink></ListItem>
+                        <ListItem key={i}>
+                            <MyLink activeClass="active"
+                                    spy={true}
+                                    smooth={true}
+                                    to={item.href}>{item.title}</MyLink>
+                        </ListItem>
                     ))}
                 </List>
                 <Icon iconId={"moon"}/>
