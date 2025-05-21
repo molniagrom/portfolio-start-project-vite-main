@@ -4,7 +4,7 @@ import {DesktopMenu} from "../../components/menu/DesktopMenu.tsx";
 import {Container} from "../../components/Container.ts";
 import {FlexWrapper} from "../../components/wrappers/FlexWrapper.tsx";
 import {MobileMenu} from "../../components/menu/MobileMenu.tsx";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {S} from "./Header_Styles.ts"
 
 export const Header: React.FC = () => {
@@ -31,14 +31,27 @@ export const Header: React.FC = () => {
         },
     ];
 
+    const [width, setWidth] = useState(window.innerWidth);
+    const breakpoint = 577;
+
+    useEffect(() => {
+        const handleWindowResize = () => setWidth(window.innerWidth);
+        window.addEventListener("resize", handleWindowResize);
+
+        return () => window.removeEventListener("resize", handleWindowResize);
+    }, [])
+
     return (
         <S.Header>
             <Container padding={"15px"}>
                 <FlexWrapper justify="space-between" alignItems={"center"}>
                     <Logo/>
                     <FlexWrapper gap={"clamp(10px, 10vw, 64px)"} justify="space-between" alignItems={"center"}>
-                        <DesktopMenu items={items}/>
-                        <MobileMenu items={items}/>
+                        {
+                            width < breakpoint
+                                ? <MobileMenu items={items}/>
+                                : <DesktopMenu items={items}/>
+                        }
                     </FlexWrapper>
                 </FlexWrapper>
             </Container>
