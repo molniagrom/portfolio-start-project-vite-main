@@ -9,8 +9,11 @@ type ExistingTech = {
     name: string;
     iconId: string;
     viewBox?: string;
-    width?: string;
-    height?: string;
+    svgProps?: {
+        viewBox?: string;
+        width?: string;
+        height?: string;
+    };
 };
 
 type NewTech = {
@@ -25,7 +28,7 @@ const techItems: TechItem[] = [
     {type: "sprite", name: "GitHub", iconId: "github", viewBox: "0 0 25 25"},
     {type: "sprite", name: "HTML", iconId: "html", viewBox: "0 0 150 150"},
     {type: "sprite", name: "CSS", iconId: "css", viewBox: "0 0 150 150"},
-    {type: "sprite", name: "SCSS", iconId: "scss", viewBox: "0 0 160 160", width: "140px", height: "140px"},
+    {type: "sprite", name: "SCSS", iconId: "scss", svgProps: {viewBox: "-16 -16 192 192", width: "140px", height: "140px"}},
     {type: "sprite", name: "WebStorm", iconId: "vebStorm", viewBox: "0 0 290 290"},
     {type: "sprite", name: "VS Code", iconId: "vsCode", viewBox: "0 0 150 150"},
     {type: "sprite", name: "React", iconId: "react", viewBox: "0 0 300 300"},
@@ -52,9 +55,9 @@ export const MyStack = () => {
                             <TechCard key={tech.name}>
                                 {tech.type === "sprite" ? (
                                     <Icon
-                                        width={tech.width || "120px"}
-                                        height={tech.height || "120px"}
-                                        viewBox={tech.viewBox}
+                                        width={tech.svgProps?.width || "120px"}
+                                        height={tech.svgProps?.height || "120px"}
+                                        viewBox={tech.svgProps?.viewBox || tech.viewBox}
                                         iconId={tech.iconId}
                                     />
                                 ) : (
