@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# Alina Groza Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Production-focused portfolio built with React, TypeScript, Vite, and styled-components.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 18
+- TypeScript
+- Vite
+- styled-components
+- Framer Motion
+- EmailJS
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+pnpm install
+pnpm dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Open the local Vite URL shown in the terminal.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Available Scripts
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- `pnpm dev` starts the development server.
+- `pnpm build` runs TypeScript checks and creates the production bundle.
+- `pnpm preview` serves the production bundle locally.
+- `pnpm lint` runs ESLint.
+- `pnpm test` runs Vitest in watch mode.
+- `pnpm test:run` runs the test suite once.
+
+## Project Structure
+
+- `src/layout/` page sections such as header, hero, projects, about, testimony, and contact.
+- `src/components/` reusable UI pieces.
+- `src/data/portfolioData.ts` portfolio content, social links, and project metadata.
+- `src/styles/` theme tokens and global styles.
+- `src/utils/` shared utilities such as date helpers.
+- `public/` static assets served as-is.
+
+## Deployment Notes
+
+The Vite `base` is configured for root deployment. If you deploy under a subpath, update `vite.config.ts` and keep deployment settings aligned.
+
+## Known Follow-ups
+
+- Replace placeholder local project images with optimized WebP assets.
+- Move EmailJS values to environment variables before public deployment.
+- Install the new test dependencies before running the added Vitest smoke tests.
