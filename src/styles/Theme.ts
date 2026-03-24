@@ -1,43 +1,39 @@
 export const theme = {
     colors: {
-        allBg: '#222222',
-        allBgOpacity: 'rgba(34,34,34,0.5)',
-        primaryBg: '#24335C',
-        secondaryBg: '#2C2B2B',
-        tertiaryBg: '#393838',
-        accent: '#2157F2',
-        HappyClient: '#5982ff',
-        primaryFont: "#fff",
-        secondaryFont: "#A6BCFA", // button "View" for Projects
-        tertiaryFont: "#6C92FF", // for "Download Resume"
-        fourthFont: "#353535", // button "Edite code" in Projects
-        linear: "#474747",
-        colorForAboutMe: "#393939",
-
-        border: "#4C546C", // border for Projects " tap"
+        allBg: "var(--color-allBg)",
+        allBgOpacity: "var(--color-allBgOpacity)",
+        primaryBg: "var(--color-primaryBg)",
+        secondaryBg: "var(--color-secondaryBg)",
+        tertiaryBg: "var(--color-tertiaryBg)",
+        accent: "var(--color-accent)",
+        HappyClient: "var(--color-happyClient)",
+        primaryFont: "var(--color-primaryFont)",
+        secondaryFont: "var(--color-secondaryFont)",
+        tertiaryFont: "var(--color-tertiaryFont)",
+        fourthFont: "var(--color-fourthFont)",
+        linear: "var(--color-linear)",
+        colorForAboutMe: "var(--color-colorForAboutMe)",
+        border: "var(--color-border)",
+        mutedText: "var(--color-mutedText)",
+        inputText: "var(--color-inputText)",
+        quoteText: "var(--color-quoteText)",
+        shadow: "var(--color-shadow)",
+        overlayShadow: "var(--color-overlayShadow)",
+        cardHoverShadow: "var(--color-cardHoverShadow)",
+        menuLine: "var(--color-menuLine)",
+        menuLineTransparent: "var(--color-menuLineTransparent)",
+        heroGlass: "var(--color-heroGlass)",
+        aboutGradient: "var(--color-aboutGradient)",
+        aboutBorder: "var(--color-aboutBorder)",
+        bulletGradient: "var(--color-bulletGradient)",
+        ratingActive: "var(--color-ratingActive)",
+        ratingInactive: "var(--color-ratingInactive)",
+        white: "var(--color-white)",
+        black: "var(--color-black)",
     },
 
     media: {
         tablet: "(max-width: 900px)",
         mobile: "(max-width: 577px)",
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    },
 }

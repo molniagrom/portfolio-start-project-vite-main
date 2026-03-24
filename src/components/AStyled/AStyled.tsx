@@ -21,7 +21,7 @@ export const AStyled = styled.a<AStyledPropsType>`
     background-color: ${props => props.backgroundColor || undefined};
     color: ${props => props.color || undefined};
     font-family: ${props => props.fontFamily || undefined};
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     border-radius: ${props => props.borderRadius || undefined};
@@ -46,10 +46,10 @@ export const AStyled = styled.a<AStyledPropsType>`
             line-height: 148%;
         }
     `}
-    
+
     &:hover {
         transform: scale(1.03);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 12px ${theme.colors.cardHoverShadow};
 
         ${props => props.buttonHover && css`
             transition: background-color 0.2s ease, color 0.2s ease;
@@ -73,7 +73,6 @@ export const AStyled = styled.a<AStyledPropsType>`
             padding: 8px 20px;
         `}
     }
-
 `;
 
 type InputLinkStyledPropsType = {
@@ -89,7 +88,7 @@ type InputLinkStyledPropsType = {
     adaptiveMain?: boolean;
 };
 
-export const InputLinkStyled = styled.input<InputLinkStyledPropsType>`
+export const InputLinkStyled = styled.a<InputLinkStyledPropsType>`
     color: ${props => props.color || "inherit"};
     border: ${props => props.border || "1px solid transparent"};
     appearance: ${props => props.appearance || "none"};
@@ -101,6 +100,9 @@ export const InputLinkStyled = styled.input<InputLinkStyledPropsType>`
     font-family: ${props => props.fontFamily || "inherit"};
     border-radius: ${props => props.borderRadius || "0"};
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
         transform: scale(1.03);
@@ -120,11 +122,9 @@ export const InputLinkStyled = styled.input<InputLinkStyledPropsType>`
         `}
     }
 
-
     @media screen and ${theme.media.mobile} {
         ${props => props.adaptiveMain && css`
             padding: 0;
         `}
     }
-
 `;

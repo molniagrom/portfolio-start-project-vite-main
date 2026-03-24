@@ -14,8 +14,8 @@ export const SliderStyled = styled.div`
 
     backdrop-filter: blur(10px);
     border-radius: 150px 0;
-    border: 2px solid #4C546C;
-    box-shadow: 8px 8px 16px 1px rgba(34, 60, 80, 0.2);
+    border: 2px solid ${theme.colors.border};
+    box-shadow: 8px 8px 16px 1px ${theme.colors.shadow};
 
 
     @media screen and ${theme.media.mobile} {

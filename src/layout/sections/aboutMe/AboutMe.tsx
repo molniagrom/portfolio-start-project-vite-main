@@ -1,40 +1,47 @@
-// import React from 'react';
 import map from "/public/map.png";
 import me from "../../../../public/me.png";
-
 import styled, {css} from "styled-components";
 import {Container} from "../../../components/Container.ts";
 import {theme} from "../../../styles/Theme.ts";
 import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
-
+import {getPortfolioAge} from "../../../utils/dateUtils.ts";
+import {socialLinks} from "../../../data/portfolioData.ts";
 
 export const AboutMe = () => {
+    const age = getPortfolioAge();
+
     return (
         <AboutMeStyled id="about">
             <Container aboutMeAdaptive padding={"46px 42px 0 42px"}>
                 <WrapperBcg>
-                    <StyledImage variant="map" src={map} alt="map"/>
-                    <StyledImage variant="me" src={me} alt="me"/>
+                    <StyledImage variant="map" src={map} alt="Decorative map background"/>
+                    <StyledImage variant="me" src={me} alt="Portrait illustration of Alina Groza"/>
                     <InfoAboutMe>
                         <Icons>
-                            <HoverableIcon iconId="whatsappWhite" viewBox="0 0 33 33" width="26px" height="26px"/>
-                            <HoverableIcon iconId="instagramWhite" viewBox="0 0 33 33" width="26px" height="26px"/>
-                            <HoverableIcon iconId="upArrow" viewBox="0 0 33 33" width="26px" height="26px"/>
+                            {socialLinks.map((link) => (
+                                <HoverableIcon
+                                    key={link.label}
+                                    href={link.href}
+                                    label={link.label}
+                                    iconId={link.mobileIconId ?? link.iconId}
+                                    viewBox="0 0 33 33"
+                                    width="26px"
+                                    height="26px"
+                                />
+                            ))}
                         </Icons>
                         <NameAboutMe>I'm <span>Alina</span> Groza</NameAboutMe>
                         <UlStyled>
                             <LiStyled>I was born in Tiraspol</LiStyled>
-                            <LiStyled>I’m 17 years old</LiStyled>
-                            <LiStyled>I have started my interest in this field from 2023</LiStyled>
-                            <LiStyled>I’m Frontend-developer WED</LiStyled>
-                            <LiStyled>My phone number in Moldova ... </LiStyled>
+                            <LiStyled>I'm {age} years old</LiStyled>
+                            <LiStyled>I have been growing in frontend since 2023</LiStyled>
+                            <LiStyled>I build React and TypeScript interfaces</LiStyled>
+                            <LiStyled>I care about clean UI, logic, and accessibility</LiStyled>
                         </UlStyled>
                     </InfoAboutMe>
                 </WrapperBcg>
             </Container>
-
         </AboutMeStyled>
-
     );
 };
 
@@ -53,7 +60,6 @@ const StyledImage = styled.img<{ variant: "map" | "me" }>`
                     height: 50%;
                     object-fit: cover;
                 }
-        
             `}
 
     ${({variant}) =>
@@ -62,6 +68,7 @@ const StyledImage = styled.img<{ variant: "map" | "me" }>`
                 right: 50px;
                 height: 100%;
                 object-fit: contain;
+
                 @media screen and ${theme.media.tablet} {
                     top: -50px;
                     right: -30px;
@@ -72,12 +79,10 @@ const StyledImage = styled.img<{ variant: "map" | "me" }>`
                     right: -20px;
                     top: 0;
                 }
-
             `}
 `
 
 const AboutMeStyled = styled.section`
-    //min-height: 946px;
     background-color: ${theme.colors.secondaryFont};
     display: flex;
     justify-content: center;
@@ -94,12 +99,11 @@ const InfoAboutMe = styled.div`
     max-width: 536px;
     padding: 30px 20px 65px 50px;
     margin-right: 20px;
-
-    color: #393939;
+    color: ${theme.colors.colorForAboutMe};
     backdrop-filter: blur(20px);
-    background: linear-gradient(132deg, rgba(255, 255, 255, 0.5) 0%, rgba(0, 71, 255, 0.05) 100%);
+    background: ${theme.colors.aboutGradient};
     border-radius: 100px 0 100px 0;
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    border: 2px solid ${theme.colors.aboutBorder};
 
     @media screen and ${theme.media.tablet} {
         position: relative;
@@ -113,6 +117,7 @@ const InfoAboutMe = styled.div`
         padding: 40px 10px 34px 35px;
     }
 `
+
 const Icons = styled.div`
     display: flex;
     flex-direction: row;
@@ -121,9 +126,10 @@ const Icons = styled.div`
     padding-bottom: 18px;
 
     @media screen and ${theme.media.mobile} {
-      display: none;
+        display: none;
     }
 `
+
 const WrapperBcg = styled.div`
     position: relative;
     min-height: 115vh;
@@ -131,11 +137,11 @@ const WrapperBcg = styled.div`
     @media screen and ${theme.media.tablet} {
         padding: 70px 40px 0 40px;
     }
+
     @media screen and ${theme.media.mobile} {
         padding: 46px 0 0 0;
         min-height: 65vh;
     }
-
 `
 
 const NameAboutMe = styled.h2`
@@ -169,10 +175,10 @@ const UlStyled = styled.ul`
         }
     }
 `
-const LiStyled = styled.li`
-    //marker: url('$_{IconName}'); "_" Чтобы не ругался 
 
+const LiStyled = styled.li`
     padding-left: 13px;
+
     @media screen and ${theme.media.mobile} {
         font-weight: 400;
         font-size: 10px;
@@ -183,7 +189,7 @@ const LiStyled = styled.li`
         display: inline-block;
         width: 18px;
         height: 18px;
-        background: linear-gradient(90deg, rgba(166, 188, 250, 1) 50%, rgba(33, 87, 242, 1) 100%);
+        background: ${theme.colors.bulletGradient};
         border-radius: 50%;
         transform: rotate(90deg) translateY(13px);
 
@@ -193,5 +199,3 @@ const LiStyled = styled.li`
         }
     }
 `
-
-

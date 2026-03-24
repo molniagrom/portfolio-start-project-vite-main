@@ -8,74 +8,11 @@ import {Container} from "../../../components/Container";
 import dots from "../../../image/Dots.svg";
 import {circle} from "../../../image/svgDataFormat.ts";
 import {AnimatePresence, motion} from "framer-motion";
-
-interface Project {
-    id: number;
-    title: string;
-    image: string;
-    type: ProjectType;
-}
-
-type ProjectType = "Story" | "Post" | "Banner" | "Trailer" | "Desighn" | "More";
+import {projectFilters, projects, ProjectType} from "../../../data/portfolioData.ts";
 
 export const Projects = (): JSX.Element => {
-    const projects: Project[] = [
-        {
-            id: 1,
-            title: "Portfolio Website",
-            image: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d",
-            type: "Banner",
-        },
-        {
-            id: 2,
-            title: "E-commerce Store",
-            image: "https://images.unsplash.com/photo-1542838132-92c53300491e",
-            type: "Post",
-        },
-        {
-            id: 3,
-            title: "May's coffee shop",
-            image:
-                "https://images.unsplash.com/photo-1584428885051-d80a38d86b39?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            type: "Desighn",
-        },
-        {
-            id: 4,
-            title: "'Family-Contractions'",
-            image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
-            type: "More",
-        },
-        {
-            id: 5,
-            title: "Recipe Finder",
-            image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061",
-            type: "Story",
-        },
-        {
-            id: 6,
-            title: "Travel Blog",
-            image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-            type: "Story",
-        },
-        {
-            id: 7,
-            title: "Once and for all",
-            image:
-                "https://images.unsplash.com/photo-1745946596837-0393d87a1706?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            type: "Desighn",
-        },
-        {
-            id: 8,
-            title: "Movie Explorer",
-            image: "https://images.unsplash.com/photo-1726064855988-1e4deb0a3392?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            type: "Trailer",
-        },
-    ];
-
     const [clickedIndex, setClickedIndex] = useState<number | null>(null);
     const [currentFilterStatus, setCurrentFilterStatus] = useState<ProjectType | null>(null);
-
-    const tabsItems: ProjectType[] = ["Story", "Post", "Banner", "Trailer", "Desighn", "More"];
 
     const changeFilterStatus = (value: ProjectType): void => {
         setCurrentFilterStatus(value);
@@ -85,8 +22,13 @@ export const Projects = (): JSX.Element => {
         setClickedIndex(index);
     };
 
-    const filteredWorks: Project[] = currentFilterStatus
-        ? projects.filter((p) => p.type === currentFilterStatus)
+    const clearFilters = (): void => {
+        setClickedIndex(null);
+        setCurrentFilterStatus(null);
+    };
+
+    const filteredWorks = currentFilterStatus
+        ? projects.filter((project) => project.type === currentFilterStatus)
         : projects;
 
     return (
@@ -94,8 +36,8 @@ export const Projects = (): JSX.Element => {
             <Container maxWidth={"1240px"} padding={"0 15px"}>
                 <TitleProject>Projects</TitleProject>
                 <List className="category-tabs">
-                    {tabsItems.map((item, index) => (
-                        <ListItem key={index}>
+                    {projectFilters.map((item, index) => (
+                        <ListItem key={item}>
                             <Button
                                 adaptiveProject
                                 isClicked={clickedIndex === index}
@@ -118,11 +60,30 @@ export const Projects = (): JSX.Element => {
                             </Button>
                         </ListItem>
                     ))}
+                    <ListItem>
+                        <Button
+                            adaptiveProject
+                            isClicked={currentFilterStatus === null}
+                            onClick={clearFilters}
+                            border={`${theme.colors.border} 3px solid`}
+                            borderRadius={"67px"}
+                            padding={"7px 40px"}
+                        >
+                            <AStyled
+                                adaptiveProject
+                                lineHeight={"136%"}
+                                fontWeight={"400"}
+                                fontSize={"20px"}
+                            >
+                                Clear filters
+                            </AStyled>
+                        </Button>
+                    </ListItem>
                 </List>
                 <ScrollWrapper>
                     <GreedWrapper>
                         <AnimatePresence>
-                            {filteredWorks.map((item: Project) => (
+                            {filteredWorks.map((item) => (
                                 <motion.div
                                     layout={true}
                                     initial={{opacity: 0}}
@@ -131,9 +92,12 @@ export const Projects = (): JSX.Element => {
                                     key={item.id}
                                 >
                                     <Card
-                                        key={item.id}
                                         title={item.title}
-                                        image={item.image}/>
+                                        image={item.image}
+                                        imageAlt={item.imageAlt}
+                                        demoUrl={item.demoUrl}
+                                        codeUrl={item.codeUrl}
+                                    />
                                 </motion.div>
                             ))}
                         </AnimatePresence>
@@ -182,7 +146,7 @@ const TitleProject = styled.h2`
 
 const List = styled.ul`
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
     grid-auto-rows: minmax(42px, auto);
     row-gap: 30px;
     column-gap: 2vw;
@@ -196,20 +160,15 @@ const List = styled.ul`
         padding: 64px 0 62px 0;
     }
 
-    @media screen and (max-width: 940px) {
-        grid-template-columns: repeat(3, 160px);
-        column-gap: 40px;
-    }
     @media screen and ${theme.media.mobile} {
-        grid-template-columns: repeat(3, 96px);
-        grid-auto-rows: minmax(20px, auto);
         gap: 24px 18px;
         padding: 42px 0 38px 0;
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
     }
 
     li button {
         width: 100%;
-        color: #fff;
+        color: ${theme.colors.primaryFont};
     }
 `;
 
@@ -249,7 +208,6 @@ const GreedWrapper = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(250px, 270px));
     grid-auto-rows: auto;
     justify-content: center;
-
     gap: 45px 38px;
 
     @media screen and ${theme.media.mobile} {

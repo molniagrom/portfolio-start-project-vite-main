@@ -4,13 +4,12 @@ import {Photo} from "./Photo.tsx";
 import {MainSection} from "./MainSection.tsx";
 import styled from "styled-components";
 import {Icon} from "../../../components/icon/Icon.tsx";
-// import {card} from "./Projects/card/card.tsx";
-// import {Button} from "../../../components/Button/Button.tsx";
-import {AStyled, InputLinkStyled} from "../../../components/AStyled/AStyled.tsx";
+import {InputLinkStyled} from "../../../components/AStyled/AStyled.tsx";
 import {Container} from "../../../components/Container.ts";
 import {theme} from "../../../styles/Theme.ts";
 import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
-
+import {contactDetails, socialLinks} from "../../../data/portfolioData.ts";
+import {Link} from "react-scroll";
 
 export const Main = () => {
     return (
@@ -37,22 +36,20 @@ export const Main = () => {
                                 <Photo
                                     adaptMain
                                     src={myPhoto}
+                                    alt="Portrait of Alina Groza"
                                     width="334px"
                                     height="334px"
                                     borderRadius="50%"
                                     border="22px solid white"
                                 />
                                 <FlexWrapper direction="column">
-                                    <MainTitle>Frontend-developer WEB</MainTitle>
-                                    <Name>I'm <span>Alina Groza</span>. Bringing order to chaos — your frontend in
-                                        reliable
-                                        hands. Aesthetics, logic, and user care — in every pixel.</Name>
+                                    <MainTitle>Frontend Developer</MainTitle>
+                                    <Name>I'm <span>Alina Groza</span>. Bringing order to chaos - your frontend in reliable hands. Aesthetics, logic, and user care in every pixel.</Name>
                                     <FlexWrapper adaptive alignItems={"center"} gap="32px">
-
-                                        <AStyled
+                                        <ProjectLink
                                             adaptiveMain
-                                            href={"https://www.youtube.com/watch?v=Zhq_ThHG2gA&t=8032s"}
-                                            target="_blank"
+                                            smooth={true}
+                                            to="projects"
                                             fontSize={"15px"}
                                             fontWeight={"600"}
                                             padding={"15px"}
@@ -60,28 +57,27 @@ export const Main = () => {
                                             color={theme.colors.primaryFont}
                                             borderRadius={"20px"}
                                             fontFamily={"Roboto"}
-                                            backgroundColor={"#2157F2"}
-
+                                            backgroundColor={theme.colors.accent}
                                         >
-
                                             See Projects
                                             <Icon adaptiveMain iconId={"ArrowWhiteToButton"} width={"28px"}
                                                   height={"28px"}
                                                   viewBox={"-3 -3 36 36"}/>
-
-                                        </AStyled>
+                                        </ProjectLink>
 
                                         <InputLinkStyled
                                             adaptiveMain
+                                            href={contactDetails.resumeUrl}
+                                            download
                                             fontSize={"15px"}
                                             fontWeight={600}
                                             backgroundColor={"transparent"}
-                                            color={"#6c92ff"}
-                                            value={"Download Resume"}
+                                            color={theme.colors.tertiaryFont}
                                             border={"none"}
                                             outline={"none"}
                                             appearance={"none"}
                                         >
+                                            Download Resume
                                         </InputLinkStyled>
                                     </FlexWrapper>
                                 </FlexWrapper>
@@ -89,9 +85,17 @@ export const Main = () => {
                         </WrapperBlur>
                     </FlexWrapper>
                     <BlueWhite>
-                        <HoverableIcon iconId="instagramWhite" viewBox="0 0 31 31" width="36px" height="36px"/>
-                        <HoverableIcon iconId="whatsappWhite" viewBox="0 0 31 31" width="36px" height="36px"/>
-                        <HoverableIcon iconId="telegramWhite" viewBox="0 0 31 31" width="31px" height="31px"/>
+                        {socialLinks.map((link) => (
+                            <HoverableIcon
+                                key={link.label}
+                                href={link.href}
+                                label={link.label}
+                                iconId={link.mobileIconId ?? link.iconId}
+                                viewBox="0 0 31 31"
+                                width={link.label === "Telegram" ? "31px" : "36px"}
+                                height={link.label === "Telegram" ? "31px" : "36px"}
+                            />
+                        ))}
                     </BlueWhite>
                 </MainSectionWrapper>
             </Container>
@@ -101,14 +105,12 @@ export const Main = () => {
 
 export default Main;
 
-
 const WrapperBlur = styled.div`
     backdrop-filter: blur(10px);
-    background-color: rgba(33, 87, 242, 0.2);
+    background-color: ${theme.colors.heroGlass};
     border-radius: 200px 0;
     border: 2px solid ${theme.colors.linear};
     padding: 48px 90px 36px 106px;
-    //position: relative;
 
     @media screen and ${theme.media.tablet} {
         padding: 30px 50px 100px 78px;
@@ -118,13 +120,12 @@ const WrapperBlur = styled.div`
         padding: 20px 28px 47px 42px;
         border-radius: 112px 0;
     }
-
 `
+
 const MainSectionWrapper = styled.div`
     position: relative;
     max-width: 1160px;
     margin: 0 auto;
-
 `
 
 export const MainTitle = styled.h1`
@@ -150,16 +151,16 @@ export const Name = styled.h2<NamePropsType>`
     font-size: clamp(10px, 4vw, 20px);
     line-height: clamp(1.3, 3.5vw, 1.5);
     padding-bottom: clamp(20px, 5vw, 42px);
+
     @media screen and ${theme.media.tablet} {
         padding-bottom: clamp(15px, 5vw, 50px);
-
     }
+
     @media screen and ${theme.media.mobile} {
         font-weight: 400;
         font-size: 15px;
         line-height: 150%;
     }
-
 `
 
 const BlueWhite = styled.div`
@@ -171,7 +172,7 @@ const BlueWhite = styled.div`
     left: 0;
     gap: 17px;
     border-radius: 0 25px 25px 0;
-    background-color: #24335C;
+    background-color: ${theme.colors.primaryBg};
     outline: 2px solid ${theme.colors.linear};
     padding: 36px 15px;
     z-index: 5;
@@ -179,5 +180,43 @@ const BlueWhite = styled.div`
     @media screen and ${theme.media.mobile} {
         display: none;
     }
+`
 
+const ProjectLink = styled(Link)<{
+    backgroundColor?: string;
+    color?: string;
+    fontFamily?: string;
+    borderRadius?: string;
+    gap?: string;
+    padding?: string;
+    fontWeight?: string;
+    fontSize?: string;
+    adaptiveMain?: boolean;
+}>`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: ${props => props.backgroundColor};
+    color: ${props => props.color};
+    font-family: ${props => props.fontFamily};
+    border-radius: ${props => props.borderRadius};
+    gap: ${props => props.gap};
+    padding: ${props => props.padding};
+    font-weight: ${props => props.fontWeight};
+    font-size: ${props => props.fontSize};
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.03);
+    }
+
+    @media screen and ${theme.media.mobile} {
+        ${props => props.adaptiveMain && `
+            font-weight: 600;
+            font-size: 8px;
+            line-height: 150%;
+            padding: 8px 20px;
+        `}
+    }
 `

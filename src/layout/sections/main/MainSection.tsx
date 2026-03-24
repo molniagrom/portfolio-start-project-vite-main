@@ -22,14 +22,14 @@ export const MainSection = styled.section`
 
     background: linear-gradient(
             to right,
-            #24335C 26.39%,
+            ${theme.colors.primaryBg} 26.39%,
             transparent 26.39%
     );
 
     @media screen and ${theme.media.tablet} {
         background: linear-gradient(
                 to right,
-                #24335C clamp(26vw, 50vw, 50vw),
+                ${theme.colors.primaryBg} clamp(26vw, 50vw, 50vw),
                 transparent clamp(26vw, 50vw, 50vw)
         );
     }

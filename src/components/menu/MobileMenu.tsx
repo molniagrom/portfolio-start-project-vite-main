@@ -1,32 +1,61 @@
-import {useState} from 'react';
-
+import {useEffect, useState} from 'react';
 import styled, {css} from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 import {MenuPropsType} from "./DesktopMenu.tsx";
 import {Link} from "react-scroll";
+import {Icon} from "../icon/Icon.tsx";
 
 export const MobileMenu = (props: MenuPropsType) => {
-
-const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     const onClick = () => {
         setIsOpen(!isOpen)
     }
 
+    useEffect(() => {
+        if (!isOpen) return;
+
+        const handleEscape = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                setIsOpen(false);
+            }
+        };
+
+        window.addEventListener("keydown", handleEscape);
+
+        return () => window.removeEventListener("keydown", handleEscape);
+    }, [isOpen]);
+
     return (
         <StyledMobileMenu isOpen={isOpen}>
-            <BurgerButton isOpen={isOpen} onClick={onClick}>
+            <BurgerButton
+                isOpen={isOpen}
+                onClick={onClick}
+                aria-label="Toggle menu"
+                aria-expanded={isOpen}
+                aria-controls="mobile-navigation"
+            >
                 <span></span>
             </BurgerButton>
-            <MobileMenuPopup isOpen={isOpen} onClick={() => {setIsOpen(false)}}>
+            <MobileMenuPopup id="mobile-navigation" isOpen={isOpen} onClick={() => {
+                setIsOpen(false)
+            }}>
                 <ul>
-                    {props.items.map((item, i) => (
-                        <ListItemMobile key={i}>
-                            <LinkMobile onClick={() => {setIsOpen(false)}}
-                                        activeClass="active" spy={true}
+                    {props.items.map((item) => (
+                        <ListItemMobile key={item.href}>
+                            <LinkMobile onClick={() => {
+                                setIsOpen(false)
+                            }}
+                                        activeClass="active" spy={true} smooth={true}
                                         to={item.href}>{item.title}</LinkMobile>
                         </ListItemMobile>
                     ))}
+                    <ListItemMobile>
+                        <ThemeToggleButton type="button" onClick={props.onToggleTheme}>
+                            <Icon iconId={"moon"}/>
+                            {props.mode === "dark" ? "Light theme" : "Dark theme"}
+                        </ThemeToggleButton>
+                    </ListItemMobile>
                 </ul>
             </MobileMenuPopup>
         </StyledMobileMenu>
@@ -34,7 +63,6 @@ const [isOpen, setIsOpen] = useState(false);
 };
 
 const StyledMobileMenu = styled.nav<PropsType>`
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,7 +77,6 @@ type PropsType = {
 }
 
 const MobileMenuPopup = styled.div<PropsType>`
-
     position: fixed;
     top: 0;
     left: 0;
@@ -63,12 +90,12 @@ const MobileMenuPopup = styled.div<PropsType>`
     justify-content: center;
     align-items: center;
     height: 100vh;
-
     transform: translateY(-100%);
-    
+
     ${props => props.isOpen && css<PropsType>`
         transform: translateY(0);
     `}
+
     ul {
         display: flex;
         flex-direction: column;
@@ -95,7 +122,7 @@ const BurgerButton = styled.button<PropsType>`
         bottom: 50px;
 
         ${props => props.isOpen && css<PropsType>`
-            background-color: rgb(255, 255, 255, 0);
+            background-color: ${theme.colors.menuLineTransparent};
         `}
         &::before {
             content: "";
@@ -107,7 +134,7 @@ const BurgerButton = styled.button<PropsType>`
             transform: translateY(-10px);
 
             ${props => props.isOpen && css<PropsType>`
-                background-color: rgba(255, 255, 255);
+                background-color: ${theme.colors.menuLine};
                 transform: translateY(0) rotate(-45deg);
             `}
         }
@@ -122,16 +149,26 @@ const BurgerButton = styled.button<PropsType>`
             transform: translateY(10px);
 
             ${props => props.isOpen && css<PropsType>`
-                background-color: rgba(255, 255, 255);
+                background-color: ${theme.colors.menuLine};
                 transform: translateY(0) rotate(45deg);
             `}
         }
     }
 `
 
-const ListItemMobile = styled.li`
+const ListItemMobile = styled.li``
 
+const ThemeToggleButton = styled.button`
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: ${theme.colors.primaryFont};
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
 `
+
 const LinkMobile = styled(Link)`
     display: inline-block;
     color: ${theme.colors.primaryFont};
@@ -143,7 +180,6 @@ const LinkMobile = styled(Link)`
 
     &:hover, &.active {
         color: ${theme.colors.secondaryFont};
-        transform: scale(1.03); 
+        transform: scale(1.03);
     }
 `;
-

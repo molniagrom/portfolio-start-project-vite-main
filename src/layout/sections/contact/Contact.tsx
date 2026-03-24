@@ -14,30 +14,38 @@ import {Icon} from "../../../components/icon/Icon.tsx";
 import {Container} from "../../../components/Container.ts";
 import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
 import emailjs from '@emailjs/browser';
-import {ElementRef, FormEvent, useRef} from "react";
-
+import {FormEvent, useRef, useState} from "react";
+import {contactDetails, socialLinks} from "../../../data/portfolioData.ts";
+import {theme} from "../../../styles/Theme.ts";
+import styled from "styled-components";
 
 export const Contact = () => {
-    const form = useRef<ElementRef<"form">>(null);
+    const form = useRef<HTMLFormElement>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [isError, setIsError] = useState(false);
 
-    const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+    const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (!form.current) return;
+        if (!form.current || isSubmitting) return;
 
-        emailjs
-            .sendForm('service_k3y1l3q', 'template_pp8p1s5', form.current, {
+        setIsSubmitting(true);
+        setIsSuccess(false);
+        setIsError(false);
+
+        try {
+            await emailjs.sendForm('service_k3y1l3q', 'template_pp8p1s5', form.current, {
                 publicKey: '0Eb6bUtkWnoBKFJZ4',
-            })
-            .then(
-                () => {
-                    console.log('SUCCESS!');
-                },
-                (error) => {
-                    console.log('FAILED...', error.text);
-                },
-            );
-        (e.target as HTMLFormElement).reset();
+            });
+
+            form.current.reset();
+            setIsSuccess(true);
+        } catch {
+            setIsError(true);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -51,56 +59,79 @@ export const Contact = () => {
                     <FlexWrapper adaptiveContact gap={"clamp(50px, 10vw, 130px)"}>
                         <FormContent>
                             <h2>Get in touch</h2>
-                            <>
-                                <StyledForm ref={form} onSubmit={sendEmail}>
-                                    <GroupFields>
-                                        <Field required name={"email"} placeholder={"E-mail"} type={"email"}/>
-                                        <Field required name={"number"} placeholder={'Phone'} type={"phone"}/>
-                                        <Field required name={"name"} placeholder={'Name'} type={"name"}/>
-                                    </GroupFields>
-                                    <Field required name={"message"} placeholder={'Message'} as={"textarea"}/>
-                                    <Button
-                                        adaptiveContact
-                                        type={"submit"}
-                                        backgroundColor={"#2350D6"}
-                                        color={"#fff"}
-                                        fontSize={"15px"}
-                                        fontWeight={"500"}
-                                        padding={"10px 40px 10px 40px"}
-                                        gap={"14px"}
-                                        borderRadius={"9px"}
-                                        fontFamily={"Roboto"}
-                                        lineHeight={"136%"}
-                                    >Send</Button>
-                                </StyledForm>
-                            </>
+                            <StyledForm ref={form} onSubmit={sendEmail}>
+                                <GroupFields>
+                                    <Field required minLength={5} name={"email"} placeholder={"E-mail"} type={"email"}/>
+                                    <Field required minLength={7} name={"number"} placeholder={'Phone'} type={"tel"}/>
+                                    <Field required minLength={2} name={"name"} placeholder={'Name'} type={"text"}/>
+                                </GroupFields>
+                                <Field required minLength={10} name={"message"} placeholder={'Message'} as={"textarea"}/>
+                                <Button
+                                    adaptiveContact
+                                    type={"submit"}
+                                    disabled={isSubmitting}
+                                    backgroundColor={theme.colors.accent}
+                                    color={theme.colors.primaryFont}
+                                    fontSize={"15px"}
+                                    fontWeight={"500"}
+                                    padding={"10px 40px 10px 40px"}
+                                    gap={"14px"}
+                                    borderRadius={"9px"}
+                                    fontFamily={"Roboto"}
+                                    lineHeight={"136%"}
+                                >
+                                    {isSubmitting ? "Sending..." : "Send"}
+                                </Button>
+                                {(isSuccess || isError) && (
+                                    <StatusMessage role="status" isError={isError}>
+                                        {isSuccess
+                                            ? "Message sent successfully."
+                                            : "Message could not be sent. Please try again."}
+                                    </StatusMessage>
+                                )}
+                            </StyledForm>
                         </FormContent>
                         <InfoLogoContent>
                             <Part
                                 iconId={"locationBlue"}
                                 title={"Location"}
-                                subTittle={"Mashhad/Iran"}/>
+                                subTittle={contactDetails.location}/>
 
                             <Part
                                 iconId={"telephoneBlue"}
                                 title={"Phone"}
-                                subTittle={"+989150063913"}/>
+                                subTittle={contactDetails.phone}/>
 
                             <Part
                                 iconId={"emailBlue"}
                                 title={"Email"}
-                                subTittle={"arkn3913@gmail.com"}/>
+                                subTittle={contactDetails.email}/>
                         </InfoLogoContent>
                     </FlexWrapper>
                 </ContactBlock>
                 <FlexWrapper justify="center" alignItems="center">
                     <Colored>
-                        <HoverableIcon iconId="instagramColor" width={"33px"} height={"32px"}/>
-                        <HoverableIcon iconId="whatsappColor" width={"33px"} height={"32px"}/>
-                        <HoverableIcon iconId="telegramColor" width={"33px"} height={"32px"}/>
+                        {socialLinks.map((link) => (
+                            <HoverableIcon
+                                key={link.label}
+                                href={link.href}
+                                label={link.label}
+                                iconId={link.iconId}
+                                width={"33px"}
+                                height={"32px"}
+                            />
+                        ))}
                     </Colored>
                 </FlexWrapper>
             </Container>
         </ContactUs>
     );
 };
+
+type StatusMessageProps = {
+    isError: boolean;
+}
+
+const StatusMessage = styled.p<StatusMessageProps>`
+    color: ${props => props.isError ? "#ff8c8c" : "#8fd8a8"};
+`;

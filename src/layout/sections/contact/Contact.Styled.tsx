@@ -6,7 +6,7 @@ export const ContactUs = styled.section`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 65px 25px 197px 25px;   
+    padding: 65px 25px 197px 25px;
 
     @media screen and ${theme.media.tablet} {
         padding: 37px 80px 52px 80px;
@@ -27,7 +27,6 @@ export const ContactTitle = styled.div`
     line-height: 136%;
     padding-bottom: 65px;
 
-
     @media screen and ${theme.media.mobile} {
         padding-bottom: 40px;
     }
@@ -37,7 +36,6 @@ export const ContactTitle = styled.div`
         font-size: 32px;
         line-height: 136%;
         padding-bottom: 6px;
-
 
         @media screen and ${theme.media.mobile} {
             font-size: 19px;
@@ -56,7 +54,6 @@ export const FormContent = styled.div`
         font-weight: 500;
         font-size: 36px;
         line-height: 136%;
-
 
         @media screen and ${theme.media.mobile} {
             font-size: 22px;
@@ -79,7 +76,7 @@ export const GroupFields = styled.div`
     display: flex;
     flex-direction: row;
     gap: 7px;
-    
+
     @media screen and ${theme.media.mobile} {
         flex-direction: column;
         gap: 20px;
@@ -87,33 +84,29 @@ export const GroupFields = styled.div`
 `;
 
 type FieldPropsType = {
-    placeholder?: string;
-    type?: string;
     as?: string;
 };
 
 export const Field = styled.input<FieldPropsType>`
-    background-color: #393838;
+    background-color: ${theme.colors.tertiaryBg};
     border: none;
     padding: 9px 30px;
     border-radius: 9px;
     width: 100%;
     max-width: 211px;
-    
     font-weight: 400;
     font-size: 13px;
     line-height: 136%;
-    color: #a5a5a5;
+    color: ${theme.colors.inputText};
 
     ::placeholder {
-        color: #aaa;
+        color: ${theme.colors.inputText};
     }
-
 
     @media screen and ${theme.media.mobile} {
         font-size: 13px;
     }
-    
+
     ${props =>
             props.as === "textarea" &&
             css`
@@ -146,9 +139,7 @@ export const Colored = styled.div`
     display: flex;
     flex-direction: row;
     gap: 22px;
-    //margin-top: 40px;
     padding-top: 65px;
-
 
     svg {
         transition: transform 0.2s ease;
@@ -161,7 +152,7 @@ export const Colored = styled.div`
 `;
 
 export const ContactBlock = styled.div`
-    background-color: #2C2B2B;
+    background-color: ${theme.colors.secondaryBg};
     padding: 53px 113px 65px 82px;
     display: flex;
     flex-direction: column;
@@ -170,7 +161,7 @@ export const ContactBlock = styled.div`
     gap: 40px;
     max-width: 900px;
     width: 100%;
-    box-shadow: 0 0 16px 8px rgba(19, 19, 19, 0.18);
+    box-shadow: 0 0 16px 8px ${theme.colors.overlayShadow};
     margin: 0 auto;
 
     @media screen and ${theme.media.tablet} {

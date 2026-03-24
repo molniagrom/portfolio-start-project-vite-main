@@ -1,7 +1,17 @@
 import {createGlobalStyle} from "styled-components";
 import {theme} from "./Theme.ts";
+import {createThemeCssVariables} from "./colors.ts";
 
 export const GlobalStyled = createGlobalStyle`
+    :root {
+        ${createThemeCssVariables("dark")}
+        color-scheme: dark;
+    }
+
+    :root[data-theme='light'] {
+        ${createThemeCssVariables("light")}
+        color-scheme: light;
+    }
 
     *,
     *:before,
@@ -22,6 +32,7 @@ export const GlobalStyled = createGlobalStyle`
         background-color: ${theme.colors.allBg};
         color: ${theme.colors.primaryFont};
         min-width: 350px;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     a {
@@ -35,11 +46,24 @@ export const GlobalStyled = createGlobalStyle`
     button {
         background-color: unset;
         border: none;
+        color: inherit;
     }
 
     input {
         background-color: unset;
         border: none;
+    }
+
+    textarea {
+        background-color: unset;
+        border: none;
+        color: inherit;
+        font: inherit;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
     }
 `
 

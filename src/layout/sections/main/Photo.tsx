@@ -18,7 +18,7 @@ type PhotoPropsType = {
 }
 
 export const Photo = styled.img<PhotoPropsType>`
-    //width: ${props => props.width || undefined};
+    width: ${props => props.width || undefined};
     height: ${props => props.height || undefined};
     border-radius: ${props => props.borderRadius || undefined};
     object-fit: ${props => props.objectFit || undefined};

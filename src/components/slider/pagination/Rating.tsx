@@ -1,22 +1,26 @@
 import React from "react";
+import {theme} from "../../../styles/Theme.ts";
 
 type RatingProps = {
-    total: number;     // Общее количество звёзд
-    active: number;    // Сколько звёзд активны (подсвечены)
+    total: number;
+    active: number;
 };
 
-export const Rating: React.FC<RatingProps> = ({ total, active }) => {
+export const Rating: React.FC<RatingProps> = ({total, active}) => {
     const stars = [];
 
     for (let i = 1; i <= total; i++) {
         stars.push(
-            <span key={i} style={{
-                color: i <= active ? '#ffc107' : '#e4e5e9',
-                fontSize: '24px',
-                marginRight: '4px'
-            }}>
-        ★
-      </span>
+            <span
+                key={i}
+                style={{
+                    color: i <= active ? theme.colors.ratingActive : theme.colors.ratingInactive,
+                    fontSize: "24px",
+                    marginRight: "4px",
+                }}
+            >
+                ★
+            </span>
         );
     }
 

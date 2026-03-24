@@ -1,16 +1,19 @@
 import styled from "styled-components";
-import { FlexWrapper } from "../../../../components/wrappers/FlexWrapper.tsx";
-import { Photo } from "../../main/Photo.tsx";
-import { AStyled } from "../../../../components/AStyled/AStyled.tsx";
-import { theme } from "../../../../styles/Theme.ts";
+import {FlexWrapper} from "../../../../components/wrappers/FlexWrapper.tsx";
+import {Photo} from "../../main/Photo.tsx";
+import {AStyled} from "../../../../components/AStyled/AStyled.tsx";
+import {theme} from "../../../../styles/Theme.ts";
 import React from "react";
 
 type CardProps = {
     title: string;
     image: string;
+    imageAlt: string;
+    demoUrl: string;
+    codeUrl: string;
 };
 
-export const Card: React.FC<CardProps> = ({ title, image }) => {
+export const Card: React.FC<CardProps> = ({title, image, imageAlt, demoUrl, codeUrl}) => {
     return (
         <StyledCard
             borderRadius="26px"
@@ -22,6 +25,7 @@ export const Card: React.FC<CardProps> = ({ title, image }) => {
                 height="240px"
                 width="100%"
                 src={image}
+                alt={imageAlt}
                 objectFit="cover"
             />
 
@@ -39,6 +43,9 @@ export const Card: React.FC<CardProps> = ({ title, image }) => {
 
                 <FlexWrapper gap="20px" justify="space-between">
                     <AStyled
+                        href={codeUrl}
+                        target="_blank"
+                        rel="noreferrer"
                         adaptiveProject
                         buttonHover
                         borderRadius="12px"
@@ -53,6 +60,9 @@ export const Card: React.FC<CardProps> = ({ title, image }) => {
                     </AStyled>
 
                     <AStyled
+                        href={demoUrl}
+                        target="_blank"
+                        rel="noreferrer"
                         adaptiveProject
                         LinkHover
                         color={theme.colors.secondaryFont}
@@ -94,7 +104,6 @@ const StyledCard = styled.article<StyledCardPropsType>`
     height: ${props => props.height ?? undefined};
     width: ${props => props.width ?? undefined};
     transition: all 0.3s ease;
-    //max-width: 270px;
 
     ${Photo} {
         filter: grayscale(10%) brightness(0.8);
