@@ -1,10 +1,42 @@
-// import React from 'react';
-
 import styled from "styled-components";
 import {Icon} from "../../../components/icon/Icon.tsx";
 import {Container} from "../../../components/Container.ts";
 import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
 import {theme} from "../../../styles/Theme.ts";
+
+type ExistingTech = {
+    type: "sprite";
+    name: string;
+    iconId: string;
+    viewBox?: string;
+    width?: string;
+    height?: string;
+};
+
+type NewTech = {
+    type: "image";
+    name: string;
+    src: string;
+};
+
+type TechItem = ExistingTech | NewTech;
+
+const techItems: TechItem[] = [
+    {type: "sprite", name: "GitHub", iconId: "github", viewBox: "0 0 25 25"},
+    {type: "sprite", name: "HTML", iconId: "html", viewBox: "0 0 150 150"},
+    {type: "sprite", name: "CSS", iconId: "css", viewBox: "0 0 150 150"},
+    {type: "sprite", name: "SCSS", iconId: "scss", viewBox: "0 0 160 160", width: "140px", height: "140px"},
+    {type: "sprite", name: "WebStorm", iconId: "vebStorm", viewBox: "0 0 290 290"},
+    {type: "sprite", name: "VS Code", iconId: "vsCode", viewBox: "0 0 150 150"},
+    {type: "sprite", name: "React", iconId: "react", viewBox: "0 0 300 300"},
+    {type: "sprite", name: "JavaScript", iconId: "js", viewBox: "0 0 140 140"},
+    {type: "sprite", name: "Git", iconId: "git", viewBox: "0 0 150 150"},
+    {type: "sprite", name: "Styled Components", iconId: "styledComponent", viewBox: "0 0 150 150"},
+    {type: "image", name: "TypeScript", src: "/tech/typescript.svg"},
+    {type: "image", name: "Redux Toolkit", src: "/tech/redux-toolkit.svg"},
+    {type: "image", name: "Next.js", src: "/tech/nextjs.svg"},
+    {type: "image", name: "React Query", src: "/tech/react-query.svg"},
+];
 
 export const MyStack = () => {
     return (
@@ -13,19 +45,23 @@ export const MyStack = () => {
                 <FlexWrapper adaptiveMyStack gap={"140px"} direction="column" justify="center" alignItems="center">
                     <ContentText>
                         <h2>My Tech Stack</h2>
-                        <p> Technologies I’ve been working with recently</p>
+                        <p>Technologies I've been working with recently</p>
                     </ContentText>
                     <ContentSvg>
-                        <Icon width={"120px"} height={"120px"} viewBox={"0 0 25 25"} iconId={"github"}/>
-                        <Icon width={"120px"} height={"120px"} viewBox={"0 0 150 150"} iconId={"html"}/>
-                        <Icon width={"120px"} height={"120px"} viewBox={"0 0 150 150"} iconId={"css"}/>
-                        <Icon width={"120px"} height={"120px"} iconId={"scss"}/>
-                        <Icon width={"120px"} height={"120px"} viewBox={"0 0 290 290"} iconId={"vebStorm"}/>
-                        <Icon width={"120px"} height={"120px"} viewBox={"0 0 150 150"} iconId={"vsCode"}/>
-                        <Icon width={"120px"} height={"120px"} viewBox={"0 0 300 300"} iconId={"react"}/>
-                        <Icon width={"120px"} height={"120px"} viewBox={"0 0 140 140"} iconId={"js"}/>
-                        <Icon width={"120px"} height={"120px"} viewBox={"0 0 150 150"} iconId={"git"}/>
-                        <Icon width={"120px"} height={"120px"} viewBox={"0 0 150 150"} iconId={"styledComponent"}/>
+                        {techItems.map((tech) => (
+                            <TechCard key={tech.name}>
+                                {tech.type === "sprite" ? (
+                                    <Icon
+                                        width={tech.width || "120px"}
+                                        height={tech.height || "120px"}
+                                        viewBox={tech.viewBox}
+                                        iconId={tech.iconId}
+                                    />
+                                ) : (
+                                    <TechImage src={tech.src} alt={`${tech.name} logo`} />
+                                )}
+                            </TechCard>
+                        ))}
                     </ContentSvg>
                 </FlexWrapper>
             </Container>
@@ -39,8 +75,8 @@ const MyStackStyled = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #222222;
-    color: white;
+    background-color: ${theme.colors.allBg};
+    color: ${theme.colors.primaryFont};
     gap: 140px;
     padding: 100px 0 100px 0;
 
@@ -65,10 +101,10 @@ const ContentText = styled.div`
         font-size: 48px;
         line-height: 1.2;
         text-align: center;
-        
+
         @media screen and ${theme.media.tablet}{
             font-weight: 600;
-            font-size: 33px; 
+            font-size: 33px;
         }
     }
 
@@ -89,12 +125,24 @@ const ContentSvg = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    gap: 106px;
+    align-items: stretch;
+    gap: 56px;
     flex-wrap: wrap;
 
     @media screen and ${theme.media.tablet}{
-        gap: 50px;
+        gap: 36px;
     }
 `
 
+const TechCard = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 140px;
+`
+
+const TechImage = styled.img`
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+`
