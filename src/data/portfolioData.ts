@@ -66,6 +66,15 @@ export const projects: ProjectItem[] = [
         demoUrl: "https://todolist-01-eight.vercel.app/login",
         codeUrl: "https://github.com/molniagrom/todolist-01",
     },
+    {
+        id: 4,
+        title: "Music Fun (Tanstack Query)",
+        image: "/placeholder-project.svg",
+        imageAlt: "Preview of the Music Fun app with Tanstack Query",
+        type: "Pet",
+        demoUrl: "https://musicfuntanstack-query.vercel.app/",
+        codeUrl: "https://github.com/molniagrom/tanstack-query-example",
+    },
 ];
 
 export const projectFilters: ProjectType[] = ["Featured", "Pet", "Frontend"];
