@@ -78,7 +78,7 @@ export const projects: ProjectItem[] = [
     {
         id: 5,
         title: "Starlions — Social Network",
-        image: "/placeholder-project.svg",
+        image: "/logo48x48.svg",
         imageAlt: "Preview of the Starlions social network app",
         type: "Pet",
         demoUrl: "https://starlionstech.org/",
