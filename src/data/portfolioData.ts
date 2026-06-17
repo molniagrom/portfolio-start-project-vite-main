@@ -75,6 +75,15 @@ export const projects: ProjectItem[] = [
         demoUrl: "https://musicfuntanstack-query.vercel.app/",
         codeUrl: "https://github.com/molniagrom/tanstack-query-example",
     },
+    {
+        id: 5,
+        title: "Starlions — Social Network",
+        image: "/placeholder-project.svg",
+        imageAlt: "Preview of the Starlions social network app",
+        type: "Pet",
+        demoUrl: "https://starlionstech.org/",
+        codeUrl: "https://github.com/starloinsfront/starlions",
+    },
 ];
 
 export const projectFilters: ProjectType[] = ["Featured", "Pet", "Frontend"];
