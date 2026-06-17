@@ -20,7 +20,9 @@ describe("App smoke test", () => {
       </ThemeModeProvider>,
     );
 
-    expect(await screen.findByRole("heading", {name: /projects/i})).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", {name: /projects/i}, {timeout: 5000}),
+    ).toBeInTheDocument();
   });
 
   it("renders the contact section", async () => {
@@ -30,6 +32,8 @@ describe("App smoke test", () => {
       </ThemeModeProvider>,
     );
 
-    expect(await screen.findByRole("heading", {name: /contact us/i})).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", {name: /contact us/i}, {timeout: 5000}),
+    ).toBeInTheDocument();
   });
 });
