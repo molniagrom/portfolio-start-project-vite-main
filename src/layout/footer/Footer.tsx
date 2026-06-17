@@ -8,8 +8,8 @@ import {wave} from "../../image/svgDataFormat.ts";
 export const Footer = () => {
     return (
         <StyledFooter>
-            <Container adaptFooter padding={"130px 0px 73px 0px"}>
-                <FlexWrapper direction="column" justify={"center"} alignItems={"center"}>
+            <Container $adaptFooter padding={"130px 0px 73px 0px"}>
+                <FlexWrapper direction="column" justify={"center"} $alignItems={"center"}>
                     <Title>Coded by Alina Groza nezhad</Title>
                     <SubTittle>All Rights Reserved © 2025 - {new Date().getFullYear()}</SubTittle>
                 </FlexWrapper>

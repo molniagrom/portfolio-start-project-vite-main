@@ -12,10 +12,10 @@ export const AboutMe = () => {
 
     return (
         <AboutMeStyled id="about">
-            <Container aboutMeAdaptive padding={"46px 42px 0 42px"}>
+            <Container $aboutMeAdaptive padding={"46px 42px 0 42px"}>
                 <WrapperBcg>
-                    <StyledImage variant="map" src={map} alt="Decorative map background"/>
-                    <StyledImage variant="me" src={me} alt="Portrait illustration of Alina Groza"/>
+                    <StyledImage $variant="map" src={map} alt="Decorative map background"/>
+                    <StyledImage $variant="me" src={me} alt="Portrait illustration of Alina Groza"/>
                     <InfoAboutMe>
                         <Icons>
                             {socialLinks.map((link) => (
@@ -45,13 +45,13 @@ export const AboutMe = () => {
     );
 };
 
-const StyledImage = styled.img<{ variant: "map" | "me" }>`
+const StyledImage = styled.img<{ $variant: "map" | "me" }>`
     position: absolute;
     max-width: 100%;
     height: auto;
 
-    ${({variant}) =>
-            variant === "me" && css`
+    ${({$variant}) =>
+            $variant === "me" && css`
                 bottom: 0;
                 left: 40px;
                 height: 750px;
@@ -62,8 +62,8 @@ const StyledImage = styled.img<{ variant: "map" | "me" }>`
                 }
             `}
 
-    ${({variant}) =>
-            variant === "map" && css`
+    ${({$variant}) =>
+            $variant === "map" && css`
                 bottom: 0;
                 right: 50px;
                 height: 100%;

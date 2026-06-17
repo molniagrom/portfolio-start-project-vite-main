@@ -4,7 +4,7 @@ import {theme} from "../../../styles/Theme.ts";
 type PhotoPropsType = {
     width?: string;
     height?: string;
-    borderRadius?: string;
+    $borderRadius?: string;
     objectFit?: string;
     border?: string;
     position?: string;
@@ -13,14 +13,29 @@ type PhotoPropsType = {
     right?: string;
     maxWidth?: string;
     bottom?: string;
-    adaptMain?: boolean;
-    adaptiveProj?: boolean;
+    $adaptMain?: boolean;
+    $adaptiveProj?: boolean;
 }
 
-export const Photo = styled.img<PhotoPropsType>`
+const photoStyleProps = [
+    "width",
+    "height",
+    "objectFit",
+    "border",
+    "position",
+    "top",
+    "left",
+    "right",
+    "maxWidth",
+    "bottom",
+] as const;
+
+export const Photo = styled.img.withConfig({
+    shouldForwardProp: (prop) => !photoStyleProps.includes(prop as typeof photoStyleProps[number]),
+})<PhotoPropsType>`
     width: ${props => props.width || undefined};
     height: ${props => props.height || undefined};
-    border-radius: ${props => props.borderRadius || undefined};
+    border-radius: ${props => props.$borderRadius || undefined};
     object-fit: ${props => props.objectFit || undefined};
     border: ${props => props.border || undefined};
     position: ${props => props.position || undefined};
@@ -30,14 +45,14 @@ export const Photo = styled.img<PhotoPropsType>`
     bottom: ${props => props.bottom || undefined};
     max-width: ${props => props.maxWidth || undefined};
 
-    ${props => props.adaptiveProj && css`
+    ${props => props.$adaptiveProj && css`
         @media screen and ${theme.media.mobile} {
             height: 145px;
         }
     `}
     
     
-    ${props => props.adaptMain && css`
+    ${props => props.$adaptMain && css`
        
         @media screen and (max-width: 1020px) {
             width: 44%;

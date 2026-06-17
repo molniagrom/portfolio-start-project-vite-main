@@ -2,29 +2,41 @@ import styled, {css} from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 
 type AStyledPropsType = {
-    backgroundColor?: string;
+    $backgroundColor?: string;
     color?: string;
     fontFamily?: string;
-    borderRadius?: string;
+    $borderRadius?: string;
     gap?: string;
     padding?: string;
     fontWeight?: string;
     fontSize?: string;
     lineHeight?: string;
-    buttonHover?: boolean;
-    LinkHover?: boolean;
-    adaptiveMain?: boolean;
-    adaptiveProject?: boolean;
+    $buttonHover?: boolean;
+    $linkHover?: boolean;
+    $adaptiveMain?: boolean;
+    $adaptiveProject?: boolean;
 };
 
-export const AStyled = styled.a<AStyledPropsType>`
-    background-color: ${props => props.backgroundColor || undefined};
+const anchorStyleProps = [
+    "color",
+    "fontFamily",
+    "gap",
+    "padding",
+    "fontWeight",
+    "fontSize",
+    "lineHeight",
+] as const;
+
+export const AStyled = styled.a.withConfig({
+    shouldForwardProp: (prop) => !anchorStyleProps.includes(prop as typeof anchorStyleProps[number]),
+})<AStyledPropsType>`
+    background-color: ${props => props.$backgroundColor || undefined};
     color: ${props => props.color || undefined};
     font-family: ${props => props.fontFamily || undefined};
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    border-radius: ${props => props.borderRadius || undefined};
+    border-radius: ${props => props.$borderRadius || undefined};
     gap: ${props => props.gap || undefined};
     padding: ${props => props.padding || undefined};
     font-weight: ${props => props.fontWeight || undefined};
@@ -39,7 +51,7 @@ export const AStyled = styled.a<AStyledPropsType>`
         transform: translateY(1px);
     }
 
-    ${props => props.adaptiveProject && css`
+    ${props => props.$adaptiveProject && css`
         @media screen and ${theme.media.mobile} {
             font-weight: 700;
             font-size: 8px;
@@ -51,12 +63,12 @@ export const AStyled = styled.a<AStyledPropsType>`
         transform: scale(1.03);
         box-shadow: 0 4px 12px ${theme.colors.cardHoverShadow};
 
-        ${props => props.buttonHover && css`
+        ${props => props.$buttonHover && css`
             transition: background-color 0.2s ease, color 0.2s ease;
             background-color: ${theme.colors.accent};
             color: ${theme.colors.primaryFont};
         `}
-        ${props => props.LinkHover && css`
+        ${props => props.$linkHover && css`
             transition: color 0.2s ease;
             color: ${theme.colors.primaryFont};
         `}
@@ -66,7 +78,7 @@ export const AStyled = styled.a<AStyledPropsType>`
     }
 
     @media screen and ${theme.media.mobile} {
-        ${props => props.adaptiveMain && css`
+        ${props => props.$adaptiveMain && css`
             font-weight: 600;
             font-size: 8px;
             line-height: 150%;
@@ -76,19 +88,31 @@ export const AStyled = styled.a<AStyledPropsType>`
 `;
 
 type InputLinkStyledPropsType = {
-    backgroundColor?: string;
+    $backgroundColor?: string;
     color?: string;
     fontFamily?: string;
-    borderRadius?: string;
+    $borderRadius?: string;
     fontWeight?: 'normal' | 'bold' | 'lighter' | 'bolder' | number;
     fontSize?: string;
     border?: string;
     outline?: string;
     appearance?: string;
-    adaptiveMain?: boolean;
+    $adaptiveMain?: boolean;
 };
 
-export const InputLinkStyled = styled.a<InputLinkStyledPropsType>`
+const inputLinkStyleProps = [
+    "color",
+    "fontFamily",
+    "fontWeight",
+    "fontSize",
+    "border",
+    "outline",
+    "appearance",
+] as const;
+
+export const InputLinkStyled = styled.a.withConfig({
+    shouldForwardProp: (prop) => !inputLinkStyleProps.includes(prop as typeof inputLinkStyleProps[number]),
+})<InputLinkStyledPropsType>`
     color: ${props => props.color || "inherit"};
     border: ${props => props.border || "1px solid transparent"};
     appearance: ${props => props.appearance || "none"};
@@ -96,9 +120,9 @@ export const InputLinkStyled = styled.a<InputLinkStyledPropsType>`
     cursor: pointer;
     font-size: ${props => props.fontSize || "inherit"};
     font-weight: ${props => props.fontWeight || "normal"};
-    background-color: ${props => props.backgroundColor || "transparent"};
+    background-color: ${props => props.$backgroundColor || "transparent"};
     font-family: ${props => props.fontFamily || "inherit"};
-    border-radius: ${props => props.borderRadius || "0"};
+    border-radius: ${props => props.$borderRadius || "0"};
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
@@ -114,7 +138,7 @@ export const InputLinkStyled = styled.a<InputLinkStyledPropsType>`
     }
 
     @media screen and ${theme.media.mobile} {
-        ${props => props.adaptiveMain && css`
+        ${props => props.$adaptiveMain && css`
             font-weight: 600;
             font-size: 8px;
             line-height: 150%;
@@ -123,7 +147,7 @@ export const InputLinkStyled = styled.a<InputLinkStyledPropsType>`
     }
 
     @media screen and ${theme.media.mobile} {
-        ${props => props.adaptiveMain && css`
+        ${props => props.$adaptiveMain && css`
             padding: 0;
         `}
     }

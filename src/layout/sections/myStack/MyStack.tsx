@@ -45,7 +45,7 @@ export const MyStack = () => {
     return (
         <MyStackStyled>
             <Container padding={"0px 20px"}>
-                <FlexWrapper adaptiveMyStack gap={"140px"} direction="column" justify="center" alignItems="center">
+                <FlexWrapper $adaptiveMyStack gap={"140px"} direction="column" justify="center" $alignItems="center">
                     <ContentText>
                         <h2>My Tech Stack</h2>
                         <p>Technologies I've been working with recently</p>

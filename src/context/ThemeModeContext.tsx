@@ -28,7 +28,9 @@ export const ThemeModeProvider = ({children}: { children: ReactNode }) => {
             return;
         }
 
-        const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+        const prefersLight =
+            typeof window.matchMedia === "function" &&
+            window.matchMedia("(prefers-color-scheme: light)").matches;
         setMode(prefersLight ? "light" : "dark");
     }, []);
 

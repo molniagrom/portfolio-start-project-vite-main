@@ -27,9 +27,9 @@ export const MobileMenu = (props: MenuPropsType) => {
     }, [isOpen]);
 
     return (
-        <StyledMobileMenu isOpen={isOpen}>
+        <StyledMobileMenu $isOpen={isOpen}>
             <BurgerButton
-                isOpen={isOpen}
+                $isOpen={isOpen}
                 onClick={onClick}
                 aria-label="Toggle menu"
                 aria-expanded={isOpen}
@@ -37,7 +37,7 @@ export const MobileMenu = (props: MenuPropsType) => {
             >
                 <span></span>
             </BurgerButton>
-            <MobileMenuPopup id="mobile-navigation" isOpen={isOpen} onClick={() => {
+            <MobileMenuPopup id="mobile-navigation" $isOpen={isOpen} onClick={() => {
                 setIsOpen(false)
             }}>
                 <ul>
@@ -67,13 +67,13 @@ const StyledMobileMenu = styled.nav<PropsType>`
     align-items: center;
     justify-content: center;
 
-    ${props => props.isOpen && css<PropsType>`
+    ${props => props.$isOpen && css<PropsType>`
         height: 100vh;
     `}
 `
 
 type PropsType = {
-    isOpen: boolean;
+    $isOpen: boolean;
 }
 
 const MobileMenuPopup = styled.div<PropsType>`
@@ -92,7 +92,7 @@ const MobileMenuPopup = styled.div<PropsType>`
     height: 100vh;
     transform: translateY(-100%);
 
-    ${props => props.isOpen && css<PropsType>`
+    ${props => props.$isOpen && css<PropsType>`
         transform: translateY(0);
     `}
 
@@ -121,7 +121,7 @@ const BurgerButton = styled.button<PropsType>`
         left: 40px;
         bottom: 50px;
 
-        ${props => props.isOpen && css<PropsType>`
+        ${props => props.$isOpen && css<PropsType>`
             background-color: ${theme.colors.menuLineTransparent};
         `}
         &::before {
@@ -133,7 +133,7 @@ const BurgerButton = styled.button<PropsType>`
             position: absolute;
             transform: translateY(-10px);
 
-            ${props => props.isOpen && css<PropsType>`
+            ${props => props.$isOpen && css<PropsType>`
                 background-color: ${theme.colors.menuLine};
                 transform: translateY(0) rotate(-45deg);
             `}
@@ -148,7 +148,7 @@ const BurgerButton = styled.button<PropsType>`
             position: absolute;
             transform: translateY(10px);
 
-            ${props => props.isOpen && css<PropsType>`
+            ${props => props.$isOpen && css<PropsType>`
                 background-color: ${theme.colors.menuLine};
                 transform: translateY(0) rotate(45deg);
             `}

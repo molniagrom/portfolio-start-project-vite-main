@@ -39,18 +39,18 @@ export const Projects = (): JSX.Element => {
                     {projectFilters.map((item, index) => (
                         <ListItem key={item}>
                             <Button
-                                adaptiveProject
-                                isClicked={clickedIndex === index}
+                                $adaptiveProject
+                                $isClicked={clickedIndex === index}
                                 onClick={(): void => {
                                     onClick(index);
                                     changeFilterStatus(item);
                                 }}
                                 border={`${theme.colors.border} 3px solid`}
-                                borderRadius={"67px"}
+                                $borderRadius={"67px"}
                                 padding={"7px 40px"}
                             >
                                 <AStyled
-                                    adaptiveProject
+                                    $adaptiveProject
                                     lineHeight={"136%"}
                                     fontWeight={"400"}
                                     fontSize={"20px"}
@@ -62,15 +62,15 @@ export const Projects = (): JSX.Element => {
                     ))}
                     <ListItem>
                         <Button
-                            adaptiveProject
-                            isClicked={currentFilterStatus === null}
+                            $adaptiveProject
+                            $isClicked={currentFilterStatus === null}
                             onClick={clearFilters}
                             border={`${theme.colors.border} 3px solid`}
-                            borderRadius={"67px"}
+                            $borderRadius={"67px"}
                             padding={"7px 40px"}
                         >
                             <AStyled
-                                adaptiveProject
+                                $adaptiveProject
                                 lineHeight={"136%"}
                                 fontWeight={"400"}
                                 fontSize={"20px"}

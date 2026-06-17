@@ -9,7 +9,7 @@ export const Highlights = () => {
     return (
         <HighlightsStyled>
             <Container>
-                <FlexWrapper adaptiveHighlights gap={"25px"} justify={"space-around"} alignItems={"center"}>
+                <FlexWrapper $adaptiveHighlights gap={"25px"} justify={"space-around"} $alignItems={"center"}>
                     <StatBlock>
                         <Number>81</Number>
                         <Label>HAPPY CUSTOMERS</Label>

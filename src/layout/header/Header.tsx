@@ -31,9 +31,9 @@ export const Header: React.FC = () => {
     return (
         <S.Header>
             <Container padding={"15px"}>
-                <FlexWrapper justify="space-between" alignItems={"center"}>
+                <FlexWrapper justify="space-between" $alignItems={"center"}>
                     <Logo/>
-                    <FlexWrapper gap={"clamp(10px, 10vw, 64px)"} justify="space-between" alignItems={"center"}>
+                    <FlexWrapper gap={"clamp(10px, 10vw, 64px)"} justify="space-between" $alignItems={"center"}>
                         {width !== null && width < breakpoint
                             ? <MobileMenu items={items} mode={mode} onToggleTheme={toggleMode}/>
                             : <DesktopMenu items={items} mode={mode} onToggleTheme={toggleMode}/>}

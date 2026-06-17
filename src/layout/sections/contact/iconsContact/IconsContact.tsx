@@ -15,7 +15,7 @@ export const IconsContact = () => {
             {/*        <Icon width={"29px"} height={"29px"} iconId={"telegramWhite "} />*/}
             {/*    </BlueWhite>*/}
             {/*</FlexWrapper>*/}
-            <FlexWrapper justify="center" alignItems="center">
+            <FlexWrapper justify="center" $alignItems="center">
                 <Colored>
                     <Icon width={"33px"} height={"32px"} iconId={"instagramColor"}/>
                     <Icon width={"33px"} height={"32px"} iconId={"whatsappColor"}/>

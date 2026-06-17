@@ -56,7 +56,7 @@ export const Contact = () => {
                     <Icon width={"18px"} height={"18px"} viewBox={"0 0 18 18"} iconId={"ElipseSmallGradient"}/>
                 </ContactTitle>
                 <ContactBlock>
-                    <FlexWrapper adaptiveContact gap={"clamp(50px, 10vw, 130px)"}>
+                    <FlexWrapper $adaptiveContact gap={"clamp(50px, 10vw, 130px)"}>
                         <FormContent>
                             <h2>Get in touch</h2>
                             <StyledForm ref={form} onSubmit={sendEmail}>
@@ -67,23 +67,23 @@ export const Contact = () => {
                                 </GroupFields>
                                 <Field required minLength={10} name={"message"} placeholder={'Message'} as={"textarea"}/>
                                 <Button
-                                    adaptiveContact
+                                    $adaptiveContact
                                     type={"submit"}
                                     disabled={isSubmitting}
-                                    backgroundColor={theme.colors.accent}
+                                    $backgroundColor={theme.colors.accent}
                                     color={theme.colors.primaryFont}
                                     fontSize={"15px"}
                                     fontWeight={"500"}
                                     padding={"10px 40px 10px 40px"}
                                     gap={"14px"}
-                                    borderRadius={"9px"}
+                                    $borderRadius={"9px"}
                                     fontFamily={"Roboto"}
                                     lineHeight={"136%"}
                                 >
                                     {isSubmitting ? "Sending..." : "Send"}
                                 </Button>
                                 {(isSuccess || isError) && (
-                                    <StatusMessage role="status" isError={isError}>
+                                    <StatusMessage role="status" $isError={isError}>
                                         {isSuccess
                                             ? "Message sent successfully."
                                             : "Message could not be sent. Please try again."}
@@ -109,7 +109,7 @@ export const Contact = () => {
                         </InfoLogoContent>
                     </FlexWrapper>
                 </ContactBlock>
-                <FlexWrapper justify="center" alignItems="center">
+                <FlexWrapper justify="center" $alignItems="center">
                     <Colored>
                         {socialLinks.map((link) => (
                             <HoverableIcon
@@ -129,9 +129,9 @@ export const Contact = () => {
 };
 
 type StatusMessageProps = {
-    isError: boolean;
+    $isError: boolean;
 }
 
 const StatusMessage = styled.p<StatusMessageProps>`
-    color: ${props => props.isError ? "#ff8c8c" : "#8fd8a8"};
+    color: ${props => props.$isError ? "#ff8c8c" : "#8fd8a8"};
 `;

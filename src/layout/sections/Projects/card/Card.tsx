@@ -16,12 +16,12 @@ type CardProps = {
 export const Card: React.FC<CardProps> = ({title, image, imageAlt, demoUrl, codeUrl}) => {
     return (
         <StyledCard
-            borderRadius="26px"
-            backgroundColor={theme.colors.fourthFont}
+            $borderRadius="26px"
+            $backgroundColor={theme.colors.fourthFont}
         >
             <Photo
-                adaptiveProj
-                borderRadius="20px 20px 0 0"
+                $adaptiveProj
+                $borderRadius="20px 20px 0 0"
                 height="240px"
                 width="100%"
                 src={image}
@@ -30,10 +30,10 @@ export const Card: React.FC<CardProps> = ({title, image, imageAlt, demoUrl, code
             />
 
             <FlexWrapper
-                adaptive
-                adaptiveProj
+                $adaptive
+                $adaptiveProj
                 flexGrow="1"
-                alignItems="stretch"
+                $alignItems="stretch"
                 justify="space-between"
                 gap="25px"
                 direction="column"
@@ -46,15 +46,15 @@ export const Card: React.FC<CardProps> = ({title, image, imageAlt, demoUrl, code
                         href={codeUrl}
                         target="_blank"
                         rel="noreferrer"
-                        adaptiveProject
-                        buttonHover
-                        borderRadius="12px"
+                        $adaptiveProject
+                        $buttonHover
+                        $borderRadius="12px"
                         padding="4px 19px 4px 19px"
                         fontWeight="700"
                         lineHeight="148%"
                         color={theme.colors.fourthFont}
                         fontSize="14px"
-                        backgroundColor={theme.colors.primaryFont}
+                        $backgroundColor={theme.colors.primaryFont}
                     >
                         Edit code
                     </AStyled>
@@ -63,8 +63,8 @@ export const Card: React.FC<CardProps> = ({title, image, imageAlt, demoUrl, code
                         href={demoUrl}
                         target="_blank"
                         rel="noreferrer"
-                        adaptiveProject
-                        LinkHover
+                        $adaptiveProject
+                        $linkHover
                         color={theme.colors.secondaryFont}
                     >
                         View
@@ -91,16 +91,16 @@ type StyledCardPropsType = {
     padding?: string;
     width?: string;
     height?: string;
-    backgroundColor?: string;
-    borderRadius?: string;
+    $backgroundColor?: string;
+    $borderRadius?: string;
 };
 
 const StyledCard = styled.article<StyledCardPropsType>`
     display: flex;
     flex-direction: column;
     padding: ${props => props.padding ?? undefined};
-    background-color: ${props => props.backgroundColor ?? undefined};
-    border-radius: ${props => props.borderRadius ?? undefined};
+    background-color: ${props => props.$backgroundColor ?? undefined};
+    border-radius: ${props => props.$borderRadius ?? undefined};
     height: ${props => props.height ?? undefined};
     width: ${props => props.width ?? undefined};
     transition: all 0.3s ease;

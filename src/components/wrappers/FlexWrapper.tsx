@@ -4,25 +4,37 @@ import {theme} from "../../styles/Theme.ts";
 type FlexWrapperPropsType = {
     direction?: string;
     justify?: string;
-    alignItems?: string;
+    $alignItems?: string;
     gap?: string;
     flexGrow?: string;
     padding?: string;
     position?: string;
-    adaptive?: boolean;
-    adaptMain?: boolean;
-    adaptiveHighlights?: boolean;
-    adaptiveMyStack?: boolean;
+    $adaptive?: boolean;
+    $adaptMain?: boolean;
+    $adaptiveHighlights?: boolean;
+    $adaptiveMyStack?: boolean;
     width?: string;
-    adaptiveProj?: boolean;
-    adaptiveContact?: boolean;
+    $adaptiveProj?: boolean;
+    $adaptiveContact?: boolean;
 }
 
-export const FlexWrapper = styled.div<FlexWrapperPropsType>`
+const flexWrapperStyleProps = [
+    "direction",
+    "justify",
+    "gap",
+    "flexGrow",
+    "padding",
+    "position",
+    "width",
+] as const;
+
+export const FlexWrapper = styled.div.withConfig({
+    shouldForwardProp: (prop) => !flexWrapperStyleProps.includes(prop as typeof flexWrapperStyleProps[number]),
+})<FlexWrapperPropsType>`
     display: flex;
     flex-direction: ${props => props.direction || undefined};
     justify-content: ${props => props.justify || undefined};
-    align-items: ${props => props.alignItems || undefined};
+    align-items: ${props => props.$alignItems || undefined};
     gap: ${props => props.gap || undefined};
     flex-grow: ${props => props.flexGrow || undefined};
     padding: ${props => props.padding || undefined};
@@ -31,35 +43,35 @@ export const FlexWrapper = styled.div<FlexWrapperPropsType>`
 
 
     @media screen and ${theme.media.tablet} {
-        flex-wrap: ${props => props.adaptive ? "wrap" : "nowrap"};
+        flex-wrap: ${props => props.$adaptive ? "wrap" : "nowrap"};
 
-        ${props => props.adaptMain && css`
+        ${props => props.$adaptMain && css`
             gap: 20px;
         `}
 
-        ${props => props.adaptiveMyStack && css`
+        ${props => props.$adaptiveMyStack && css`
             gap: 60px;
         `}
-        ${props => props.adaptiveContact && css`
+        ${props => props.$adaptiveContact && css`
             flex-direction: column;
         `}
     }
 
 
     @media screen and ${theme.media.mobile} {
-        ${props => props.adaptive && css`
+        ${props => props.$adaptive && css`
             justify-content: center;
         `}
 
-        ${props => props.adaptiveProj && css`
+        ${props => props.$adaptiveProj && css`
             padding: 10px 20px 13px 20px;
         `}
 
-        ${props => props.adaptive && css`
+        ${props => props.$adaptive && css`
             gap: 17px;
         `}
 
-        ${props => props.adaptiveHighlights && css`
+        ${props => props.$adaptiveHighlights && css`
             flex-direction: column;
         `}
     }

@@ -14,13 +14,13 @@ import {Link} from "react-scroll";
 export const Main = () => {
     return (
         <MainSection id="home">
-            <Container adaptMain padding={"0px 25px 0px 25px"}>
+            <Container $adaptMain padding={"0px 25px 0px 25px"}>
                 <MainSectionWrapper>
                     <FlexWrapper
                         direction="row"
                         position="relative"
                         justify="space-between"
-                        alignItems="center"
+                        $alignItems="center"
                     >
                         <Icon adaptivePlus={true} top={"-100px"} right={"60%"} width="108" height="107"
                               viewBox="0 0 108 107" zIndex={"-11111111"}
@@ -30,24 +30,24 @@ export const Main = () => {
                               position={"absolute"} iconId={"ElipseMiddle"}/>
                         <WrapperBlur>
 
-                            <FlexWrapper adaptMain
-                                         adaptive={true} gap={"5vw"} direction="row" alignItems={"center"}
+                            <FlexWrapper $adaptMain
+                                         $adaptive={true} gap={"5vw"} direction="row" $alignItems={"center"}
                                          justify="space-around">
                                 <Photo
-                                    adaptMain
+                                    $adaptMain
                                     src={myPhoto}
                                     alt="Portrait of Alina Groza"
                                     width="334px"
                                     height="334px"
-                                    borderRadius="50%"
+                                    $borderRadius="50%"
                                     border="22px solid white"
                                 />
                                 <FlexWrapper direction="column">
                                     <MainTitle>Frontend Developer</MainTitle>
                                     <Name>I'm <span>Alina Groza</span>. Bringing order to chaos - your frontend in reliable hands. Aesthetics, logic, and user care in every pixel.</Name>
-                                    <FlexWrapper adaptive alignItems={"center"} gap="32px">
+                                    <FlexWrapper $adaptive $alignItems={"center"} gap="32px">
                                         <ProjectLink
-                                            adaptiveMain
+                                            $adaptiveMain
                                             smooth={true}
                                             to="projects"
                                             fontSize={"15px"}
@@ -55,9 +55,9 @@ export const Main = () => {
                                             padding={"15px"}
                                             gap={"14px"}
                                             color={theme.colors.primaryFont}
-                                            borderRadius={"20px"}
+                                            $borderRadius={"20px"}
                                             fontFamily={"Roboto"}
-                                            backgroundColor={theme.colors.accent}
+                                            $backgroundColor={theme.colors.accent}
                                         >
                                             See Projects
                                             <Icon adaptiveMain iconId={"ArrowWhiteToButton"} width={"28px"}
@@ -66,12 +66,12 @@ export const Main = () => {
                                         </ProjectLink>
 
                                         <InputLinkStyled
-                                            adaptiveMain
+                                            $adaptiveMain
                                             href={contactDetails.resumeUrl}
                                             download
                                             fontSize={"15px"}
                                             fontWeight={600}
-                                            backgroundColor={"transparent"}
+                                            $backgroundColor={"transparent"}
                                             color={theme.colors.tertiaryFont}
                                             border={"none"}
                                             outline={"none"}
@@ -182,25 +182,36 @@ const BlueWhite = styled.div`
     }
 `
 
-const ProjectLink = styled(Link)<{
-    backgroundColor?: string;
+const projectLinkStyleProps = [
+    "color",
+    "fontFamily",
+    "gap",
+    "padding",
+    "fontWeight",
+    "fontSize",
+] as const;
+
+const ProjectLink = styled(Link).withConfig({
+    shouldForwardProp: (prop) => !projectLinkStyleProps.includes(prop as typeof projectLinkStyleProps[number]),
+})<{
+    $backgroundColor?: string;
     color?: string;
     fontFamily?: string;
-    borderRadius?: string;
+    $borderRadius?: string;
     gap?: string;
     padding?: string;
     fontWeight?: string;
     fontSize?: string;
-    adaptiveMain?: boolean;
+    $adaptiveMain?: boolean;
 }>`
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    background-color: ${props => props.backgroundColor};
+    background-color: ${props => props.$backgroundColor};
     color: ${props => props.color};
     font-family: ${props => props.fontFamily};
-    border-radius: ${props => props.borderRadius};
+    border-radius: ${props => props.$borderRadius};
     gap: ${props => props.gap};
     padding: ${props => props.padding};
     font-weight: ${props => props.fontWeight};
@@ -212,7 +223,7 @@ const ProjectLink = styled(Link)<{
     }
 
     @media screen and ${theme.media.mobile} {
-        ${props => props.adaptiveMain && `
+        ${props => props.$adaptiveMain && `
             font-weight: 600;
             font-size: 8px;
             line-height: 150%;

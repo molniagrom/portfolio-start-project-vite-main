@@ -6,94 +6,124 @@ import {theme} from "../../styles/Theme.ts";
 
 type IconPropsType = {
     children?: React.ReactNode;
-    iconId: string
-    width?: string
-    height?: string
-    viewBox?: string
-    position?: string
-    cursor?: string
-    top?: string
-    left?: string
-    zIndex?: string
-    right?: string
-    bottom?: string
-    hover?: boolean
-    adaptivePlus?: boolean
-    adaptiveElipse?: boolean
-    adaptiveMain?: boolean
-    adaptivePart?: boolean
+    iconId: string;
+    width?: string;
+    height?: string;
+    viewBox?: string;
+    position?: string;
+    cursor?: string;
+    top?: string;
+    left?: string;
+    zIndex?: string;
+    right?: string;
+    bottom?: string;
+    hover?: boolean;
+    adaptivePlus?: boolean;
+    adaptiveElipse?: boolean;
+    adaptiveMain?: boolean;
+    adaptivePart?: boolean;
 }
-export const Icon = (props: IconPropsType) => {
+
+export const Icon = ({
+    children,
+    iconId,
+    width,
+    height,
+    viewBox,
+    position,
+    cursor,
+    top,
+    left,
+    zIndex,
+    right,
+    bottom,
+    hover,
+    adaptivePlus,
+    adaptiveElipse,
+    adaptiveMain,
+    adaptivePart,
+}: IconPropsType) => {
     return (
         <Svg
-            width={props.width || "36"}
-            height={props.height || "36"}
-            viewBox={props.viewBox || "0 0 36 36"}
+            width={width || "36"}
+            height={height || "36"}
+            viewBox={viewBox || "0 0 36 36"}
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            {...props}
-            // needToTransform
+            $position={position}
+            $cursor={cursor}
+            $top={top}
+            $left={left}
+            $zIndex={zIndex}
+            $right={right}
+            $bottom={bottom}
+            $hover={hover}
+            $adaptivePlus={adaptivePlus}
+            $adaptiveElipse={adaptiveElipse}
+            $adaptiveMain={adaptiveMain}
+            $adaptivePart={adaptivePart}
         >
-            <use xlinkHref={`${iconsSprite}#${props.iconId}`}/>
+            <use xlinkHref={`${iconsSprite}#${iconId}`}/>
+            {children}
         </Svg>
     );
 };
 
 type SvgProps = {
-    position?: string
-    adaptiveMain?: boolean
-    top?: string
-    left?: string
-    cursor?: string
-    zIndex?: string
-    right?: string
-    bottom?: string
-    hover?: boolean
-    adaptivePlus?: boolean
-    adaptiveElipse?: boolean
-    adaptivePart?: boolean
+    $position?: string;
+    $adaptiveMain?: boolean;
+    $top?: string;
+    $left?: string;
+    $cursor?: string;
+    $zIndex?: string;
+    $right?: string;
+    $bottom?: string;
+    $hover?: boolean;
+    $adaptivePlus?: boolean;
+    $adaptiveElipse?: boolean;
+    $adaptivePart?: boolean;
 }
 
 const Svg = styled.svg<SvgProps>`
-    cursor: ${props => (props.cursor || undefined)};
-    position: ${props => props.position || undefined};
-    top: ${props => props.top || undefined};
-    left: ${props => props.left || undefined};
-    z-index: ${props => props.zIndex || undefined};
+    cursor: ${props => (props.$cursor || undefined)};
+    position: ${props => props.$position || undefined};
+    top: ${props => props.$top || undefined};
+    left: ${props => props.$left || undefined};
+    z-index: ${props => props.$zIndex || undefined};
     transition: transform 0.3s ease;
-    right: ${props => props.right || undefined};
+    right: ${props => props.$right || undefined};
     overflow: visible;
-    bottom: ${props => props.bottom || undefined};
+    bottom: ${props => props.$bottom || undefined};
 
     @media screen and ${theme.media.tablet} {
-        ${props => props.adaptivePlus && css`
+        ${props => props.$adaptivePlus && css`
             top: -55px;
             right: 0;
         `}
 
-        ${props => props.adaptiveElipse && css`
+        ${props => props.$adaptiveElipse && css`
             bottom: 0;
             right: -55px;
         `}
-        ${props => props.adaptivePart && css`
+        ${props => props.$adaptivePart && css`
             width: 72px;
             height: 72px;
         `}
     }
 
     @media screen and ${theme.media.mobile} {
-        ${props => props.adaptiveMain && css`
+        ${props => props.$adaptiveMain && css`
             width: 15px;
             height: 15px;
         `}
 
-        ${props => props.adaptivePart && css`
+        ${props => props.$adaptivePart && css`
             width: 44px;
             height: 44px;
         `}
     }
 
-    ${props => props.hover && css`
+    ${props => props.$hover && css`
         transform: scale(1.1);
     `}
 `
