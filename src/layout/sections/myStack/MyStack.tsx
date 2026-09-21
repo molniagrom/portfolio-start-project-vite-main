@@ -31,7 +31,7 @@ const techItems: TechItem[] = [
     {type: "sprite", name: "GitHub", iconId: "github", viewBox: "0 0 25 25"},
     {type: "sprite", name: "HTML", iconId: "html", viewBox: "0 0 150 150"},
     {type: "sprite", name: "CSS", iconId: "css", viewBox: "0 0 150 150"},
-    {type: "sprite", name: "SCSS", iconId: "scss", svgProps: {viewBox: "-16 -16 192 192", width: "140px", height: "140px"}},
+    {type: "sprite", name: "SCSS", iconId: "scss", viewBox: "0 0 32 32"},
     {type: "sprite", name: "WebStorm", iconId: "vebStorm", viewBox: "0 0 290 290"},
     {type: "sprite", name: "VS Code", iconId: "vsCode", viewBox: "0 0 150 150"},
     {type: "sprite", name: "React", iconId: "react", viewBox: "0 0 300 300"},
@@ -93,6 +93,7 @@ const MyStackStyled = styled.section`
 
     @media screen and ${theme.media.mobile} {
         padding: 60px 0 60px 0;
+        gap: 60px;
     }
 `
 
@@ -143,6 +144,10 @@ const ContentSvg = styled.div`
     @media screen and ${theme.media.tablet}{
         gap: 36px;
     }
+
+    @media screen and ${theme.media.mobile}{
+        gap: 24px;
+    }
 `
 
 const TechCard = styled.div`
@@ -150,6 +155,10 @@ const TechCard = styled.div`
     flex-direction: column;
     align-items: center;
     min-width: 140px;
+
+    @media screen and ${theme.media.mobile} {
+        min-width: 100px;
+    }
 `
 
 const TechImage = styled.img`

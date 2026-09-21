@@ -270,9 +270,9 @@ const ProjectLink = styled(Link).withConfig({
     @media screen and ${theme.media.mobile} {
         ${props => props.$adaptiveMain && `
             font-weight: 600;
-            font-size: 8px;
+            font-size: 12px;
             line-height: 150%;
-            padding: 8px 20px;
+            padding: 12px 20px;
         `}
     }
 `

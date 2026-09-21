@@ -61,6 +61,7 @@ export const Photo = styled.img.withConfig({
         @media screen and ${theme.media.tablet} {
             width: 334px;
             height: 334px;
+            max-width: 100%;
             border: 16px solid white;
         }
         

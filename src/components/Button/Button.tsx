@@ -55,16 +55,12 @@ export const Button = styled.button.withConfig({
     @media screen and ${theme.media.mobile} {
 
       ${props => props.$adaptiveProject && css`
-        padding: 4px 34px;
+        padding: 6px 20px;
       `}
       
       ${props => props.$adaptiveContact && css`
-          font-size: 9px;
-          padding: 6px 24px;
+          font-size: 12px;
+          padding: 10px 24px;
       `}
-    
-    
     }
-
-
-`
+`;

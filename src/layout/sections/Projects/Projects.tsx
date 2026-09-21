@@ -185,14 +185,22 @@ const List = styled.ul`
     }
 
     @media screen and ${theme.media.mobile} {
-        gap: 24px 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        justify-content: center;
         padding: 42px 0 38px 0;
-        grid-template-columns: repeat(2, minmax(120px, 1fr));
     }
 
     li button {
         width: 100%;
         color: ${theme.colors.primaryFont};
+    }
+
+    @media screen and ${theme.media.mobile} {
+        li button {
+            padding: 7px 20px;
+        }
     }
 `;
 
@@ -202,10 +210,6 @@ const ScrollWrapper = styled.div`
     width: 100%;
     box-sizing: border-box;
     position: relative;
-
-    @media screen and ${theme.media.mobile} {
-        max-width: 353px;
-    }
 
     @media screen and ${theme.media.tablet} {
         margin: 0 auto;
@@ -235,7 +239,7 @@ const GreedWrapper = styled.div`
     gap: 45px 38px;
 
     @media screen and ${theme.media.mobile} {
-        gap: 30px 20px;
-        grid-template-columns: repeat(2, minmax(160px, 1fr));
+        gap: 24px 16px;
+        grid-template-columns: repeat(2, minmax(130px, 1fr));
     }
 `;

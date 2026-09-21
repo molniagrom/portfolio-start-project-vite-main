@@ -24,4 +24,8 @@ const StyledTestimony = styled.section`
     min-height: 593px;
     padding: 0 20px 0 20px;
 
+    @media screen and ${theme.media.mobile} {
+        min-height: auto;
+        padding: 40px 10px;
+    }
 `

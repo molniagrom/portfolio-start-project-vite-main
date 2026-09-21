@@ -82,6 +82,7 @@ const PhotoColumn = styled.div`
 const StyledMeImage = styled.img`
     height: 650px;
     width: auto;
+    max-width: 100%;
     object-fit: contain;
     border: 2px solid ${theme.colors.aboutBorder};
     border-radius: 24px;

@@ -105,6 +105,8 @@ export const Field = styled.input<FieldPropsType>`
 
     @media screen and ${theme.media.mobile} {
         font-size: 13px;
+        max-width: 100%;
+        padding: 12px 16px;
     }
 
     ${props =>
@@ -168,6 +170,6 @@ export const ContactBlock = styled.div`
         padding: 53px 113px 65px 82px;
     }
     @media screen and ${theme.media.mobile} {
-        padding: 32px 50px 56px 50px;
+        padding: 24px 20px 40px 20px;
     }
 `;

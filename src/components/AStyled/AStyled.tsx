@@ -54,7 +54,7 @@ export const AStyled = styled.a.withConfig({
     ${props => props.$adaptiveProject && css`
         @media screen and ${theme.media.mobile} {
             font-weight: 700;
-            font-size: 8px;
+            font-size: 11px;
             line-height: 148%;
         }
     `}
@@ -80,9 +80,9 @@ export const AStyled = styled.a.withConfig({
     @media screen and ${theme.media.mobile} {
         ${props => props.$adaptiveMain && css`
             font-weight: 600;
-            font-size: 8px;
+            font-size: 12px;
             line-height: 150%;
-            padding: 8px 20px;
+            padding: 10px 20px;
         `}
     }
 `;
@@ -133,22 +133,17 @@ export const InputLinkStyled = styled.a.withConfig({
     }
 
     @media screen and ${theme.media.tablet} {
-        max-width: 134px;
-        max-height: 24px;
+        max-width: 160px;
     }
 
     @media screen and ${theme.media.mobile} {
         ${props => props.$adaptiveMain && css`
             font-weight: 600;
-            font-size: 8px;
+            font-size: 12px;
             line-height: 150%;
-            padding: 8px 20px;
-        `}
-    }
-
-    @media screen and ${theme.media.mobile} {
-        ${props => props.$adaptiveMain && css`
-            padding: 0;
+            padding: 10px 16px;
+            max-width: none;
+            max-height: none;
         `}
     }
 `;

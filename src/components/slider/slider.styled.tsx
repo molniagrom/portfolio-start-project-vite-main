@@ -31,6 +31,10 @@ export const Slide = styled.div`
     align-items: center;
     position: relative;
 
+    @media screen and ${theme.media.mobile} {
+        padding: 30px 20px 24px 20px;
+    }
+
     &::before {
         content: '';
         display: inline-block;
