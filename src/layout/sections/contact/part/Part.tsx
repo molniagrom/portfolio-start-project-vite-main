@@ -10,7 +10,7 @@ export const Part = (props: PartInfoLogoProps) => {
             <Icon adaptivePart iconId={props.iconId}/>
             <Info>
                 <h4>{props.title}</h4>
-                <p>{props.subTittle}</p>
+                {/*<p>{props.subTittle}</p>*/}
             </Info>
         </PartContent>
     );
@@ -25,6 +25,7 @@ type PartInfoLogoProps = {
 const Info = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
     h4, p {
         margin: 0;
