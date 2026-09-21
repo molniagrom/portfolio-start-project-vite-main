@@ -51,9 +51,8 @@ export const Photo = styled.img.withConfig({
         }
     `}
     
-    
     ${props => props.$adaptMain && css`
-       
+
         @media screen and (max-width: 1020px) {
             width: 44%;
             height: 44%;
@@ -72,7 +71,5 @@ export const Photo = styled.img.withConfig({
             min-height: 187px;
             border: 10px solid white;
         }
-
     `}
-    
 `;

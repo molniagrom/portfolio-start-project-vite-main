@@ -1,4 +1,4 @@
-import myPhoto from "../../../image/myPhoto.jpg"
+import myPhoto from "../../../image/myPhoto.png"
 import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
 import {Photo} from "./Photo.tsx";
 import {MainSection} from "./MainSection.tsx";
