@@ -1,143 +1,128 @@
-import map from "/public/map.png";
-import me from "../../../../public/new_me.png";
-import styled, {css} from "styled-components";
+import me from "../../../../public/new_me2.jpg";
+import styled from "styled-components";
 import {Container} from "../../../components/Container.ts";
 import {theme} from "../../../styles/Theme.ts";
 import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
-import {getPortfolioAge} from "../../../utils/dateUtils.ts";
 import {socialLinks} from "../../../data/portfolioData.ts";
-import {useRef} from "react";
-import {motion} from "framer-motion";
-import {useParallax} from "../../../hooks/useParallax";
 
 export const AboutMe = () => {
-    const age = getPortfolioAge();
-    const mapRef = useRef<HTMLImageElement>(null);
-    const meRef = useRef<HTMLImageElement>(null);
-    // Small speed on tall images: 0.02 * ~800px = ±16px
-    const mapParallax = useParallax(mapRef, {speed: 0.02});
-    const meParallax = useParallax(meRef, {speed: 0.02});
-
     return (
         <AboutMeStyled id="about">
-            <Container $aboutMeAdaptive padding={"46px 42px 0 42px"}>
-                <WrapperBcg>
-                    {/* Apply transform directly on the image — wrapping in motion.div
-                        breaks absolute positioning by creating a new containing block */}
-                    <StyledMapImage
-                        ref={mapRef}
-                        style={mapParallax.style}
-                        src={map}
-                        alt="Decorative map background"
-                    />
-                    <StyledMeImage
-                        ref={meRef}
-                        style={meParallax.style}
-                        src={me}
-                        alt="Portrait illustration of Alina Groza"
-                    />
-                    <InfoAboutMe>
-                        <Icons>
-                            {socialLinks.map((link) => (
-                                <HoverableIcon
-                                    key={link.label}
-                                    href={link.href}
-                                    label={link.label}
-                                    iconId={link.mobileIconId ?? link.iconId}
-                                    viewBox="0 0 33 33"
-                                    width="26px"
-                                    height="26px"
-                                />
-                            ))}
-                        </Icons>
-                        <NameAboutMe>I'm <span>Alina</span> Groza</NameAboutMe>
-                        <UlStyled>
-                            <LiStyled>I was born in Tiraspol</LiStyled>
-                            <LiStyled>I'm {age} years old</LiStyled>
-                            <LiStyled>I have been growing in frontend since 2023</LiStyled>
-                            <LiStyled>I build React and TypeScript interfaces</LiStyled>
-                            <LiStyled>I care about clean UI, logic, and accessibility</LiStyled>
-                        </UlStyled>
-                    </InfoAboutMe>
-                </WrapperBcg>
+            <Container $aboutMeAdaptive padding={"80px 42px 80px 42px"}>
+                <Layout>
+                    <TextColumn>
+                        <InfoCard>
+                            <Icons>
+                                {socialLinks.map((link) => (
+                                    <HoverableIcon
+                                        key={link.label}
+                                        href={link.href}
+                                        label={link.label}
+                                        iconId={link.mobileIconId ?? link.iconId}
+                                        viewBox="0 0 33 33"
+                                        width="26px"
+                                        height="26px"
+                                    />
+                                ))}
+                            </Icons>
+                            <NameAboutMe>I'm <span>Alina</span> Groza</NameAboutMe>
+                            <Bio>
+                                Frontend-разработчик с практическим опытом создания современных веб-приложений на React, TypeScript и Redux Toolkit. Владею интеграцией REST API с использованием RTK Query, разработкой переиспользуемых компонентных архитектур и созданием адаптивных пользовательских интерфейсов. Выпускница программы Frontend Developer IT-Incubator с 6+ готовыми к деплою проектами, развернутыми на Vercel.
+                            </Bio>
+                            <Details>
+                                <DetailBlock>
+                                    <DetailTitle>Образование</DetailTitle>
+                                    <DetailText>Программа Frontend Developer, IT-Incubator, 2025</DetailText>
+                                </DetailBlock>
+                                <DetailBlock>
+                                    <DetailTitle>Языки</DetailTitle>
+                                    <DetailText>Русский — Родной</DetailText>
+                                    <DetailText>Английский — A2 (улучшаю)</DetailText>
+                                </DetailBlock>
+                            </Details>
+                        </InfoCard>
+                    </TextColumn>
+                    <PhotoColumn>
+                        <StyledMeImage
+                            src={me}
+                            alt="Portrait of Alina Groza"
+                        />
+                    </PhotoColumn>
+                </Layout>
             </Container>
         </AboutMeStyled>
     );
 };
 
-const imageBase = css`
-    position: absolute;
-    max-width: 100%;
-    height: auto;
-    will-change: transform;
+const AboutMeStyled = styled.section`
+    background-color: ${theme.colors.secondaryFont};
 `;
 
-const StyledMapImage = styled(motion.img)`
-    ${imageBase}
-    bottom: 0;
-    right: 50px;
-    height: 100%;
-    object-fit: contain;
+const Layout = styled.div`
+    display: flex;
+    align-items: flex-end;
+    gap: 40px;
 
     @media screen and ${theme.media.tablet} {
-        top: -50px;
-        right: -30px;
+        flex-direction: column;
+        align-items: center;
+    }
+`;
+
+const PhotoColumn = styled.div`
+    flex-shrink: 0;
+
+    @media screen and ${theme.media.tablet} {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+`;
+
+const StyledMeImage = styled.img`
+    height: 650px;
+    width: auto;
+    object-fit: contain;
+    border: 2px solid ${theme.colors.aboutBorder};
+    border-radius: 24px;
+
+    @media screen and ${theme.media.tablet} {
+        height: 450px;
     }
 
     @media screen and ${theme.media.mobile} {
-        bottom: 0;
-        right: -20px;
-        top: 0;
+        height: 320px;
+        border-radius: 16px;
     }
 `;
 
-const StyledMeImage = styled(motion.img)`
-    ${imageBase}
-    bottom: 0;
-    left: 40px;
-    height: 750px;
+const TextColumn = styled.div`
+    flex: 1;
+    display: flex;
 
     @media screen and ${theme.media.tablet} {
-        height: 50%;
-        object-fit: cover;
+        width: 100%;
+        justify-content: center;
     }
-`
-
-const AboutMeStyled = styled.section`
-    background-color: ${theme.colors.secondaryFont};
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
 `;
 
-const InfoAboutMe = styled.div`
+const InfoCard = styled.div`
     display: flex;
     flex-direction: column;
-    position: absolute;
-    z-index: 1;
-    top: 40px;
-    right: 0;
     max-width: 536px;
-    padding: 30px 20px 65px 50px;
-    margin-right: 20px;
+    padding: 30px 30px 40px 40px;
     color: ${theme.colors.colorForAboutMe};
     backdrop-filter: blur(20px);
     background: ${theme.colors.aboutGradient};
     border-radius: 100px 0 100px 0;
     border: 2px solid ${theme.colors.aboutBorder};
 
-    @media screen and ${theme.media.tablet} {
-        position: relative;
-        top: -50px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
     @media screen and ${theme.media.mobile} {
-        max-width: 303px;
-        padding: 40px 10px 34px 35px;
+        max-width: 100%;
+        padding: 30px 16px 30px 30px;
+        border-radius: 60px 0 60px 0;
     }
-`
+`;
 
 const Icons = styled.div`
     display: flex;
@@ -149,74 +134,60 @@ const Icons = styled.div`
     @media screen and ${theme.media.mobile} {
         display: none;
     }
-`
-
-const WrapperBcg = styled.div`
-    position: relative;
-    min-height: 115vh;
-
-    @media screen and ${theme.media.tablet} {
-        padding: 70px 40px 0 40px;
-    }
-
-    @media screen and ${theme.media.mobile} {
-        padding: 46px 0 0 0;
-        min-height: 65vh;
-    }
-`
+`;
 
 const NameAboutMe = styled.h2`
     font-weight: 700;
     font-size: 60px;
     line-height: 136%;
     color: ${theme.colors.tertiaryBg};
-    padding-bottom: 22px;
+    padding-bottom: 16px;
 
     span {
         color: ${theme.colors.accent};
     }
 
     @media screen and ${theme.media.mobile} {
-        font-weight: 700;
         font-size: 32px;
         padding-bottom: 12px;
     }
-`
+`;
 
-const UlStyled = styled.ul`
-    list-style: none;
-
-    li + li {
-        padding-top: 6px;
-    }
+const Bio = styled.p`
+    font-size: 18px;
+    line-height: 160%;
+    font-weight: 400;
 
     @media screen and ${theme.media.mobile} {
-        li + li {
-            padding-top: 2px;
-        }
+        font-size: 14px;
     }
-`
+`;
 
-const LiStyled = styled.li`
-    padding-left: 13px;
+const Details = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid ${theme.colors.aboutBorder};
+`;
 
-    @media screen and ${theme.media.mobile} {
-        font-weight: 400;
-        font-size: 10px;
-    }
+const DetailBlock = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+`;
 
-    &::before {
-        content: "";
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        background: ${theme.colors.bulletGradient};
-        border-radius: 50%;
-        transform: rotate(90deg) translateY(13px);
+const DetailTitle = styled.h3`
+    font-weight: 700;
+    font-size: 15px;
+    color: ${theme.colors.tertiaryBg};
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+`;
 
-        @media screen and ${theme.media.mobile} {
-            width: 9px;
-            height: 9px;
-        }
-    }
-`
+const DetailText = styled.p`
+    font-size: 15px;
+    line-height: 150%;
+    font-weight: 400;
+`;
