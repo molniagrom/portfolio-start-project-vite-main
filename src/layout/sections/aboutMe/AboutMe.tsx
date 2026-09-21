@@ -30,15 +30,23 @@ export const AboutMe = () => {
                                 Frontend-разработчик с практическим опытом создания современных веб-приложений на React, TypeScript и Redux Toolkit. Владею интеграцией REST API с использованием RTK Query, разработкой переиспользуемых компонентных архитектур и созданием адаптивных пользовательских интерфейсов. Выпускница программы Frontend Developer IT-Incubator с 6+ готовыми к деплою проектами, развернутыми на Vercel.
                             </Bio>
                             <Details>
-                                <DetailBlock>
-                                    <DetailTitle>Образование</DetailTitle>
-                                    <DetailText>Программа Frontend Developer, IT-Incubator, 2025</DetailText>
-                                </DetailBlock>
-                                <DetailBlock>
-                                    <DetailTitle>Языки</DetailTitle>
-                                    <DetailText>Русский — Родной</DetailText>
-                                    <DetailText>Английский — A2 (улучшаю)</DetailText>
-                                </DetailBlock>
+                                <DetailsInfo>
+                                    <DetailBlock>
+                                        <DetailTitle>Образование</DetailTitle>
+                                        <DetailText>Программа Frontend Developer, IT-Incubator, 2025</DetailText>
+                                    </DetailBlock>
+                                    <DetailBlock>
+                                        <DetailTitle>Языки</DetailTitle>
+                                        <DetailText>Русский — Родной</DetailText>
+                                        <DetailText>Английский — A2 (улучшаю)</DetailText>
+                                    </DetailBlock>
+                                </DetailsInfo>
+                                <DetailsPhoto>
+                                    <DetailsMeImage
+                                        src={me}
+                                        alt="Portrait of Alina Groza"
+                                    />
+                                </DetailsPhoto>
                             </Details>
                         </InfoCard>
                     </TextColumn>
@@ -73,9 +81,7 @@ const PhotoColumn = styled.div`
     flex-shrink: 0;
 
     @media screen and ${theme.media.tablet} {
-        width: 100%;
-        display: flex;
-        justify-content: center;
+        display: none;
     }
 `;
 
@@ -95,6 +101,15 @@ const StyledMeImage = styled.img`
         height: 320px;
         border-radius: 16px;
     }
+`;
+
+const DetailsMeImage = styled.img`
+    height: 220px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border: 2px solid ${theme.colors.aboutBorder};
+    border-radius: 16px;
 `;
 
 const TextColumn = styled.div`
@@ -117,6 +132,10 @@ const InfoCard = styled.div`
     background: ${theme.colors.aboutGradient};
     border-radius: 100px 0 100px 0;
     border: 2px solid ${theme.colors.aboutBorder};
+
+    @media screen and ${theme.media.tablet} {
+        max-width: 100%;
+    }
 
     @media screen and ${theme.media.mobile} {
         max-width: 100%;
@@ -171,6 +190,36 @@ const Details = styled.div`
     margin-top: 20px;
     padding-top: 18px;
     border-top: 1px solid ${theme.colors.aboutBorder};
+
+    @media screen and ${theme.media.tablet} {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    @media screen and ${theme.media.mobile} {
+        flex-direction: column;
+        gap: 14px;
+    }
+`;
+
+const DetailsInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+`;
+
+const DetailsPhoto = styled.div`
+    display: none;
+
+    @media screen and ${theme.media.tablet} {
+        display: block;
+        flex-shrink: 0;
+    }
+
+    @media screen and ${theme.media.mobile} {
+        display: none;
+    }
 `;
 
 const DetailBlock = styled.div`
