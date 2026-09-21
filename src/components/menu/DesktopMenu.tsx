@@ -21,7 +21,6 @@ export const DesktopMenu = (props: MenuPropsType) => {
                     <ListItem key={item.href}>
                         <MyLink activeClass="active"
                                 spy={true}
-                                smooth={true}
                                 to={item.href}>{item.title}</MyLink>
                     </ListItem>
                 ))}

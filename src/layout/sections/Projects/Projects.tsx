@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
 import styled from "styled-components";
 import {Card} from "./card/Card";
 import {Button} from "../../../components/Button/Button";
@@ -7,12 +7,39 @@ import {theme} from "../../../styles/Theme";
 import {Container} from "../../../components/Container";
 import dots from "../../../image/Dots.svg";
 import {circle} from "../../../image/svgDataFormat.ts";
-import {AnimatePresence, motion} from "framer-motion";
+import {AnimatePresence, motion, useInView} from "framer-motion";
 import {projectFilters, projects, ProjectType} from "../../../data/portfolioData.ts";
+import {useParallax} from "../../../hooks/useParallax";
+
+const cardVariants = {
+    hidden: {opacity: 0, y: 40},
+    visible: {opacity: 1, y: 0},
+};
+
+const ScrollRevealCard = ({children}: {children: React.ReactNode}) => {
+    const ref = useRef<HTMLDivElement>(null);
+    const isInView = useInView(ref, {once: true, margin: "-80px"});
+
+    return (
+        <motion.div
+            ref={ref}
+            layout
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            exit={{opacity: 0}}
+            variants={cardVariants}
+            transition={{duration: 0.5, ease: [0.16, 1, 0.3, 1]}}
+        >
+            {children}
+        </motion.div>
+    );
+};
 
 export const Projects = (): JSX.Element => {
     const [clickedIndex, setClickedIndex] = useState<number | null>(null);
     const [currentFilterStatus, setCurrentFilterStatus] = useState<ProjectType | null>(null);
+    const titleRef = useRef<HTMLHeadingElement>(null);
+    const titleParallax = useParallax(titleRef, {speed: 0.1});
 
     const changeFilterStatus = (value: ProjectType): void => {
         setCurrentFilterStatus(value);
@@ -28,13 +55,15 @@ export const Projects = (): JSX.Element => {
     };
 
     const filteredWorks = currentFilterStatus
-        ? projects.filter((project) => project.type === currentFilterStatus)
+        ? projects.filter((project) => project.type.includes(currentFilterStatus))
         : projects;
 
     return (
         <StyledProjects id="projects">
             <Container maxWidth={"1240px"} padding={"0 15px"}>
-                <TitleProject>Projects</TitleProject>
+                <motion.div style={titleParallax.style}>
+                    <TitleProject ref={titleRef}>Projects</TitleProject>
+                </motion.div>
                 <List className="category-tabs">
                     {projectFilters.map((item, index) => (
                         <ListItem key={item}>
@@ -84,13 +113,7 @@ export const Projects = (): JSX.Element => {
                     <GreedWrapper>
                         <AnimatePresence>
                             {filteredWorks.map((item) => (
-                                <motion.div
-                                    layout={true}
-                                    initial={{opacity: 0}}
-                                    animate={{opacity: 1}}
-                                    exit={{opacity: 0}}
-                                    key={item.id}
-                                >
+                                <ScrollRevealCard key={item.id}>
                                     <Card
                                         title={item.title}
                                         image={item.image}
@@ -98,7 +121,7 @@ export const Projects = (): JSX.Element => {
                                         demoUrl={item.demoUrl}
                                         codeUrl={item.codeUrl}
                                     />
-                                </motion.div>
+                                </ScrollRevealCard>
                             ))}
                         </AnimatePresence>
                     </GreedWrapper>

@@ -19,7 +19,6 @@ export const GlobalStyled = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-
     }
 
     body {
@@ -65,12 +64,20 @@ export const GlobalStyled = createGlobalStyle`
         display: block;
         max-width: 100%;
     }
+
+    html.lenis, html.lenis body {
+        height: auto;
+    }
+
+    .lenis.lenis-smooth {
+        scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+        overflow: hidden;
+    }
 `
-
-
-
-
-
-
-
-

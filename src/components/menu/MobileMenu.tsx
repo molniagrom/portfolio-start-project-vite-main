@@ -46,7 +46,7 @@ export const MobileMenu = (props: MenuPropsType) => {
                             <LinkMobile onClick={() => {
                                 setIsOpen(false)
                             }}
-                                        activeClass="active" spy={true} smooth={true}
+                                        activeClass="active" spy={true}
                                         to={item.href}>{item.title}</LinkMobile>
                         </ListItemMobile>
                     ))}

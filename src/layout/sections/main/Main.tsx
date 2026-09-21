@@ -10,8 +10,23 @@ import {theme} from "../../../styles/Theme.ts";
 import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
 import {contactDetails, socialLinks} from "../../../data/portfolioData.ts";
 import {Link} from "react-scroll";
+import {useRef} from "react";
+import {motion} from "framer-motion";
+import {useParallax} from "../../../hooks/useParallax";
 
 export const Main = () => {
+    const plusRef = useRef<SVGSVGElement>(null);
+    const ellipseRef = useRef<SVGSVGElement>(null);
+    const photoRef = useRef<HTMLImageElement>(null);
+    const titleRef = useRef<HTMLHeadingElement>(null);
+
+    // Speed is proportional to element height (GetHapply approach):
+    // speed 0.15 on ~107px icon → ±16px, speed 0.05 on ~334px photo → ±17px
+    const plusParallax = useParallax(plusRef, {speed: 0.15});
+    const ellipseParallax = useParallax(ellipseRef, {speed: 0.1});
+    const photoParallax = useParallax(photoRef, {speed: 0.05});
+    const titleParallax = useParallax(titleRef, {speed: 0.08});
+
     return (
         <MainSection id="home">
             <Container $adaptMain padding={"0px 25px 0px 25px"}>
@@ -22,33 +37,59 @@ export const Main = () => {
                         justify="space-between"
                         $alignItems="center"
                     >
-                        <Icon adaptivePlus={true} top={"-100px"} right={"60%"} width="108" height="107"
-                              viewBox="0 0 108 107" zIndex={"-11111111"}
-                              position={"absolute"} iconId={"plus"}/>
-                        <Icon adaptiveElipse={true} bottom={"0"} right={"25px"} width="152" height="152"
-                              viewBox="0 0 152 152" zIndex={"-11111111"}
-                              position={"absolute"} iconId={"ElipseMiddle"}/>
+                        {/* Parallax applied directly on absolutely-positioned icons.
+                            Wrapping in motion.div with display:contents breaks absolute positioning. */}
+                        <Icon
+                            ref={plusRef}
+                            style={plusParallax.style}
+                            adaptivePlus={true}
+                            top={"-100px"}
+                            right={"60%"}
+                            width="108"
+                            height="107"
+                            viewBox="0 0 108 107"
+                            zIndex={"-11111111"}
+                            position={"absolute"}
+                            iconId={"plus"}
+                        />
+                        <Icon
+                            ref={ellipseRef}
+                            style={ellipseParallax.style}
+                            adaptiveElipse={true}
+                            bottom={"0"}
+                            right={"25px"}
+                            width="152"
+                            height="152"
+                            viewBox="0 0 152 152"
+                            zIndex={"-11111111"}
+                            position={"absolute"}
+                            iconId={"ElipseMiddle"}
+                        />
                         <WrapperBlur>
 
                             <FlexWrapper $adaptMain
                                          $adaptive={true} gap={"5vw"} direction="row" $alignItems={"center"}
                                          justify="space-around">
-                                <Photo
-                                    $adaptMain
-                                    src={myPhoto}
-                                    alt="Portrait of Alina Groza"
-                                    width="334px"
-                                    height="334px"
-                                    $borderRadius="50%"
-                                    border="22px solid white"
-                                />
+                                <ParallaxFlow style={photoParallax.style}>
+                                    <Photo
+                                        ref={photoRef}
+                                        $adaptMain
+                                        src={myPhoto}
+                                        alt="Portrait of Alina Groza"
+                                        width="334px"
+                                        height="334px"
+                                        $borderRadius="50%"
+                                        border="22px solid white"
+                                    />
+                                </ParallaxFlow>
                                 <FlexWrapper direction="column">
-                                    <MainTitle>Frontend Developer</MainTitle>
+                                    <ParallaxFlow style={titleParallax.style}>
+                                        <MainTitle ref={titleRef}>Frontend Developer</MainTitle>
+                                    </ParallaxFlow>
                                     <Name>I'm <span>Alina Groza</span>. Bringing order to chaos - your frontend in reliable hands. Aesthetics, logic, and user care in every pixel.</Name>
                                     <FlexWrapper $adaptive $alignItems={"center"} gap="32px">
                                         <ProjectLink
                                             $adaptiveMain
-                                            smooth={true}
                                             to="projects"
                                             fontSize={"15px"}
                                             fontWeight={"600"}
@@ -104,6 +145,10 @@ export const Main = () => {
 };
 
 export default Main;
+
+const ParallaxFlow = styled(motion.div)`
+    display: contents;
+`
 
 const WrapperBlur = styled.div`
     backdrop-filter: blur(10px);

@@ -6,16 +6,36 @@ import {theme} from "../../../styles/Theme.ts";
 import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
 import {getPortfolioAge} from "../../../utils/dateUtils.ts";
 import {socialLinks} from "../../../data/portfolioData.ts";
+import {useRef} from "react";
+import {motion} from "framer-motion";
+import {useParallax} from "../../../hooks/useParallax";
 
 export const AboutMe = () => {
     const age = getPortfolioAge();
+    const mapRef = useRef<HTMLImageElement>(null);
+    const meRef = useRef<HTMLImageElement>(null);
+    // Small speed on tall images: 0.02 * ~800px = ±16px
+    const mapParallax = useParallax(mapRef, {speed: 0.02});
+    const meParallax = useParallax(meRef, {speed: 0.02});
 
     return (
         <AboutMeStyled id="about">
             <Container $aboutMeAdaptive padding={"46px 42px 0 42px"}>
                 <WrapperBcg>
-                    <StyledImage $variant="map" src={map} alt="Decorative map background"/>
-                    <StyledImage $variant="me" src={me} alt="Portrait illustration of Alina Groza"/>
+                    {/* Apply transform directly on the image — wrapping in motion.div
+                        breaks absolute positioning by creating a new containing block */}
+                    <StyledMapImage
+                        ref={mapRef}
+                        style={mapParallax.style}
+                        src={map}
+                        alt="Decorative map background"
+                    />
+                    <StyledMeImage
+                        ref={meRef}
+                        style={meParallax.style}
+                        src={me}
+                        alt="Portrait illustration of Alina Groza"
+                    />
                     <InfoAboutMe>
                         <Icons>
                             {socialLinks.map((link) => (
@@ -45,41 +65,42 @@ export const AboutMe = () => {
     );
 };
 
-const StyledImage = styled.img<{ $variant: "map" | "me" }>`
+const imageBase = css`
     position: absolute;
     max-width: 100%;
     height: auto;
+    will-change: transform;
+`;
 
-    ${({$variant}) =>
-            $variant === "me" && css`
-                bottom: 0;
-                left: 40px;
-                height: 750px;
+const StyledMapImage = styled(motion.img)`
+    ${imageBase}
+    bottom: 0;
+    right: 50px;
+    height: 100%;
+    object-fit: contain;
 
-                @media screen and ${theme.media.tablet} {
-                    height: 50%;
-                    object-fit: cover;
-                }
-            `}
+    @media screen and ${theme.media.tablet} {
+        top: -50px;
+        right: -30px;
+    }
 
-    ${({$variant}) =>
-            $variant === "map" && css`
-                bottom: 0;
-                right: 50px;
-                height: 100%;
-                object-fit: contain;
+    @media screen and ${theme.media.mobile} {
+        bottom: 0;
+        right: -20px;
+        top: 0;
+    }
+`;
 
-                @media screen and ${theme.media.tablet} {
-                    top: -50px;
-                    right: -30px;
-                }
+const StyledMeImage = styled(motion.img)`
+    ${imageBase}
+    bottom: 0;
+    left: 40px;
+    height: 750px;
 
-                @media screen and ${theme.media.mobile} {
-                    bottom: 0;
-                    right: -20px;
-                    top: 0;
-                }
-            `}
+    @media screen and ${theme.media.tablet} {
+        height: 50%;
+        object-fit: cover;
+    }
 `
 
 const AboutMeStyled = styled.section`

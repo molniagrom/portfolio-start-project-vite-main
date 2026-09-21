@@ -3,6 +3,9 @@ import {Icon} from "../../../components/icon/Icon.tsx";
 import {Container} from "../../../components/Container.ts";
 import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
 import {theme} from "../../../styles/Theme.ts";
+import {useRef} from "react";
+import {motion} from "framer-motion";
+import {useParallax} from "../../../hooks/useParallax";
 
 type ExistingTech = {
     type: "sprite";
@@ -42,14 +45,19 @@ const techItems: TechItem[] = [
 ];
 
 export const MyStack = () => {
+    const titleRef = useRef<HTMLDivElement>(null);
+    const titleParallax = useParallax(titleRef, {speed: 0.05});
+
     return (
         <MyStackStyled>
             <Container padding={"0px 20px"}>
                 <FlexWrapper $adaptiveMyStack gap={"140px"} direction="column" justify="center" $alignItems="center">
-                    <ContentText>
-                        <h2>My Tech Stack</h2>
-                        <p>Technologies I've been working with recently</p>
-                    </ContentText>
+                    <motion.div style={titleParallax.style}>
+                        <ContentText ref={titleRef}>
+                            <h2>My Tech Stack</h2>
+                            <p>Technologies I've been working with recently</p>
+                        </ContentText>
+                    </motion.div>
                     <ContentSvg>
                         {techItems.map((tech) => (
                             <TechCard key={tech.name}>

@@ -1,28 +1,34 @@
-// import React from 'react';
-
 import styled from 'styled-components';
 import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
 import {theme} from "../../../styles/Theme.ts";
 import {Container} from "../../../components/Container.ts";
+import {useRef} from "react";
+import {motion} from "framer-motion";
+import {useParallax} from "../../../hooks/useParallax";
 
 export const Highlights = () => {
+    const sectionRef = useRef<HTMLElement>(null);
+    const contentParallax = useParallax(sectionRef, {speed: 0.03});
+
     return (
-        <HighlightsStyled>
+        <HighlightsStyled ref={sectionRef}>
             <Container>
-                <FlexWrapper $adaptiveHighlights gap={"25px"} justify={"space-around"} $alignItems={"center"}>
-                    <StatBlock>
-                        <Number>81</Number>
-                        <Label>HAPPY CUSTOMERS</Label>
-                    </StatBlock>
-                    <StatBlock>
-                        <Number>97+</Number>
-                        <Label>COMPLETED PROJECTS</Label>
-                    </StatBlock>
-                    <StatBlock>
-                        <Number>50</Number>
-                        <Label>AWARDS WON</Label>
-                    </StatBlock>
-                </FlexWrapper>
+                <motion.div style={contentParallax.style}>
+                    <FlexWrapper $adaptiveHighlights gap={"25px"} justify={"space-around"} $alignItems={"center"}>
+                        <StatBlock>
+                            <Number>81</Number>
+                            <Label>HAPPY CUSTOMERS</Label>
+                        </StatBlock>
+                        <StatBlock>
+                            <Number>97+</Number>
+                            <Label>COMPLETED PROJECTS</Label>
+                        </StatBlock>
+                        <StatBlock>
+                            <Number>50</Number>
+                            <Label>AWARDS WON</Label>
+                        </StatBlock>
+                    </FlexWrapper>
+                </motion.div>
             </Container>
         </HighlightsStyled>
     );

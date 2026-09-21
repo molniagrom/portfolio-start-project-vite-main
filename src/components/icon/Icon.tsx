@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
+import type {MotionStyle} from "framer-motion";
 import iconsSprite from "../../image/icons-sprite.svg";
 import styled, {css} from "styled-components";
 import {theme} from "../../styles/Theme.ts";
@@ -22,9 +23,10 @@ type IconPropsType = {
     adaptiveElipse?: boolean;
     adaptiveMain?: boolean;
     adaptivePart?: boolean;
+    style?: MotionStyle;
 }
 
-export const Icon = ({
+export const Icon = forwardRef<SVGSVGElement, IconPropsType>(({
     children,
     iconId,
     width,
@@ -42,9 +44,11 @@ export const Icon = ({
     adaptiveElipse,
     adaptiveMain,
     adaptivePart,
-}: IconPropsType) => {
+    style,
+}, ref) => {
     return (
         <Svg
+            ref={ref}
             width={width || "36"}
             height={height || "36"}
             viewBox={viewBox || "0 0 36 36"}
@@ -62,12 +66,15 @@ export const Icon = ({
             $adaptiveElipse={adaptiveElipse}
             $adaptiveMain={adaptiveMain}
             $adaptivePart={adaptivePart}
+            style={style as React.CSSProperties}
         >
             <use xlinkHref={`${iconsSprite}#${iconId}`}/>
             {children}
         </Svg>
     );
-};
+});
+
+Icon.displayName = "Icon";
 
 type SvgProps = {
     $position?: string;
@@ -127,4 +134,3 @@ const Svg = styled.svg<SvgProps>`
         transform: scale(1.1);
     `}
 `
-

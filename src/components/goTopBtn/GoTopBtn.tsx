@@ -1,43 +1,31 @@
 import styled from "styled-components";
 import {Icon} from "../icon/Icon.tsx";
 import {theme} from "../../styles/Theme.ts";
-import {animateScroll as scroll} from "react-scroll";
-import {useEffect, useState} from "react";
+import {useLenis} from "../../context/LenisContext.tsx";
+import {useScroll, useTransform, motion} from "framer-motion";
 
 export const GoTopBtn = () => {
-
-    const [showBtn, setShowBtn] = useState(false)
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 200) {
-                setShowBtn(true)
-            } else {
-                setShowBtn(false)
-            }
-        };
-
-        window.addEventListener("scroll", handleScroll);
-
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [])
+    const lenis = useLenis();
+    const {scrollY} = useScroll();
+    const opacity = useTransform(scrollY, [0, 200], [0, 1]);
 
     return (
-        <>
-            {showBtn && <StyledGoTopBtn onClick={() => {
-                scroll.scrollToTop()
-            }}>
+        <motion.div style={{
+            opacity,
+            position: "fixed",
+            bottom: 30,
+            right: 30,
+            zIndex: 15,
+            pointerEvents: "auto",
+        }}>
+            <StyledGoTopBtn onClick={() => lenis?.scrollTo(0, {duration: 1.5})}>
                 <Icon width={"75px"} height={"75px"} iconId={"arrowGoTop"}/>
-            </StyledGoTopBtn>}
-        </>
-
+            </StyledGoTopBtn>
+        </motion.div>
     );
 };
 
 const StyledGoTopBtn = styled.button`
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -45,14 +33,13 @@ const StyledGoTopBtn = styled.button`
     backdrop-filter: blur(10px);
     background: ${theme.colors.allBgOpacity};
     border-radius: 50%;
-    z-index: 15;
 
     &:hover {
         transform: scale(1.1);
     }
 
     @media screen and ${theme.media.mobile} {
-        bottom: 10px;
-        right: 10px;
+        width: 40px;
+        height: 40px;
     }
 `
