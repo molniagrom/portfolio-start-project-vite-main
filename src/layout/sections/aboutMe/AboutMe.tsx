@@ -1,5 +1,5 @@
 import map from "/public/map.png";
-import me from "../../../../public/me.png";
+import me from "../../../../public/new_me.png";
 import styled, {css} from "styled-components";
 import {Container} from "../../../components/Container.ts";
 import {theme} from "../../../styles/Theme.ts";
