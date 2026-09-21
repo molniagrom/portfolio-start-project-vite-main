@@ -3,12 +3,12 @@ export type ProjectItem = {
     title: string;
     image: string;
     imageAlt: string;
-    type: ProjectType;
+    type: ProjectType[];
     demoUrl: string;
     codeUrl: string;
 };
 
-export type ProjectType = "Featured" | "Pet" | "Frontend";
+export type ProjectType = "Pet Project" | "Teamwork" | "Commercial";
 
 export type SocialLink = {
     label: string;
@@ -44,7 +44,7 @@ export const projects: ProjectItem[] = [
         title: "My Kinopoisk",
         image: "/kinopoisk1619602660_3-phonoteka_org-p-kinematograf-fon-3-700x433-1.jpg",
         imageAlt: "Preview of the My Kinopoisk movie app",
-        type: "Featured",
+        type: ["Pet Project"],
         demoUrl: "https://my-kinopoisk-mauve.vercel.app/",
         codeUrl: "https://github.com/molniagrom/my_kinopoisk",
     },
@@ -53,7 +53,7 @@ export const projects: ProjectItem[] = [
         title: "Rick and Morty Explorer (Next JS)",
         image: "/RickMorty.jpg",
         imageAlt: "Preview of the Rick and Morty explorer app",
-        type: "Pet",
+        type: ["Pet Project"],
         demoUrl: "https://next-app-rick-and-morty-five.vercel.app/",
         codeUrl: "https://github.com/molniagrom/next-app_rick_and_morty",
     },
@@ -62,7 +62,7 @@ export const projects: ProjectItem[] = [
         title: "Todolist 01",
         image: "/todolostil_fullxfull.2269636612_2elj.webp",
         imageAlt: "Preview of the Todolist 01 application",
-        type: "Frontend",
+        type: ["Pet Project"],
         demoUrl: "https://todolist-01-eight.vercel.app/login",
         codeUrl: "https://github.com/molniagrom/todolist-01",
     },
@@ -71,7 +71,7 @@ export const projects: ProjectItem[] = [
         title: "Music Fun (Tanstack Query)",
         image: "/placeholder-project.svg",
         imageAlt: "Preview of the Music Fun app with Tanstack Query",
-        type: "Pet",
+        type: ["Pet Project"],
         demoUrl: "https://musicfuntanstack-query.vercel.app/",
         codeUrl: "https://github.com/molniagrom/tanstack-query-example",
     },
@@ -80,13 +80,22 @@ export const projects: ProjectItem[] = [
         title: "Starlions — Social Network",
         image: "/logo48x48.svg",
         imageAlt: "Preview of the Starlions social network app",
-        type: "Pet",
+        type: ["Teamwork"],
         demoUrl: "https://starlionstech.org/",
         codeUrl: "https://github.com/starloinsfront/starlions",
     },
+    {
+        id: 6,
+        title: "Get Together — Meetings Platform",
+        image: "/logo-get-together.svg",
+        imageAlt: "Preview of the Get Together meetings platform",
+        type: ["Teamwork", "Commercial"],
+        demoUrl: "https://minglehub.eu/",
+        codeUrl: "https://github.com/vmccnc/meetings-web-react",
+    },
 ];
 
-export const projectFilters: ProjectType[] = ["Featured", "Pet", "Frontend"];
+export const projectFilters: ProjectType[] = ["Pet Project", "Teamwork", "Commercial"];
 
 export const contactDetails = {
     location: "Tiraspol, Moldova",
