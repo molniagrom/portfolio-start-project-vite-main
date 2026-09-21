@@ -1,6 +1,8 @@
 # Alina Groza Portfolio
 
-Production-focused portfolio built with React, TypeScript, Vite, and styled-components.
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?style=flat-square)](https://portfolio-start-project-vite-main.vercel.app/)
+
+Production-focused portfolio built with React, TypeScript, Vite, and styled-components. Features smooth scroll animations, responsive design, and contact form via EmailJS.
 
 ## Stack
 
