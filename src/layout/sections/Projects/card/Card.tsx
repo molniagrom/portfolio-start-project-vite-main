@@ -41,6 +41,7 @@ export const Card: React.FC<CardProps> = ({title, image, imageAlt, demoUrl, code
             >
                 <NameCard>{title}</NameCard>
 
+                <ButtonsWrapper>
                 <FlexWrapper gap="20px" justify="space-between">
                     <AStyled
                         href={codeUrl}
@@ -70,10 +71,15 @@ export const Card: React.FC<CardProps> = ({title, image, imageAlt, demoUrl, code
                         View
                     </AStyled>
                 </FlexWrapper>
+                </ButtonsWrapper>
             </FlexWrapper>
         </StyledCard>
     );
 };
+
+const ButtonsWrapper = styled.div`
+    margin-top: auto;
+`;
 
 const NameCard = styled.h3`
     flex-grow: 1;
@@ -101,7 +107,7 @@ const StyledCard = styled.article<StyledCardPropsType>`
     padding: ${props => props.padding ?? undefined};
     background-color: ${props => props.$backgroundColor ?? undefined};
     border-radius: ${props => props.$borderRadius ?? undefined};
-    height: ${props => props.height ?? undefined};
+    height: 100%;
     width: ${props => props.width ?? undefined};
     transition: all 0.3s ease;
 

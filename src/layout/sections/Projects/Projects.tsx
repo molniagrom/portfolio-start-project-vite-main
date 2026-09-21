@@ -29,6 +29,7 @@ const ScrollRevealCard = ({children}: {children: React.ReactNode}) => {
             exit={{opacity: 0}}
             variants={cardVariants}
             transition={{duration: 0.5, ease: [0.16, 1, 0.3, 1]}}
+            style={{height: "100%"}}
         >
             {children}
         </motion.div>
