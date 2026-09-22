@@ -4,8 +4,11 @@ import {theme} from "../../styles/Theme.ts";
 import {MenuPropsType} from "./DesktopMenu.tsx";
 import {Link} from "react-scroll";
 import {Icon} from "../icon/Icon.tsx";
+import {useTranslation} from "react-i18next";
+import {LanguageSwitcher} from "../LanguageSwitcher.tsx";
 
 export const MobileMenu = (props: MenuPropsType) => {
+    const {t} = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
 
     const onClick = () => {
@@ -51,9 +54,12 @@ export const MobileMenu = (props: MenuPropsType) => {
                         </ListItemMobile>
                     ))}
                     <ListItemMobile>
+                        <LanguageSwitcher/>
+                    </ListItemMobile>
+                    <ListItemMobile>
                         <ThemeToggleButton type="button" onClick={props.onToggleTheme}>
                             <Icon iconId={"moon"}/>
-                            {props.mode === "dark" ? "Light theme" : "Dark theme"}
+                            {props.mode === "dark" ? t("theme.light") : t("theme.dark")}
                         </ThemeToggleButton>
                     </ListItemMobile>
                 </ul>

@@ -3,6 +3,7 @@ import {theme} from "../../styles/Theme.ts";
 import {Link} from "react-scroll";
 import {Icon} from "../icon/Icon.tsx";
 import {ThemeMode} from "../../styles/colors.ts";
+import {LanguageSwitcher} from "../LanguageSwitcher.tsx";
 
 export type MenuPropsType = {
     items: {
@@ -25,6 +26,7 @@ export const DesktopMenu = (props: MenuPropsType) => {
                     </ListItem>
                 ))}
             </List>
+            <LanguageSwitcher/>
             <ThemeButton
                 type="button"
                 onClick={props.onToggleTheme}

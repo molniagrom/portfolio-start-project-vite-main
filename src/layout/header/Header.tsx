@@ -6,14 +6,15 @@ import {MobileMenu} from "../../components/menu/MobileMenu.tsx";
 import React, {useEffect, useState} from "react";
 import {S} from "./Header_Styles.ts"
 import {useThemeMode} from "../../context/ThemeModeContext.tsx";
+import {useTranslation} from "react-i18next";
 
 export const Header: React.FC = () => {
+    const {t} = useTranslation();
     const items = [
-        {title: "Home", href: "home"},
-        {title: "Projects", href: "projects"},
-        {title: "About", href: "about"},
-        // {title: "Testimony", href: "testimony"},
-        {title: "Contact", href: "contact"},
+        {title: t("nav.home"), href: "home"},
+        {title: t("nav.projects"), href: "projects"},
+        {title: t("nav.about"), href: "about"},
+        {title: t("nav.contact"), href: "contact"},
     ];
 
     const [width, setWidth] = useState<number | null>(null);

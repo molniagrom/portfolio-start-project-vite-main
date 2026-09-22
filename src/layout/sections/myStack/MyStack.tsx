@@ -6,6 +6,7 @@ import {theme} from "../../../styles/Theme.ts";
 import {useRef} from "react";
 import {motion} from "framer-motion";
 import {useParallax} from "../../../hooks/useParallax";
+import {useTranslation} from "react-i18next";
 
 type ExistingTech = {
     type: "sprite";
@@ -45,6 +46,7 @@ const techItems: TechItem[] = [
 ];
 
 export const MyStack = () => {
+    const {t} = useTranslation();
     const titleRef = useRef<HTMLDivElement>(null);
     const titleParallax = useParallax(titleRef, {speed: 0.05});
 
@@ -54,8 +56,8 @@ export const MyStack = () => {
                 <FlexWrapper $adaptiveMyStack gap={"140px"} direction="column" justify="center" $alignItems="center">
                     <motion.div style={titleParallax.style}>
                         <ContentText ref={titleRef}>
-                            <h2>My Tech Stack</h2>
-                            <p>Technologies I've been working with recently</p>
+                            <h2>{t("stack.title")}</h2>
+                            <p>{t("stack.subtitle")}</p>
                         </ContentText>
                     </motion.div>
                     <ContentSvg>

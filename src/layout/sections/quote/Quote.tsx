@@ -4,17 +4,19 @@ import styled from "styled-components";
 import {Container} from "../../../components/Container.ts";
 import {theme} from "../../../styles/Theme.ts";
 import {quote} from "../../../image/svgDataFormat.ts";
+import {useTranslation} from "react-i18next";
 
 export const Quote = () => {
+    const {t} = useTranslation();
     return (
         <QuoteStyled>
             <Container>
                 <QuoteWrapper>
                     <BlockquoteStyled cite="https://en.wikipedia.org/wiki/Paul_the_Apostle">
-                        For whatever a person is sowing, this he will also reap
+                        {t("quote.text")}
                     </BlockquoteStyled>
                     <QuoteSourceStyled>
-                        <cite>Apostle Paul</cite>
+                        <cite>{t("quote.source")}</cite>
                     </QuoteSourceStyled>
                 </QuoteWrapper>
             </Container>

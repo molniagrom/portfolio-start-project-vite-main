@@ -4,8 +4,10 @@ import {Container} from "../../../components/Container.ts";
 import {theme} from "../../../styles/Theme.ts";
 import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
 import {socialLinks} from "../../../data/portfolioData.ts";
+import {useTranslation, Trans} from "react-i18next";
 
 export const AboutMe = () => {
+    const {t} = useTranslation();
     return (
         <AboutMeStyled id="about">
             <Container $aboutMeAdaptive padding={"80px 42px 80px 42px"}>
@@ -25,20 +27,20 @@ export const AboutMe = () => {
                                     />
                                 ))}
                             </Icons>
-                            <NameAboutMe>I'm <span>Alina</span> Groza</NameAboutMe>
+                            <NameAboutMe><Trans i18nKey="about.name" components={{1: <span/>}}/></NameAboutMe>
                             <Bio>
-                                Frontend-разработчик с практическим опытом создания современных веб-приложений на React, TypeScript и Redux Toolkit. Владею интеграцией REST API с использованием RTK Query, разработкой переиспользуемых компонентных архитектур и созданием адаптивных пользовательских интерфейсов. Выпускница программы Frontend Developer IT-Incubator с 6+ готовыми к деплою проектами, развернутыми на Vercel.
+                                {t("about.bio")}
                             </Bio>
                             <Details>
                                 <DetailsInfo>
                                     <DetailBlock>
-                                        <DetailTitle>Образование</DetailTitle>
-                                        <DetailText>Программа Frontend Developer, IT-Incubator, 2025</DetailText>
+                                        <DetailTitle>{t("about.education")}</DetailTitle>
+                                        <DetailText>{t("about.educationText")}</DetailText>
                                     </DetailBlock>
                                     <DetailBlock>
-                                        <DetailTitle>Языки</DetailTitle>
-                                        <DetailText>Русский — Родной</DetailText>
-                                        <DetailText>Английский — A2 (улучшаю)</DetailText>
+                                        <DetailTitle>{t("about.languages")}</DetailTitle>
+                                        <DetailText>{t("about.langRu")}</DetailText>
+                                        <DetailText>{t("about.langEn")}</DetailText>
                                     </DetailBlock>
                                 </DetailsInfo>
                                 <DetailsPhoto>

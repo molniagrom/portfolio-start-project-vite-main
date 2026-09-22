@@ -8,8 +8,9 @@ import {Container} from "../../../components/Container";
 import dots from "../../../image/Dots.svg";
 import {circle} from "../../../image/svgDataFormat.ts";
 import {AnimatePresence, motion, useInView} from "framer-motion";
-import {projectFilters, projects, ProjectType} from "../../../data/portfolioData.ts";
+import {projects, ProjectType} from "../../../data/portfolioData.ts";
 import {useParallax} from "../../../hooks/useParallax";
+import {useTranslation} from "react-i18next";
 
 const cardVariants = {
     hidden: {opacity: 0, y: 40},
@@ -37,10 +38,17 @@ const ScrollRevealCard = ({children}: {children: React.ReactNode}) => {
 };
 
 export const Projects = (): JSX.Element => {
+    const {t} = useTranslation();
     const [clickedIndex, setClickedIndex] = useState<number | null>(null);
     const [currentFilterStatus, setCurrentFilterStatus] = useState<ProjectType | null>(null);
     const titleRef = useRef<HTMLHeadingElement>(null);
     const titleParallax = useParallax(titleRef, {speed: 0.1});
+
+    const filterKeys: {key: ProjectType; label: string}[] = [
+        {key: "Pet Project", label: t("filters.petProject")},
+        {key: "Teamwork", label: t("filters.teamwork")},
+        {key: "Commercial", label: t("filters.commercial")},
+    ];
 
     const changeFilterStatus = (value: ProjectType): void => {
         setCurrentFilterStatus(value);
@@ -63,17 +71,17 @@ export const Projects = (): JSX.Element => {
         <StyledProjects id="projects">
             <Container maxWidth={"1240px"} padding={"0 15px"}>
                 <motion.div style={titleParallax.style}>
-                    <TitleProject ref={titleRef}>Projects</TitleProject>
+                    <TitleProject ref={titleRef}>{t("projects.title")}</TitleProject>
                 </motion.div>
                 <List className="category-tabs">
-                    {projectFilters.map((item, index) => (
-                        <ListItem key={item}>
+                    {filterKeys.map((item, index) => (
+                        <ListItem key={item.key}>
                             <Button
                                 $adaptiveProject
                                 $isClicked={clickedIndex === index}
                                 onClick={(): void => {
                                     onClick(index);
-                                    changeFilterStatus(item);
+                                    changeFilterStatus(item.key);
                                 }}
                                 border={`${theme.colors.border} 3px solid`}
                                 $borderRadius={"67px"}
@@ -85,7 +93,7 @@ export const Projects = (): JSX.Element => {
                                     fontWeight={"400"}
                                     fontSize={"20px"}
                                 >
-                                    {item}
+                                    {item.label}
                                 </AStyled>
                             </Button>
                         </ListItem>
@@ -105,7 +113,7 @@ export const Projects = (): JSX.Element => {
                                 fontWeight={"400"}
                                 fontSize={"20px"}
                             >
-                                Clear filters
+                                {t("projects.clearFilters")}
                             </AStyled>
                         </Button>
                     </ListItem>
@@ -116,7 +124,7 @@ export const Projects = (): JSX.Element => {
                             {filteredWorks.map((item) => (
                                 <ScrollRevealCard key={item.id}>
                                     <Card
-                                        title={item.title}
+                                        titleKey={item.titleKey}
                                         image={item.image}
                                         imageAlt={item.imageAlt}
                                         demoUrl={item.demoUrl}

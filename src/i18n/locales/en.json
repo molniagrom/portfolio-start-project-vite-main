@@ -1,0 +1,71 @@
+{
+    "nav": {
+        "home": "Home",
+        "projects": "Projects",
+        "about": "About",
+        "contact": "Contact"
+    },
+    "main": {
+        "title": "Frontend Developer",
+        "name": "I'm <1>Alina Groza</1>. Bringing order to chaos - your frontend in reliable hands. Aesthetics, logic, and user care in every pixel.",
+        "seeProjects": "See Projects",
+        "downloadResume": "Download Resume"
+    },
+    "projects": {
+        "title": "Projects",
+        "clearFilters": "Clear filters",
+        "editCode": "Edit code",
+        "view": "View",
+        "myKinopoisk": "My Kinopoisk",
+        "rickAndMorty": "Rick and Morty Explorer (Next JS)",
+        "todolist": "Todolist 01",
+        "musicFun": "Music Fun (Tanstack Query)",
+        "starlions": "Starlions — Social Network",
+        "getTogether": "Get Together — Meetings Platform"
+    },
+    "filters": {
+        "petProject": "Pet Project",
+        "teamwork": "Teamwork",
+        "commercial": "Commercial"
+    },
+    "about": {
+        "name": "I'm <1>Alina</1> Groza",
+        "bio": "Frontend developer with hands-on experience building modern web applications using React, TypeScript, and Redux Toolkit. Skilled in REST API integration with RTK Query, reusable component architecture, and responsive UI development. Graduate of the IT-Incubator Frontend Developer program with 6+ deploy-ready projects on Vercel.",
+        "education": "Education",
+        "educationText": "Frontend Developer Program, IT-Incubator, 2025",
+        "languages": "Languages",
+        "langRu": "Russian — Native",
+        "langEn": "English — A2 (improving)"
+    },
+    "stack": {
+        "title": "My Tech Stack",
+        "subtitle": "Technologies I've been working with recently"
+    },
+    "quote": {
+        "text": "For whatever a person is sowing, this he will also reap",
+        "source": "Apostle Paul"
+    },
+    "contact": {
+        "title": "Contact Us",
+        "getInTouch": "Get in touch",
+        "email": "E-mail",
+        "phone": "Phone",
+        "name": "Name",
+        "message": "Message",
+        "sending": "Sending...",
+        "send": "Send",
+        "success": "Message sent successfully.",
+        "error": "Message could not be sent. Please try again.",
+        "locationTitle": "Location",
+        "phoneTitle": "Phone",
+        "emailTitle": "Email"
+    },
+    "footer": {
+        "codedBy": "Coded by Alina Groza nezhad",
+        "rights": "All Rights Reserved"
+    },
+    "theme": {
+        "light": "Light theme",
+        "dark": "Dark theme"
+    }
+}

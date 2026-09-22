@@ -4,14 +4,16 @@ import {Container} from "../../components/Container.ts";
 import {FlexWrapper} from "../../components/wrappers/FlexWrapper.tsx";
 import {theme} from "../../styles/Theme.ts";
 import {wave} from "../../image/svgDataFormat.ts";
+import {useTranslation} from "react-i18next";
 
 export const Footer = () => {
+    const {t} = useTranslation();
     return (
         <StyledFooter>
             <Container $adaptFooter padding={"80px 0px 73px 0px"}>
                 <FlexWrapper direction="column" justify={"center"} $alignItems={"center"}>
-                    <Title>Coded by Alina Groza nezhad</Title>
-                    <SubTittle>All Rights Reserved © 2025 - {new Date().getFullYear()}</SubTittle>
+                    <Title>{t("footer.codedBy")}</Title>
+                    <SubTittle>{t("footer.rights")} © 2025 - {new Date().getFullYear()}</SubTittle>
                 </FlexWrapper>
             </Container>
         </StyledFooter>

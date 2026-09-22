@@ -1,6 +1,6 @@
 export type ProjectItem = {
     id: number;
-    title: string;
+    titleKey: string;
     image: string;
     imageAlt: string;
     type: ProjectType[];
@@ -41,7 +41,7 @@ export const socialLinks: SocialLink[] = [
 export const projects: ProjectItem[] = [
     {
         id: 1,
-        title: "My Kinopoisk",
+        titleKey: "projects.myKinopoisk",
         image: "/kinopoisk1619602660_3-phonoteka_org-p-kinematograf-fon-3-700x433-1.jpg",
         imageAlt: "Preview of the My Kinopoisk movie app",
         type: ["Pet Project"],
@@ -50,7 +50,7 @@ export const projects: ProjectItem[] = [
     },
     {
         id: 2,
-        title: "Rick and Morty Explorer (Next JS)",
+        titleKey: "projects.rickAndMorty",
         image: "/RickMorty.jpg",
         imageAlt: "Preview of the Rick and Morty explorer app",
         type: ["Pet Project"],
@@ -59,7 +59,7 @@ export const projects: ProjectItem[] = [
     },
     {
         id: 3,
-        title: "Todolist 01",
+        titleKey: "projects.todolist",
         image: "/todolostil_fullxfull.2269636612_2elj.webp",
         imageAlt: "Preview of the Todolist 01 application",
         type: ["Pet Project"],
@@ -68,7 +68,7 @@ export const projects: ProjectItem[] = [
     },
     {
         id: 4,
-        title: "Music Fun (Tanstack Query)",
+        titleKey: "projects.musicFun",
         image: "/placeholder-project.svg",
         imageAlt: "Preview of the Music Fun app with Tanstack Query",
         type: ["Pet Project"],
@@ -77,7 +77,7 @@ export const projects: ProjectItem[] = [
     },
     {
         id: 5,
-        title: "Starlions — Social Network",
+        titleKey: "projects.starlions",
         image: "/logo48x48.svg",
         imageAlt: "Preview of the Starlions social network app",
         type: ["Teamwork"],
@@ -86,7 +86,7 @@ export const projects: ProjectItem[] = [
     },
     {
         id: 6,
-        title: "Get Together — Meetings Platform",
+        titleKey: "projects.getTogether",
         image: "/logo-get-together.svg",
         imageAlt: "Preview of the Get Together meetings platform",
         type: ["Teamwork", "Commercial"],

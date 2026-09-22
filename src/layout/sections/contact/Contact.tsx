@@ -18,8 +18,10 @@ import {FormEvent, useRef, useState} from "react";
 import {contactDetails, socialLinks} from "../../../data/portfolioData.ts";
 import {theme} from "../../../styles/Theme.ts";
 import styled from "styled-components";
+import {useTranslation} from "react-i18next";
 
 export const Contact = () => {
+    const {t} = useTranslation();
     const form = useRef<HTMLFormElement>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
@@ -52,20 +54,20 @@ export const Contact = () => {
         <ContactUs id="contact">
             <Container padding={"0"}>
                 <ContactTitle>
-                    <h2>Contact Us</h2>
+                    <h2>{t("contact.title")}</h2>
                     <Icon width={"18px"} height={"18px"} viewBox={"0 0 18 18"} iconId={"ElipseSmallGradient"}/>
                 </ContactTitle>
                 <ContactBlock>
                     <FlexWrapper $adaptiveContact gap={"clamp(50px, 10vw, 130px)"}>
                         <FormContent>
-                            <h2>Get in touch</h2>
+                            <h2>{t("contact.getInTouch")}</h2>
                             <StyledForm ref={form} onSubmit={sendEmail}>
                                 <GroupFields>
-                                    <Field required minLength={5} name={"email"} placeholder={"E-mail"} type={"email"}/>
-                                    <Field required minLength={7} name={"number"} placeholder={'Phone'} type={"tel"}/>
-                                    <Field required minLength={2} name={"name"} placeholder={'Name'} type={"text"}/>
+                                    <Field required minLength={5} name={"email"} placeholder={t("contact.email")} type={"email"}/>
+                                    <Field required minLength={7} name={"number"} placeholder={t("contact.phone")} type={"tel"}/>
+                                    <Field required minLength={2} name={"name"} placeholder={t("contact.name")} type={"text"}/>
                                 </GroupFields>
-                                <Field required minLength={10} name={"message"} placeholder={'Message'} as={"textarea"}/>
+                                <Field required minLength={10} name={"message"} placeholder={t("contact.message")} as={"textarea"}/>
                                 <Button
                                     $adaptiveContact
                                     type={"submit"}
@@ -80,13 +82,13 @@ export const Contact = () => {
                                     fontFamily={"Roboto"}
                                     lineHeight={"136%"}
                                 >
-                                    {isSubmitting ? "Sending..." : "Send"}
+                                    {isSubmitting ? t("contact.sending") : t("contact.send")}
                                 </Button>
                                 {(isSuccess || isError) && (
                                     <StatusMessage role="status" $isError={isError}>
                                         {isSuccess
-                                            ? "Message sent successfully."
-                                            : "Message could not be sent. Please try again."}
+                                            ? t("contact.success")
+                                            : t("contact.error")}
                                     </StatusMessage>
                                 )}
                             </StyledForm>
@@ -94,17 +96,17 @@ export const Contact = () => {
                         <InfoLogoContent>
                             <Part
                                 iconId={"locationBlue"}
-                                title={"Location"}
+                                title={t("contact.locationTitle")}
                                 subTittle={contactDetails.location}/>
 
                             <Part
                                 iconId={"telephoneBlue"}
-                                title={"Phone"}
+                                title={t("contact.phoneTitle")}
                                 subTittle={contactDetails.phone}/>
 
                             <Part
                                 iconId={"emailBlue"}
-                                title={"Email"}
+                                title={t("contact.emailTitle")}
                                 subTittle={contactDetails.email}/>
                         </InfoLogoContent>
                     </FlexWrapper>

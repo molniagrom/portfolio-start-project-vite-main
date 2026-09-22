@@ -13,8 +13,10 @@ import {Link} from "react-scroll";
 import {useRef} from "react";
 import {motion} from "framer-motion";
 import {useParallax} from "../../../hooks/useParallax";
+import {useTranslation, Trans} from "react-i18next";
 
 export const Main = () => {
+    const {t} = useTranslation();
     const plusRef = useRef<SVGSVGElement>(null);
     const ellipseRef = useRef<SVGSVGElement>(null);
     const photoRef = useRef<HTMLImageElement>(null);
@@ -84,9 +86,9 @@ export const Main = () => {
                                 </ParallaxFlow>
                                 <FlexWrapper direction="column">
                                     <ParallaxFlow style={titleParallax.style}>
-                                        <MainTitle ref={titleRef}>Frontend Developer</MainTitle>
+                                        <MainTitle ref={titleRef}>{t("main.title")}</MainTitle>
                                     </ParallaxFlow>
-                                    <Name>I'm <span>Alina Groza</span>. Bringing order to chaos - your frontend in reliable hands. Aesthetics, logic, and user care in every pixel.</Name>
+                                    <Name><Trans i18nKey="main.name" components={{1: <span/>}}/></Name>
                                     <FlexWrapper $adaptive $alignItems={"center"} gap="32px">
                                         <ProjectLink
                                             $adaptiveMain
@@ -100,7 +102,7 @@ export const Main = () => {
                                             fontFamily={"Roboto"}
                                             $backgroundColor={theme.colors.accent}
                                         >
-                                            See Projects
+                                            {t("main.seeProjects")}
                                             <Icon adaptiveMain iconId={"ArrowWhiteToButton"} width={"28px"}
                                                   height={"28px"}
                                                   viewBox={"-3 -3 36 36"}/>
@@ -118,7 +120,7 @@ export const Main = () => {
                                             outline={"none"}
                                             appearance={"none"}
                                         >
-                                            Download Resume
+                                            {t("main.downloadResume")}
                                         </InputLinkStyled>
                                     </FlexWrapper>
                                 </FlexWrapper>

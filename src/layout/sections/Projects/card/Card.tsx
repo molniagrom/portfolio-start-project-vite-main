@@ -4,16 +4,18 @@ import {Photo} from "../../main/Photo.tsx";
 import {AStyled} from "../../../../components/AStyled/AStyled.tsx";
 import {theme} from "../../../../styles/Theme.ts";
 import React from "react";
+import {useTranslation} from "react-i18next";
 
 type CardProps = {
-    title: string;
+    titleKey: string;
     image: string;
     imageAlt: string;
     demoUrl: string;
     codeUrl: string;
 };
 
-export const Card: React.FC<CardProps> = ({title, image, imageAlt, demoUrl, codeUrl}) => {
+export const Card: React.FC<CardProps> = ({titleKey, image, imageAlt, demoUrl, codeUrl}) => {
+    const {t} = useTranslation();
     return (
         <StyledCard
             $borderRadius="26px"
@@ -39,7 +41,7 @@ export const Card: React.FC<CardProps> = ({title, image, imageAlt, demoUrl, code
                 direction="column"
                 padding="17px 33px 23px 33px"
             >
-                <NameCard>{title}</NameCard>
+                <NameCard>{t(titleKey)}</NameCard>
 
                 <ButtonsWrapper>
                 <FlexWrapper gap="20px" justify="space-between">
@@ -57,7 +59,7 @@ export const Card: React.FC<CardProps> = ({title, image, imageAlt, demoUrl, code
                         fontSize="14px"
                         $backgroundColor={theme.colors.primaryFont}
                     >
-                        Edit code
+                        {t("projects.editCode")}
                     </AStyled>
 
                     <AStyled
@@ -68,7 +70,7 @@ export const Card: React.FC<CardProps> = ({title, image, imageAlt, demoUrl, code
                         $linkHover
                         color={theme.colors.secondaryFont}
                     >
-                        View
+                        {t("projects.view")}
                     </AStyled>
                 </FlexWrapper>
                 </ButtonsWrapper>
