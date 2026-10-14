@@ -16,7 +16,7 @@ import {useParallax} from "../../../hooks/useParallax";
 import {useTranslation, Trans} from "react-i18next";
 
 export const Main = () => {
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
     const plusRef = useRef<SVGSVGElement>(null);
     const ellipseRef = useRef<SVGSVGElement>(null);
     const photoRef = useRef<HTMLImageElement>(null);
@@ -110,7 +110,7 @@ export const Main = () => {
 
                                         <InputLinkStyled
                                             $adaptiveMain
-                                            href={contactDetails.resumeUrl}
+                                            href={contactDetails.resumeUrls[i18n.language as "en" | "ru"] ?? contactDetails.resumeUrls.ru}
                                             download
                                             fontSize={"15px"}
                                             fontWeight={600}

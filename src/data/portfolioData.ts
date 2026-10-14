@@ -101,5 +101,8 @@ export const contactDetails = {
     location: "Tiraspol, Moldova",
     phone: "+373 000 000 00",
     email: "arkn3913@gmail.com",
-    resumeUrl: "/Alina_Groza_Frontend_Developer_RU_photo_CV.pdf",
+    resumeUrls: {
+        en: "/en_cv_A_G.pdf",
+        ru: "/ru_cv_A_G.pdf",
+    },
 };
