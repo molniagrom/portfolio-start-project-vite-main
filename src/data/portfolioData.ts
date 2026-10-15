@@ -102,7 +102,7 @@ export const contactDetails = {
     phone: "+373 000 000 00",
     email: "arkn3913@gmail.com",
     resumeUrls: {
-        en: "/en_cv_A_G.pdf",
-        ru: "/ru_cv_A_G.pdf",
+        en: "/en_cv_Alina_Groza.pdf",
+        ru: "/ru_cv_Alina_Groza.pdf",
     },
 };
