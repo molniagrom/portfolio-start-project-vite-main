@@ -42,8 +42,8 @@ const techItems: TechItem[] = [
     {type: "sprite", name: "Styled Components", iconId: "styledComponent", viewBox: "0 0 150 150"},
     {type: "image", name: "TypeScript", src: "/tech/typescript.svg"},
     {type: "image", name: "Redux Toolkit", src: "/tech/redux-toolkit.svg"},
-    {type: "image", name: "Next.js", src: "/tech/nextjs.svg"},
-    {type: "image", name: "React Query", src: "/tech/react-query.svg"},
+    {type: "image", name: "Next.js", src: "/tech/nextjs.svg", color: "var(--color-primaryFont)"},
+    {type: "image", name: "React Query", src: "/tech/react-query.svg", color: "var(--color-primaryFont)"},
     {type: "image", name: "Storybook", src: "/tech/storybook.svg", color: "#FF4785"},
     {type: "image", name: "Material UI", src: "/tech/mui.svg", color: "#007FFF"},
     {type: "image", name: "React Router", src: "/tech/reactrouter.svg", color: "#CA4245"},
@@ -53,6 +53,7 @@ const techItems: TechItem[] = [
     {type: "image", name: "Socket.IO", src: "/tech/socketdotio.svg", color: "#010101"},
     {type: "image", name: "Jira", src: "/tech/jira.svg", color: "#0052CC"},
     {type: "image", name: "ClickUp", src: "/tech/clickup.svg", color: "#7B68EE"},
+    {type: "image", name: "Figma", src: "/tech/figma.svg", color: "#F24E1E"},
 ];
 
 export const MyStack = () => {
