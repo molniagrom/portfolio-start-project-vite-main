@@ -24,6 +24,7 @@ type NewTech = {
     type: "image";
     name: string;
     src: string;
+    color?: string;
 };
 
 type TechItem = ExistingTech | NewTech;
@@ -43,6 +44,15 @@ const techItems: TechItem[] = [
     {type: "image", name: "Redux Toolkit", src: "/tech/redux-toolkit.svg"},
     {type: "image", name: "Next.js", src: "/tech/nextjs.svg"},
     {type: "image", name: "React Query", src: "/tech/react-query.svg"},
+    {type: "image", name: "Storybook", src: "/tech/storybook.svg", color: "#FF4785"},
+    {type: "image", name: "Material UI", src: "/tech/mui.svg", color: "#007FFF"},
+    {type: "image", name: "React Router", src: "/tech/reactrouter.svg", color: "#CA4245"},
+    {type: "image", name: "pnpm", src: "/tech/pnpm.svg", color: "#F69220"},
+    {type: "image", name: "npm", src: "/tech/npm.svg", color: "#CB3837"},
+    {type: "image", name: "Socket", src: "/tech/socket.svg", color: "#C93CD7"},
+    {type: "image", name: "Socket.IO", src: "/tech/socketdotio.svg", color: "#010101"},
+    {type: "image", name: "Jira", src: "/tech/jira.svg", color: "#0052CC"},
+    {type: "image", name: "ClickUp", src: "/tech/clickup.svg", color: "#7B68EE"},
 ];
 
 export const MyStack = () => {
@@ -70,6 +80,9 @@ export const MyStack = () => {
                                         viewBox={tech.svgProps?.viewBox || tech.viewBox}
                                         iconId={tech.iconId}
                                     />
+                                ) : tech.color ? (
+                                    <TechLogoMask $src={tech.src} $color={tech.color} role="img"
+                                                   aria-label={`${tech.name} logo`} />
                                 ) : (
                                     <TechImage src={tech.src} alt={`${tech.name} logo`} />
                                 )}
@@ -167,4 +180,12 @@ const TechImage = styled.img`
     width: 120px;
     height: 120px;
     object-fit: contain;
+`
+
+const TechLogoMask = styled.div<{$src: string; $color: string}>`
+    width: 120px;
+    height: 120px;
+    background-color: ${({$color}) => $color};
+    mask: url("${({$src}) => $src}") center / contain no-repeat;
+    -webkit-mask: url("${({$src}) => $src}") center / contain no-repeat;
 `
