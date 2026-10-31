@@ -56,6 +56,33 @@ const techItems: TechItem[] = [
     {type: "image", name: "Figma", src: "/tech/figma.svg", color: "#F24E1E"},
 ];
 
+const technologyLinks: Record<string, string> = {
+    "GitHub": "https://github.com/",
+    "HTML": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+    "CSS": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    "SCSS": "https://sass-lang.com/",
+    "WebStorm": "https://www.jetbrains.com/webstorm/",
+    "VS Code": "https://code.visualstudio.com/",
+    "React": "https://react.dev/",
+    "JavaScript": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    "Git": "https://git-scm.com/",
+    "Styled Components": "https://styled-components.com/",
+    "TypeScript": "https://www.typescriptlang.org/",
+    "Redux Toolkit": "https://redux-toolkit.js.org/",
+    "Next.js": "https://nextjs.org/",
+    "React Query": "https://tanstack.com/query/latest",
+    "Storybook": "https://storybook.js.org/",
+    "Material UI": "https://mui.com/",
+    "React Router": "https://reactrouter.com/",
+    "pnpm": "https://pnpm.io/",
+    "npm": "https://www.npmjs.com/",
+    "Socket": "https://socket.dev/",
+    "Socket.IO": "https://socket.io/",
+    "Jira": "https://www.atlassian.com/software/jira",
+    "ClickUp": "https://clickup.com/",
+    "Figma": "https://www.figma.com/",
+};
+
 export const MyStack = () => {
     const {t} = useTranslation();
     const titleRef = useRef<HTMLDivElement>(null);
@@ -73,21 +100,29 @@ export const MyStack = () => {
                     </motion.div>
                     <ContentSvg>
                         {techItems.map((tech) => (
-                            <TechCard key={tech.name}>
-                                {tech.type === "sprite" ? (
-                                    <Icon
-                                        width={tech.svgProps?.width || "120px"}
-                                        height={tech.svgProps?.height || "120px"}
-                                        viewBox={tech.svgProps?.viewBox || tech.viewBox}
-                                        iconId={tech.iconId}
-                                    />
-                                ) : tech.color ? (
-                                    <TechLogoMask $src={tech.src} $color={tech.color} role="img"
-                                                   aria-label={`${tech.name} logo`} />
-                                ) : (
-                                    <TechImage src={tech.src} alt={`${tech.name} logo`} />
-                                )}
-                            </TechCard>
+                            <TechLink
+                                key={tech.name}
+                                href={technologyLinks[tech.name]}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={`Visit ${tech.name} official website`}
+                            >
+                                <TechCard>
+                                    {tech.type === "sprite" ? (
+                                        <Icon
+                                            width={tech.svgProps?.width || "120px"}
+                                            height={tech.svgProps?.height || "120px"}
+                                            viewBox={tech.svgProps?.viewBox || tech.viewBox}
+                                            iconId={tech.iconId}
+                                        />
+                                    ) : tech.color ? (
+                                        <TechLogoMask $src={tech.src} $color={tech.color} role="img"
+                                                       aria-label={`${tech.name} logo`} />
+                                    ) : (
+                                        <TechImage src={tech.src} alt={`${tech.name} logo`} />
+                                    )}
+                                </TechCard>
+                            </TechLink>
                         ))}
                     </ContentSvg>
                 </FlexWrapper>
@@ -174,6 +209,22 @@ const TechCard = styled.div`
 
     @media screen and ${theme.media.mobile} {
         min-width: 100px;
+    }
+`
+
+const TechLink = styled.a`
+    color: inherit;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: transform 180ms ease;
+
+    &:hover {
+        transform: scale(1.06);
+    }
+
+    &:focus-visible {
+        outline: 2px solid ${theme.colors.accent};
+        outline-offset: 6px;
     }
 `
 
