@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {Icon} from "../../../components/icon/Icon.tsx";
 import {Container} from "../../../components/Container.ts";
-import {FlexWrapper} from "../../../components/wrappers/FlexWrapper.tsx";
 import {theme} from "../../../styles/Theme.ts";
 import {useRef} from "react";
 import {motion} from "framer-motion";
@@ -78,43 +77,41 @@ export const MyStack = () => {
     return (
         <MyStackStyled>
             <Container padding={"0px 20px"}>
-                <FlexWrapper $adaptiveMyStack gap={"40px"} direction="column" justify="center" $alignItems="center">
-                    <motion.div style={titleParallax.style}>
-                        <ContentText ref={titleRef}>
-                            <h2>{t("stack.title")}</h2>
-                            <p>{t("stack.subtitle")}</p>
-                        </ContentText>
-                    </motion.div>
-                    <ContentSvg>
-                        {techItems.map((tech) => (
-                            <TechLink
-                                key={tech.name}
-                                href={technologyLinks[tech.name]}
-                                target="_blank"
-                                rel="noreferrer"
-                                aria-label={`Visit ${tech.name} official website`}
-                            >
-                                <TechCard>
-                                    {tech.type === "sprite" ? (
-                                        <Icon
-                                            width={tech.svgProps?.width || "48px"}
-                                            height={tech.svgProps?.height || "48px"}
-                                            viewBox={tech.svgProps?.viewBox || tech.viewBox}
-                                            iconId={tech.iconId}
-                                        />
-                                    ) : tech.color ? (
-                                        <TechLogoMask $src={tech.src} $color={tech.color} role="img"
-                                                       aria-label={`${tech.name} logo`} />
-                                    ) : (
-                                        <TechImage src={tech.src} alt={`${tech.name} logo`} />
-                                    )}
-                                    <span>{tech.name}</span>
-                                </TechCard>
-                            </TechLink>
-                        ))}
-                    </ContentSvg>
-                </FlexWrapper>
+                <motion.div style={titleParallax.style}>
+                    <ContentText ref={titleRef}>
+                        <h2>{t("stack.title")}</h2>
+                        <p>{t("stack.subtitle")}</p>
+                    </ContentText>
+                </motion.div>
             </Container>
+            <ContentSvg>
+                {techItems.map((tech) => (
+                    <TechLink
+                        key={tech.name}
+                        href={technologyLinks[tech.name]}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Visit ${tech.name} official website`}
+                        title={tech.name}
+                    >
+                        <TechCard>
+                            {tech.type === "sprite" ? (
+                                <Icon
+                                    width={tech.svgProps?.width || "100%"}
+                                    height={tech.svgProps?.height || "100%"}
+                                    viewBox={tech.svgProps?.viewBox || tech.viewBox}
+                                    iconId={tech.iconId}
+                                />
+                            ) : tech.color ? (
+                                <TechLogoMask $src={tech.src} $color={tech.color} role="img"
+                                               aria-label={`${tech.name} logo`} />
+                            ) : (
+                                <TechImage src={tech.src} alt={`${tech.name} logo`} />
+                            )}
+                        </TechCard>
+                    </TechLink>
+                ))}
+            </ContentSvg>
         </MyStackStyled>
 
     );
@@ -127,12 +124,12 @@ const MyStackStyled = styled.section`
     align-items: center;
     background-color: ${theme.colors.allBg};
     color: ${theme.colors.primaryFont};
-    gap: 140px;
+    gap: 40px;
     padding: 60px 0;
 
     @media screen and ${theme.media.mobile} {
         padding: 60px 0 60px 0;
-        gap: 60px;
+        gap: 40px;
     }
 `
 
@@ -173,33 +170,32 @@ const ContentText = styled.div`
 `
 
 const ContentSvg = styled.div`
+    --tech-icon-size: clamp(56px, 4vw, 76px);
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: stretch;
-    gap: 24px;
+    width: min(1800px, calc(100% - 64px));
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    padding: 16px 0;
 
-    @media screen and ${theme.media.tablet}{
-        gap: 36px;
+    @media screen and (max-width: 1200px) {
+        justify-content: center;
     }
 
-    @media screen and ${theme.media.mobile}{
+    @media screen and ${theme.media.mobile} {
+        width: calc(100% - 40px);
         gap: 24px;
     }
-`
+`;
 
 const TechCard = styled.div`
     display: flex;
-    flex-direction: column;
     align-items: center;
-    min-width: 80px;
-    gap: 12px;
-
-    @media screen and ${theme.media.mobile} {
-        min-width: 70px;
-    }
-`
+    justify-content: center;
+    width: var(--tech-icon-size);
+    height: var(--tech-icon-size);
+`;
 
 const TechLink = styled.a`
     color: inherit;
@@ -218,14 +214,14 @@ const TechLink = styled.a`
 `
 
 const TechImage = styled.img`
-    width: 48px;
-    height: 48px;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 `
 
 const TechLogoMask = styled.div<{$src: string; $color: string}>`
-    width: 48px;
-    height: 48px;
+    width: 100%;
+    height: 100%;
     background-color: ${({$color}) => $color};
     mask: url("${({$src}) => $src}") center / contain no-repeat;
     -webkit-mask: url("${({$src}) => $src}") center / contain no-repeat;
