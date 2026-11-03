@@ -17,6 +17,7 @@ import {useTranslation, Trans} from "react-i18next";
 
 export const Main = () => {
     const {t, i18n} = useTranslation();
+    const resumeUrl = contactDetails.resumeUrls[i18n.resolvedLanguage as "en" | "ru"];
     const plusRef = useRef<SVGSVGElement>(null);
     const ellipseRef = useRef<SVGSVGElement>(null);
     const photoRef = useRef<HTMLImageElement>(null);
@@ -92,12 +93,14 @@ export const Main = () => {
                                     <FlexWrapper $adaptive $alignItems={"center"} gap="32px">
                                         <ProjectLink
                                             $adaptiveMain
+                                            href="#projects"
+                                            offset={-110}
                                             to="projects"
                                             fontSize={"15px"}
                                             fontWeight={"600"}
                                             padding={"15px"}
                                             gap={"14px"}
-                                            color={theme.colors.primaryFont}
+                                            color={theme.colors.white}
                                             $borderRadius={"20px"}
                                             fontFamily={"Roboto"}
                                             $backgroundColor={theme.colors.accent}
@@ -110,8 +113,8 @@ export const Main = () => {
 
                                         <InputLinkStyled
                                             $adaptiveMain
-                                            href={contactDetails.resumeUrls[i18n.language as "en" | "ru"] ?? contactDetails.resumeUrls.ru}
-                                            download
+                                            href={resumeUrl ?? `mailto:${contactDetails.email}?subject=${encodeURIComponent(t("main.resumeSubject"))}`}
+                                            download={resumeUrl ? true : undefined}
                                             fontSize={"15px"}
                                             fontWeight={600}
                                             $backgroundColor={"transparent"}
@@ -120,7 +123,7 @@ export const Main = () => {
                                             outline={"none"}
                                             appearance={"none"}
                                         >
-                                            {t("main.downloadResume")}
+                                            {t(resumeUrl ? "main.downloadResume" : "main.requestResume")}
                                         </InputLinkStyled>
                                     </FlexWrapper>
                                 </FlexWrapper>

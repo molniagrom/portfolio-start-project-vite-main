@@ -9,19 +9,27 @@
         "title": "Frontend Developer",
         "name": "I'm <1>Alina Groza</1>. Bringing order to chaos - your frontend in reliable hands. Aesthetics, logic, and user care in every pixel.",
         "seeProjects": "See Projects",
-        "downloadResume": "Download Resume"
+        "downloadResume": "Download Resume",
+        "requestResume": "Request resume",
+        "resumeSubject": "Resume request — Alina Groza"
     },
     "projects": {
         "title": "Projects",
-        "clearFilters": "Clear filters",
+        "clearFilters": "All projects",
         "editCode": "Edit code",
-        "view": "View",
+        "view": "Live demo",
         "myKinopoisk": "My Kinopoisk",
         "rickAndMorty": "Rick and Morty Explorer (Next JS)",
         "todolist": "Todolist",
         "musicFun": "Music Fun (Tanstack Query)",
         "starlions": "Starlions — Social Network",
-        "getTogether": "Get Together — Meetings Platform"
+        "getTogether": "Get Together — Meetings Platform",
+        "viewCode": "View code",
+        "contribution": "My contribution",
+        "result": "Result",
+        "stack": "Project technologies",
+        "role": "Role",
+        "storybookExample": "Storybook component example (code)"
     },
     "filters": {
         "petProject": "Pet Project",
@@ -30,12 +38,12 @@
     },
     "about": {
         "name": "I'm <1>Alina</1> Groza",
-        "bio": "Frontend developer with hands-on experience building modern web applications using React, TypeScript, and Redux Toolkit. Skilled in REST API integration with RTK Query, reusable component architecture, and responsive UI development. Graduate of the IT-Incubator Frontend Developer program with 6+ deploy-ready projects on Vercel.",
+        "bio": "Frontend developer with commercial experience at Akor Direct. I build web applications with React and TypeScript. At Get Together, I developed chat and notification modules using Socket.IO. In the Starlions team project, I implemented photo publishing and profile management. My work includes responsive interfaces, reusable components, and REST API integrations.",
         "education": "Education",
         "educationText": "Frontend Developer Program, IT-Incubator, 2025",
         "languages": "Languages",
         "langRu": "Russian — Native",
-        "langEn": "English — A2 (improving)"
+        "langEn": "English — A2/B1 (improving)"
     },
     "stack": {
         "title": "My Tech Stack",
@@ -46,10 +54,10 @@
         "source": "Apostle Paul"
     },
     "contact": {
-        "title": "Contact Us",
+        "title": "Contact me",
         "getInTouch": "Get in touch",
         "email": "E-mail",
-        "phone": "Phone",
+        "phone": "Phone (optional)",
         "name": "Name",
         "message": "Message",
         "sending": "Sending...",
@@ -58,7 +66,9 @@
         "error": "Message could not be sent. Please try again.",
         "locationTitle": "Location",
         "phoneTitle": "Phone",
-        "emailTitle": "Email"
+        "emailTitle": "Email",
+        "unavailable": "Contact me directly by email or Telegram.",
+        "required": "Name, email, and message are required."
     },
     "footer": {
         "codedBy": "Coded by Alina Groza nezhad",
@@ -67,5 +77,30 @@
     "theme": {
         "light": "Light theme",
         "dark": "Dark theme"
+    },
+    "projectDetails": {
+        "getTogether": {
+            "summary": "A platform for discovering and creating events and interest-based meetups.",
+            "contribution": "Developed the chat and notification modules using Socket.IO.",
+            "result": "Real-time communication and notifications within the events platform."
+        },
+        "starlions": {
+            "summary": "A team-built platform for communication and sharing photos and information.",
+            "contribution": "Implemented the complete photo publishing flow, including cropping, as well as profile creation and editing.",
+            "result": "Users can prepare and publish photos, create a profile, and update their personal information.",
+            "role": "Frontend Developer · Project Manager"
+        },
+        "myKinopoisk": {
+            "summary": "A web application for discovering movies and exploring movie information."
+        },
+        "rickAndMorty": {
+            "summary": "A Next.js character explorer for the Rick and Morty universe."
+        },
+        "todolist": {
+            "summary": "An application for managing task lists."
+        },
+        "musicFun": {
+            "summary": "A music application using TanStack Query to manage server data."
+        }
     }
 }

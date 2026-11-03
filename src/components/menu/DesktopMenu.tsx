@@ -22,7 +22,7 @@ export const DesktopMenu = (props: MenuPropsType) => {
                     <ListItem key={item.href}>
                         <MyLink activeClass="active"
                                 spy={true}
-                                to={item.href}>{item.title}</MyLink>
+                                href={`#${item.href}`} offset={-110} to={item.href}>{item.title}</MyLink>
                     </ListItem>
                 ))}
             </List>

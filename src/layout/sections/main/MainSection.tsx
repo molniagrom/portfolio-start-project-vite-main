@@ -5,7 +5,7 @@ import {theme} from "../../../styles/Theme.ts";
 export const MainSection = styled.section`
     display: flex;
     position: relative;
-    padding: 190px 0;
+    padding: 150px 0 100px;
     overflow-x: clip;
 
     @media screen and ${theme.media.mobile} {

@@ -1,6 +1,12 @@
 export type ProjectItem = {
     id: number;
     titleKey: string;
+    summaryKey: string;
+    stack: string[];
+    roleKey?: string;
+    storybookUrl?: string;
+    contributionKey?: string;
+    resultKey?: string;
     image: string;
     imageAlt: string;
     type: ProjectType[];
@@ -38,11 +44,13 @@ export const socialLinks: SocialLink[] = [
     },
 ];
 
-export const projects: ProjectItem[] = [
+const projectItems: ProjectItem[] = [
     {
         id: 1,
         titleKey: "projects.myKinopoisk",
-        image: "/kinopoisk1619602660_3-phonoteka_org-p-kinematograf-fon-3-700x433-1.jpg",
+        summaryKey: "projectDetails.myKinopoisk.summary",
+        stack: ["React", "TypeScript"],
+        image: "/projects/kinopoisk.jpg",
         imageAlt: "Preview of the My Kinopoisk movie app",
         type: ["Pet Project"],
         demoUrl: "https://my-kinopoisk-mauve.vercel.app/",
@@ -51,7 +59,10 @@ export const projects: ProjectItem[] = [
     {
         id: 2,
         titleKey: "projects.rickAndMorty",
-        image: "/RickMorty.jpg",
+        summaryKey: "projectDetails.rickAndMorty.summary",
+        storybookUrl: "https://github.com/molniagrom/next-app_rick_and_morty/blob/master/components/CharacterCard/CharacterCard.stories.tsx",
+        stack: ["Next.js", "TypeScript", "Storybook"],
+        image: "/projects/rick-and-morty.jpg",
         imageAlt: "Preview of the Rick and Morty explorer app",
         type: ["Pet Project"],
         demoUrl: "https://next-app-rick-and-morty-five.vercel.app/",
@@ -60,7 +71,9 @@ export const projects: ProjectItem[] = [
     {
         id: 3,
         titleKey: "projects.todolist",
-        image: "/todolostil_fullxfull.2269636612_2elj.webp",
+        summaryKey: "projectDetails.todolist.summary",
+        stack: ["React", "TypeScript"],
+        image: "/projects/todolist.jpg",
         imageAlt: "Preview of the Todolist 01 application",
         type: ["Pet Project"],
         demoUrl: "https://todolist-01-eight.vercel.app/login",
@@ -69,7 +82,9 @@ export const projects: ProjectItem[] = [
     {
         id: 4,
         titleKey: "projects.musicFun",
-        image: "/placeholder-project.svg",
+        summaryKey: "projectDetails.musicFun.summary",
+        stack: ["React", "TanStack Query"],
+        image: "/projects/music-fun.jpg",
         imageAlt: "Preview of the Music Fun app with Tanstack Query",
         type: ["Pet Project"],
         demoUrl: "https://musicfuntanstack-query.vercel.app/",
@@ -78,7 +93,13 @@ export const projects: ProjectItem[] = [
     {
         id: 5,
         titleKey: "projects.starlions",
-        image: "/logo48x48.svg",
+        roleKey: "projectDetails.starlions.role",
+        summaryKey: "projectDetails.starlions.summary",
+        storybookUrl: "https://github.com/starloinsfront/starlions/blob/main/src/common/components/Button/Button.stories.tsx",
+        contributionKey: "projectDetails.starlions.contribution",
+        resultKey: "projectDetails.starlions.result",
+        stack: ["Next.js", "TypeScript", "React Hook Form", "Storybook"],
+        image: "/projects/starlions.jpg",
         imageAlt: "Preview of the Starlions social network app",
         type: ["Teamwork"],
         demoUrl: "https://starlionstech.org/",
@@ -87,7 +108,11 @@ export const projects: ProjectItem[] = [
     {
         id: 6,
         titleKey: "projects.getTogether",
-        image: "/logo-get-together.svg",
+        summaryKey: "projectDetails.getTogether.summary",
+        contributionKey: "projectDetails.getTogether.contribution",
+        resultKey: "projectDetails.getTogether.result",
+        stack: ["React", "TypeScript", "Redux Toolkit", "Socket.IO"],
+        image: "/projects/get-together.jpg",
         imageAlt: "Preview of the Get Together meetings platform",
         type: ["Teamwork", "Commercial"],
         demoUrl: "https://minglehub.eu/",
@@ -95,14 +120,23 @@ export const projects: ProjectItem[] = [
     },
 ];
 
+const projectPriority = (project: ProjectItem) => project.type.includes("Commercial") ? 0 : project.type.includes("Teamwork") ? 1 : 2;
+
+export const projects = [...projectItems].sort((a, b) => projectPriority(a) - projectPriority(b));
+
+export const professionalLinks = [
+    {label: "Telegram", href: "https://t.me/MolniaG24"},
+    {label: "GitHub", href: "https://github.com/molniagrom"},
+    {label: "LinkedIn", href: "https://www.linkedin.com/in/alina-groza-655422354/"},
+];
+
 export const projectFilters: ProjectType[] = ["Pet Project", "Teamwork", "Commercial"];
 
 export const contactDetails = {
     location: "Tiraspol, Moldova",
-    phone: "+373 000 000 00",
-    email: "arkn3913@gmail.com",
+    email: "mgrom250@gmail.com",
     resumeUrls: {
         en: "/en_cv_alina-groza.pdf",
         ru: "/ru_cv_alina-groza.pdf",
-    },
+    } as Partial<Record<"en" | "ru", string>>,
 };

@@ -40,7 +40,7 @@ export const MobileMenu = (props: MenuPropsType) => {
             >
                 <span></span>
             </BurgerButton>
-            <MobileMenuPopup id="mobile-navigation" $isOpen={isOpen} onClick={() => {
+            <MobileMenuPopup id="mobile-navigation" hidden={!isOpen} $isOpen={isOpen} onClick={() => {
                 setIsOpen(false)
             }}>
                 <ul>
@@ -50,7 +50,7 @@ export const MobileMenu = (props: MenuPropsType) => {
                                 setIsOpen(false)
                             }}
                                         activeClass="active" spy={true}
-                                        to={item.href}>{item.title}</LinkMobile>
+                                        href={`#${item.href}`} offset={-110} to={item.href}>{item.title}</LinkMobile>
                         </ListItemMobile>
                     ))}
                     <ListItemMobile>
@@ -96,9 +96,11 @@ const MobileMenuPopup = styled.div<PropsType>`
     justify-content: center;
     align-items: center;
     height: 100vh;
+    visibility: hidden;
     transform: translateY(-100%);
 
     ${props => props.$isOpen && css<PropsType>`
+        visibility: visible;
         transform: translateY(0);
     `}
 

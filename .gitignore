@@ -25,3 +25,11 @@ dist-ssr
 
 # Agent workspace
 .mimocode/
+
+.env
+.env.*
+!.env.example
+
+# Generated document previews and export copies
+tmp/
+output/

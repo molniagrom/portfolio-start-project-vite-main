@@ -33,7 +33,7 @@ describe("App smoke test", () => {
     );
 
     expect(
-      await screen.findByRole("heading", {name: /contact us/i}, {timeout: 5000}),
+      await screen.findByRole("heading", {name: /contact me/i}, {timeout: 5000}),
     ).toBeInTheDocument();
   });
 });

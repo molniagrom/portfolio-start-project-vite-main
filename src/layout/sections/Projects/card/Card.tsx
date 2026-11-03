@@ -1,128 +1,102 @@
 import styled from "styled-components";
-import {FlexWrapper} from "../../../../components/wrappers/FlexWrapper.tsx";
-import {Photo} from "../../main/Photo.tsx";
-import {AStyled} from "../../../../components/AStyled/AStyled.tsx";
-import {theme} from "../../../../styles/Theme.ts";
-import React from "react";
 import {useTranslation} from "react-i18next";
+import {ProjectItem} from "../../../../data/portfolioData";
+import {theme} from "../../../../styles/Theme";
 
-type CardProps = {
-    titleKey: string;
-    image: string;
-    imageAlt: string;
-    demoUrl: string;
-    codeUrl: string;
-};
-
-export const Card: React.FC<CardProps> = ({titleKey, image, imageAlt, demoUrl, codeUrl}) => {
+export const Card = ({project}: {project: ProjectItem}) => {
     const {t} = useTranslation();
+    const categoryKeys = {Commercial: "commercial", Teamwork: "teamwork", "Pet Project": "petProject"};
+
     return (
-        <StyledCard
-            $borderRadius="26px"
-            $backgroundColor={theme.colors.fourthFont}
-        >
-            <Photo
-                $adaptiveProj
-                $borderRadius="20px 20px 0 0"
-                height="240px"
-                width="100%"
-                src={image}
-                alt={imageAlt}
-                objectFit="cover"
-            />
-
-            <FlexWrapper
-                $adaptive
-                $adaptiveProj
-                flexGrow="1"
-                $alignItems="stretch"
-                justify="space-between"
-                gap="25px"
-                direction="column"
-                padding="17px 33px 23px 33px"
-            >
-                <NameCard>{t(titleKey)}</NameCard>
-
-                <ButtonsWrapper>
-                <FlexWrapper gap="20px" justify="space-between">
-                    <AStyled
-                        href={codeUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        $adaptiveProject
-                        $buttonHover
-                        $borderRadius="12px"
-                        padding="4px 19px 4px 19px"
-                        fontWeight="700"
-                        lineHeight="148%"
-                        color={theme.colors.fourthFont}
-                        fontSize="14px"
-                        $backgroundColor={theme.colors.primaryFont}
-                    >
-                        {t("projects.editCode")}
-                    </AStyled>
-
-                    <AStyled
-                        href={demoUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        $adaptiveProject
-                        $linkHover
-                        color={theme.colors.secondaryFont}
-                    >
-                        {t("projects.view")}
-                    </AStyled>
-                </FlexWrapper>
-                </ButtonsWrapper>
-            </FlexWrapper>
+        <StyledCard>
+            <Preview src={project.image} alt={project.imageAlt} loading="lazy" width="640" height="400"/>
+            <Content>
+                <Category>{project.type.map((type) => t(`filters.${categoryKeys[type]}`)).join(" · ")}</Category>
+                <h3>{t(project.titleKey)}</h3>
+                {project.contributionKey && <p>{t("projects.role")}: {t(project.roleKey ?? "main.title")}</p>}
+                <p>{t(project.summaryKey)}</p>
+                {project.contributionKey && <p><strong>{t("projects.contribution")}:</strong> {t(project.contributionKey)}</p>}
+                {project.resultKey && <p><strong>{t("projects.result")}:</strong> {t(project.resultKey)}</p>}
+                {project.stack.length > 0 && (
+                    <Stack aria-label={t("projects.stack")}>
+                        {project.stack.map((tech) => <li key={tech}>{tech}</li>)}
+                    </Stack>
+                )}
+                {project.storybookUrl && <Evidence href={project.storybookUrl} target="_blank" rel="noreferrer">{t("projects.storybookExample")} ↗</Evidence>}
+                <Actions>
+                    <a href={project.demoUrl} target="_blank" rel="noreferrer" aria-label={`${t("projects.view")}: ${t(project.titleKey)}`}>{t("projects.view")} ↗</a>
+                    <a href={project.codeUrl} target="_blank" rel="noreferrer" aria-label={`${t("projects.viewCode")}: ${t(project.titleKey)}`}>{t("projects.viewCode")}</a>
+                </Actions>
+            </Content>
         </StyledCard>
     );
 };
 
-const ButtonsWrapper = styled.div`
-    margin-top: auto;
+const StyledCard = styled.article`
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid ${theme.colors.border};
+    border-radius: 24px;
+    background: ${theme.colors.secondaryBg};
+    color: ${theme.colors.primaryFont};
 `;
 
-const NameCard = styled.h3`
-    flex-grow: 1;
-    text-align: left;
-    font-family: "Kalameh", sans-serif;
-    font-weight: 700;
-    font-size: 20px;
+const Preview = styled.img`
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top;
+    background: #fff;
+`;
 
-    @media screen and ${theme.media.mobile} {
+const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 16px;
+    padding: 24px;
+
+    h3 { font-size: 22px; line-height: 1.3; }
+    p { font-size: 15px; line-height: 1.6; }
+`;
+
+const Category = styled.p`
+    color: ${theme.colors.secondaryFont};
+    font-weight: 600;
+`;
+
+const Stack = styled.ul`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    li {
+        padding: 5px 10px;
+        border: 1px solid ${theme.colors.border};
+        border-radius: 8px;
         font-size: 12px;
     }
 `;
 
-type StyledCardPropsType = {
-    padding?: string;
-    width?: string;
-    height?: string;
-    $backgroundColor?: string;
-    $borderRadius?: string;
-};
-
-const StyledCard = styled.article<StyledCardPropsType>`
+const Actions = styled.div`
     display: flex;
-    flex-direction: column;
-    padding: ${props => props.padding ?? undefined};
-    background-color: ${props => props.$backgroundColor ?? undefined};
-    border-radius: ${props => props.$borderRadius ?? undefined};
-    height: 100%;
-    width: ${props => props.width ?? undefined};
-    transition: all 0.3s ease;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    margin-top: auto;
+    padding-top: 8px;
 
-    ${Photo} {
-        filter: grayscale(10%) brightness(0.8);
-        transition: filter 0.3s ease;
-    }
+    a { color: ${theme.colors.primaryFont}; font-weight: 600; }
+    a:first-child { color: ${theme.colors.white}; background: ${theme.colors.accent}; padding: 10px 16px; border-radius: 10px; }
+    a:last-child { text-decoration: underline; text-underline-offset: 4px; }
+`;
 
-    &:hover {
-        background-color: ${theme.colors.primaryBg};
-
-        ${Photo} {
-            filter: none;
-        }
-    }
+const Evidence = styled.a`
+    color: ${theme.colors.primaryFont};
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 `;

@@ -34,6 +34,10 @@ export const GlobalStyled = createGlobalStyle`
         transition: background-color 0.3s ease, color 0.3s ease;
     }
 
+    section[id] { scroll-margin-top: 100px; }
+
+    :focus-visible { outline: 3px solid ${theme.colors.accent}; outline-offset: 4px; }
+
     a {
         text-decoration: none;
     }

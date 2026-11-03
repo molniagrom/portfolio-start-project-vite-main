@@ -2,7 +2,6 @@ import {useRef, useState} from "react";
 import styled from "styled-components";
 import {Card} from "./card/Card";
 import {Button} from "../../../components/Button/Button";
-import {AStyled} from "../../../components/AStyled/AStyled";
 import {theme} from "../../../styles/Theme";
 import {Container} from "../../../components/Container";
 import dots from "../../../image/Dots.svg";
@@ -39,7 +38,6 @@ const ScrollRevealCard = ({children}: {children: React.ReactNode}) => {
 
 export const Projects = (): JSX.Element => {
     const {t} = useTranslation();
-    const [clickedIndex, setClickedIndex] = useState<number | null>(null);
     const [currentFilterStatus, setCurrentFilterStatus] = useState<ProjectType | null>(null);
     const titleRef = useRef<HTMLHeadingElement>(null);
     const titleParallax = useParallax(titleRef, {speed: 0.1});
@@ -54,12 +52,7 @@ export const Projects = (): JSX.Element => {
         setCurrentFilterStatus(value);
     };
 
-    const onClick = (index: number): void => {
-        setClickedIndex(index);
-    };
-
     const clearFilters = (): void => {
-        setClickedIndex(null);
         setCurrentFilterStatus(null);
     };
 
@@ -74,27 +67,22 @@ export const Projects = (): JSX.Element => {
                     <TitleProject ref={titleRef}>{t("projects.title")}</TitleProject>
                 </motion.div>
                 <List className="category-tabs">
-                    {filterKeys.map((item, index) => (
+                    {filterKeys.map((item) => (
                         <ListItem key={item.key}>
                             <Button
                                 $adaptiveProject
-                                $isClicked={clickedIndex === index}
+                                $isClicked={currentFilterStatus === item.key}
+                                aria-pressed={currentFilterStatus === item.key}
                                 onClick={(): void => {
-                                    onClick(index);
                                     changeFilterStatus(item.key);
                                 }}
                                 border={`${theme.colors.border} 3px solid`}
                                 $borderRadius={"67px"}
                                 padding={"7px 40px"}
                             >
-                                <AStyled
-                                    $adaptiveProject
-                                    lineHeight={"136%"}
-                                    fontWeight={"400"}
-                                    fontSize={"20px"}
-                                >
+                                <span>
                                     {item.label}
-                                </AStyled>
+                                </span>
                             </Button>
                         </ListItem>
                     ))}
@@ -102,19 +90,15 @@ export const Projects = (): JSX.Element => {
                         <Button
                             $adaptiveProject
                             $isClicked={currentFilterStatus === null}
+                            aria-pressed={currentFilterStatus === null}
                             onClick={clearFilters}
                             border={`${theme.colors.border} 3px solid`}
                             $borderRadius={"67px"}
                             padding={"7px 40px"}
                         >
-                            <AStyled
-                                $adaptiveProject
-                                lineHeight={"136%"}
-                                fontWeight={"400"}
-                                fontSize={"20px"}
-                            >
+                            <span>
                                 {t("projects.clearFilters")}
-                            </AStyled>
+                            </span>
                         </Button>
                     </ListItem>
                 </List>
@@ -124,11 +108,7 @@ export const Projects = (): JSX.Element => {
                             {filteredWorks.map((item) => (
                                 <ScrollRevealCard key={item.id}>
                                     <Card
-                                        titleKey={item.titleKey}
-                                        image={item.image}
-                                        imageAlt={item.imageAlt}
-                                        demoUrl={item.demoUrl}
-                                        codeUrl={item.codeUrl}
+                                        project={item}
                                     />
                                 </ScrollRevealCard>
                             ))}
@@ -145,7 +125,7 @@ const StyledProjects = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 154px;
+    padding-bottom: 80px;
 
     @media screen and ${theme.media.tablet} {
         padding-bottom: 82px;
@@ -202,11 +182,15 @@ const List = styled.ul`
 
     li button {
         width: 100%;
+        font-family: inherit;
+        font-size: 16px;
+        line-height: 1.4;
         color: ${theme.colors.primaryFont};
     }
 
     @media screen and ${theme.media.mobile} {
         li button {
+            font-size: 14px;
             padding: 7px 20px;
         }
     }
@@ -241,13 +225,13 @@ const ScrollWrapper = styled.div`
 
 const GreedWrapper = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 270px));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
     grid-auto-rows: auto;
     justify-content: center;
     gap: 45px 38px;
 
     @media screen and ${theme.media.mobile} {
         gap: 24px 16px;
-        grid-template-columns: repeat(2, minmax(130px, 1fr));
+        grid-template-columns: 1fr;
     }
 `;

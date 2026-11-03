@@ -6,7 +6,7 @@ export const ContactUs = styled.section`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 65px 25px 197px 25px;
+    padding: 60px 25px 80px;
 
     @media screen and ${theme.media.tablet} {
         padding: 37px 80px 52px 80px;
@@ -74,11 +74,13 @@ export const StyledForm = styled.form`
 
 export const GroupFields = styled.div`
     display: flex;
+    align-items: flex-end;
     flex-direction: row;
     gap: 7px;
 
     @media screen and ${theme.media.mobile} {
         flex-direction: column;
+        align-items: stretch;
         gap: 20px;
     }
 `;
@@ -90,16 +92,16 @@ type FieldPropsType = {
 export const Field = styled.input<FieldPropsType>`
     background-color: ${theme.colors.tertiaryBg};
     border: none;
-    padding: 9px 30px;
+    padding: 12px 16px;
     border-radius: 9px;
     width: 100%;
-    max-width: 211px;
+    min-width: 0;
     font-weight: 400;
     font-size: 13px;
     line-height: 136%;
     color: ${theme.colors.inputText};
 
-    ::placeholder {
+    &::placeholder {
         color: ${theme.colors.inputText};
     }
 
@@ -112,12 +114,9 @@ export const Field = styled.input<FieldPropsType>`
     ${props =>
             props.as === "textarea" &&
             css`
-                @media screen and (min-width: 900px) {
-                    min-width: 430px;
-                }
                 max-width: 540px;
                 min-height: 152px;
-                resize: none;
+                resize: vertical;
             `}
 `;
 
@@ -155,19 +154,19 @@ export const Colored = styled.div`
 
 export const ContactBlock = styled.div`
     background-color: ${theme.colors.secondaryBg};
-    padding: 53px 113px 65px 82px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 40px;
-    max-width: 900px;
+    max-width: 1120px;
     width: 100%;
     box-shadow: 0 0 16px 8px ${theme.colors.overlayShadow};
     margin: 0 auto;
 
     @media screen and ${theme.media.tablet} {
-        padding: 53px 113px 65px 82px;
+        padding: 40px;
     }
     @media screen and ${theme.media.mobile} {
         padding: 24px 20px 40px 20px;

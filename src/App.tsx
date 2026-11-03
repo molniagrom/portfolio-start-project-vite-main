@@ -10,7 +10,6 @@ const AboutMe = lazy(() => import("./layout/sections/aboutMe/AboutMe.tsx").then(
 // const Highlights = lazy(() => import("./layout/sections/highlights/Highlights.tsx").then((module) => ({default: module.Highlights})));
 const MyStack = lazy(() => import("./layout/sections/myStack/MyStack.tsx").then((module) => ({default: module.MyStack})));
 // const Testimony = lazy(() => import("./layout/sections/testimony/Testimony.tsx").then((module) => ({default: module.Testimony})));
-const Quote = lazy(() => import("./layout/sections/quote/Quote.tsx").then((module) => ({default: module.Quote})));
 const Contact = lazy(() => import("./layout/sections/contact/Contact.tsx").then((module) => ({default: module.Contact})));
 
 function App() {
@@ -24,7 +23,6 @@ function App() {
                 {/*<Highlights/>*/}
                 <MyStack/>
                 {/* <Testimony/> */}
-                <Quote/>
                 <Contact/>
             </Suspense>
             <Footer/>

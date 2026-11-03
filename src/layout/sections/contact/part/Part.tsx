@@ -10,7 +10,7 @@ export const Part = (props: PartInfoLogoProps) => {
             <Icon adaptivePart iconId={props.iconId}/>
             <Info>
                 <h4>{props.title}</h4>
-                {/*<p>{props.subTittle}</p>*/}
+                <p>{props.href ? <a href={props.href}>{props.subTittle}</a> : props.subTittle}</p>
             </Info>
         </PartContent>
     );
@@ -20,6 +20,7 @@ type PartInfoLogoProps = {
     title?: string;
     subTittle?: string;
     iconId: string;
+    href?: string;
 }
 
 const Info = styled.div`
@@ -49,9 +50,11 @@ const Info = styled.div`
     
     p {
         font-weight: 400;
-        font-size: 12px;
+        font-size: 15px;
         line-height: 136%;
-        color: #8b8b8b;
+        color: ${theme.colors.primaryFont};
+        overflow-wrap: anywhere;
+        a { color: inherit; text-decoration: underline; text-underline-offset: 4px; }
 
         @media screen and ${theme.media.tablet} {
             font-size: 22px;
