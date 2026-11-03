@@ -71,7 +71,7 @@
         "required": "Name, email, and message are required."
     },
     "footer": {
-        "codedBy": "Coded by Alina Groza nezhad",
+        "codedBy": "Coded by Alina Groza",
         "rights": "All Rights Reserved"
     },
     "theme": {
