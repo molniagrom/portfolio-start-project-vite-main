@@ -133,7 +133,7 @@ export const professionalLinks = [
 export const projectFilters: ProjectType[] = ["Pet Project", "Teamwork", "Commercial"];
 
 export const contactDetails = {
-    location: "Tiraspol, Moldova",
+    location: "Chișinău, Moldova",
     email: "mgrom250@gmail.com",
     resumeUrls: {
         en: "/en_cv_alina-groza.pdf",

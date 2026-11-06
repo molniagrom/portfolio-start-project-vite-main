@@ -50,9 +50,9 @@ const Info = styled.div`
     
     p {
         font-weight: 400;
-        font-size: 15px;
+        font-size: 12px;
         line-height: 136%;
-        color: ${theme.colors.primaryFont};
+        color: #8b8b8b;
         overflow-wrap: anywhere;
         a { color: inherit; text-decoration: underline; text-underline-offset: 4px; }
 

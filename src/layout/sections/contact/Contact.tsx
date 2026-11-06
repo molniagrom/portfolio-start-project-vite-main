@@ -15,7 +15,7 @@ import {Container} from "../../../components/Container.ts";
 import {HoverableIcon} from "../../../components/icon/HoverableIcon.tsx";
 import emailjs from '@emailjs/browser';
 import {FormEvent, useRef, useState} from "react";
-import {contactDetails, professionalLinks, socialLinks} from "../../../data/portfolioData.ts";
+import {contactDetails, socialLinks} from "../../../data/portfolioData.ts";
 import {theme} from "../../../styles/Theme.ts";
 import styled from "styled-components";
 import {useTranslation} from "react-i18next";
@@ -60,37 +60,22 @@ export const Contact = () => {
                 </ContactTitle>
                 <ContactBlock>
                     <FlexWrapper $adaptiveContact gap={"clamp(50px, 10vw, 130px)"}>
-                        <InfoLogoContent>
-                            <Part
-                                iconId={"locationBlue"}
-                                title={t("contact.locationTitle")}
-                                subTittle={contactDetails.location}/>
-
-                            <Part
-                                iconId={"emailBlue"}
-                                title={t("contact.emailTitle")}
-                                subTittle={contactDetails.email}
-                                href={`mailto:${contactDetails.email}`}/>
-                            <DirectLinks>
-                                {professionalLinks.map((link) => <a key={link.label} href={link.href} target="_blank" rel="noreferrer">{link.label} ↗</a>)}
-                            </DirectLinks>
-                        </InfoLogoContent>
                         <FormContent>
                             <h2>{t("contact.getInTouch")}</h2>
-                            <p>{t(isConfigured ? "contact.required" : "contact.unavailable")}</p>
+                            {!isConfigured && <p>{t("contact.unavailable")}</p>}
                             {isConfigured && <StyledForm ref={form} onSubmit={sendEmail} aria-busy={isSubmitting}>
                                 <GroupFields>
-                                    <FieldLabel htmlFor="contact-email">{t("contact.email")} *<Field id="contact-email" required name="email" autoComplete="email" type="email"/></FieldLabel>
-                                    <FieldLabel htmlFor="contact-phone">{t("contact.phone")}<Field id="contact-phone" name="number" autoComplete="tel" type="tel"/></FieldLabel>
-                                    <FieldLabel htmlFor="contact-name">{t("contact.name")} *<Field id="contact-name" required minLength={2} name="name" autoComplete="name" type="text"/></FieldLabel>
+                                    <Field aria-label={`${t("contact.email")} *`} placeholder={t("contact.email")} required name="email" autoComplete="email" type="email"/>
+                                    <Field aria-label={t("contact.phone")} placeholder={t("contact.phoneTitle")} name="number" autoComplete="tel" type="tel"/>
+                                    <Field aria-label={`${t("contact.name")} *`} placeholder={t("contact.name")} required minLength={2} name="name" autoComplete="name" type="text"/>
                                 </GroupFields>
-                                <FieldLabel htmlFor="contact-message">{t("contact.message")} *<Field id="contact-message" required minLength={10} name="message" as="textarea"/></FieldLabel>
+                                <Field aria-label={`${t("contact.message")} *`} placeholder={t("contact.message")} required minLength={10} name="message" as="textarea"/>
                                 <Button
                                     $adaptiveContact
                                     type={"submit"}
                                     disabled={isSubmitting}
                                     $backgroundColor={theme.colors.accent}
-                                    color={theme.colors.white}
+                                    color={theme.colors.primaryFont}
                                     fontSize={"15px"}
                                     fontWeight={"500"}
                                     padding={"10px 40px 10px 40px"}
@@ -110,7 +95,20 @@ export const Contact = () => {
                                 )}
                             </StyledForm>}
                         </FormContent>
-
+                        <InfoLogoContent>
+                            <Part
+                                iconId={"locationBlue"}
+                                title={t("contact.locationTitle")}
+                                subTittle={contactDetails.location}/>
+                            <Part
+                                iconId={"telephoneBlue"}
+                                title={t("contact.phoneTitle")}/>
+                            <Part
+                                iconId={"emailBlue"}
+                                title={t("contact.emailTitle")}
+                                subTittle={contactDetails.email}
+                                href={`mailto:${contactDetails.email}`}/>
+                        </InfoLogoContent>
                     </FlexWrapper>
                 </ContactBlock>
                 <FlexWrapper justify="center" $alignItems="center">
@@ -138,20 +136,4 @@ type StatusMessageProps = {
 
 const StatusMessage = styled.p<StatusMessageProps>`
     color: ${props => props.$isError ? "#ff8c8c" : "#8fd8a8"};
-`;
-
-const FieldLabel = styled.label`
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex: 1;
-    min-width: 0;
-    font-size: 14px;
-`;
-
-const DirectLinks = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    a { color: ${theme.colors.primaryFont}; text-decoration: underline; text-underline-offset: 4px; }
 `;
