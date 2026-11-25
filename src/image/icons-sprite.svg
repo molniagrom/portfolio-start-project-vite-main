@@ -1,6 +1,14 @@
 <svg width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink">
 
+    <g id="linkedinColor">
+        <rect x="1" y="1" width="29" height="29" rx="6" fill="#0A66C2"/>
+        <path fill="#FFFFFF" d="M7 12h4v12H7V12Zm2-6a2.25 2.25 0 1 0 0 4.5A2.25 2.25 0 0 0 9 6Zm5 6h4v1.6c.8-1.2 1.9-1.9 3.5-1.9 3.1 0 4.5 2 4.5 5.6V24h-4v-6.3c0-1.8-.6-2.7-1.9-2.7-1.4 0-2.1 1-2.1 2.7V24h-4V12Z"/>
+    </g>
+    <g id="linkedinWhite">
+        <rect x="2" y="2" width="27" height="27" rx="6" stroke="#FFFFFF" stroke-width="2"/>
+        <path fill="#FFFFFF" d="M7 12h4v12H7V12Zm2-6a2.25 2.25 0 1 0 0 4.5A2.25 2.25 0 0 0 9 6Zm5 6h4v1.6c.8-1.2 1.9-1.9 3.5-1.9 3.1 0 4.5 2 4.5 5.6V24h-4v-6.3c0-1.8-.6-2.7-1.9-2.7-1.4 0-2.1 1-2.1 2.7V24h-4V12Z"/>
+    </g>
     <g id="quote">
         <rect width="24" height="24" fill="none"/>
         <path fill="currentColor"

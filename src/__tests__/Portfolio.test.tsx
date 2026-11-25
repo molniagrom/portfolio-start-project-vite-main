@@ -8,6 +8,7 @@ import {Main} from "../layout/sections/main/Main";
 import {LanguageSwitcher} from "../components/LanguageSwitcher";
 import i18n from "../i18n/i18n";
 import {DesktopMenu} from "../components/menu/DesktopMenu";
+import {AboutMe} from "../layout/sections/aboutMe/AboutMe";
 
 vi.mock("@emailjs/browser", () => ({default: {sendForm: vi.fn()}}));
 
@@ -22,6 +23,18 @@ beforeEach(async () => {
 afterEach(() => vi.unstubAllEnvs());
 
 describe("Portfolio interactions", () => {
+    it.each([Main, AboutMe, Contact])("includes LinkedIn alongside the three existing social links in $name", (Section) => {
+        const {container} = render(<Section/>);
+        const section = within(container);
+        for (const label of ["Instagram", "WhatsApp", "Telegram", "LinkedIn"]) {
+            expect(section.getByRole("link", {name: label})).toBeInTheDocument();
+        }
+        const linkedIn = section.getByRole("link", {name: "LinkedIn"});
+        expect(linkedIn).toHaveAttribute("href", "https://www.linkedin.com/in/alina-groza-655422354/");
+        expect(linkedIn).toHaveAttribute("target", "_blank");
+        expect(linkedIn).toHaveAttribute("rel", "noreferrer");
+    });
+
     it("downloads the approved PDF for the selected language", async () => {
         render(<><Main/><LanguageSwitcher/></>);
         const english = screen.getByRole("link", {name: "Download Resume"});

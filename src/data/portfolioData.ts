@@ -42,6 +42,12 @@ export const socialLinks: SocialLink[] = [
         iconId: "telegramColor",
         mobileIconId: "telegramWhite",
     },
+    {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/alina-groza-655422354/",
+        iconId: "linkedinColor",
+        mobileIconId: "linkedinWhite",
+    },
 ];
 
 const projectItems: ProjectItem[] = [
